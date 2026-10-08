@@ -1,0 +1,777 @@
+{
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2022-01-31&type=2": {
+  "file": "files/90003fe56056fb50.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:52+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2022-01-28&type=2": {
+  "file": "files/42b0988a300139d1.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:53+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2022-01-27&type=2": {
+  "file": "files/c33a11181dd86e7e.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:54+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2023-01-31&type=2": {
+  "file": "files/37fadabef9d8d1ea.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:55+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2023-01-30&type=2": {
+  "file": "files/82f663394231f295.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:56+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2023-01-27&type=2": {
+  "file": "files/fea3da35b5c1f426.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:57+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2023-01-26&type=2": {
+  "file": "files/ce2acea7f69562f4.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:58+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2024-01-31&type=2": {
+  "file": "files/15a8df6c4e85444c.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:13:59+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2024-01-30&type=2": {
+  "file": "files/dbdee1e9fb072786.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:00+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2024-01-29&type=2": {
+  "file": "files/454d20b5161a8006.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:01+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2024-01-26&type=2": {
+  "file": "files/78d17ad70f48c1d1.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:02+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2024-01-25&type=2": {
+  "file": "files/7e4aa4df40b379a7.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:03+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2025-01-31&type=2": {
+  "file": "files/b972dcfd1eaa0568.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:04+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2025-01-30&type=2": {
+  "file": "files/126157f4e22b8f71.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:05+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2025-01-29&type=2": {
+  "file": "files/7487ab7d9ec333ad.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:06+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2025-01-28&type=2": {
+  "file": "files/c9bc826394a14757.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:07+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-01-30&type=2": {
+  "file": "files/8ba8cd52be5c4dc7.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:08+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-01-29&type=2": {
+  "file": "files/657dd8c14000cc39.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:09+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-01-28&type=2": {
+  "file": "files/9d98dd5a0db92503.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:10+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-01-27&type=2": {
+  "file": "files/5ebcd0acb35ccf9e.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:11+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-01-26&type=2": {
+  "file": "files/17c14f9608bdf01f.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:12+09:00"
+ },
+ "https://www.tsuchiya.co.jp/ir/": {
+  "file": "files/a03065eb2efdbb9d.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:14:12+09:00"
+ },
+ "https://www.tsuchiya.co.jp/ir/news/": {
+  "file": "files/c50696421f202456.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:35+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100NAA0?type=5": {
+  "file": "files/0b5870b3a8d1e4bc.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:16+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100NAA0?type=1": {
+  "file": "files/b3aee2ce6c8bb9b4.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:18+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100Q0PX?type=5": {
+  "file": "files/a96ecd2c142073cb.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:18+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100Q0PX?type=1": {
+  "file": "files/e91dd5d7a3f78a2d.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:20+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100SO3Q?type=5": {
+  "file": "files/0270cc0cb67f2ad0.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:20+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100SO3Q?type=1": {
+  "file": "files/e405dc41539a2668.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:22+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100V551?type=5": {
+  "file": "files/b0270a128144694f.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:22+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100V551?type=1": {
+  "file": "files/31fa696e20bd0067.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:24+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100XHBD?type=5": {
+  "file": "files/0a9d584623e8e5e8.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:25+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100XHBD?type=1": {
+  "file": "files/f2a39eba347066b4.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:27+09:00"
+ },
+ "https://www.tsuchiya.co.jp/wp-content/uploads/2025/12/b5960b4d3ab656eb5be793cc69c9c5f6.pdf": {
+  "file": "files/8d344cfcba4f7c32.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:18:32+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-06-30&type=2": {
+  "file": "files/61885ce30fa6f4d3.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:36+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-06-29&type=2": {
+  "file": "files/3160dd8adb262072.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:37+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-06-26&type=2": {
+  "file": "files/1a305cd3aea24d9c.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:38+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-06-25&type=2": {
+  "file": "files/8adc5672c89ff4c1.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:39+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100YIXO?type=5": {
+  "file": "files/328f27d0d7f8ecfe.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:40+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-08-31&type=2": {
+  "file": "files/b26ddf45934ffd1c.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:25+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-08-28&type=2": {
+  "file": "files/3565d3d9cb851c7a.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:26+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-08-27&type=2": {
+  "file": "files/fa17fe9403ddbd25.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:27+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-08-26&type=2": {
+  "file": "files/cf6fdf324e013122.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:28+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100YYTC?type=5": {
+  "file": "files/d6e4a743ff014af4.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:14:45+09:00"
+ },
+ "https://irbank.net/1840/chart": {
+  "file": "files/aaa0d0c7d1072508.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:32+09:00"
+ },
+ "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/f30bacafc0c615eb072fc445cea37d06.pdf": {
+  "file": "files/d256d8da0662693d.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:18:38+09:00"
+ },
+ "https://irbank.net/1840": {
+  "file": "files/88d6e001ad08d41c.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:41+09:00"
+ },
+ "https://irbank.net/2976/chart": {
+  "file": "files/ec0bdfbda9e76cd1.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:44+09:00"
+ },
+ "https://www.nippon-grande.co.jp/ir/": {
+  "file": "files/ef474954adad3a02.html",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:18:44+09:00"
+ },
+ "https://irbank.net/2976": {
+  "file": "files/dee7efdd7eff2c2b.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:47+09:00"
+ },
+ "https://irbank.net/205A/chart": {
+  "file": "files/da3e75f0c15b5093.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:50+09:00"
+ },
+ "https://logos-holdings.jp/ir/": {
+  "file": "files/12a5b1fddb5ee20f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:50+09:00"
+ },
+ "https://irbank.net/205A": {
+  "file": "files/db3c6a8940c8fa3e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:53+09:00"
+ },
+ "https://irbank.net/1873/chart": {
+  "file": "files/c5f5c67b045bb33c.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:56+09:00"
+ },
+ "https://irbank.net/1873": {
+  "file": "files/4bdf211d0e6e8324.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:18:59+09:00"
+ },
+ "https://irbank.net/1419/chart": {
+  "file": "files/9b769617db7339e6.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:02+09:00"
+ },
+ "https://www.tamahome.jp/company/ir/": {
+  "file": "files/29d00ac3e325359f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:16:27+09:00"
+ },
+ "https://irbank.net/1419": {
+  "file": "files/5a8133e2a03ada0e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:08+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-31&type=2": {
+  "file": "files/ebc410ac0b46f200.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:16+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-30&type=2": {
+  "file": "files/6ae1d6f77a84f3c0.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:17+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-29&type=2": {
+  "file": "files/335708bb5d9c3705.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:18+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-28&type=2": {
+  "file": "files/2cf5ec43006d2210.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:19+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-27&type=2": {
+  "file": "files/b6007a1baff73ef3.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:20+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-24&type=2": {
+  "file": "files/9a148197d668642e.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:21+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-23&type=2": {
+  "file": "files/1d24f38f1ddce895.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:22+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents.json?date=2026-07-22&type=2": {
+  "file": "files/43e15689e065b649.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:23+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100YR5P?type=5": {
+  "file": "files/00fcd3288d2c52bd.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:24+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100YYFR?type=5": {
+  "file": "files/d8cf4abd83c0b7d5.zip",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:15:29+09:00"
+ },
+ "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/fec832f8c638b037ba8ba1282c8f44d0.pdf": {
+  "file": "files/36875bd43ca7599a.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:18:41+09:00"
+ },
+ "https://www.tamahome.jp/company/ir/library/library_02.html": {
+  "file": "files/f3f47faf7c3a7a67.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:02+09:00"
+ },
+ "https://www.tamahome.jp/company/ir/upload_file/m005-m005_02/tannshinn.pdf?e=8702": {
+  "file": "files/7a6da95e7c334ae3.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:19:05+09:00"
+ },
+ "https://www.tamahome.jp/company/ir/upload_file/m005-m005_02/20260410-2.pdf?e=4588": {
+  "file": "files/275a2aee9fc49535.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:19:08+09:00"
+ },
+ "https://iestdot.com/property/": {
+  "file": "files/ca2e6a10627b26df.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:38+09:00"
+ },
+ "https://iestdot.com/property/detail/8266829296a74078078495": {
+  "file": "files/0c9592c308e07422.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:12+09:00"
+ },
+ "https://iestdot.com/property/detail/18357697696a7406459c76f": {
+  "file": "files/8f2b9ab4b745fd12.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:15+09:00"
+ },
+ "https://iestdot.com/property/detail/18891192496a740582613af": {
+  "file": "files/d56acc3492f23962.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:18+09:00"
+ },
+ "https://iestdot.com/property/detail/6557073216a73fa10b6730": {
+  "file": "files/4244ccc63efd3439.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:21+09:00"
+ },
+ "https://iestdot.com/property/detail/19668160116a73f87339a35": {
+  "file": "files/72f8f92a9aaab350.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:24+09:00"
+ },
+ "https://iestdot.com/property/detail/8086462516a73f7cca3f9f": {
+  "file": "files/81b3bffe653abf46.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:27+09:00"
+ },
+ "https://iestdot.com/property/detail/8434939916a73f6dd7b407": {
+  "file": "files/eae7622f354d66b1.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:30+09:00"
+ },
+ "https://iestdot.com/property/detail/19314609586a6966cd8d9a0": {
+  "file": "files/a692529b2579bcfa.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:33+09:00"
+ },
+ "https://iestdot.com/property/detail/20588431676a1fc04462d21": {
+  "file": "files/59e262eaf5bd31a8.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:36+09:00"
+ },
+ "https://iestdot.com/property/detail/4741811026a4b0c8769082": {
+  "file": "files/a8d8a6dcd508487f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:39+09:00"
+ },
+ "https://iestdot.com/property/?page=2": {
+  "file": "files/9a1b44388490e737.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:40+09:00"
+ },
+ "https://iestdot.com/property/detail/658133406a1fb21d177ea": {
+  "file": "files/49fda2c0aa0266f7.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:45+09:00"
+ },
+ "https://iestdot.com/property/detail/40662252369f04427573b8": {
+  "file": "files/7ca75a38875192b9.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:48+09:00"
+ },
+ "https://iestdot.com/property/?page=3": {
+  "file": "files/9b571ce606da9b3f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:43+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/": {
+  "file": "files/afcce3822f811917.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:47+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9642481": {
+  "file": "files/e859a5723dcd6a0e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:54+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9642480": {
+  "file": "files/5e707b1a1a50148b.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:19:57+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9642478": {
+  "file": "files/d034992030e3d09e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9484299": {
+  "file": "files/6ce0dc9370c2ae59.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:03+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9484298": {
+  "file": "files/d15dbccc30d07863.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:06+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523182": {
+  "file": "files/da74de4560775c45.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:09+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523181": {
+  "file": "files/e98334afb79b3092.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:12+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523180": {
+  "file": "files/da2ead94cb10ff88.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:15+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523179": {
+  "file": "files/958a18437b618bcf.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:18+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523178": {
+  "file": "files/a3d3ed7bb8c234af.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:20:21+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=1": {
+  "file": "files/1122efcc2bcbb3d7.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:20+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=2": {
+  "file": "files/48cc58a2e3b290db.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:23+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=3": {
+  "file": "files/5071a34f98086433.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:26+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=4": {
+  "file": "files/c53e7b0282efcb8a.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:29+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=5": {
+  "file": "files/adbf1eee61679adf.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:32+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/?page=6": {
+  "file": "files/301b470a84bffecd.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:35+09:00"
+ },
+ "https://tsuchiyafudosan.jp/property/": {
+  "file": "files/14de7f7773f93f14.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:35+09:00"
+ },
+ "https://www.tsuchiyahome.jp/modelhouse/": {
+  "file": "files/1b302e7c4418625e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:36+09:00"
+ },
+ "https://www.tsuchiyahome.jp/realestate/": {
+  "file": "files/2c6d3ae20677b63d.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:38+09:00"
+ },
+ "https://www.tsuchiyahome.jp/event/": {
+  "file": "files/d94de6035aed5b31.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:42+09:00"
+ },
+ "https://www.tsuchiyahome.jp/lineup/": {
+  "file": "files/baf80892cef8680e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:44+09:00"
+ },
+ "https://www.hometopia.jp/": {
+  "file": "files/eb6b1026e2c83832.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:45+09:00"
+ },
+ "https://tsuchiyafudosan.jp/service": {
+  "file": "files/7d239229ab5cc521.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:45+09:00"
+ },
+ "https://tsuchiyafudosan.jp/store": {
+  "file": "files/ca50b6b5be0a7ec9.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:48+09:00"
+ },
+ "https://iestdot.com/": {
+  "file": "files/a9eb40bbf40a5b93.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:49+09:00"
+ },
+ "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.tsuchiyahome.jp%2Fmodelhouse%2F&from=2022&to=2022&output=json&filter=statuscode%3A200&collapse=timestamp%3A4&limit=1": {
+  "file": "files/6da28c236da9322a.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:22:41+09:00"
+ },
+ "https://web.archive.org/web/20220125192456/https://www.tsuchiyahome.jp/modelhouse/": {
+  "file": "files/68f98218d82da72c.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:23:01+09:00"
+ },
+ "https://iestdot.com/property/detail/200868481369df197921ef6": {
+  "file": "files/09cc4ea5fba54103.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:04+09:00"
+ },
+ "https://iestdot.com/property/detail/164751897869deea80f1ca8": {
+  "file": "files/19b8e9f3180e8169.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:07+09:00"
+ },
+ "https://iestdot.com/property/detail/52579306569a677a5cfc40": {
+  "file": "files/8c044e0ca20cb6f5.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:10+09:00"
+ },
+ "https://iestdot.com/property/detail/163100606693784a803a0c": {
+  "file": "files/5f5a6bb46470b324.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:13+09:00"
+ },
+ "https://iestdot.com/property/detail/42936332868ba4d8ceec55": {
+  "file": "files/df719f67d528751e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:16+09:00"
+ },
+ "https://iestdot.com/property/detail/8859879856848e95c56982": {
+  "file": "files/c68fad0641f7b79c.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:19+09:00"
+ },
+ "https://iestdot.com/property/detail/212901652667d38d7633b2f": {
+  "file": "files/77cb78380ef4f422.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:22+09:00"
+ },
+ "https://iestdot.com/property/detail/17685913996965c91c5ba57": {
+  "file": "files/673affdda5b52a77.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:25+09:00"
+ },
+ "https://iestdot.com/property/detail/176543209266d283b7cd33c": {
+  "file": "files/b4eaa0b5ffac2c4d.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:31+09:00"
+ },
+ "https://iestdot.com/property/detail/188923250266d2828ca2187": {
+  "file": "files/7a070bdcd89f4716.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:34+09:00"
+ },
+ "https://iestdot.com/property/detail/38207111868e86b147500a": {
+  "file": "files/e6eea144beb0644b.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:37+09:00"
+ },
+ "https://iestdot.com/property/detail/86946675866d27e0178696": {
+  "file": "files/9b3c58f03ae426f2.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:40+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523177": {
+  "file": "files/1eade87b20227b72.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:43+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523175": {
+  "file": "files/bbd8453329854027.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:46+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523170": {
+  "file": "files/4d1c21596a79ce6f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:49+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523169": {
+  "file": "files/39dcb117e58fde5d.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:52+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523168": {
+  "file": "files/f25db936cde6d87c.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:56+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523167": {
+  "file": "files/61085b55eeed0770.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:26:58+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523166": {
+  "file": "files/426545d1c0f551f0.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:27:02+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523164": {
+  "file": "files/af1b433ce3430287.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:27:05+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523163": {
+  "file": "files/16045b95d70d7f32.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:27:08+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523162": {
+  "file": "files/c53b8095d0b84bfe.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:27:11+09:00"
+ },
+ "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.tsuchiyahome.jp%2Fmodelhouse%2F&from=2021&to=2021&output=json&filter=statuscode%3A200&collapse=timestamp%3A4&limit=1": {
+  "file": "files/b4e4e899c743dc54.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:28:38+09:00"
+ },
+ "https://web.archive.org/web/20210122212214/https://www.tsuchiyahome.jp/modelhouse/": {
+  "file": "files/d0c38b9e5989ccab.html",
+  "encoding": "CP932",
+  "recorded": "2026-10-09T07:29:10+09:00"
+ },
+ "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.tsuchiyahome.jp%2Fmodelhouse%2F&from=2024&to=2024&output=json&filter=statuscode%3A200&collapse=timestamp%3A4&limit=1": {
+  "file": "files/068465613c49b6d8.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:30:33+09:00"
+ },
+ "https://web.archive.org/web/20240424115426/https://www.tsuchiyahome.jp/modelhouse/": {
+  "file": "files/6cd4d1acdfff3828.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:30:36+09:00"
+ },
+ "https://iestdot.com/property/detail/167442868668f9b7f17d87b": {
+  "file": "files/1c505c91817b88a7.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:46+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523161": {
+  "file": "files/4bffa7fc86fad05f.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:50+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523160": {
+  "file": "files/66b6a21aa2c354a8.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:53+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523158": {
+  "file": "files/ee7a5af6594c4da4.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:56+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523156": {
+  "file": "files/ae841d7b92f6c0b0.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:32:59+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523155": {
+  "file": "files/28bb8897d351f839.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:02+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523154": {
+  "file": "files/cc0ba77a29f3b81e.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:05+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523153": {
+  "file": "files/637a6d8dc5f28db0.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:08+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523152": {
+  "file": "files/91b294583e0b9b00.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:11+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523151": {
+  "file": "files/8464109a963f6225.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:14+09:00"
+ },
+ "https://mylist-v2.realnetpro.com/22359m1/rnp_plus02_detail.php?id=9523150": {
+  "file": "files/27cd242cf133cced.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:33:17+09:00"
+ },
+ "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.tsuchiyahome.jp%2Fmodelhouse%2F&from=2025&to=2025&output=json&filter=statuscode%3A200&collapse=timestamp%3A4&limit=1": {
+  "file": "files/cfd96fdafc26ab67.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:36:42+09:00"
+ },
+ "https://web.archive.org/web/20250125184048/https://www.tsuchiyahome.jp/modelhouse/": {
+  "file": "files/51d2a5ef592338af.html",
+  "encoding": "UTF-8",
+  "recorded": "2026-10-09T07:36:44+09:00"
+ },
+ "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Fwww.tsuchiyahome.jp%2Frealestate%2F&from=2021&to=2021&output=json&filter=statuscode%3A200&collapse=timestamp%3A4&limit=1": {
+  "file": "files/37517e5f3dc66819.json",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:37:49+09:00"
+ }
+}

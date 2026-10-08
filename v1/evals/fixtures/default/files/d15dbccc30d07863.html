@@ -1,0 +1,2335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NNN3L4CJ');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>物件情報｜アスティ13A棟</title>
+<link href="./css/panorama.css?20230228" rel="stylesheet" type="text/css">
+<script src="./js/jquery-1.8.2.min.js" type="text/javascript" language="javascript"></script>
+<script src="./js/map_control.js" type="text/javascript" language="javascript"></script>
+<link rel="stylesheet" media="screen" type="text/css" href="./css/colorpicker2.css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/colorpicker.js"></script>
+
+<script>
+
+$(function(){
+	var update = $('.update_date').text().replace(/ /g,"-").split("-");
+	var update_date = update[0]+'年'+update[1]+'月'+update[2]+'日';
+	$('.update_date').text(update_date)
+
+	//周辺環境
+	var surroundings_cnt = 0;
+	$('.one_surroundings').find('img').each(function(){
+		surroundings_cnt++;
+		$(this).attr('id','surroundings'+surroundings_cnt);
+	})
+	
+	$('.surroundings_layer_close').click(function(){
+		$('.surroundings_layer').hide();
+	});
+	
+	$('.one_surroundings').click(function(){
+		if( $(this).find('img').length > 0 ){
+			var id = $(this).find('img').attr('id').replace('surroundings','');
+			$('#this_surroundings').val(id);
+			var src = $(this).find('img').attr('src').replace('large','x-large');
+			$('.layer_image_box').find('img').attr('src',src)
+			$('.surroundings_layer').show();
+		}
+	})
+	
+	$('.prev_surroundings').click(function(){
+		var id = parseInt( $('#this_surroundings').val() ) - 1;
+		if( id > 0 ){
+			$('#this_surroundings').val(id);
+			var image = $('#surroundings'+id).attr('src').replace('large','x-large');
+			$('.layer_image_box').find('img').attr('src',image);
+		}else{
+			$('#this_surroundings').val(surroundings_cnt);
+			var image = $('#surroundings'+surroundings_cnt).attr('src').replace('large','x-large');
+			$('.layer_image_box').find('img').attr('src',image);
+		}
+	})
+	
+	$('.next_surroundings').click(function(){
+		var id = parseInt( $('#this_surroundings').val() ) + 1;
+		if( id > surroundings_cnt ){
+			$('#this_surroundings').val(1);
+			var image = $('#surroundings1').attr('src').replace('large','x-large');
+			$('.layer_image_box').find('img').attr('src',image)
+		}else{
+			$('#this_surroundings').val(id);
+			var image = $('#surroundings'+id).attr('src').replace('large','x-large');
+			$('.layer_image_box').find('img').attr('src',image)
+		}
+	})
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	$('.img').each(function(i){
+		$(this).attr('id','img' + (i+1));
+	});
+	
+	$('.imgsp').each(function(i){
+		$(this).attr('id','imgsp' + (i+1));
+	});
+	
+	$('.photo_img').each(function(i){
+		$(this).attr('id','photo_img' + (i+1));
+	});
+	
+	$('.pop_img').each(function(i){
+		$(this).attr('id','pop_img' + (i+1));
+	});
+	
+	var img_num = $('.img:last').attr('id').replace(/img/g,'');
+	
+	var w = img_num*70 + 'px';
+	
+	
+	$('.sp_photo_list').css({'width':w});
+	
+	$('#photo_img1').addClass('show_this');
+	
+	//画像数取得
+	var last_display_img = $('.img:last').attr('id');
+	var last_num = last_display_img.replace(/img/g,'');
+
+	//画像クリックで拡大表示
+	$('.photo_area').find('span').live('click',function(){
+		var number = parseInt($(this).find('.img').attr('id').replace(/img/g,''));
+		photo_action( number, 'select' )
+	});
+	
+	//次へをクリック
+	$('.next_button,.next').click(function(){
+		var number = $('.select_photo').attr('id').replace(/photo_box/g,'');
+		photo_action( number, 'next' )
+	});
+	
+	//前へをクリック
+	$('.prev_button,.prev').click(function(){
+		var number = $('.select_photo').attr('id').replace(/photo_box/g,'');
+		photo_action( number, 'prev' )
+	});
+
+	//画像ポップアップの範囲外クリックでフェードアウト
+	$('.layer').live('click', function(e) {
+		if (!$(e.target).closest('.img,.photo_pop').length) {
+			$('.layer').fadeOut(200);
+		}
+	});
+	
+	$('.close_photo_pop').live('click', function() {
+		$('.layer').fadeOut(200);
+	});
+	
+	//画像数取得
+	var last_display_img = $('.img:last').attr('id');
+	var last_num = last_display_img.replace(/img/g,'');
+	$('.photo_last').text(last_num);
+	
+	
+	//画像クリックでポップアップ表示
+	$('.up_button,.select_photo img').live('click',function(){
+		var number = $('.select_photo').attr('id').replace(/photo_box/g,'');
+		photo_action( number, 'pop_up' );
+	});
+	
+	
+	//画像クリックでポップアップ表示スマホ
+	$('.imgsp').live('click',function(){
+		var number = $(this).attr('id').replace(/imgsp/g,'');
+		photo_action( number, 'pop_up' );
+	});
+
+	if($('#color1').val() == ''){
+		var c1 = $('.background_color').css("background-color");
+	}else{
+		var c1 = '#'+$('#color1').val();
+	}
+	
+	if($('#color5').val() == ''){
+		var c5 = $('.td_m').css("background-color");
+	}else{
+		var c5 = '#'+$('#color5').val();
+	}
+	
+	if($('#color6').val() == ''){
+		var c6 = $('.td_contents').css("background-color");
+	}else{
+		var c6 = '#'+$('#color6').val();
+	}
+	
+	if($('#color7').val() == ''){
+		var c7 = $('.room_info_text_color').css("color");
+	}else{
+		var c7 = '#'+$('#color7').val();
+	}
+	
+	$('#s1').css({"background-color":c1});
+	$('#s5').css({"background-color":c5});
+	$('#s6').css({"background-color":c6});
+	$('#s7').css({"background-color":c7});
+
+	if($('#color1').val() !==""){
+		var color = "#"+$('#color1').val();
+		$('.background_color').css({"background-color":color});
+		$('.pager_this_page').css({"border-color":color,"color":color});
+	}
+
+	if($('#color5').val() !==""){
+		var color = "#"+$('#color5').val();
+		$('.td_m').css({"background-color":color});
+		
+	}
+	
+	if($('#color6').val() !==""){
+		var color = "#"+$('#color6').val();
+		$('.td_c').css({"background-color":color});
+		
+	}
+
+	if($('#color7').val() !==""){
+		var color = "#"+$('#color7').val();
+		$('.room_info_text_color').css({"color":color});
+		$('.room_info_border_color').css({"border-color":color});
+		$('.sub_background_color2').css({"background-color":color});
+		
+	}
+
+	$('.ask_submit').click(function(){
+		$('#go_ask').submit();
+	});
+
+	$('.add_favorite').live('click',function(){
+		if($(this).hasClass('in_favorite_list')){
+			var room = $(this).attr('id').replace(/add_/g,'').replace(/sp_/g,'');
+			$.post( "plus02_add_favorite.php", {favorite_mode:'delete','room_id[]':room}, function(){
+				location.reload();
+			});
+		}else{
+			var room = $(this).attr('id').replace(/add_/g,'').replace(/sp_/g,'');
+			$.post( "plus02_add_favorite.php", {favorite_mode:'add',room_id:room}, function(){
+				location.reload();
+			});
+		}
+	});
+
+	//「もっと見る」ボタンクリック時の写真表示切替処理
+	$('.photo_toggle_btn').click(function(){
+		$('.photo_area').toggleClass('photo_expanded');
+		if ($('.photo_area').hasClass('photo_expanded')) {
+			$('.toggle_text').text('33枚目以降を隠す');
+		} else {
+			$('.toggle_text').text('もっと見る');
+		}
+
+	});	
+});
+
+function photo_action( number, type ){
+	var this_number		= parseInt( number );
+	var prev_number		= this_number - 1;
+	var next_number		= this_number + 1;
+	var frist_number	= 1;
+	var last_number		= $('.one_photo_box').length;
+	var set_id			= "";
+	
+	switch( type ){
+		case 'prev':
+			set_id = prev_number;
+			if( prev_number == 0 ){
+				set_id = last_number;
+			}
+			$('.one_photo_box').removeClass('select_photo');
+			$("#photo_box"+set_id).addClass('select_photo');
+			
+			$('.pop_img').removeClass('select_photo');
+			$("#pop_img"+set_id).addClass('select_photo');
+			
+			$('.one_pop_photo').removeClass('select_photo');
+			$("#pop_img"+set_id).closest('.one_pop_photo').addClass('select_photo');
+			$('.display_photo').text(set_id);
+			
+			$('.photo_text').removeClass('select_photo');
+			if( $("#photo_text"+set_id).length > 0 ){
+				$("#photo_text"+set_id).addClass('select_photo');
+			}
+			break;
+		
+		case 'next':
+			set_id = next_number;
+			if( next_number > last_number ){
+				set_id = frist_number;
+			}
+			
+			$('.one_photo_box').removeClass('select_photo');
+			$("#photo_box"+set_id).addClass('select_photo');
+			
+			$('.one_pop_photo').removeClass('select_photo');
+			$("#pop_img"+set_id).closest('.one_pop_photo').addClass('select_photo');
+			$('.display_photo').text(set_id);
+			
+			$('.photo_text').removeClass('select_photo');
+			if( $("#photo_text"+set_id).length > 0 ){
+				$("#photo_text"+set_id).addClass('select_photo');
+			}
+			break;
+		
+		case 'select':
+			$('.one_photo_box').removeClass('select_photo');
+			$("#photo_box"+this_number).addClass('select_photo');
+			break;
+		
+		case 'pop_up':
+			$('.one_photo_box').removeClass('select_photo');
+			$("#photo_box"+this_number).addClass('select_photo');
+			
+			$('.display_photo').text(this_number);
+			
+			$('.one_pop_photo').removeClass('select_photo');
+			$("#pop_img"+this_number).closest('.one_pop_photo').addClass('select_photo');
+			
+			$('.photo_text').removeClass('select_photo');
+			if( $("#photo_text"+this_number).length > 0 ){
+				$("#photo_text"+this_number).addClass('select_photo');
+			}
+			$('.layer').fadeIn(200);
+			break;
+	}
+	
+}
+
+</script>
+<style>
+/*--------サイトカラー変更---------*/
+/*サイト全体の文字色設定*/
+.sub_color {
+	/*基本色　color:#BA5F2B;*/
+	color:#666;
+}
+
+.td_m {
+	background-color:#D2AB84;
+}
+
+.td_c {
+	background-color:#E5E0DE
+}
+/*-----サイトカラー変更終わり------*/
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	background-image:url(./img/tyukai_sp_back.jpg);
+
+	background-image:url(./img/blur_effect.png);
+	background-position:center center;
+	background-size:cover;
+}
+
+* {
+	box-sizing: border-box;
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	-webkit-overflow-scrolling: touch;
+
+}
+
+a {
+	outline:none;
+	text-decoration:none;
+	border:none;
+}
+
+a img {
+	outline:none;
+	border:none;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.full_size {
+	-moz-transform: translate(120px,120px) scale(1.8);
+	-webkit-transform: translate(120px,120px) scale(1.8);
+	-o-transform: translate(120px,120px) scale(1.8);
+	-ms-transform: translate(120px,120px) scale(1.8);
+}
+
+.left {
+	width:315px;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	background-color:#BA5F2B;
+	color:#FFF;
+	font-size:12px;
+	overflow:auto;
+	
+}
+
+.left_content_box {
+	margin:10px 15px;
+}
+
+.left_photo {
+	overflow:hidden;
+	width:260px;
+	margin:10px auto;
+}
+
+.one_photo_box {
+	display: none;
+}
+
+.select_photo {
+	display: block!important;
+}
+
+.left_photo img {
+	max-height:100%;
+	max-width:100%;
+	cursor:pointer;
+	border-radius:5px;
+}
+
+.photo_caption {
+	background-color: #FFF;
+	padding: 5px;
+	border-radius: 4px;
+	margin: 4px 0 0 0;
+	color: #333;
+}
+
+.button_block {
+	text-align:center;
+}
+
+.button_block_right {
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+	text-align:center;
+	padding:7px 0;
+	background-image:url(./img/white70.png);
+}
+
+.prev_button {
+	display:inline-block;
+	height:40px;
+	width:40px;
+	background-color:#FFF;
+	color:#BA5F2B;
+	border-radius:20px;
+	box-shadow:0 0 3px #333;
+	cursor:pointer;
+	user-select:none;
+	moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+}
+
+.up_button {
+	display:inline-block;
+	height:40px;
+	width:80px;
+	background-color:#FFF;
+	color:#BA5F2B;
+	border-radius:20px;
+	margin:0 10px;
+	box-shadow:0 0 3px #333;
+	cursor:pointer;
+}
+
+.next_button {
+	display:inline-block;
+	height:40px;
+	width:40px;
+	background-color:#FFF;
+	color:#BA5F2B;
+	border-radius:20px;
+	box-shadow:0 0 3px #333;
+	cursor:pointer;
+	user-select:none;
+	moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+}
+
+.up_button span {
+	display:table-cell;
+	height:40px;
+	width:80px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.prev_button span,
+.next_button span {
+	display:table-cell;
+	height:40px;
+	width:40px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.building_name {
+	font-size:16px;
+	border-bottom:1px solid #FFF;
+}
+
+.basic_photo {
+	text-align:center;
+	margin:15px 0;
+}
+
+.basic_photo img {
+	height:80px;
+	width:auto;
+	margin:0 10px;
+	cursor:pointer;
+}
+
+.basic_info {
+	background-image:url(/img/white90.png);
+	border-radius:5px;
+	padding:15px;
+	color:#333;
+	font-weight:600;
+}
+
+.area_trans {
+	margin:0 0 20px 0;
+}
+
+.basic_info table {
+	width:100%;
+}
+
+.print_tr {
+	text-align:center;
+	padding:10px 0 0 0;
+}
+
+.print {
+	display:inline-block;
+	height:40px;
+	margin:0 15px;
+	width:180px;
+	font-size:14px;
+	color:#FFF;
+	text-align:center;
+	border-radius:20px;
+	-webkit-transform: translateZ(0);
+  	transform: translateZ(0);
+ 	box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.8);
+ 	-webkit-backface-visibility: hidden;
+ 	backface-visibility: hidden;
+ 	-moz-osx-font-smoothing: grayscale;
+ 	-webkit-transition-duration: 0.3s;
+ 	transition-duration: 0.3s;
+ 	-webkit-transition-property: box-shadow, transform;
+ 	transition-property: box-shadow, transform;
+	border:1px solid #CCC;
+	cursor:pointer;
+}
+
+.print:hover {
+	box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.8);
+  	-webkit-transform: scale(1.1);
+  	transform: scale(1.1);
+}
+
+
+.print span {
+	height:40px;
+	width:180px;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.right {
+	margin:0 0 0 300px;
+	height:100%;
+	overflow:auto;
+	color:#4A4A4A;
+	background-image:url(./img/white50.png);
+	font-size:12px;
+	position:relative;
+}
+
+.right_content_box_waku {
+	height:100%;
+	overflow:auto;
+}
+
+.right_content_box {
+	font-size:12px;
+	
+}
+
+.detail_top {
+	position:relative;
+}
+
+.layout_image {
+	position:absolute;
+	left:0;
+	top:15px;
+	width:250px;
+	height:250px;
+}
+
+
+.layout_image img {
+	max-height:100%;
+	max-width:100%;
+	cursor:pointer;
+}
+
+.basic_room_info {
+	margin:40px 20px;
+}
+
+.basic_room_info td {
+	font-size:14px;
+	padding:5px;
+}
+
+
+.basic_info_td_con {
+	padding:0 0 15px 0;
+	font-size:16px;
+}
+
+.basic_info_td_con .room_info_border_color {
+	padding:0 10px 5px 10px;
+}
+
+.basic_info_at {
+	height:26px;
+	border-radius:13px;
+	padding:0 8px;
+	color:#FFF;
+	display:inline-block;
+	min-width:48px;
+}
+
+.basic_info_any {
+	height:20px;
+	border-radius:11px;
+	padding:0 8px;
+	display:inline-block;
+	font-size:10px;
+}
+
+.basic_info_at span {
+	display:table-cell;
+	vertical-align:middle;
+	height:22px;
+}
+
+.basic_info_any span {
+	display:table-cell;
+	vertical-align:middle;
+	height:16px;
+}
+
+.title_obj {
+	color:#BA5F2B;
+}
+
+.room_info {
+	padding:18px;
+}
+
+/*スマホ版物件情報*/
+.building_photo_sp {
+	display:none;
+	background-color:#BA5F2B;
+	box-shadow: 0 0 3px #B3B3B3;
+	border-radius:8px;
+	padding:18px;
+}
+
+.building_photo_sp img {
+	max-width:100%;
+	height:auto;
+	border-radius:3px;
+}
+
+.pdf_sp {
+	text-align:center;
+	margin:12px 0 0 0;
+}
+
+.sp_image {
+	text-align:center;
+	margin:10px 0;
+}
+
+.building_name_sp {
+	color:#FFF;
+}
+
+.area_trans_sp {
+	color:#FFF;
+	margin:0 0 20px 0;
+}
+
+.sp_table {
+	color:#FFF;
+	margin:0 auto;
+	width:100%;
+}
+
+.sp_td_m {
+	width:110px;
+}
+
+/*スマホ版物件情報ここまで*/
+
+.room_info table {
+	border-collapse:collapse;
+	width:100%;
+}
+
+.room_info td {
+	padding:3px 5px;
+	border-bottom:1px solid #666;
+}
+
+.building_name {
+	font-size:20px;
+}
+
+.building_type {
+	font-size:12px;
+}
+
+.block_title {
+	font-size:16px;
+}
+
+#eq td {
+	padding:10px 0;
+}
+
+.room_td_m {
+	width:140px;
+}
+
+.eq_td_m {
+	width:120px;
+	font-weight:bold;
+}
+
+.one_eq_name {
+	display:inline-block;
+}
+
+.photo_area {
+	max-width:100%;
+	overflow:auto;
+	margin:20px 0;
+}
+
+.photo_box span {
+	display:block;
+	height:60px;
+	float:left;
+	margin:3px;
+	width:60px;
+	text-align:center;
+	border-radius:4px;
+	overflow:hidden;
+	background-color:#FFF;
+}
+
+.extra_photo {
+    display: none !important;
+}
+
+.photo_area.photo_expanded .extra_photo {
+    display: inline-block !important;
+}
+
+.show_more_btn {
+  	display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    min-width: 120px;
+    padding: 0 10px;
+
+    background-color: #FFF;
+    color: #BA5F2B;
+
+    border-radius: 20px;
+    margin: 0 auto;
+
+    box-shadow: 0 0 3px #333;
+    cursor: pointer;
+}
+
+.img {
+	max-height:60px;
+	max-width:60px;
+	cursor:pointer;
+}
+
+
+/*会社情報*/
+.company_block {
+	background-image:url(./img/white30.png);
+	padding:15px 15px 75px 15px;
+}
+
+.company_table {
+	font-size:13px;
+}
+
+.logo_img {
+	max-height:150px;
+	max-width:150px;
+	border-radius:5px;
+}
+
+.company_name {
+	font-size:18px;
+}
+
+.company_text_td {
+	padding:0 10px;
+}
+
+
+/*地図部分*/
+
+.map_space {
+	margin:30px 0;
+	position:relative;
+	max-width:980px;
+	margin:0 auto;
+	border-radius:5px;
+}
+
+#maparea {
+	height:280px;
+}
+
+#maparea2 {
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+
+#maparea_street_view {
+	height:360px;
+	margin:0 280px -360px 0;
+	position:relative;
+	top:-360px;
+	left:0;
+	display:none;
+}
+
+.hide_street_view {
+	display:inline-block;
+	width:40%;
+	text-align:center;
+	padding:5px 0;
+	background-color:#BA5F2B;
+	cursor:pointer;
+	color:#FFF;
+	position:relative;
+	border-radius:5px;
+	margin:5px;
+}
+
+.show_street_view {
+	display:inline-block;
+	width:50%;
+	text-align:center;
+	padding:5px 0;
+	background-color:#CCC;
+	cursor:pointer;
+	color:#999;
+	position:relative;
+	border-radius:5px;
+}
+
+.around {
+	position:absolute;
+	right:0;
+	top:0;
+	width:270px;
+	height:360px;
+	background-image:url(./img/white70.png);
+	box-shadow:0 0 1px #333;
+}
+
+.around_list_box {
+	margin:10px;
+}
+
+.around div.around_list_title {
+	border-bottom:1px solid #999999;
+	margin-bottom:4px;
+	padding-bottom:2px;
+	
+}
+
+.around div.place_list {
+	height:280px;
+	overflow-y:auto;
+
+}
+
+.around div.place_list div.place_item {
+	padding:4px;
+	cursor:pointer;
+
+}
+
+
+/*写真ポップアップ*/
+
+.layer {
+	background-image:url(./img/shadow60.png);
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	display:none;
+}
+
+.layer_body {
+	height:100%;
+	width:100%;
+	
+	display:grid;
+	display: -ms-grid;
+	
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto auto;
+	
+	-ms-grid-columns: auto auto auto;
+	-ms-grid-rows: auto auto auto;
+	
+	position: relative;
+	
+	max-height: 95%;
+	max-width: 95%;
+}
+
+.photo_pop {
+	background-color:#FFF;
+
+	max-width: 500px;
+	margin: 0 auto;
+	
+	grid-area: 2/2/3/3;
+	-ms-grid-row: 2;
+	-ms-grid-row-span: 1;
+	-ms-grid-column: 2;
+	-ms-grid-column-span: 1;
+	
+	position:relative;
+	overflow:auto;
+	user-select:none;
+	-ms-user-select:none;
+	
+	padding: 30px 0 120px 0;
+}
+
+.photo_pop_area {
+	height:100%;
+}
+
+.photo_pop_dispaly {
+	height:100%;
+	padding: 10px;
+	text-align:center;
+}
+
+.one_pop_photo {
+	height:100%;
+	min-width: 300px;
+	display: none;
+}
+
+.pop_menu {
+	position:absolute;
+	width:100%;
+	bottom:0;
+	height:120px;
+	text-align:center;
+}
+
+.pop_menu table {
+	width:100%;
+	text-align:center;
+}
+
+.photo_text {
+	display: inline-block;
+	text-align: left;
+	font-size: 9pt;
+	width: 90%;
+	max-width: 500px;
+	background-color: #EEE;
+	border-radius: 5px;
+	padding: 2px 10px;
+	margin: 5px auto 0 auto;
+	display: none;
+}
+
+
+.prev,.next {
+	display:inline-block;
+	width:100px;
+	height:40px;
+	cursor:pointer;
+	border-radius:5px;
+	background-color:#BA5F2B;
+	color:#FFF;
+	-webkit-transform: translateZ(0);
+  	transform: translateZ(0);
+ 	box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.8);
+ 	-webkit-backface-visibility: hidden;
+ 	backface-visibility: hidden;
+ 	-moz-osx-font-smoothing: grayscale;
+ 	-webkit-transition-duration: 0.3s;
+ 	transition-duration: 0.3s;
+ 	-webkit-transition-property: box-shadow, transform;
+ 	transition-property: box-shadow, transform;
+	user-select:none;
+	moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+}
+
+.prev:hover,
+.next:hover {
+	box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.8);
+  	-webkit-transform: scale(1.1);
+  	transform: scale(1.1);
+}
+
+.prev span,
+.next span {
+	display:table-cell;
+	height:36px;
+	width:100px;
+	vertical-align:middle;
+	text-align:center;
+}
+
+.pop_img {
+	max-height:100%;
+	max-width:100%;
+}
+
+.close_photo_pop {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	box-shadow: 0 0 3px #666;
+	background-color:#FFF;
+	border-radius:8px;
+	
+	color:#333;
+	text-align:center;
+	margin:15px 0 0 0;
+	cursor:pointer;
+}
+
+.close_photo_pop span {
+	padding:3px 10px;
+	display:inline-block;
+	font-size: 9pt;
+}
+
+
+.over_date {
+	height:100%;
+	width:100%;
+	background-image:url(./img/land.jpg);
+}
+
+.over_date span {
+	background-image:url(./img/white90.png);
+}
+
+.comment_for_enduser {
+	margin:10px 0 0 0;
+}
+
+
+/*PC幅の時スマホ表示オフ*/
+.sp_photo_dispaly {
+	display:none;
+}
+
+.building_image_sp,
+.building_layout_sp {
+	background-color:#FFF;
+	text-align:center;
+	display:none;
+}
+
+
+.pc_only {
+	display:inline;
+}
+
+.sp_only {
+	display:none;
+}
+
+
+.any_cost {
+	padding:18px;
+}
+
+.surroundings_info,
+.any_cost table {
+	border-collapse:collapse;
+	width:100%;
+}
+
+.surroundings_info tr,
+.any_cost tr {
+	border-bottom:1px solid #666;
+}
+
+.surroundings_info td,
+.any_cost td {
+	padding:10px 0;
+}
+
+.any_box {
+	background-image:url(./img/white70.png);
+}
+
+.cost_block table {
+	background-color:#FFF;
+	width:90%;
+	margin:10px auto;
+}
+
+.cost_block td {
+	padding:10px 0;
+	font-size:16px;
+	text-align:center;
+}
+
+.test_info {
+	position:relative;
+	background-image:url(./img/white50.png);
+	background-color:#FFF;
+	padding:15px 0;
+}
+
+.test_info_left {
+	margin:0 0 0 280px;
+	min-height:300px;
+}
+
+.test_info table {
+	width:95%;
+	font-size:14px;
+}
+
+.one_info_td {
+	padding:3px 0;
+}
+
+.basic_info_td_m {
+	background-color:#BA5F2B;
+	text-align:center;
+	border-radius:14px;
+	color:#FFF;
+	height:28px;
+	font-size:14px;
+}
+
+.info_title {
+	color:#BA5F2B;
+}
+
+.layout_td {
+	width:300px;
+}
+
+.any_other_info {
+	padding:18px;
+}
+
+.any_other_info td {
+	padding:3px 10px;
+}
+
+.photo_area {
+	width:100%;
+}
+
+.sub_tr {
+	font-size:12px;
+}
+
+.button_block {
+	margin:20px 0 0 0;
+}
+
+
+@media screen and (max-width:680px) {
+	.left {
+		display:none;
+	}
+
+	.right {
+		margin:0;
+	}
+
+	.building_photo_sp {
+		display:block;
+	}
+
+	.image_sp_box {
+		text-align:center;
+		padding:10px 0 0 0;
+	}
+
+	.building_image_sp {
+		display:inline-block;
+		height:120px;
+		width:120px;
+		top:0;
+		left:0;
+	}
+
+	.building_layout_sp {
+		display:inline-block;
+		height:120px;
+		width:120px;
+		top:140px;
+		left:0;
+	}
+
+	.building_image_sp img,
+	.building_layout_sp img {
+		max-width:100%;
+		max-height:100%;
+	}
+
+	#maparea {
+		margin:0 0 0 0;
+		height:200px;
+	}
+
+	.layout_image {
+		display:none;
+	}
+
+	.test_info_left {
+		margin:0;
+	}
+
+	.test_info_left table {
+		margin:0 auto;
+		font-size:13px;
+	}
+
+
+	.one_info_td {
+		text-align:center;
+	}
+
+	.basic_info_td {
+		padding:0 10px;
+		text-align:center;
+	}
+
+	.basic_info_td_con {
+		padding:0 10px 15px 10px;
+		font-size:13px;
+		text-align:center;
+	}
+
+	.cost_block td {
+		padding:10px 0;
+		font-size:13px;
+		text-align:center;
+	}
+
+
+	.room_info td {
+		display:block;
+		width:100%;
+		padding:5px;
+	}
+
+	.room_td_m {
+		padding:17px 5px 3px 5px !important;
+		font-weight:600;
+		color:#BA5F2B;
+	}
+
+	.eq_td_m {
+		padding:17px 5px 3px 5px !important;
+		font-weight:600;
+	}
+
+	.photo_pop {
+		background-color:#FFF;
+		max-height:400px;
+		max-width:500px;
+		width:90%;
+		height:90%;
+		margin:2.5% auto 0 auto;
+		position:relative;
+		overflow:auto;
+	}
+
+	.print {
+		width:120px;
+		margin:0 10px;
+	}
+
+
+	.sp_photo_dispaly {
+		width:100%;
+		overflow:auto;
+		display:block;
+	}
+
+	.sp_img {
+		display:block;
+		float:left;
+		margin:5px;
+		cursor:pointer;
+	}
+
+	.imgsp {
+		max-height:60px;
+		max-width:60px;
+	}
+
+	/*会社情報*/
+
+	.company_block {
+		background-image:url(./img/white70.png);
+		padding:10px 10px 80px 10px;
+	}
+
+	.company_table {
+		font-size:13px;
+	}
+
+	.logo_img {
+		max-height:60px;
+		max-width:60px;
+		border-radius:5px;
+	}
+
+	.company_name {
+		font-size:14px;
+	}
+
+	.company_text_td {
+		padding:0 7px;
+		font-size:12px;
+	}
+
+	.pc_only {
+		display:none;
+	}
+
+	.sp_only {
+		display:inline;
+	}
+
+
+	.any_other_info td {
+		display:block;
+	}
+}
+
+.surroundings_layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	display: none;
+	background-image:url(./img/shadow60.png);
+}
+
+.surroundings_layer_table {
+	height: 100%;
+	width: 100%;
+	border-collapse: collapse;
+	padding: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.surroundings_layer_image_box {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.layer_image_box img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.prev_surroundings {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #FFF;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 5px 0 0 0;
+}
+
+.next_surroundings {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #FFF;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 5px 0 0 0;
+}
+
+.surroundings_layer_close_menu {
+	text-align: right;
+}
+
+.surroundings_layer_close {
+	background-color: #FFF;
+	display: inline-block;
+	padding: 2px 10px;
+	cursor: pointer;
+	border-radius: 5px 5px 0 0;
+}
+
+.any-box-inner {
+	width:90%;
+	margin: auto;
+}
+.any-select label {
+	position: relative;
+}
+.any-select label::before,.any-select label::after {
+	content: '';
+	pointer-events: none;
+	position: absolute;
+}
+.any-select label::before {
+	right: 0;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 0 5px 5px 0;
+    background-color: #53758d;
+}
+.any-select label::after {
+	position: absolute;
+    top: 50%;
+    right: 17px;
+    transform: translate(50%, -50%) rotate(45deg);
+    width: 5px;
+    height: 5px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.any-select p {
+	margin: 0;
+	background-color: #b95f2b;
+	color: #fff;
+	padding: 2px 2px;
+}
+.any-box-inner select {
+	width: 100%;
+	padding: 10px 5px;
+	height: 35px;
+	appearance: none;
+	border: none;
+    border-radius: 5px;
+    background-color: #edf3f7;
+    color: #333333;
+    cursor: pointer;
+}
+.any-select {
+	text-align: left;
+}
+
+
+</style>
+
+
+
+
+<style>
+/*--------サイトカラー変更---------*/
+
+
+/*ヘッダー・ページャーの色設定*/
+
+
+
+.background_color {
+	/*基本色　background-color:#ff0000;*/
+	background-color:#ff0000;
+}
+
+.pager_this_page {
+	border:1px solid #ff0000;
+	color:#ff0000;
+}
+
+.main_text_color {
+	color:#ff0000;
+}
+
+.main_border {
+	border-color:#ff0000;
+}
+
+
+
+
+/*部屋情報の色設定*/
+
+
+
+.room_border {
+	border-color:#666666;
+}
+
+.room_info_border_color {
+	border-bottom:1px solid #666666;
+}
+
+.sub_background_color2 {
+	/*基本色　background-color:#666666;*/
+	background-color:#666666;
+}
+
+.room_info_all_border_color {
+	border:1px solid #666666;
+}
+
+
+
+
+/*メニューの色設定*/
+
+
+
+.sub_background_color1 {
+	/*基本色　background-color:#ff0000;*/
+	background-color:#ff0000;
+}
+
+.border_color {
+	/*基本色　border:1px solid #ff0000;*/
+	border:1px solid #ff0000;
+}
+
+
+
+
+/*サイト全体の文字色設定*/
+
+
+
+.page_color {
+	background-color:#FFF;
+}
+
+.sub_color {
+	/*基本色　color:#ff0000;*/
+	color:#ff0000;
+}
+
+
+
+
+/*ヘッダーに画像背景を入れたい 画面幅 × 70px */
+/*IE8以下はbackground-sizeが効かない為、画像が切れる可能性があります*/
+
+/*
+#header {
+	background-image:url()
+}
+*/
+
+/*-----サイトカラー変更終わり------*/
+</style>
+</head>
+<form id="go_ask" action="rnp_plus02_ask.php" method="post" target="_blank">
+    <input type="hidden" name="room_id[]" value="9484298" />
+</form>
+<body class="background_color">
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNN3L4CJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<div class="left background_color">
+    	<div class="left_content_box">
+            <div class="left_photo">
+				                										<div class="one_photo_box select_photo" id="photo_box1">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901901.jpg" />
+											</div>
+                										<div class="one_photo_box" id="photo_box2">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901902.jpg" />
+											</div>
+                										<div class="one_photo_box" id="photo_box3">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148902003.jpg" />
+											</div>
+                										<div class="one_photo_box" id="photo_box4">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902001.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ 居室・リビング ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box5">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902002.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ その他部屋・スペース ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box6">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902103.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ キッチン ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box7">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902104.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ バス ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box8">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902105.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ 洗面所 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box9">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902106.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ トイレ ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box10">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902207.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box11">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902208.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box12">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902209.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                										<div class="one_photo_box" id="photo_box13">
+                    	<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902310.jpg" />
+													<div class="photo_caption">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+											</div>
+                                										<div class="one_photo_box" id="photo_box14">
+						<img class="photo_img" src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/>
+					</div>
+				                										<div class="one_photo_box" id="photo_box15">
+						<img class="photo_img" src="https://file.realnetpro.com/photo/pict/pict01.jpg" /></span>
+					</div>
+																		<div class="one_photo_box" id="photo_box16">
+						<span><img class="photo_img" src="https://file.realnetpro.com/photo/pict/pict30.jpg" /></span>
+					</div>
+																		<div class="one_photo_box" id="photo_box17">
+						<span><img class="photo_img" src="https://file.realnetpro.com/photo/pict/pict12.jpg" />
+					</div>
+				            </div>
+            <div class="button_block">
+            	<div class="prev_button main_text_color">
+					<span>◀</span>
+				</div>
+				<div class="up_button main_text_color">
+					<span>拡大</span>
+				</div>
+				<div class="next_button main_text_color">
+					<span>▶</span>
+				</div>
+            </div>
+            <div class="photo_area">
+                <div class="photo_box">
+					                                            <span class=""><img class="img" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901901.jpg" /></span>
+                    						                        <span class=""><img class="img" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901902.jpg" /></span>
+                    						                        <span class=""><img class="img" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148902003.jpg" /></span>
+                    						                        <span class=""><img class="img" title="居室・リビング_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902001.jpg" /></span>
+                    						                        <span class=""><img class="img" title="その他部屋・スペース_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902002.jpg" /></span>
+                    						                        <span class=""><img class="img" title="キッチン_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902103.jpg" /></span>
+                    						                        <span class=""><img class="img" title="バス_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902104.jpg" /></span>
+                    						                        <span class=""><img class="img" title="洗面所_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902105.jpg" /></span>
+                    						                        <span class=""><img class="img" title="トイレ_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902106.jpg" /></span>
+                    						                        <span class=""><img class="img" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902207.jpg" /></span>
+                    						                        <span class=""><img class="img" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902208.jpg" /></span>
+                    						                        <span class=""><img class="img" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902209.jpg" /></span>
+                    						                        <span class=""><img class="img" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902310.jpg" /></span>
+                    						                    <span class=""><img class="img" src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/></span>
+											                    <span class=""><img class="img" src="https://file.realnetpro.com/photo/pict/pict01.jpg" /></span>
+											                    <span class=""><img class="img" src="https://file.realnetpro.com/photo/pict/pict30.jpg" /></span>
+											                    <span class=""><img class="img" src="https://file.realnetpro.com/photo/pict/pict12.jpg" /></span>
+											                    <br style="clear:left;" />
+                </div>
+            </div>
+			            </div>
+        </div>
+    </div>
+    <div class="right">
+                <div class="right_content_box_waku">
+			<div class="right_content_box">
+				<div class="detail_top">
+					<input type="hidden" name="lat" value="43.79321406" />
+					<input type="hidden" name="lng" value="142.38737315" />
+					<input type="hidden" name="sub_address" value="北海道旭川市新富一条３丁目5-3" />
+					<div id="maparea">
+						<iframe id="maparea2" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCBrRyF5wis1Mzo_FG83P-sugngmRiFeu0&center=43.79321406,142.38737315&q=43.79321406,142.38737315&zoom=20"></iframe>
+					</div>
+					<div class="image_sp_box">
+						<div class="building_image_sp">
+							<img src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901901.jpg" />
+						</div>
+						<div class="building_layout_sp">
+							<img src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/>
+						</div>
+					</div>
+				</div>
+				<div class="sp_photo_dispaly">
+					<div class="sp_photo_list">
+													<span class="sp_img"><img class="imgsp" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901901.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148901902.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="none_none" src="https://file.realnetpro.com/photo/0022359/building/large/b0001777519179148902003.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="居室・リビング_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902001.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="その他部屋・スペース_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902002.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="キッチン_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902103.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="バス_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902104.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="洗面所_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902105.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="トイレ_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902106.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902207.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902208.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902209.jpg" /></span>
+													<span class="sp_img"><img class="imgsp" title="その他設備_none" src="https://file.realnetpro.com/photo/0022359/room/large/r0009484298179148902310.jpg" /></span>
+												<span class="sp_img"><img class="imgsp" src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/></span>													<span class="sp_img">
+								<img class="imgsp" src="https://file.realnetpro.com/photo/pict/pict01.jpg" />
+							</span>
+																			<span class="sp_img">
+								<img class="imgsp" src="https://file.realnetpro.com/photo/pict/pict30.jpg" />
+							</span>
+																			<span class="sp_img">
+								<img class="imgsp" src="https://file.realnetpro.com/photo/pict/pict12.jpg" />
+							</span>
+												<br style="clear:left;" />
+					</div>
+				</div>
+				<div class="test_info">
+					<div class="layout_image">
+						<img src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/>
+					</div>
+					<div class="test_info_left">
+						<table>
+							<tr>
+								<td class="one_info_td" colspan="2">
+									<span class="building_name">アスティ13A棟</span><br />
+									<span class="building_type">[住居用] アパート</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="one_info_td" colspan="2">
+									<table>
+										<tr>
+											<td>
+												<span class="basic_info_at sub_background_color2"><span>住所</span></span>
+											</td>
+											<td>
+												&nbsp;北海道旭川市新富一条３丁目5-3
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="basic_info_at sub_background_color2"><span>沿線</span></span>
+											</td>
+											<td>
+																									<span class="title_obj room_info_text_color">●</span>&nbsp;[ バス ]「(あさでんバス)新富2-2」停徒歩6分&nbsp;&nbsp;<br />
+																																			</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>部屋</span></span>
+								</td>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>間取</span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">
+										00103
+																					（1階部分）
+																			</span>
+								</td>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">
+																		1LDK
+									(43.31m<sup>2</sup>)
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>賃料</span></span>
+								</td>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>管理費・共益費</span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">32,000円								</td>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">0円</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>敷金/礼金</span></span>
+								</td>
+								<td class="basic_info_td">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>保証金/償却・敷引</span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">なし/なし</span>
+								</td>
+								<td class="basic_info_td_con">
+									<span class="room_info_border_color">なし/なし</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td" colspan="2">
+									<span class="basic_info_any room_info_text_color room_info_all_border_color"><span>契約期間</span></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="basic_info_td_con" colspan="2">
+									<span class="room_info_border_color">
+																				2年間									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="any_box">
+					<div class="any_other_info">
+																		<table>
+							<tr>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;構造 
+								</td>
+								<td>
+									木造 8戸 地上2階 
+								</td>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;状態 
+								</td>
+								<td>
+									<span class="st type1">空室</span>																																																																							</td>
+							</tr>
+							<tr>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;築年月 
+								</td>
+								<td>
+									1999年08月
+								</td>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;入居可能時期
+								</td>
+								<td>
+									即入								</td>
+							</tr>
+							<tr>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;方位
+								</td>
+								<td>
+									北向き								</td>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;情報更新日
+								</td>
+								<td>
+									<span class="update_date">2026-10-09 04:50:20</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;その他  
+								</td>
+								<td colspan="3">
+																																			</td>
+							</tr>
+							<tr>
+								<td class="eq_td_m">
+									<span class="title_obj room_info_text_color">●</span>&nbsp;駐車場  
+								</td>
+								<td colspan="3">
+																			敷地内駐車場／空きあり<br />
+																											
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="any_cost">
+						<table>
+							<tr>
+								<td class="block_title room_info_text_color" colspan="3">
+									諸経費
+								</td>
+							</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">保証会社</span>
+									</td>
+									<td colspan="2">
+										保証会社利用必須<br />
+株式会社オリコフォレントインシュア　初回50%(最低保証　2万)・月額保証委託料1.5%　更新料無
+									</td>
+								</tr>
+														<tr>
+								<td class="eq_td_m">
+									<span class="eq_m">保険</span>
+								</td>
+								<td colspan="2">
+									保険要加入 2年契約 19,000円
+								</td>
+							</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">安心サポート24</span>
+									</td>
+									<td>
+																					1,100
+																				円
+																														
+									</td>
+								</tr>
+													</table>
+					</div>
+					<div class="room_info" id="eq">
+						<div class="block_title room_info_text_color">
+							設備・条件
+						</div>
+						<table class="eq_table">
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">条件</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ 保証会社利用必須</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">水廻り</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ 洗面台</span>
+																					<span class="one_eq_name">○ 洗髪洗面化粧台</span>
+																					<span class="one_eq_name">○ バス・トイレ別</span>
+																					<span class="one_eq_name">○ 洗濯機置場（室内）</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">冷暖房</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ エアコン</span>
+																					<span class="one_eq_name">○ 暖房</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">収納</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ シューズボックス</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">放送・通信</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ ネット使用料不要</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">セキュリティ</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ インターホン（カメラ付き）</span>
+																			</td>
+								</tr>
+															<tr>
+									<td class="eq_td_m">
+										<span class="eq_m">その他</span>
+									</td>
+									<td class="eq_td_con">
+																					<span class="one_eq_name">○ 照明</span>
+																					<span class="one_eq_name">○ フローリング</span>
+																			</td>
+								</tr>
+													</table>
+						<div class="comment_for_enduser">
+							<div class="block_title room_info_text_color">
+								物件ポイント
+							</div>
+																												電気コンロ・ボイラー・カードキー<br />
+■駐車場込み  ■エアコン  ■インターネット無料 Wi-Fi  ■ガス使用なし、電気温水器、灯油ストーブ(灯油入居者様手配)  ■ペット可(小型犬・猫は一匹、中型以上は要相談)ペット礼金無  ■室内清掃料25,300円、鍵交換設定料11,000円　退去時払い可  ■高齢者相談可<br />													</div>
+					</div>
+					<!------ パノラマ ------------------------->
+										<!------ パノラマ ここまで ----------------->
+									</div>
+				<div class="company_block">
+					<table class="company_table">
+						<tr>
+							<td class="company_text_td">
+								<span class="company_name">株式会社土屋ホーム不動産</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="company_text_td">
+								北海道札幌市北区北九条西３丁目１０－１小田ビル６階
+							</td>
+						</tr>
+						<tr>
+							<td class="company_text_td">
+								Tel:0570-046-228								<span class="pc_only">&nbsp;/&nbsp;</span><br class="sp_only" />
+								Fax:011-727-4775
+							</td>
+						</tr>
+						<tr>
+							<td class="company_text_td">
+								国土交通大臣免許(4)第7766号
+							</td>
+						</tr>
+						<tr>
+							<td class="company_text_td">
+								<ul>
+																														<li>賃貸住宅管理番号：</li>
+											<li>
+												&emsp;国土交通大臣
+												(2
+												)第67135号
+											</li>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					<li>所属団体：</li>
+																																											<li>&emsp;(公社)北海道宅地建物取引業協会</li>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																<li>不動産公正取引協議会：</li><li>&emsp;(一社)北海道不動産公正取引協議会加盟</li>
+																																																																																																																																																																																			</ul>
+							</td>
+						</tr>
+						<tr>
+							<td class="company_text_td">
+																																						<!--管理会社と掲載会社のIDが一致した場合-->
+											取引態様：貸主
+																																		</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+    	<div class="button_block_right">
+            <span class="print add_favorite background_color" id="add_9484298">
+                <span>お気に入り追加</span>
+            </span>
+            <span class="print ask_submit background_color">
+                <span>お問合せ</span>
+            </span>
+        </div>
+    </div>
+	<div class="surroundings_layer">
+		<table class="surroundings_layer_table">
+			<tr>
+				<td>
+					<div class="surroundings_layer_image_box">
+						<div class="surroundings_layer_close_menu">
+							<div class="surroundings_layer_close">
+								とじる
+							</div>
+						</div>
+						<div class="layer_image_box">
+							<img src="">
+						</div>
+						<div>
+							<div class="surroundings_info">
+							</div>
+							<input type="hidden" id="this_surroundings" value="1">
+							<span class="prev_surroundings background_color">prev</span>
+							<span class="next_surroundings background_color">next</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+    <div class="layer">
+		<div class="layer_body">
+			<div class="photo_pop">
+				<div class="photo_pop_area">
+					<div class="photo_pop_dispaly">
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/building/x-large/b0001777519179148901901.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/building/x-large/b0001777519179148901902.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/building/x-large/b0001777519179148902003.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902001.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902002.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902103.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902104.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902105.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902106.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902207.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902208.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902209.jpg" />
+							</div>
+													<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/room/x-large/r0009484298179148902310.jpg" />
+							</div>
+																			<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/0022359/layout/room/l00094842981791489023.jpg"/>
+							</div>
+																			<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/pict/pict01.jpg" />
+							</div>
+																			<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/pict/pict30.jpg" />
+							</div>
+																			<div class="one_pop_photo">
+								<img class="pop_img" src="https://file.realnetpro.com/photo/pict/pict12.jpg" />
+							</div>
+											</div>
+				</div>
+				<div class="pop_menu">
+					<table>
+						<tr>
+							<td>
+								<div class="prev background_color">
+									<span>＜ 前</span>
+								</div>
+							</td>
+							<td>
+								<span class="display_photo"></span>/<span class="photo_last"></span>
+							</td>
+							<td>
+								<div class="next background_color">
+									<span>次 ＞</span>
+								</div>
+							</td>
+						</tr>
+					</table>
+																																																			<div class="photo_text" id="photo_text4">
+								<div>
+									[ 居室・リビング ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text5">
+								<div>
+									[ その他部屋・スペース ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text6">
+								<div>
+									[ キッチン ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text7">
+								<div>
+									[ バス ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text8">
+								<div>
+									[ 洗面所 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text9">
+								<div>
+									[ トイレ ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text10">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text11">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text12">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+																								<div class="photo_text" id="photo_text13">
+								<div>
+									[ その他設備 ]
+								</div>
+								<div>
+									
+								</div>
+							</div>
+															</div>
+				<div class="close_photo_pop">
+					<span>とじる</span>
+				</div>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

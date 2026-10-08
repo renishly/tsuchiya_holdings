@@ -1,0 +1,18 @@
+# Only the agent folder is tracked. Prompt files, syllabus, plan and secrets stay local
+# unless the student adds them deliberately.
+/*
+!/.gitignore
+!/v1/
+# never commit secrets or scratch
+project secrets/
+secrets/
+.env
+*.key
+**/sa.json
+**/*service-account*.json
+v1/tmp/
+v1/state/run.lock
+.DS_Store
+v1/prompt.md
+v1/prompt.org
+v1/.claude/settings.local.json
