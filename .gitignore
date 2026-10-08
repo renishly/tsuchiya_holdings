@@ -16,3 +16,5 @@ v1/state/run.lock
 v1/prompt.md
 v1/prompt.org
 v1/.claude/settings.local.json
+v1/.dashboard.env
+.env

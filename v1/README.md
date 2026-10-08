@@ -86,6 +86,15 @@ The agent's first real write needs your one-time approval. It queues `sheets_fir
 - `Read and follow v1/SKILL.md in the project root. Mode: phase=P6`: one phase, once.
 - `… Mode: test`: fixtures only; no network, no Sheet.
 
+## 5b. Seminar dashboard
+
+The agent reports to https://fukuhara-seminar.onrender.com as **Equity Pricer [Tsuchiya Holdings]**.
+- **Settings:** env `DASHBOARD_URL=https://fukuhara-seminar.onrender.com` and `DASHBOARD_API_KEY` (from the dashboard's View key). Locally, add both to `~/.zshrc`; in the cloud, add both to the `tsuchiya-1840` environment's variables and allow `fukuhara-seminar.onrender.com`.
+- **Each run:** checks in (shows online for 5 h), sends a `run summary` output, red lines for NEEDS ATTENTION, and refreshes the monitors (Status, Build phases, Rows per CSV, Pending approvals, Data, Google Sheet, Data dictionary, Valuation, Legal penalty score).
+- **Pause / Start** on the card: a paused agent skips its next runs until you press Start.
+- **Messages and the Inbox are off** by design.
+- **Offline buffer:** if the site is asleep or unreachable, items wait in `v1/state/dashboard_buffer/` and go at the next run.
+
 ## 6. Your inputs (optional, in `v1/inputs/`)
 
 | File | When to use | Columns |
@@ -132,7 +141,7 @@ python3 v1/evals/check_outputs.py --only C07 G03
 
 ## 9. Known limitations
 
-- **Prices** are irbank's daily close (third-party; no intraday) unless you enter a JPX quote. The JPX quote service can't be read automatically without bypassing its access check.
+- **Prices** are Yahoo Finance daily closes via the `yfinance` library (third-party, prior close; Addendum A16 — you chose to relax the terms-of-use guardrail for this one use). If Yahoo blocks the cloud the price stays unresolved; irbank works only from your Mac. A JPX quote you enter in `inputs/manual_prices.csv` always wins.
 - **Listings:** portals forbid scraping, so automatic coverage is limited to company-run pages (IEST. new builds and 土屋ホーム不動産 rentals). Resale and brokerage listings depend on your manual entries. A disappearing listing is not proof of a sale, and list prices are not contract prices.
 - **Peer forecasts:** タマホーム's 決算短信 is read automatically. For 日本グランデ, ロゴスHD and 日本ハウスHD the agent uses irbank's 予想EPS (third-party, can lag a release by days), because their own lists are JavaScript-rendered or robots-blocked. Peer EV/EBITDA uses their latest annual actuals. Adding a 決算短信 URL to `inputs/manual_sources.csv` overrides irbank (optional).
 - **Legal score** is an exposure measure, not a finding of wrongdoing. MLIT's database may not include every prefectural disposition. Two regulation sources score 0 until a primary URL is confirmed.

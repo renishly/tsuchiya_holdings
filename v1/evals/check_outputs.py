@@ -48,7 +48,9 @@ class Box:
         self.fixture = fixture
         if (FIX / fixture).exists():
             shutil.copytree(FIX / fixture, self.v1 / "evals" / "fixtures" / fixture)
-        shutil.copy(V1 / "state" / "approvals.md", self.v1 / "state" / "approvals.md")
+        # a clean approvals file: the live one holds the student's real decisions
+        live = (V1 / "state" / "approvals.md").read_text(encoding="utf-8")
+        (self.v1 / "state" / "approvals.md").write_text(live.split("## Decisions")[0] + "## Decisions\n\n", encoding="utf-8")
         for f in ("manual_prices.csv", "manual_listings.csv", "manual_sources.csv"):
             if (V1 / "inputs" / f).exists():
                 shutil.copy(V1 / "inputs" / f, self.v1 / "inputs" / f)

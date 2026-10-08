@@ -13,7 +13,7 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | 3 | Valuation | P/E; second method open | P/E **and** EV/EBITDA (syllabus 2.4); no P/B | A3 |
 | 4 | 統合報告書 gaps | Substitutes only with approval | No substitutes; "not published" rows | A4 |
 | 5 | Legal score weights | 40/20/20/20 (provisional) | **50/30/10/10**, with confirmed component formulas | A5, A12 |
-| 6 | Market data | kabutan, Yahoo!ファイナンス, minkabu; irbank cross-check only | irbank daily close each run + student JPX entries (take precedence); forward P/E = price ÷ 決算短信 EPS; irbank 予想PER as cross-check | A8 |
+| 6 | Market data | kabutan, Yahoo!ファイナンス, minkabu; irbank cross-check only | Price: student JPX entry > Yahoo Finance daily close via yfinance (guardrail loosened by the student, A16) > irbank close; forward P/E = price ÷ 決算短信 EPS; irbank 予想PER as cross-check | A8, A16 |
 | 7 | Allowlist | Prompt list | Group domains verified and added; peer IR sites added; banned/blocked sites removed | A9 |
 | 8 | Listings | NIFTY不動産 scraping | Company-run listing pages (automatic) + student manual portal entries + MLIT area benchmark | A10 |
 | 9 | Repo contents | data, reports, state, logs | Also raw/ and inputs/ | A11 |
@@ -21,9 +21,13 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | 11 | Forward EBITDA | Not specified | Forecast 営業利益 + latest actual 減価償却費 (stated) | A12 |
 | 12 | Peer forecasts | Peer 決算短信 from peer IR sites | タマホーム from its own 決算短信; 日本グランデ, ロゴスHD, 日本ハウスHD from irbank 予想EPS (third-party, labeled) because their 決算短信 lists can't be read compliantly; peer EV/EBITDA on latest 有報 actuals (trailing) | A9, A14 |
 | 13 | Golden values | ≥ 40 values hand-verified by the student | All 60 checked automatically against the printed PDF text; no routine human input | A15 |
-| 14 | Peer fiscal years | — | 日本ハウスHD ends **April 30** (EDINET code list), not October | A2 |
+| 14 | Seminar dashboard | — | Connected: check-ins, run-summary output, monitors (incl. Google Sheet link and report_list.html), Pause honoured, offline buffer; messages/Inbox off | A17 |
+| 15 | Peer fiscal years | — | 日本ハウスHD ends **April 30** (EDINET code list), not October | A2 |
 
 ## 2. Changes in detail
+
+### 2.0 Guardrail loosened by the student (A16)
+- irbank returns HTTP 403 to the cloud routine and Google Finance does not serve TSE prices to Sheets. The builder advised that yfinance pulls data automatically from Yahoo's servers against Yahoo's terms and offered compliant alternatives (local price task, J-Quants). The student chose to loosen the guardrail for this single use: daily closes of five tickers, one batch per run, labeled third-party. No other Yahoo data is used.
 
 ### 2.1 Market data (A8)
 - **Removed** — kabutan.jp: 利用規約 第4条 forbids copying, storing and passing content to third parties. finance.yahoo.co.jp: help page forbids automated retrieval (scraping). minkabu.jp: 規約 7条(18) forbids mechanical retrieval.
@@ -79,7 +83,7 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | Tsuchiya 決算短信 / forecasts | [tsuchiya.co.jp/ir/news](https://www.tsuchiya.co.jp/ir/news/) |
 | Peer forecast EPS | [タマホーム 決算短信等](https://www.tamahome.jp/company/ir/library/library_02.html) (primary). [irbank 2976](https://irbank.net/2976) · [irbank 205A](https://irbank.net/205A) · [irbank 1873](https://irbank.net/1873) 予想EPS (third-party; their 決算短信 lists are JavaScript-rendered or on www.xj-storage.jp, robots.txt disallow). Optional override: `v1/inputs/manual_sources.csv` |
 | Peer EV/EBITDA inputs | Each peer's latest 有報 on EDINET (営業利益, 減価償却費, borrowings, cash, shares) |
-| Price (daily close) | `https://irbank.net/{ticker}/chart` (1840, 2976, 205A, 1873, 1419) |
+| Price (daily close) | Yahoo Finance via yfinance: 1840.T, 205A.T, 1873.T, 1419.T, 2976.S (A16; e.g. [1840.T history](https://finance.yahoo.com/quote/1840.T/history/)); fallback `https://irbank.net/{ticker}/chart` (blocked from the cloud) |
 | P/E cross-check | `https://irbank.net/{ticker}` |
 | Company listings | [IEST. 物件一覧](https://iestdot.com/property/) · [土屋ホーム不動産 賃貸](https://mylist-v2.realnetpro.com/22359m1/) · [土屋ホーム不動産 物件検索 (count)](https://tsuchiyafudosan.jp/property/) |
 | Group homepages | [展示場](https://www.tsuchiyahome.jp/modelhouse/) · [分譲地](https://www.tsuchiyahome.jp/realestate/) · [イベント](https://www.tsuchiyahome.jp/event/) · [ラインナップ](https://www.tsuchiyahome.jp/lineup/) · [ホームトピア](https://www.hometopia.jp/) · [不動産 サービス](https://tsuchiyafudosan.jp/service) · [店舗](https://tsuchiyafudosan.jp/store) · [IEST.](https://iestdot.com/) |
@@ -87,6 +91,7 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | Area benchmark | `https://www.reinfolib.mlit.go.jp/ex-api/external/XIT001` (API key) |
 | Dispositions | [MLIT ネガティブ情報等検索サイト](https://www.mlit.go.jp/nega-inf/) (宅建業者, 建設業者) |
 | Laws | e-Gov API v2 links in §2.4 |
+| Seminar dashboard | https://fukuhara-seminar.onrender.com (API; key in env only) |
 | Manual inputs | `v1/inputs/manual_prices.csv`, `v1/inputs/manual_listings.csv` (student) |
 | Never fetched | myhome.nifty.com, suumo.jp, www.homes.co.jp, www.athome.co.jp, www.fudousan.or.jp, www.hatomarksite.com, kabutan.jp, finance.yahoo.co.jp, minkabu.jp, www.release.tdnet.info, quote.jpx.co.jp, www.xj-storage.jp |
 
