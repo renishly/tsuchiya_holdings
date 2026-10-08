@@ -2892,8 +2892,7 @@ def current(st, sec: CsvStore, base: CsvStore, peers_too: bool = True) -> dict:
                          title=px["source_type"], location=px["location"], source_type=px["source_type"],
                          quote_time=px["quote_time"], price_type=px["price_type"], period_label=f"quote {px['quote_time'][:10]}",
                          key_extra=px["quote_time"][:10],
-                         note=("Third-party daily close (irbank); verify against JPX and record in inputs/manual_prices.csv."
-                               if px["third_party"] else "Student-entered JPX quote."))
+                         note=("Third-party daily close (irbank)." if px["third_party"] else "Student-entered JPX quote."))
         prev = st["last_price"].get(TS)
         if prev and prev["price"] and abs(px["price"] / prev["price"] - 1) > 0.10:
             out["warnings"].append(f"Stock price moved {px['price'] / prev['price'] - 1:+.1%} since previous run")
