@@ -191,7 +191,7 @@ A robots.txt disallow or a terms-of-use ban is not an error to work around: the 
 - changing the peer set or the target-multiple method;
 - changing legal-score weights or categories;
 - changing a CSV schema;
-- any single run that would change more than 20% of existing rows in a CSV (signals a parsing regression — the helper writes the staged CSV to `v1/tmp/staged/` and keeps the old one).
+- any single run that would change more than 20% of existing rows in a CSV (signals a parsing regression — the helper writes the staged CSV to `v1/tmp/staged/` and keeps the old one). Filling a previously empty `unresolved` value, refreshing `last_seen`/`status`, and per-run market quotes do not count.
 
 **Procedure.** Requests are appended to `v1/state/pending_approvals.md` as `## AR-YYYYMMDD-NN — <action>` with kind, target, params and reason. The student approves by writing `APPROVE AR-…` (or `REJECT AR-…`) on its own line in `v1/state/approvals.md`, which you never edit. Each approval is used for one action and then marked consumed in `run_state.json`. You never wait for an approval; you continue with other work.
 
@@ -418,13 +418,18 @@ def tick(st: dict, n: int = 1):
         raise BudgetStop(f"time budget reached ({minutes:.0f} min)")
 
 # ---------------------------------------------------------------- approvals
-AR_PAT = re.compile(r"^\s*(APPROVE|REJECT)\s+(AR-\d{8}-\d{2})\b", re.M)
+AR_PAT = re.compile(r"^(APPROVE|REJECT)\s+(AR-\d{8}-\d{2})\s*$", re.M)
 
 def read_approvals() -> dict:
+    """Decisions are read only from unindented lines below the '## Decisions' heading of state/approvals.md."""
     p = ROOT / "state" / "approvals.md"
     if not p.exists():
         return {}
-    return {m.group(2): m.group(1) for m in AR_PAT.finditer(p.read_text(encoding="utf-8"))}
+    text = p.read_text(encoding="utf-8")
+    m = re.search(r"(?m)^## Decisions\s*$", text)
+    if not m:
+        return {}
+    return {x.group(2): x.group(1) for x in AR_PAT.finditer(text[m.end():])}
 
 def pending_requests() -> list[dict]:
     p = ROOT / "state" / "pending_approvals.md"
@@ -571,7 +576,10 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
             log(st, "fetch", {"url": full, "purpose": purpose}, "fixture missing")
             raise FetchError(404, "no fixture for URL (test mode never uses the network)")
         if entry.get("status", 200) != 200:
-            _fail(st, host, full, entry["status"], entry.get("detail", "fixture error"))
+            code = entry["status"]
+            if code == 429 or (isinstance(code, int) and code >= 500):
+                log(st, "fetch", {"url": full}, f"retry after 30s ({code}) [test mode: no wait]")
+            _fail(st, host, full, code, entry.get("detail", "fixture error"))
         body = (ROOT / "evals" / "fixtures" / os.environ.get("TSUCHIYA_FIXTURE_SET", "default") / entry["file"]).read_bytes()
         if entry.get("robots_disallow"):
             st["blocked_by_policy"][full.split("?")[0]] = "robots.txt disallow (fixture)"
@@ -788,7 +796,9 @@ class CsvStore:
         if any(old[c] != row[c] for c in self.cols if c not in keep):
             self.rows[rid] = row
             self.changed.append(rid)
-            if any(old[c] != row[c] for c in self.cols if c not in self.volatile) and not self.guard_exempt(old):
+            # Filling a previously empty (unresolved) value is progress, not a parsing regression.
+            if old["value"] != "" and not self.guard_exempt(old) and \
+                    any(old[c] != row[c] for c in self.cols if c not in self.volatile):
                 self.material.append(rid)
         return rid
 
@@ -3225,6 +3235,7 @@ LINE_ITEMS = {
     "Purchase of intangible assets": ("無形固定資産の取得による支出", "Capex on intangibles.", "FCF."),
     "Depreciation": ("減価償却費", "Depreciation and amortisation (CF statement).", "EBITDA = OP + D&A."),
     "Real estate for sale": ("販売用不動産", "Completed real estate held for sale (inventory).", "Inventory turns; 不動産事業."),
+    "Costs on real estate business": ("不動産事業支出金", "Costs incurred on real-estate projects not yet completed (inventory).", "Inventory; 不動産事業 pipeline."),
     "Real estate for sale in process": ("仕掛販売用不動産", "Real estate for sale under development.", "Inventory."),
     "Costs on uncompleted construction contracts": ("未成工事支出金", "Work in progress on construction contracts.", "Housing pipeline."),
     "Real estate for development": ("開発用不動産", "Land held for development.", "Inventory."),

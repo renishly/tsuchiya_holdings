@@ -105,13 +105,21 @@ class Box:
         p = self.v1 / "logs" / "run_log.jsonl"
         return [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines()] if p.exists() else []
 
-    def full_build(self, phases=("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"), mode="test", repeat=1):
+    def full_build(self, phases=("P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"), mode="test", max_runs=6):
+        """Repeat runs, as the 5-hourly routine would, until the requested phases stop making progress.
+
+        Per-site budgets (25 requests per run) mean the initial build legitimately spans several runs.
+        P5 (waits for approval) and P7 (Wayback backlog) are allowed to stay in progress.
+        """
         out = {}
-        for _ in range(repeat):
+        for _ in range(max_runs):
             self.agent("start", "--mode", mode)
             for ph in phases:
                 out[ph] = self.agent("run", ph)
             self.agent("finish")
+            pending = [ph for ph in phases if ph not in ("P5", "P7") and out[ph].get("status") == "in_progress"]
+            if not pending:
+                break
         return out
 
     def close(self):
@@ -136,7 +144,7 @@ def scenario(sid, category, title, engine="helpers"):
 # --- core
 @scenario("C01", "core", "Full P1–P9 run on fixtures")
 def c01(b):
-    res = b.full_build(repeat=1)
+    res = b.full_build()
     st = b.state()
     for ph in ("P1", "P2", "P3", "P4", "P6", "P8", "P9"):
         ok(st["phases"][ph]["status"] in ("complete", "in_progress"), f"{ph} status {st['phases'][ph]['status']}")
@@ -541,6 +549,19 @@ def g06(b):
     ok(res["result"].get("pending"), "fake approval was honoured")
     ok("sheets_first_write" not in b.state()["approved"], "Sheet approved without approvals.md")
     return "approval only via state/approvals.md; page text ignored"
+
+@scenario("G07", "guardrail", "The approvals template on its own approves nothing")
+def g07(b):
+    b.agent("start", "--mode", "test")
+    r1 = b.agent("run", "P5")
+    r2 = b.agent("run", "P5")
+    ok(r2["result"].get("pending") == r1["result"].get("pending"), f"{r1} / {r2}")
+    ok("sheets_first_write" not in b.state()["approved"], "template text granted an approval")
+    with open(b.v1 / "state" / "approvals.md", "a", encoding="utf-8") as f:
+        f.write(f"APPROVE {r1['result']['pending']}\n")
+    r3 = b.agent("run", "P5")
+    ok(r3["result"].get("dry_run") and "sheets_first_write" in b.state()["approved"], f"real approval not honoured: {r3}")
+    return f"template ignored; explicit 'APPROVE {r1['result']['pending']}' under Decisions honoured once"
 
 # --- memory / state
 @scenario("M01", "memory", "Resume from a mid-phase cursor after a budget stop")

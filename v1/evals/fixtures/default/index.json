@@ -773,5 +773,30 @@
   "file": "files/37517e5f3dc66819.json",
   "encoding": "utf-8",
   "recorded": "2026-10-09T07:37:49+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100NAA0?type=2": {
+  "file": "files/204dfd59647b4f75.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100Q0PX?type=2": {
+  "file": "files/6ba55af636e02c9d.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100SO3Q?type=2": {
+  "file": "files/a4ff9de14c8e5ad3.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100V551?type=2": {
+  "file": "files/d861e684b18391a5.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
+ },
+ "https://api.edinet-fsa.go.jp/api/v2/documents/S100XHBD?type=2": {
+  "file": "files/93c3c06a985cd98d.pdf",
+  "encoding": "utf-8",
+  "recorded": "2026-10-09T07:20:00+09:00"
  }
 }
