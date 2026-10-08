@@ -19,8 +19,9 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | 9 | Repo contents | data, reports, state, logs | Also raw/ and inputs/ | A11 |
 | 10 | Revenue streams | Categories only | Explicit 取引態様-first rules; no 取引態様 → Unmapped | A12 |
 | 11 | Forward EBITDA | Not specified | Forecast 営業利益 + latest actual 減価償却費 (stated) | A12 |
-| 12 | Peer forecasts | Peer 決算短信 from peer IR sites | タマホーム automatic; 日本グランデ, ロゴスHD and 日本ハウスHD via student-supplied URLs (`inputs/manual_sources.csv`), because their lists can't be read compliantly | A9 (pending decision) |
-| 13 | Peer fiscal years | — | 日本ハウスHD ends **April 30** (EDINET code list), not October | A2 |
+| 12 | Peer forecasts | Peer 決算短信 from peer IR sites | タマホーム from its own 決算短信; 日本グランデ, ロゴスHD, 日本ハウスHD from irbank 予想EPS (third-party, labeled) because their 決算短信 lists can't be read compliantly; peer EV/EBITDA on latest 有報 actuals (trailing) | A9, A14 |
+| 13 | Golden values | ≥ 40 values hand-verified by the student | All 60 checked automatically against the printed PDF text; no routine human input | A15 |
+| 14 | Peer fiscal years | — | 日本ハウスHD ends **April 30** (EDINET code list), not October | A2 |
 
 ## 2. Changes in detail
 
@@ -65,7 +66,7 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 
 ### 2.6 Valuation (A3, A12)
 - Target P/E is the mean of peers' forward P/E, with the median in the note. Negative or not-meaningful peers are excluded and listed.
-- Target EV/EBITDA is the mean of peers' forward EV/EBITDA.
+- Target EV/EBITDA is the mean of peers' EV/EBITDA on their latest 有報 actuals (trailing; irbank has no forecast operating profit), applied to Tsuchiya's forward EBITDA (A14).
 - Forward EBITDA = forecast 営業利益 + latest actual 減価償却費. The flat-D&A assumption is stated on every row.
 - Target Price (EV/EBITDA) = (Forward EBITDA × target − net debt) / shares ex-treasury.
 
@@ -76,7 +77,8 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 | 有価証券報告書 (API) | `https://api.edinet-fsa.go.jp/api/v2/documents.json`, `…/documents/{docID}?type=1/2/5` ([spec v2](https://disclosure2dl.edinet-fsa.go.jp/guide/static/disclosure/download/ESE140206.pdf)) |
 | 有報 source_url in CSVs | `https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?{docID}`; PDF fallback `https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/{docID}.pdf#page=N` |
 | Tsuchiya 決算短信 / forecasts | [tsuchiya.co.jp/ir/news](https://www.tsuchiya.co.jp/ir/news/) |
-| Peer 決算短信 | Automatic: [タマホーム 決算短信等](https://www.tamahome.jp/company/ir/library/library_02.html). Via student-supplied PDF URLs in `v1/inputs/manual_sources.csv`: 日本グランデ, ロゴスHD, 日本ハウスHD (their lists are JavaScript-rendered or hosted on www.xj-storage.jp, whose robots.txt disallows all) |
+| Peer forecast EPS | [タマホーム 決算短信等](https://www.tamahome.jp/company/ir/library/library_02.html) (primary). [irbank 2976](https://irbank.net/2976) · [irbank 205A](https://irbank.net/205A) · [irbank 1873](https://irbank.net/1873) 予想EPS (third-party; their 決算短信 lists are JavaScript-rendered or on www.xj-storage.jp, robots.txt disallow). Optional override: `v1/inputs/manual_sources.csv` |
+| Peer EV/EBITDA inputs | Each peer's latest 有報 on EDINET (営業利益, 減価償却費, borrowings, cash, shares) |
 | Price (daily close) | `https://irbank.net/{ticker}/chart` (1840, 2976, 205A, 1873, 1419) |
 | P/E cross-check | `https://irbank.net/{ticker}` |
 | Company listings | [IEST. 物件一覧](https://iestdot.com/property/) · [土屋ホーム不動産 賃貸](https://mylist-v2.realnetpro.com/22359m1/) · [土屋ホーム不動産 物件検索 (count)](https://tsuchiyafudosan.jp/property/) |

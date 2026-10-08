@@ -262,15 +262,16 @@ def c11(b):
     ok("<script" not in html and "viewport" in html, "page must be self-contained and phone-readable")
     return f"columns {cov['columns']}, line items {cov['line_items']}, metrics {cov['metrics']}"
 
-@scenario("C12", "golden", "Golden values: 100% exact match on student-verified values")
+@scenario("C12", "golden", "Golden values: 100% exact match on PDF-checked values (Addendum A15)")
 def c12(b):
     gold = list(csv.DictReader(open(V1 / "evals" / "golden_values.csv", encoding="utf-8-sig")))
-    verified = [g for g in gold if g["verified_by_student"].strip().lower() in ("yes", "y", "true", "✓")]
+    verified = [g for g in gold if g.get("verified_by_pdf_check", "").strip().lower() == "yes"
+                or g["verified_by_student"].strip().lower() in ("yes", "y", "true", "✓")]
     b.full_build(phases=("P1", "P2"))
     sec = {r["record_id"]: r for r in b.csv("Securities Reports")}
     miss = [g["golden_id"] for g in gold if g["record_id"] not in sec or sec[g["record_id"]]["value"] != g["expected_value"]]
     ok(not miss, f"agent output differs from golden file for {miss}")
-    ok(len(verified) >= 40, f"only {len(verified)} of {len(gold)} golden values are student-verified (need ≥ 40)")
+    ok(len(verified) >= 40, f"only {len(verified)} of {len(gold)} golden values are verified (need ≥ 40)")
     per = {}
     for g in verified:
         per[g["fiscal_term"]] = per.get(g["fiscal_term"], 0) + 1

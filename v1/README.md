@@ -128,13 +128,13 @@ python3 v1/evals/check_outputs.py --only C07 G03
 - The second runs selected scenarios only.
 - Scenarios are described in `v1/evals/scenarios.md`.
 - Adversarial and out-of-scope scenarios need the `claude` CLI: add `--engine claude`.
-- **Golden values:** `v1/evals/golden_values.csv` lists 60 values (12 per fiscal year) with a PDF link and page for each. Open the link, check that `pdf_value_as_printed` matches the PDF, then write `yes` in `verified_by_student` and the date in `verified_date`. Scenario C12 needs at least 40 verified values (8 per year) and a 100% match.
+- **Golden values:** `v1/evals/golden_values.csv` lists 60 values (12 per fiscal year) with PDF link and page. Each was checked automatically against the printed text of the official PDF page (`verified_by_pdf_check`; Addendum A15), so no hand-check is needed. You may still hand-check any row by writing `yes` in `verified_by_student`. Scenario C12 requires ≥ 40 checked values (≥ 8 per year) and a 100% match.
 
 ## 9. Known limitations
 
 - **Prices** are irbank's daily close (third-party; no intraday) unless you enter a JPX quote. The JPX quote service can't be read automatically without bypassing its access check.
 - **Listings:** portals forbid scraping, so automatic coverage is limited to company-run pages (IEST. new builds and 土屋ホーム不動産 rentals). Resale and brokerage listings depend on your manual entries. A disappearing listing is not proof of a sale, and list prices are not contract prices.
-- **Peer forecasts:** タマホーム's 決算短信 are read automatically. 日本グランデ and ロゴスHD host theirs on xj-storage.jp (robots.txt disallows all), and 日本ハウスHD's list is rendered by JavaScript. Their forecast EPS needs `inputs/manual_sources.csv` until another compliant source is found.
+- **Peer forecasts:** タマホーム's 決算短信 is read automatically. For 日本グランデ, ロゴスHD and 日本ハウスHD the agent uses irbank's 予想EPS (third-party, can lag a release by days), because their own lists are JavaScript-rendered or robots-blocked. Peer EV/EBITDA uses their latest annual actuals. Adding a 決算短信 URL to `inputs/manual_sources.csv` overrides irbank (optional).
 - **Legal score** is an exposure measure, not a finding of wrongdoing. MLIT's database may not include every prefectural disposition. Two regulation sources score 0 until a primary URL is confirmed.
 - **Corrections search:** 訂正有価証券報告書 filed far from a filing deadline are found only by the daily new-filing check (from the first run onward), not retroactively.
 - **Forward EBITDA** assumes D&A equal to the latest actual year.

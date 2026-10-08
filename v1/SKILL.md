@@ -2998,17 +2998,7 @@ def peer_metrics(st, base: CsvStore) -> dict:
                                     "= 会社予想 営業利益 (決算短信)", [], url=fc["source_url"], title=fc["source_title"],
                                     location=f"p.{fc.get('page')}", source_type="決算短信 / 適時開示 (company)",
                                     key_extra=fc.get("fiscal_year", ""))
-        price, feps = (px or {}).get("price"), fc.get("eps") if fc else None
-        if price and feps is not None:
-            pe = price / feps if feps > 0 else None
-            r["pe"] = pe
-            r["pe_id"] = w.put("P/E (forward)", "derived-current", "", pe if pe else "not meaningful", "times",
-                               "Forward P/E = price / company-forecast EPS", [pid, eid], url=fc["source_url"], title="derived",
-                               location="", key_extra=today, note="" if pe else f"Forecast EPS {feps} ≤ 0; excluded from target P/E.")
-        else:
-            w.put("P/E (forward)", "derived-current", "", None, "times", "Forward P/E = price / company-forecast EPS", [pid, eid],
-                  url=CONFIG["peer_ir"].get(t, "https://irbank.net/"), title="derived", location="", key_extra=today,
-                  note="Price or forecast EPS missing.")
+        ib = {}
         try:
             ib = market.irbank_summary(st, t)
             w.put("Forward P/E (irbank cross-check)", "market", "", ib.get("forward_per"), "times", "irbank 予想PER (third-party)", [],
@@ -3017,23 +3007,42 @@ def peer_metrics(st, base: CsvStore) -> dict:
             r["irbank_pe"] = ib.get("forward_per")
         except (FetchError, GuardrailError, BudgetStop) as e:
             log(st, "irbank", {"ticker": t}, str(e))
+        price, feps = (px or {}).get("price"), fc.get("eps") if fc else None
+        eps_src, eps_url = "決算短信 (company)", (fc or {}).get("source_url", "")
+        if feps is None and ib.get("forecast_eps") is not None:
+            # Addendum A14: the peer's 決算短信 can't be read automatically -> irbank 予想EPS, labeled third-party
+            feps, eps_src, eps_url = ib["forecast_eps"], "irbank 予想EPS (third-party)", ib["url"]
+            eid = w.put("EPS (company forecast)", "company forecast", "", feps, "JPY/share",
+                        "= 会社予想 EPS as shown by irbank (third-party copy of the 決算短信 forecast)", [], url=ib["url"],
+                        title="irbank", location=f"EPS（連）予 (as of {ib.get('as_of')})",
+                        source_type="market data (irbank, third-party)", key_extra=f"irbank {today}",
+                        note="Third-party fallback (Addendum A14): the company's 決算短信 list cannot be read automatically.")
+        if price and feps is not None:
+            pe = price / feps if feps > 0 else None
+            r["pe"] = pe
+            r["pe_id"] = w.put("P/E (forward)", "derived-current", "", pe if pe else "not meaningful", "times",
+                               f"Forward P/E = price / company-forecast EPS (EPS source: {eps_src})", [pid, eid], url=eps_url or ib.get("url", ""),
+                               title="derived", location="", key_extra=today,
+                               note="" if pe else f"Forecast EPS {feps} ≤ 0; excluded from target P/E.")
+        else:
+            w.put("P/E (forward)", "derived-current", "", None, "times", "Forward P/E = price / company-forecast EPS", [pid, eid],
+                  url=CONFIG["peer_ir"].get(t, "https://irbank.net/"), title="derived", location="", key_extra=today,
+                  note="Price or forecast EPS missing.")
         # EV/EBITDA inputs from the peer's latest 有報 (cached facts only; discovery runs in P6 with a cursor)
         inp = st["documents"].get(f"peer:{t}", {}).get("latest_facts")
-        if inp and price and r.get("fop") is not None:
+        if inp and price and inp.get("op") is not None:
             shares = (inp["shares_issued"] - (inp.get("treasury") or 0)) if inp.get("shares_issued") else None
             mcap = price * shares if shares and shares > 0 else None
-            debt = inp.get("debt")
-            cash = inp.get("cash")
-            da = inp.get("da")
+            debt, cash, da = inp.get("debt"), inp.get("cash"), inp.get("da")
             if None not in (mcap, debt, cash, da):
                 ev = mcap + debt - cash
-                eb = r["fop"] + da
+                eb = inp["op"] + da
                 r["ev_ebitda"] = ev / eb if eb > 0 and ev > 0 else None  # negative/n.m. multiples are excluded
-                r["ev_ebitda_id"] = w.put("EV/EBITDA (forward)", "derived-current", "", r["ev_ebitda"] or "not meaningful", "times",
-                                          "= (price × shares ex-treasury + interest-bearing debt − cash) / (forecast 営業利益 + latest 減価償却費)",
-                                          [pid, r.get("fop_id")], url=inp.get("source_url", "https://disclosure2.edinet-fsa.go.jp/"),
-                                          title=f"有価証券報告書 {inp.get('docID')}", location="BS/CF of latest 有報",
-                                          key_extra=today, note="" if r["ev_ebitda"] else "EV or forward EBITDA ≤ 0; not meaningful, excluded from the target.")
+                r["ev_ebitda_id"] = w.put("EV/EBITDA (trailing)", "derived-current", "", r["ev_ebitda"] or "not meaningful", "times",
+                                          "= (price × shares ex-treasury + interest-bearing debt − cash) / (営業利益 + 減価償却費), latest 有報 actuals",
+                                          [pid], url=inp.get("source_url", "https://disclosure2.edinet-fsa.go.jp/"),
+                                          title=f"有価証券報告書 {inp.get('docID')}", location="PL/BS/CF of latest 有報",
+                                          key_extra=today, note="" if r["ev_ebitda"] else "EV or EBITDA ≤ 0; not meaningful, excluded from the target.")
         res[t] = r
     return res
 
@@ -3064,7 +3073,8 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
               title="derived", location="", key_extra=today, note="Target price by P/E not available.")
     evs = {t: r["ev_ebitda"] for t, r in peers.items() if r.get("ev_ebitda")}
     tm = statistics.mean(evs.values()) if evs else None
-    tm_id = w.put("Target EV/EBITDA", "derived-current", "", tm, "times", "= arithmetic mean of peers' forward EV/EBITDA",
+    tm_id = w.put("Target EV/EBITDA", "derived-current", "", tm, "times",
+                  "= arithmetic mean of peers' EV/EBITDA on latest 有報 actuals (trailing; Addendum A14), applied to Tsuchiya's forward EBITDA",
                   [r.get("ev_ebitda_id") for r in peers.values() if r.get("ev_ebitda")], url="https://disclosure2.edinet-fsa.go.jp/",
                   title="derived from peer rows", location="", key_extra=today,
                   note=(f"Peers used: {', '.join(evs)}; median = {statistics.median(evs.values()):.2f}" if evs else "No peer EV/EBITDA yet (peer 有報 inputs pending)."))
@@ -3137,7 +3147,7 @@ def peer_inputs(st, max_peers: int = 2) -> dict:
     for p in CONFIG["peers"]:
         key = f"peer:{p['ticker']}"
         d = st["documents"].setdefault(key, {"fy": {}, "scanned": {}, "corrections": []})
-        if d.get("latest_facts") and d["latest_facts"].get("fetched", "")[:7] == iso()[:7]:
+        if d.get("latest_facts") and d["latest_facts"].get("fetched", "")[:7] == iso()[:7] and "op" in d["latest_facts"]:
             continue
         if done >= max_peers:
             break
@@ -3167,6 +3177,7 @@ def peer_inputs(st, max_peers: int = 2) -> dict:
             "docID": doc["docID"], "source_url": edinet.doc_url(doc["docID"]), "fetched": iso(),
             "debt": sum(x for x in debt_parts if x is not None) if any(x is not None for x in debt_parts) else None,
             "cash": f(["jppfs_cor:CashAndCashEquivalents"], "CurrentYearInstant"),
+            "op": f(["jppfs_cor:OperatingIncome"], "CurrentYearDuration"),
             "da": f(["jppfs_cor:DepreciationAndAmortizationOpeCF", "jppfs_cor:DepreciationOpeCF"], "CurrentYearDuration"),
             "shares_issued": f(["jpcrp_cor:TotalNumberOfIssuedSharesSummaryOfBusinessResults",
                                 "jpcrp_cor:NumberOfIssuedSharesAsOfFiscalYearEndIssuedSharesTotalNumberOfSharesEtc"], "CurrentYearInstant"),
@@ -3322,7 +3333,7 @@ METRICS = {
     "Target P/E": "Mean of peers' forward P/E (negative/n.m. excluded; median shown in the note).",
     "Target Price (P/E)": "Target P/E × forecast EPS; 'not meaningful' when forecast EPS ≤ 0.",
     "Expected Return (P/E)": "Target price / price − 1 + dividend yield (syllabus 2.5).",
-    "Target EV/EBITDA": "Mean of peers' forward EV/EBITDA.",
+    "Target EV/EBITDA": "Mean of peers' trailing EV/EBITDA (latest 有報 actuals), applied to Tsuchiya's forward EBITDA.",
     "Target Price (EV/EBITDA)": "(Forward EBITDA × target multiple − net debt) / shares (syllabus 2.4).",
     "Expected Return (EV/EBITDA)": "Target price / price − 1 + dividend yield.",
     "Dividend Yield (forecast)": "Forecast DPS / price.",
@@ -3333,6 +3344,7 @@ METRICS = {
     "Net Profit (company forecast)": "会社予想 親会社株主に帰属する当期純利益.",
     "DPS (company forecast)": "会社予想 1株当たり配当金 (annual total).",
     "EV/EBITDA (forward)": "Peer: (price × shares + debt − cash) / (forecast 営業利益 + latest 減価償却費).",
+    "EV/EBITDA (trailing)": "Peer: (price × shares ex-treasury + interest-bearing debt − cash) / (営業利益 + 減価償却費) from the peer's latest 有報 (EDINET).",
     "Revenue (決算短信)": "売上高 as reported in the full-year 決算短信 (百万円, rounded); cross-source check input.",
     "Operating profit (決算短信)": "営業利益 as reported in the full-year 決算短信; cross-source check input.",
     "Net profit (決算短信)": "親会社株主に帰属する当期純利益 as reported in the full-year 決算短信; cross-source check input.",
