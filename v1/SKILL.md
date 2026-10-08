@@ -75,6 +75,16 @@ print({"helpers_written": [b[0] for b in blocks]})
 PY
 ```
 
+**Step 0b — pick the Python.** Use the first interpreter that has the libraries, and use it for every helper command below (written as `python3`):
+
+```bash
+for p in python3 /usr/bin/python3 /usr/bin/python3.13 /usr/bin/python3.12 /usr/local/bin/python3; do
+  $p -c "import bs4, requests, pdfplumber, lxml" 2>/dev/null && { echo "PY=$p"; break; }
+done
+```
+
+If none has them, try `python3 -m pip install --quiet requests beautifulsoup4 lxml pdfplumber gspread google-auth` once; if that fails, record the blocker in the plan file and finish. `gspread` is needed only by P5; without it P5 records "Sheets library missing" and everything else runs.
+
 **Step 1 — start (lock + state + approvals).** `python3 v1/tmp/agent.py start --mode <scheduled|test|phase=Pn>`.
 - If it returns `"proceed": false` (a lock younger than 3 hours exists) **stop immediately**; it has already logged "skipped: previous run active".
 - A lock older than 3 hours is treated as stale, logged, and taken over automatically.
@@ -97,7 +107,7 @@ PY
 
 **Errors.** Helpers retry a failed request once after 30 s, then mark the item `unresolved` and continue; after 3 consecutive failures on one domain the domain is skipped for the rest of the run. If the model API fails the routine simply ends; the lock goes stale and the next run takes over.
 
-**Loop protection.** If you make 3 identical tool calls in a row, or a helper reports "loop detected" (same URL more than twice in a run), stop the current phase, note "loop detected" in the plan file's last line, and move on.
+**Loop protection.** If you make 3 identical tool calls in a row, or a helper reports "loop detected" (same URL requested more than twice in a run), stop the current phase, note "loop detected" in the plan file's last line, and move on. Pages already fetched in the current run are reused from `v1/tmp/page_cache/` and do not count as repeats.
 
 ## 4. Phases (initial build; each `agent.py run Pn`)
 
@@ -554,6 +564,13 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
     if data is not None and full not in POST_ALLOW:
         raise GuardrailError(f"form submission refused: POST to {full} (only public search endpoints are allowed)")
     cr = run_ctx(st)
+    # Same page already fetched in this run (by another helper or phase): reuse the saved copy.
+    cache_key = full if data is None else full + "#POST:" + urllib.parse.urlencode(data)
+    cached = cr.setdefault("page_cache", {}).get(cache_key)
+    if cached and (ROOT / cached["path"]).exists():
+        body = (ROOT / cached["path"]).read_bytes()
+        log(st, "fetch", {"url": full, "purpose": purpose}, "reused (already fetched this run)")
+        return (body if binary else body.decode(cached.get("encoding") or "utf-8", errors="replace")), dict(cached["meta"])
     counts = cr.setdefault("domain_requests", {})
     url_counts = cr.setdefault("url_requests", {})
     skipped = cr.setdefault("skipped_domains", [])
@@ -591,6 +608,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
         text = None if binary else body.decode(entry.get("encoding", "utf-8"), errors="replace")
         if text is not None:
             flag_injection(st, full, text)
+        _remember(cr, cache_key, body, meta, entry.get("encoding", "utf-8"))
         return (body if binary else text), meta
 
     s = _sess()
@@ -643,12 +661,19 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
         write_bytes(f"raw/web/{host}/{meta['sha256']}.html", body)
         write_text(f"raw/web/{host}/{meta['sha256']}.json", json.dumps(meta, ensure_ascii=False))
     log(st, "fetch", {"url": full, "purpose": purpose}, "ok", sha256=meta["sha256"])
+    enc = r.encoding if r.encoding and r.encoding.lower() != "iso-8859-1" else (r.apparent_encoding or "utf-8")
+    _remember(cr, cache_key, body, meta, enc)
     if binary:
         return body, meta
-    enc = r.encoding if r.encoding and r.encoding.lower() != "iso-8859-1" else (r.apparent_encoding or "utf-8")
     text = body.decode(enc, errors="replace")
     flag_injection(st, full, text)
     return text, meta
+
+def _remember(cr, key, body, meta, enc):
+    """Keep this run's responses so a repeat request reuses them (no new request, no loop trip)."""
+    rel = f"tmp/page_cache/{sha256(key.encode())[:24]}.bin"
+    write_bytes(rel, body)
+    cr.setdefault("page_cache", {})[key] = {"path": rel, "meta": meta, "encoding": enc}
 
 def _record_fixture(full, body, data, resp):
     fdir = ROOT / "evals" / "fixtures" / os.environ["TSUCHIYA_RECORD"]
@@ -3531,6 +3556,10 @@ def sync(st, stores: dict[str, CsvStore], extra_warnings: list[dict], test: bool
         return {"synced": False, "error": "Sheets auth failed (env not set)"}
     try:
         import gspread
+    except ImportError:
+        log(st, "sheets_sync", {}, "Sheets library missing (gspread not installed in this environment)")
+        return {"synced": False, "error": "Sheets library missing: gspread not installed (environment setup script / network)"}
+    try:
         gc = gspread.service_account(filename=creds) if os.path.exists(creds) else \
             gspread.service_account_from_dict(json.loads(creds))
         sh = gc.open_by_key(sheet_id)
