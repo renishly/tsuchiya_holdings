@@ -254,3 +254,41 @@ Result: P7 in_progress (web.archive.org 503 again; 4 snapshots added, cursor sav
 
 ### Next planned
 P7
+
+## R-20261009-125314 — scheduled
+
+- Start / end (JST): 2026-10-09T12:53:14+09:00 / 2026-10-09T13:14:23+09:00
+- Iterations: 65; web requests by domain: {"iestdot.com": 4, "mylist-v2.realnetpro.com": 17, "tsuchiyafudosan.jp": 3, "www.tsuchiyahome.jp": 4, "www.hometopia.jp": 1, "web.archive.org": 21, "www.tsuchiya.co.jp": 3, "irbank.net": 5, "www.nippon-grande.co.jp": 1, "logos-holdings.jp": 1, "www.nihonhouse-hd.co.jp": 1, "www.tamahome.jp": 2, "api.edinet-fsa.go.jp": 2}
+
+### Plan
+Phase P7 (Alternative data): only remaining initial-build phase; resume Wayback cursor and listing scans (~25 req/domain cap).
+Then steady-state price refresh if P7 completes; then P4 validate, P9 dictionary, P5 sync, finish.
+Budget: ~30 tool calls, <30 min.
+Result: P7 complete (Wayback backlog 7 left, continues daily). Initial build P1-P9 complete; steady-state price refresh ran. P4/P9/P5 complete.
+
+### Phases worked
+- P7: complete
+- P4: complete
+- P9: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 105 rows total; 28 written this run
+- Alternative Data: 507 rows total; 90 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
