@@ -94,3 +94,48 @@ P6 still in_progress (peer EV inputs 1873/1419 pending, ≤2 peers per run). P7 
 
 ### Next planned
 P5
+
+## R-20261009-084841 — scheduled
+
+- Start / end (JST): 2026-10-09T08:48:41+09:00 / 2026-10-09T09:03:38+09:00
+- Iterations: 88; web requests by domain: {"www.tsuchiya.co.jp": 4, "api.edinet-fsa.go.jp": 14, "irbank.net": 10, "www.nippon-grande.co.jp": 1, "logos-holdings.jp": 1, "www.nihonhouse-hd.co.jp": 1, "www.tamahome.jp": 2, "iestdot.com": 5, "mylist-v2.realnetpro.com": 17, "tsuchiyafudosan.jp": 3, "www.tsuchiyahome.jp": 4, "www.hometopia.jp": 1, "web.archive.org": 25}
+
+**NEEDS ATTENTION**
+- Sheets library missing: gspread not installed (environment setup script / network)
+- Sheets library missing: gspread not installed (environment setup script / network)
+
+### Plan
+Continue initial build: remaining P5, P6, P7.
+P5 will fail again: AR-20261009-01 approved, but gspread missing and PyPI unreachable (pip install failed this run).
+Run P6 (peer EV inputs 1873/1419 via EDINET cursor, prices, targets) and P7 (alt data, Wayback cursor) as budget allows.
+Budget: <=140 tool calls, <=55 min. Finish with P4, P9, P5, finish.
+Result: P6 complete; P7 in_progress (6 Wayback snapshots missing: 503/timeouts, cursor saved); P5 blocked on missing gspread.
+
+### Phases worked
+- P5: in_progress
+- P6: complete
+- P7: in_progress
+- P4: complete
+- P9: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 94 rows total; 5 written this run
+- Alternative Data: 409 rows total; 70 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- Price from a third-party source (market data (irbank, third-party))
+- Forecast EPS differs: 決算短信 0.0 vs irbank 10.09 (irbank may be stale)
+
+### Next planned
+P5
