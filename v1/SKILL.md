@@ -101,7 +101,7 @@ If none has them, try `python3 -m pip install --quiet requests beautifulsoup4 lx
 
 **Step 5 — sync** changed CSVs to the Sheet: `agent.py run P5` (skips with a pending approval until the one-time Sheet approval exists).
 
-**Step 6 — finish.** `agent.py finish --plan tmp/plan.txt` appends the run summary to `v1/logs/run_summaries.md`, updates `run_state.json`, releases the lock and (cloud routine, not test mode) commits `v1/data v1/reports v1/state v1/logs v1/raw v1/inputs` and pushes the current branch normally (never force, never rewrite history; Addenda A1, A11). Always run finish, even after errors.
+**Step 6 — finish.** `agent.py finish --plan tmp/plan.txt` appends the run summary to `v1/logs/run_summaries.md`, updates `run_state.json`, releases the lock and (cloud routine, not test mode) commits `v1/data v1/reports v1/state v1/logs v1/raw v1/inputs` and pushes `HEAD` to `main` (works from a detached cloud checkout; a normal push that git refuses unless it is a fast-forward — never force, never rewrite history; Addenda A1, A11). If the push is refused because `main` moved, do not force: report it in the summary; the next run starts from the newer `main`. Always run finish, even after errors.
 
 **Stopping conditions.** Stop work and go to Steps 4–6 when: the selected work is complete; you have made ~140 tool calls this run (keep 10 for validate/sync/finish; the hard limit is 150); 55 minutes have elapsed (hard limit 60); or a helper returns `budget_stop`. Helpers enforce the same limits and save cursors so the next run resumes exactly where this one stopped.
 
@@ -131,7 +131,7 @@ If none has them, try `python3 -m pip install --quiet requests beautifulsoup4 lx
 
 **P6 Baseline metrics.** Historical metrics for all five fiscal years (Revenue, Operating Profit, Net Profit, EPS, Operating CF, FCF, EBITDA, interest-bearing debt, net debt, shares ex-treasury), headline actuals from the latest full-year 決算短信 (cross-source input), company forecasts (会社予想) from the newest 決算短信 or 業績予想の修正 on each company's IR page (Tsuchiya: IR news; タマホーム: IR library 決算短信等), plus any 決算短信 PDF URLs the student lists in `v1/inputs/manual_sources.csv` (needed for 日本グランデ, ロゴスHD and 日本ハウスHD, whose lists are rendered by JavaScript or hosted on a robots-disallowed service — never fetch xj-storage.jp), the latest price (order: the student's JPX entry in `v1/inputs/manual_prices.csv` > Yahoo Finance daily close via yfinance (Addendum A16) > irbank daily close), market cap, EV, trailing/forward P/E, dividend yield, forward EBITDA, peers' forward P/E and EV/EBITDA, Target P/E (mean; median in the note; negative or n/m peers excluded and listed), Target Price (P/E), Target EV/EBITDA, Target Price (EV/EBITDA), and Expected Return = Target Price / Price − 1 + dividend yield. If Tsuchiya's forecast EPS is ≤ 0 the P/E target price is written as `not meaningful` with the reason — never as a negative or invented number. Peer EV inputs come from each peer's latest 有報 (EDINET, cursor, ≤ 2 peers per run).
 
-**P7 Alternative data** (Addendum A10). Company-run listing pages only: `iestdot.com/property/` (土屋ホーム不動産販売), `mylist-v2.realnetpro.com/22359m1/` (土屋ホーム不動産 rentals) and the result count of `tsuchiyafudosan.jp/property/`; detail pages are read only to obtain 取引態様/築年 for listings that lack them (≤ 10–12 per source per run). Student-entered portal listings from `v1/inputs/manual_listings.csv` are validated, deduplicated, and tracked (first_seen / last_seen / status). Group homepages (展示場, 分譲地, events, lineup, ホームトピア, 不動産 services and stores, IEST.) are snapshotted with item lists, plus one Wayback snapshot per page per year 2021–2025 (cursor). MLIT 不動産情報ライブラリ area benchmarks need `REINFOLIB_API_KEY`. Listings that disappear from a **complete** scan become `status = removed` (kept, never deleted; disappearance is not proof of a sale). **You never fetch NIFTY不動産, SUUMO, HOME'S, athome, 不動産ジャパン or ハトマークサイト** — their terms forbid automated access; the helpers refuse them.
+**P7 Alternative data** (Addendum A10). Company-run listing pages only: `iestdot.com/property/` (土屋ホーム不動産販売), `mylist-v2.realnetpro.com/22359m1/` (土屋ホーム不動産 rentals) and the result count of `tsuchiyafudosan.jp/property/`; detail pages are read only to obtain 取引態様/築年 for listings that lack them (≤ 10–12 per source per run). Student-entered portal listings from `v1/inputs/manual_listings.csv` are validated, deduplicated, and tracked (first_seen / last_seen / status). Group homepages (展示場, 分譲地, events, lineup, ホームトピア, 不動産 services and stores, IEST.) are snapshotted with item lists, plus one Wayback snapshot per page per year 2021–2025 (cursor). MLIT 不動産情報ライブラリ area benchmarks need `REINFOLIB_API_KEY`. The Wayback backlog (one snapshot per page per year) continues in each daily P7 and never blocks the steady state. Listings that disappear from a **complete** scan become `status = removed` (kept, never deleted; disappearance is not proof of a sale). **You never fetch NIFTY不動産, SUUMO, HOME'S, athome, 不動産ジャパン or ハトマークサイト** — their terms forbid automated access; the helpers refuse them.
 
 **P8 Legal.** The helper searches the MLIT ネガティブ情報等検索サイト (宅地建物取引業者 and 建設業者, last 5 years, name "土屋"; only exact group entities count) and verifies the brokerage rules in force against primary sources (e-Gov API). Then **you** run web searches for news and court items (e.g. `土屋ホーム不動産 行政処分`, `土屋ホーム 囲い込み`, `両手取引 規制 2026`, `囲い込み 国土交通省 処分`), and for each relevant result write only `{"url","publisher","published_date","headline","summary_en","topic","mentions_tsuchiya"}` to `v1/tmp/news.json` — `summary_en` is **one sentence in your own words**; never copy article text. `topic` ∈ 両手取引 / 囲い込み / 手数料規制 / 行政処分 / other; `mentions_tsuchiya` is "yes" only if a group entity is named. Then `agent.py news-ingest tmp/news.json` and `agent.py run P8` again to recompute the score. Score (0–100, weights 50/30/10/10): (a) dispositions 50 × min(1, Σ severity/4); (b) news/court items naming a group entity 30 × min(1, n/3); (c) 10 × share of observed group brokerage sale listings under 専任/専属専任; (d) 10 × verified rule points / 10. Missing components are excluded and the available weight is stated — never filled.
 
@@ -3030,7 +3030,16 @@ def current(st, sec: CsvStore, base: CsvStore, peers_too: bool = True) -> dict:
           [fids.get("operating_profit"), da["record_id"] if da else ""], url=fc.get("source_url", "https://www.tsuchiya.co.jp/ir/news/"),
           title="derived", location="", key_extra=today, note="" if febitda is not None else "Forecast OP or D&A missing.")
     peers = peer_metrics(st, base) if peers_too else {}
-    targets(st, base, w, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today)
+    eps_rows = [L.get((pe_, "EPS (basic)")) for pe_ in CONFIG["fiscal_years"].values()]
+    eps_rows = [r for r in eps_rows if r]
+    norm = statistics.mean(_v(r) for r in eps_rows) if eps_rows else None
+    norm_id = w.put("EPS (5-year average, actual)", "derived", "", norm, "JPY/share",
+                    "= mean of reported basic EPS for the fiscal years extracted (normalised EPS; Addendum A18)",
+                    [r["record_id"] for r in eps_rows], url=eps_rows[-1]["source_url"] if eps_rows else "https://disclosure2.edinet-fsa.go.jp/",
+                    title="有価証券報告書 (5 years)", location="EPS per filing", period_label=f"{len(eps_rows)} fiscal years",
+                    note="" if len(eps_rows) == 5 else f"Only {len(eps_rows)} of 5 fiscal years available; average over those.")
+    targets(st, base, w, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today,
+            norm_eps=norm, norm_id=norm_id, eps_actual=_v(eps_a) if eps_a else None, eps_actual_id=eps_a["record_id"] if eps_a else None)
     return out
 
 # ---------------------------------------------------------------- peers
@@ -3119,7 +3128,8 @@ def peer_metrics(st, base: CsvStore) -> dict:
         res[t] = r
     return res
 
-def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today):
+def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today,
+            norm_eps=None, norm_id=None, eps_actual=None, eps_actual_id=None):
     pes = {t: r["pe"] for t, r in peers.items() if r.get("pe")}
     excluded = [f"{t} ({'n/m' if 'pe' in r else 'missing'})" for t, r in peers.items() if not r.get("pe")]
     tpe = statistics.mean(pes.values()) if pes else None
@@ -3133,8 +3143,11 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
         note = "" if feps > 0 else f"Company-forecast EPS = {feps} (≤ 0); a P/E target price would be zero or negative and is not reported."
     else:
         tp, note = None, "Target P/E or forecast EPS missing."
+    method = {}  # basis -> (price, record_id) for the average valuated price
     tp_id = w.put("Target Price (P/E)", "derived-current", "", tp, "JPY/share", "= Target P/E × company-forecast EPS",
                   [tpe_id, fids.get("eps")], url="https://www.tsuchiya.co.jp/ir/news/", title="derived", location="", key_extra=today, note=note)
+    if isinstance(tp, float):
+        method["forecast"] = (tp, tp_id)
     if isinstance(tp, float) and price:
         er = tp / price - 1 + (dy or 0)
         w.put("Expected Return (P/E)", "derived-current", "", er, "ratio", "= Target Price / Price − 1 + dividend yield",
@@ -3144,6 +3157,25 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
         w.put("Expected Return (P/E)", "derived-current", "", "not meaningful" if tp == "not meaningful" else None, "ratio",
               "= Target Price / Price − 1 + dividend yield", [tp_id, price_id], url="https://www.tsuchiya.co.jp/ir/news/",
               title="derived", location="", key_extra=today, note="Target price by P/E not available.")
+    for label, eps, eid, basis_note in (
+            ("Target Price (P/E, trailing EPS)", eps_actual, eps_actual_id, "latest reported annual EPS"),
+            ("Target Price (P/E, 5-year average EPS)", norm_eps, norm_id,
+             "normalised EPS = mean of the five reported years; used because forecast and trailing EPS are not positive (A18)")):
+        if tpe is None or eps is None:
+            w.put(label, "derived-current", "", None, "JPY/share", f"= Target P/E × {basis_note}", [tpe_id, eid],
+                  url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today, note="Target P/E or EPS missing.")
+            continue
+        tpx = tpe * eps if eps > 0 else "not meaningful"
+        tpx_id = w.put(label, "derived-current", "", tpx, "JPY/share", f"= Target P/E × {basis_note}", [tpe_id, eid],
+                       url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
+                       note="" if eps > 0 else f"EPS = {eps:.2f} (≤ 0); a P/E price would be zero or negative.")
+        if isinstance(tpx, float):
+            method["trailing" if "trailing" in label else "5-year average"] = (tpx, tpx_id)
+        er = (tpx / price - 1 + (dy or 0)) if isinstance(tpx, float) and price else ("not meaningful" if tpx == "not meaningful" else None)
+        w.put(label.replace("Target Price", "Expected Return"), "derived-current", "", er, "ratio",
+              "= Target Price / current market price − 1 + dividend yield", [tpx_id, price_id],
+              url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
+              note="" if isinstance(er, float) else ("Target price not meaningful." if er else "Price missing."))
     evs = {t: r["ev_ebitda"] for t, r in peers.items() if r.get("ev_ebitda")}
     tm = statistics.mean(evs.values()) if evs else None
     tm_id = w.put("Target EV/EBITDA", "derived-current", "", tm, "times",
@@ -3155,6 +3187,7 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
         tev = febitda * tm
         teq = tev - (debt - _v(cash))
         tps = teq / shares
+        method["ev_ebitda"] = (tps, None)
         tps_id = w.put("Target Price (EV/EBITDA)", "derived-current", "", tps, "JPY/share",
                        "= (Forward EBITDA × Target EV/EBITDA − Net debt) / shares outstanding (ex-treasury)",
                        [tm_id] + shares_ids + [cash["record_id"]], url=cash["source_url"], title="derived", location="", key_extra=today)
@@ -3167,6 +3200,19 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
               "JPY/share", "= (Forward EBITDA × Target EV/EBITDA − Net debt) / shares", [tm_id],
               url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
               note="Inputs missing (target multiple, forward EBITDA, net debt or shares).")
+    # Average valuated price = mean of the P/E method price and the EV/EBITDA method price (Addendum A18).
+    pe_basis = next((b for b in ("forecast", "trailing", "5-year average") if b in method), None)
+    if "ev_ebitda" in method:
+        method["ev_ebitda"] = (method["ev_ebitda"][0], tps_id)
+    parts = [(f"P/E ({pe_basis} EPS)", *method[pe_basis])] if pe_basis else []
+    if "ev_ebitda" in method:
+        parts.append(("EV/EBITDA", *method["ev_ebitda"]))
+    avgp = statistics.mean(p for _, p, _ in parts) if len(parts) == 2 else None
+    w.put("Average Valuated Price", "derived-current", "", avgp, "JPY/share",
+          "= (P/E method price + EV/EBITDA method price) / 2; P/E method uses forecast EPS, else trailing EPS, else 5-year average EPS",
+          [i for _, _, i in parts], url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
+          note=("Methods: " + "; ".join(f"{n} = {p:.2f}" for n, p, _ in parts)) if avgp is not None
+          else "Needs both a P/E method price and an EV/EBITDA price; not computed (not imputed).")
 
 # ---------------------------------------------------------------- peer EV inputs from EDINET (cursor)
 def latest_filed_fy_end(today, month: int):
@@ -3406,6 +3452,12 @@ METRICS = {
     "Target P/E": "Mean of peers' forward P/E (negative/n.m. excluded; median shown in the note).",
     "Target Price (P/E)": "Target P/E × forecast EPS; 'not meaningful' when forecast EPS ≤ 0.",
     "Expected Return (P/E)": "Target price / price − 1 + dividend yield (syllabus 2.5).",
+    "Average Valuated Price": "Mean of the P/E method price (forecast EPS, else trailing, else 5-year average EPS) and the EV/EBITDA price.",
+    "EPS (5-year average, actual)": "Mean of reported basic EPS over the five fiscal years (normalised EPS).",
+    "Target Price (P/E, trailing EPS)": "Target P/E × latest reported annual EPS; 'not meaningful' if EPS ≤ 0.",
+    "Target Price (P/E, 5-year average EPS)": "Target P/E × 5-year average EPS (normalised; used when forecast/trailing EPS ≤ 0).",
+    "Expected Return (P/E, trailing EPS)": "Target price (trailing EPS) / current market price − 1 + dividend yield.",
+    "Expected Return (P/E, 5-year average EPS)": "Target price (5-year average EPS) / current market price − 1 + dividend yield.",
     "Target EV/EBITDA": "Mean of peers' trailing EV/EBITDA (latest 有報 actuals), applied to Tsuchiya's forward EBITDA.",
     "Target Price (EV/EBITDA)": "(Forward EBITDA × target multiple − net debt) / shares (syllabus 2.4).",
     "Expected Return (EV/EBITDA)": "Target price / price − 1 + dividend yield.",
@@ -4452,8 +4504,10 @@ def p7(st):
     finally:
         res["csv"] = alt.save(st)
     st["daily"]["listings"] = now().date().isoformat()
-    wb_total = len(altdata.HOMEPAGES) * 5
-    res["_incomplete"] = len(st["daily"].get("wayback_done", [])) < wb_total or any("budget_stop" in v for v in res.values() if isinstance(v, dict))
+    # The Wayback backlog continues in the daily P7 runs; it does not hold back the steady-state refresh.
+    res["wayback_backlog"] = len(altdata.HOMEPAGES) * 5 - len(st["daily"].get("wayback_done", []))
+    scans = [res.get("iest", {}), res.get("rentals", {})]
+    res["_incomplete"] = not all(s.get("complete") for s in scans)
     return res
 
 def _scan(stats, alt, observed, prefix):
@@ -4700,17 +4754,41 @@ def _dashboard_finish(st, cr, S) -> str:
             dashboard.set_monitor(dict_page, "Data dictionary (report_list.html)")
         base = S["Baseline Metrics"]
         px = _latest(base, "1840", "Stock Price")
-        val = {}
-        for m in ("Stock Price", "P/E (forward)", "Target P/E", "Target Price (P/E)", "Target EV/EBITDA",
-                  "Target Price (EV/EBITDA)", "Expected Return (EV/EBITDA)", "Dividend Yield (forecast)", "EPS (company forecast)"):
-            r = _latest(base, "1840", m)
-            if r:
-                val[m] = r["value"]
-        if px:
-            val["price date"] = px["quote_time_jst"][:10]
-            val["price source"] = px["source_type"]
-        if val:
-            dashboard.set_monitor(val, "Valuation (agent baseline)")
+        if px:  # single value: the latest market price (JPY)
+            dashboard.set_monitor(round(float(px["value"]), 2), "Current market price")
+        avg = _latest(base, "1840", "Average Valuated Price")
+        if avg:  # single value: mean of the two valuation methods (JPY)
+            try:
+                dashboard.set_monitor(round(float(avg["value"]), 2), "Average valuated price")
+            except ValueError:
+                dashboard.set_monitor(avg["value"], "Average valuated price")
+
+        def show(metric):
+            r = _latest(base, "1840", metric)
+            if not r:
+                return "not available"
+            try:
+                return round(float(r["value"]), 4)
+            except ValueError:
+                return f"{r['value']}: {r['correction_note'][:80]}" if r["value"] else f"not computed: {r['correction_note'][:80]}"
+        val = {
+            "current market price (JPY)": show("Stock Price"),
+            "market price date / source": f"{px['quote_time_jst'][:10]} / {px['source_type']}" if px else "not available",
+            "target P/E (peer mean)": show("Target P/E"),
+            "price via P/E, forecast EPS (JPY)": show("Target Price (P/E)"),
+            "price via P/E, trailing EPS (JPY)": show("Target Price (P/E, trailing EPS)"),
+            "price via P/E, 5-year average EPS (JPY)": show("Target Price (P/E, 5-year average EPS)"),
+            "target EV/EBITDA (peer mean)": show("Target EV/EBITDA"),
+            "price via EV/EBITDA (JPY)": show("Target Price (EV/EBITDA)"),
+            "average valuated price (JPY)": show("Average Valuated Price"),
+            "average uses": (avg or {}).get("correction_note", "") or "not available",
+            "return via P/E, 5-year average EPS": show("Expected Return (P/E, 5-year average EPS)"),
+            "return via EV/EBITDA": show("Expected Return (EV/EBITDA)"),
+            "inputs: forecast EPS / 5-year average EPS": f"{show('EPS (company forecast)')} / {show('EPS (5-year average, actual)')}",
+            "dividend yield (forecast)": show("Dividend Yield (forecast)"),
+            "note": "Agent baseline calculated from public data; the target and view are the student's (syllabus 2.5).",
+        }
+        dashboard.set_monitor(val, "Valuation (agent baseline)")
         legal = S["Alternative Data"].get(record_id("legal_score", "total"))
         if legal and legal["value"]:
             dashboard.set_monitor(f"{legal['value']} / 100 (exposure measure, not a finding of wrongdoing)", "Legal penalty score")
@@ -4731,8 +4809,12 @@ def _git_commit(cr) -> str:
         if diff.returncode == 0:
             return "nothing to commit"
         subprocess.run(["git", "-C", str(top), "commit", "-m", f"agent run {cr['run_id']} ({cr['mode']})"], check=True, capture_output=True)
-        p = subprocess.run(["git", "-C", str(top), "push"], capture_output=True, text=True)
-        return "committed and pushed" if p.returncode == 0 else f"committed; push failed: {p.stderr.strip()[:120]}"
+        # Cloud checkouts can be a detached HEAD: push HEAD to main explicitly. A normal push is refused by git
+        # unless it is a fast-forward, so this never overwrites history (never --force).
+        branch = subprocess.run(["git", "-C", str(top), "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True).stdout.strip()
+        target = branch if branch and branch != "HEAD" else "main"
+        p = subprocess.run(["git", "-C", str(top), "push", "origin", f"HEAD:refs/heads/{target}"], capture_output=True, text=True)
+        return f"committed and pushed to {target}" if p.returncode == 0 else f"committed; push failed: {p.stderr.strip()[:160]}"
     except subprocess.CalledProcessError as e:
         return f"git error: {e.stderr.decode()[:120] if e.stderr else e}"
 

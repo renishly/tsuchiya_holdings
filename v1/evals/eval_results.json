@@ -4,18 +4,18 @@
   "category": "core",
   "title": "Full P1–P9 run on fixtures",
   "result": "pass",
-  "reason": "1187 rows; all with source links (re-run)",
+  "reason": "1193 rows; all with source links (re-run)",
   "runs": [
    {
     "pass": true,
-    "msg": "1187 rows; all with source links",
-    "secs": 14.8,
+    "msg": "1193 rows; all with source links",
+    "secs": 26.5,
     "iterations": 33
    },
    {
     "pass": true,
-    "msg": "1187 rows; all with source links",
-    "secs": 14.4,
+    "msg": "1193 rows; all with source links",
+    "secs": 25.9,
     "iterations": 33
    }
   ]
@@ -156,13 +156,13 @@
    {
     "pass": true,
     "msg": "10 FCF/EBITDA values match their input rows; formulas stated",
-    "secs": 8.9,
+    "secs": 15.5,
     "iterations": 15
    },
    {
     "pass": true,
     "msg": "10 FCF/EBITDA values match their input rows; formulas stated",
-    "secs": 8.8,
+    "secs": 16.0,
     "iterations": 15
    }
   ]
@@ -172,7 +172,7 @@
   "category": "core",
   "title": "Target P/E excludes a negative-P/E peer",
   "result": "pass",
-  "reason": "Target P/E 12 (1873 excluded, median noted); target price 240",
+  "reason": "Target P/E 12 (1873 excluded, median noted); target price 240 (re-run)",
   "runs": [
    {
     "pass": true,
@@ -214,18 +214,18 @@
   "category": "core",
   "title": "report_list.html covers 100% of columns and line items",
   "result": "pass",
-  "reason": "columns 117/117, line items 50/50, metrics 34/34",
+  "reason": "columns 117/117, line items 50/50, metrics 40/40 (re-run)",
   "runs": [
    {
     "pass": true,
-    "msg": "columns 117/117, line items 50/50, metrics 34/34",
-    "secs": 8.1,
+    "msg": "columns 117/117, line items 50/50, metrics 40/40",
+    "secs": 19.6,
     "iterations": 18
    },
    {
     "pass": true,
-    "msg": "columns 117/117, line items 50/50, metrics 34/34",
-    "secs": 8.1,
+    "msg": "columns 117/117, line items 50/50, metrics 40/40",
+    "secs": 19.0,
     "iterations": 18
    }
   ]
@@ -303,13 +303,13 @@
    {
     "pass": true,
     "msg": "EPS -3.66; P/E rows 'not meaningful'; no negative target price",
-    "secs": 8.8,
+    "secs": 16.5,
     "iterations": 15
    },
    {
     "pass": true,
     "msg": "EPS -3.66; P/E rows 'not meaningful'; no negative target price",
-    "secs": 8.9,
+    "secs": 15.4,
     "iterations": 15
    }
   ]
@@ -340,18 +340,18 @@
   "category": "edge",
   "title": "Malformed / empty HTML does not crash the run",
   "result": "pass",
-  "reason": "P7 in_progress; iest: {'pages': 1, 'listings': 0, 'details': 0, 'complete': False, 'total_reported': N",
+  "reason": "P7 in_progress; iest: {'pages': 1, 'listings': 0, 'details': 0, 'complete': False, 'total_reported': N (re-run)",
   "runs": [
    {
     "pass": true,
     "msg": "P7 in_progress; iest: {'pages': 1, 'listings': 0, 'details': 0, 'complete': False, 'total_reported': N",
-    "secs": 1.5,
+    "secs": 2.5,
     "iterations": 3
    },
    {
     "pass": true,
     "msg": "P7 in_progress; iest: {'pages': 1, 'listings': 0, 'details': 0, 'complete': False, 'total_reported': N",
-    "secs": 1.5,
+    "secs": 2.6,
     "iterations": 3
    }
   ]
@@ -576,13 +576,13 @@
    {
     "pass": true,
     "msg": "Sheet first write queued; schema change refused; >20% change held for approval",
-    "secs": 2.5,
+    "secs": 4.6,
     "iterations": 10
    },
    {
     "pass": true,
     "msg": "Sheet first write queued; schema change refused; >20% change held for approval",
-    "secs": 2.5,
+    "secs": 4.3,
     "iterations": 10
    }
   ]
@@ -639,13 +639,13 @@
    {
     "pass": true,
     "msg": "stopped with 0/5 found, resumed from cursor to completion",
-    "secs": 2.7,
+    "secs": 5.0,
     "iterations": 18
    },
    {
     "pass": true,
     "msg": "stopped with 0/5 found, resumed from cursor to completion",
-    "secs": 2.6,
+    "secs": 4.7,
     "iterations": 18
    }
   ]
@@ -655,18 +655,18 @@
   "category": "memory",
   "title": "No duplicate rows after a re-run",
   "result": "pass",
-  "reason": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 94} (re-run)",
+  "reason": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 100} (re-run)",
   "runs": [
    {
     "pass": true,
-    "msg": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 94}",
-    "secs": 10.6,
+    "msg": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 100}",
+    "secs": 19.3,
     "iterations": 19
    },
    {
     "pass": true,
-    "msg": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 94}",
-    "secs": 10.7,
+    "msg": "row counts unchanged after re-run: {'Securities Reports': 728, 'Baseline Metrics': 100}",
+    "secs": 18.9,
     "iterations": 19
    }
   ]

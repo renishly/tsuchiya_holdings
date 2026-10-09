@@ -73,6 +73,7 @@ Final source links are listed in §3; `SKILL.md` §7 is the enforced version of 
 - Target EV/EBITDA is the mean of peers' EV/EBITDA on their latest 有報 actuals (trailing; irbank has no forecast operating profit), applied to Tsuchiya's forward EBITDA (A14).
 - Forward EBITDA = forecast 営業利益 + latest actual 減価償却費. The flat-D&A assumption is stated on every row.
 - Target Price (EV/EBITDA) = (Forward EBITDA × target − net debt) / shares ex-treasury.
+- Because forecast EPS is ¥0 and trailing EPS negative, the P/E method also uses normalised EPS (5-year average of reported EPS). Average Valuated Price = mean of the P/E method price and the EV/EBITDA price; market price and valuation are separate dashboard monitors (A18).
 
 ## 3. Final source links (what the agent fetches)
 

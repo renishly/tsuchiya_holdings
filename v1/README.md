@@ -90,7 +90,7 @@ The agent's first real write needs your one-time approval. It queues `sheets_fir
 
 The agent reports to https://fukuhara-seminar.onrender.com as **Equity Pricer [Tsuchiya Holdings]**.
 - **Settings:** env `DASHBOARD_URL=https://fukuhara-seminar.onrender.com` and `DASHBOARD_API_KEY` (from the dashboard's View key). Locally, add both to `~/.zshrc`; in the cloud, add both to the `tsuchiya-1840` environment's variables and allow `fukuhara-seminar.onrender.com`.
-- **Each run:** checks in (shows online for 5 h), sends a `run summary` output, red lines for NEEDS ATTENTION, and refreshes the monitors (Status, Build phases, Rows per CSV, Pending approvals, Data, Google Sheet, Data dictionary, Valuation, Legal penalty score).
+- **Each run:** checks in (shows online for 5 h), sends a `run summary` output, red lines for NEEDS ATTENTION, and refreshes the monitors: Status, Build phases, Rows per CSV, Pending approvals, Data, Google Sheet, Data dictionary, **Current market price** (one number), **Average valuated price** (one number: mean of the P/E and EV/EBITDA prices), **Valuation (agent baseline)** (every method's price written out), Legal penalty score.
 - **Pause / Start** on the card: a paused agent skips its next runs until you press Start.
 - **Messages and the Inbox are off** by design.
 - **Offline buffer:** if the site is asleep or unreachable, items wait in `v1/state/dashboard_buffer/` and go at the next run.
