@@ -139,3 +139,42 @@ Result: P6 complete; P7 in_progress (6 Wayback snapshots missing: 503/timeouts, 
 
 ### Next planned
 P5
+
+## R-20261009-091647 — scheduled
+
+- Start / end (JST): 2026-10-09T09:16:47+09:00 / 2026-10-09T09:22:06+09:00
+- Iterations: 34; web requests by domain: {"iestdot.com": 4, "mylist-v2.realnetpro.com": 17, "tsuchiyafudosan.jp": 3, "www.tsuchiyahome.jp": 4, "www.hometopia.jp": 1, "web.archive.org": 5}
+
+### Plan
+Continue initial build: remaining P5 (Sheets sync) and P7 (alt data, Wayback cursor).
+gspread now importable; AR-20261009-01 approved previously, so P5 should perform the first Sheet write.
+Run P7 to finish the Wayback cursor (~6 snapshots), then P4, P9, P5, finish.
+Budget: <=140 tool calls, <=55 min.
+Result: P5 complete (first Sheet sync: 4 CSV tabs + Agent Warnings). P7 in_progress: web.archive.org 503s, 22 Wayback snapshots pending (cursor saved). P4/P9 complete.
+
+### Phases worked
+- P7: in_progress
+- P4: complete
+- P9: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 94 rows total; 0 written this run
+- Alternative Data: 410 rows total; 22 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+P7
