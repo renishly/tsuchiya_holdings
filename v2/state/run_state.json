@@ -28,11 +28,11 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-09T13:14:12+09:00",
+      "last_success": "2026-10-15T22:16:54+09:00",
       "fail_streak": 0
     },
     "P5": {
-      "status": "complete",
+      "status": "in_progress",
       "cursor": null,
       "last_success": "2026-10-09T13:14:19+09:00",
       "fail_streak": 0
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-09T13:14:12+09:00",
+      "last_success": "2026-10-15T22:16:08+09:00",
       "fail_streak": 0
     }
   },
@@ -101,16 +101,16 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-10-09"
+    "filings": "2026-10-15"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-15",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.tsuchiya.co.jp/wp-sitemap.xml\n"
     },
     "irbank.net": {
-      "date": "2026-10-09",
-      "txt": "User-agent: *\nAllow: /\n\n# 検索結果ページ（無限URL生成）\nDisallow: /search\n\nSitemap: https://irbank.net/sitemap_index.xml\n"
+      "date": "2026-10-15",
+      "txt": ""
     },
     "iestdot.com": {
       "date": "2026-10-09",
@@ -145,19 +145,19 @@
       "txt": ""
     },
     "www.nippon-grande.co.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-15",
       "txt": "User-agent: *\nDisallow: /2025-wp/wp-admin/\nAllow: /2025-wp/wp-admin/admin-ajax.php\n\nSitemap: https://www.nippon-grande.co.jp/wp-sitemap.xml\n"
     },
     "logos-holdings.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-15",
       "txt": "User-agent: *\r\nDisallow: /wp/wp-admin/\r\nAllow: /wp/wp-admin/admin-ajax.php\r\n\r\nSitemap: https://logos-holdings.jp/sitemap.xml\r\nSitemap: https://logos-holdings.jp/sitemap.rss\n"
     },
     "www.nihonhouse-hd.co.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-15",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.nihonhouse-hd.co.jp/wp-sitemap.xml\n\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.xml\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.html\n"
     },
     "www.tamahome.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-15",
       "txt": "User-agent: *\nDisallow: /qkeioebqx4/wp-admin/\nAllow: /qkeioebqx4/wp-admin/admin-ajax.php\n\nSitemap: https://www.tamahome.jp/wp-sitemap.xml\n"
     }
   },
@@ -536,8 +536,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 260.0,
-      "quote_time": "2026-10-09T15:30:00+09:00"
+      "price": 258.0,
+      "quote_time": "2026-10-15T15:30:00+09:00"
     }
   },
   "history": [
@@ -582,6 +582,12 @@
       "ended": "2026-10-09T13:14:23+09:00",
       "iterations": 65,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261015-221538",
+      "ended": "2026-10-15T22:16:55+09:00",
+      "iterations": 13,
+      "attention": 1
     }
   ]
 }

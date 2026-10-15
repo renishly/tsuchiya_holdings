@@ -292,3 +292,53 @@ Result: P7 complete (Wayback backlog 7 left, continues daily). Initial build P1-
 
 ### Next planned
 steady
+
+## R-20261015-221538 — scheduled
+
+- Start / end (JST): 2026-10-15T22:15:38+09:00 / 2026-10-15T22:16:55+09:00
+- Iterations: 13; web requests by domain: {"www.tsuchiya.co.jp": 3, "irbank.net": 3, "www.nippon-grande.co.jp": 1, "logos-holdings.jp": 1, "www.nihonhouse-hd.co.jp": 1, "www.tamahome.jp": 2, "api.edinet-fsa.go.jp": 2}
+
+**NEEDS ATTENTION**
+- Sheets auth failed (JSONDecodeError)
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: no review snapshot yet (first review); daily check (first run after the TSE close today)
+Subagent baseline: code: steady -> {"metrics": {"csv": "Baseline Metrics", "saved": true, "added": 30, "changed": 2, "conflicts": 0, "total": 135}, "filings": {"new": []}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **First review — large moves since 10/9 (no prior review to compare).**  
+Average Valuated Price +28% (170.6 → 218.5) and Target P/E +56% (13.30 → 20.76); Target EV/EBITDA flat (7.49 → 7.47).  
+Stock price −0.8% (260 → 258).  
+Target P/E now matches **only タマホーム** (20.76); the 10/9 value (13.30) was the peer mean/median (23.8, 5.4, 3.4, 20.8).  
+1840 forward P/E still not meaningful (company EPS forecast = 0); P/E price uses 5-yr avg EPS (267.3).  
+EV/EBITDA price 169.7 implies −30% return vs current 258.  
+No new EDINET filings. P9 (data dictionary) complete.  
+**Student action:** confirm whether Target P/E should be peer aggregate or single-comparable; the 56% jump comes from methodology, not peer price moves.
+Model calls: 1; tokens in/out: 2685/1541; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: in_progress
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 135 rows total; 32 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+P5
