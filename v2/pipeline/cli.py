@@ -77,7 +77,7 @@ def cmd_start(a):
         return out({"proceed": False, "reason": "paused on the dashboard (press Start there to resume)", "dashboard": dash})
     return out({"proceed": True, "run_id": run_id, "mode": mode, "dashboard": dash, **_plan(st)})
 
-DASH_EVERY = 5 * 3600  # scheduled every 5 hours
+DASH_EVERY = 14 * 3600  # scheduled twice a day (06:17 and 16:17 JST); the longest gap is 14 hours
 
 def _dashboard_start(st, mode) -> dict:
     """Check in with the seminar dashboard (not in test mode). Paused -> the run does no work."""
@@ -274,7 +274,7 @@ def p6(st):
     run_ctx(st)["attention"].extend(w for w in r2["warnings"] if "moved" in w or "disagree" in w)
     run_ctx(st)["notes"].extend(w for w in r2["warnings"] if "moved" not in w and "disagree" not in w)
     peers_done = all(st["documents"].get(f"peer:{p['ticker']}", {}).get("latest_facts") for p in CONFIG["peers"])
-    return {"historical": r1, "tanshin": r0, "peer_inputs": pin, "csv": saved, "_incomplete": not peers_done}
+    return {"headline": headline(base), "historical": r1, "tanshin": r0, "peer_inputs": pin, "csv": saved, "_incomplete": not peers_done}
 
 def p7(st):
     import altdata
@@ -359,7 +359,7 @@ def cmd_steady(a):
     import metrics
     st = load_state()
     cr = run_ctx(st)
-    res = {}
+    res = {"headline": None}
     S = stores()
     try:
         r = metrics.current(st, S["Securities Reports"], S["Baseline Metrics"])
@@ -384,6 +384,7 @@ def cmd_steady(a):
         st["daily"]["filings"] = now().date().isoformat()
         save_state(st)
     save_state(st)
+    res["headline"] = headline(S["Baseline Metrics"])
     return out(res)
 
 def _capture(fn):
@@ -436,8 +437,12 @@ def cmd_peek(a):
         rows = [r for r in rows if r.get(k) == v]
     keep = ["record_id", "line_item_en", "metric", "record_type", "period_end", "value", "unit", "agent_status",
             "validation_status", "source_url", "correction_note"]
-    return out({"total": len(s.rows), "matched": len(rows),
-                "sample": [{k: r[k][:120] for k in keep if k in r} for r in rows[: a.limit]]})
+    res = {"total": len(s.rows), "matched": len(rows),
+           "sample": [{k: r[k][:120] for k in keep if k in r} for r in rows[: a.limit]]}
+    if not rows and a.where:  # a miss: show what the filtered columns actually contain, instead of nothing
+        res["available"] = {k: sorted({r.get(k, "") for r in s.rows.values()} - {""})[:60]
+                            for k in (w.split("=", 1)[0] for w in a.where)}
+    return out(res)
 
 # ---------------------------------------------------------------- finish
 SUMMARY_TMPL = """
@@ -520,6 +525,32 @@ def _latest(base, ticker, metric):
     rows = [r for r in base.rows.values() if r["ticker"] == ticker and r["metric"] == metric and r["value"] != ""]
     rows.sort(key=lambda r: (r["quote_time_jst"] or r["period_end"] or "", r["access_date_jst"]))
     return rows[-1] if rows else None
+
+HEADLINE = [("Stock Price", "stock_price_jpy"), ("Market Cap", "market_cap_jpy"), ("P/E (trailing)", "pe_trailing"),
+            ("P/E (forward)", "pe_forward"), ("EPS (company forecast)", "eps_forecast"),
+            ("EPS (5-year average, actual)", "eps_5y_avg"), ("Target P/E", "target_pe"),
+            ("Target Price (P/E)", "price_pe_forecast_eps"), ("Target Price (P/E, trailing EPS)", "price_pe_trailing_eps"),
+            ("Target Price (P/E, 5-year average EPS)", "price_pe_5y_avg_eps"), ("Target EV/EBITDA", "target_ev_ebitda"),
+            ("Target Price (EV/EBITDA)", "price_ev_ebitda"), ("Average Valuated Price", "average_valuated_price"),
+            ("Expected Return (P/E, 5-year average EPS)", "return_pe_5y_avg_eps"),
+            ("Expected Return (EV/EBITDA)", "return_ev_ebitda"), ("Dividend Yield (forecast)", "dividend_yield_forecast")]
+
+def headline(base) -> dict:
+    """The key 1840 baseline numbers in one small block, so a model never has to search the CSV for them.
+    A value that is missing or not meaningful is given with its reason, never filled in."""
+    res = {}
+    for metric, key in HEADLINE:
+        r = _latest(base, "1840", metric)
+        if r is None:
+            res[key] = "not available"
+            continue
+        try:
+            res[key] = round(float(r["value"]), 4)
+        except ValueError:
+            res[key] = f"{r['value'] or 'unresolved'}: {r['correction_note'][:80]}"
+    px = _latest(base, "1840", "Stock Price")
+    res["price_date_source"] = f"{px['quote_time_jst'][:10]} / {px['source_type']}" if px else "not available"
+    return res
 
 def _dashboard_finish(st, cr, S) -> str:
     """Send this run's chosen results: one 'run summary' output, NEEDS ATTENTION items, and a few monitors."""

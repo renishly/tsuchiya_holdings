@@ -2,7 +2,7 @@ name: Holdings agent v2
 
 on:
   schedule:
-    - cron: "17 1,6,11,15,20 * * *"   # ~00:17, 05:17, 10:17, 15:17, 20:17 JST (v1's 5-hour cadence)
+    - cron: "17 7,21 * * *"   # ~16:17 JST (after the 15:30 TSE close) and ~06:17 JST (daily filings check)
   workflow_dispatch:
     inputs:
       mode:

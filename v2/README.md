@@ -57,7 +57,7 @@ The models never run code they write. Every tool is one pipeline command, so a m
 5. **First live run:** Run workflow with mode `scheduled`. Check the run summary, the new commit on `main` ("agent v2 run …"), the Sheet, and the dashboard. On OpenRouter's Activity page the requests should cost $0.
 6. **Retire v1.** In claude.ai/code → Routines, disable `tsuchiya-1840-agent` so v1 and v2 never write the Sheet or the dashboard at the same time.
 
-The schedule (`17 1,6,11,15,20 * * *` UTC, about 00:17 / 05:17 / 10:17 / 15:17 / 20:17 JST) starts once the workflow file is on `main`. GitHub often starts scheduled runs a few minutes late.
+The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17 JST for the daily filings check) starts once the workflow file is on `main`. GitHub often starts scheduled runs a few minutes late.
 
 ## 3. Triggers
 
@@ -77,11 +77,18 @@ The schedule (`17 1,6,11,15,20 * * *` UTC, about 00:17 / 05:17 / 10:17 / 15:17 /
   ```
   Without `LLM_API_KEY` this runs the deterministic fallback. Test mode always works on a temporary copy, so `v2/` is left unchanged.
 
-## 4. Approvals, corrections, inputs
+## 4. What each run records
+
+- **Delegations and loops:** the run summary has a line per subagent, e.g. `Delegations: baseline x2 (8 steps, 6 tool calls; early stops: 1 step limit, 0 loop; repeated work: steady)`. The same numbers are kept per run in `v2/state/orchestrator.json` (`delegation_history`, last 200 runs). A re-delegation is allowed; each report tells the orchestrator what work was already done, so it can continue instead of repeating it.
+- **Headline numbers:** the steady refresh and P6 return a `headline` block (price, P/E, targets, Average Valuated Price, returns), so the models don't search the CSV for them.
+- **Close-out skips:** P4 validation is skipped when no CSV or the approval queue changed since the last validation. P5 Sheet sync is skipped when nothing changed since that day's sync and there is nothing needing attention. The Sheet is still synced at least once a day, so your edits in the Sheet are pulled back daily. Each skip is noted in the run summary.
+- **Log rotation:** at the first run of a new month, `logs/run_log.jsonl` (gzipped) and `logs/run_summaries.md` move to `logs/archive/<month>/`. Nothing is deleted.
+
+## 5. Approvals, corrections, inputs
 
 Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writing `APPROVE AR-…` on its own line in `v2/state/approvals.md` and committing it to `main`. Mark corrections with `student-verified` / `student-corrected` in the Sheet or the CSV. Optional inputs go in `v2/inputs/`.
 
-## 5. Adding a subagent
+## 6. Adding a subagent
 
 1. Create `v2/subagents/<name>.py` with a `SPEC = SubagentSpec(name, description, prompt, tools, max_steps, fallback)`. Each tool should wrap a pipeline command (see `baseline.py`).
 2. Write `v2/prompts/<name>.md`.
@@ -89,7 +96,7 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 4. For the alternative-data subagent: un-park P7/P8 in `pipeline/cli.py` (`PARKED`, `DAILY_TASKS`), and give the new subagent `run_phase` for them.
 5. For cross-communication: the orchestrator can already pass one subagent's report into another's task. Describe the exchange you want in `prompts/orchestrator.md`, and raise `MAX_DELEGATIONS` in `agent.py` if needed.
 
-## 6. Troubleshooting
+## 7. Troubleshooting
 
 | In the run log | Cause → fix |
 |---|---|
@@ -102,7 +109,7 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 | `push failed` / rejected | `main` moved twice during the run. The next run commits on top; nothing is lost from state. |
 | `Run skipped: paused on the dashboard` | Press Start on the dashboard card. |
 
-## 7. Known limitations
+## 8. Known limitations
 
 - Everything in `v1/README.md` §9 still applies (Yahoo/irbank prices, peer forecasts via irbank, forward EBITDA assumption).
 - **P7/P8 are parked.** Listings, homepage snapshots and the legal penalty score are not refreshed; the dashboard's legal score monitor shows v1's last value.

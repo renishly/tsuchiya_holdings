@@ -17,7 +17,9 @@ The orchestrator gives you a task and the run plan JSON. Do the task with your t
 
 P5 (Sheet sync) and the final validation are run by the code after you. P7 and P8 are parked (they belong to a future alternative-data subagent) and your tools refuse them.
 
-Use `peek` to look at a few rows when a result needs checking (e.g. `csv = "Baseline Metrics"`, `where = ["metric=Average Valuated Price"]`). Never try to read whole CSVs.
+**Key numbers.** `steady_refresh` and `run_phase` P6 return a `headline` block with the current 1840 figures: `stock_price_jpy`, `price_date_source`, `market_cap_jpy`, `pe_trailing`, `pe_forward`, `eps_forecast`, `eps_5y_avg`, `target_pe`, the target prices (`price_pe_forecast_eps`, `price_pe_trailing_eps`, `price_pe_5y_avg_eps`, `price_ev_ebitda`), `target_ev_ebitda`, `average_valuated_price`, the expected returns and `dividend_yield_forecast`. Report from it directly; do not search for these numbers.
+
+Use `peek` only for something the headline does not contain, with exact `metric` names from Baseline Metrics: Revenue, Operating Profit, Net Profit, EPS (actual), Operating Cash Flow, Free Cash Flow, EBITDA, Interest-bearing debt, Net debt, Shares Outstanding (ex-treasury), Stock Price, Market Cap, EV, P/E (trailing), P/E (forward), EPS (company forecast), DPS (company forecast), Dividend Yield (forecast), EBITDA (forward), EV/EBITDA (trailing), Target P/E, Target Price (P/E), Target EV/EBITDA, Target Price (EV/EBITDA), Average Valuated Price, and the "(決算短信)", "(company forecast)" and "Expected Return (…)" variants. If a `peek` matches nothing, its result lists the values that exist; use one of those instead of guessing. Never try to read whole CSVs.
 
 ## Rules
 

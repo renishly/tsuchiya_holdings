@@ -17,6 +17,9 @@ Flow of one run:
 from __future__ import annotations
 
 import argparse
+import datetime as dt
+import gzip
+import hashlib
 import json
 import os
 import shutil
@@ -54,6 +57,72 @@ def make_test_sandbox() -> Path:
     (tmp / "v1" / "evals" / "fixtures").symlink_to(fixtures)
     os.environ["TSUCHIYA_ROOT"] = str(tmp / "v2")
     return tmp / "v2"
+
+
+JST = dt.timezone(dt.timedelta(hours=9))
+ORCH_STATE = "state/orchestrator.json"   # close-out hashes and per-run delegation history (written by this file only)
+
+
+def load_orch() -> dict:
+    p = data_root() / ORCH_STATE
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"closeout": {}, "delegation_history": []}
+
+
+def save_orch(o: dict) -> None:
+    p = data_root() / ORCH_STATE
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(o, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def outputs_hash() -> str:
+    """Fingerprint of everything P4 checks and P5 mirrors: the four CSVs and the approval queue."""
+    h = hashlib.sha256()
+    root = data_root()
+    for f in sorted((root / "data").glob("*.csv")) + [root / "state" / "pending_approvals.md"]:
+        if f.exists():
+            h.update(f.name.encode() + b"\0" + f.read_bytes())
+    return h.hexdigest()
+
+
+def run_attention() -> list:
+    """NEEDS ATTENTION items of the current run (they go to the Sheet's Agent Warnings tab via P5)."""
+    try:
+        st = json.loads((data_root() / "state" / "run_state.json").read_text(encoding="utf-8"))
+        return (st.get("current_run") or {}).get("attention", [])
+    except (OSError, json.JSONDecodeError):
+        return []
+
+
+def rotate_logs() -> str:
+    """Monthly rotation: when the active run log started in an earlier month, move it (gzipped) and the run
+    summaries to logs/archive/<month>/, so the files committed every run stay small. Nothing is deleted."""
+    logs = data_root() / "logs"
+    log = logs / "run_log.jsonl"
+    try:
+        with open(log, encoding="utf-8") as f:
+            first = json.loads(f.readline() or "{}")
+    except (OSError, json.JSONDecodeError):
+        return ""
+    started = str(first.get("ts", ""))[:7]
+    month = dt.datetime.now(JST).strftime("%Y-%m")
+    if not started or started >= month:
+        return ""
+    arch = logs / "archive" / started
+    arch.mkdir(parents=True, exist_ok=True)
+    with open(log, "rb") as src, gzip.open(arch / "run_log.jsonl.gz", "ab") as dst:
+        shutil.copyfileobj(src, dst)
+    log.unlink()
+    summaries = logs / "run_summaries.md"
+    if summaries.exists():
+        with open(arch / "run_summaries.md", "a", encoding="utf-8") as dst:
+            dst.write(summaries.read_text(encoding="utf-8"))
+        summaries.unlink()
+    return f"logs from {started} archived to logs/archive/{started}/"
+
+
 def j(text: str) -> dict:
     try:
         return json.loads(text)
@@ -69,6 +138,8 @@ class Run:
         self.executed: list[tuple[str, ...]] = []   # pipeline commands run this run (so fallback never repeats)
         self.orchestrator_summary = ""
         self.model_error = ""
+        self.stats: dict[str, dict] = {}            # per subagent: delegations, early stops, repeated work
+        self.closeout_notes: list[str] = []
 
     # --- orchestrator tools ---------------------------------------------------------------------------------
     def write_plan(self, plan: str) -> str:
@@ -87,9 +158,23 @@ class Run:
         brief = (f"Mode: {self.mode}\nRun plan JSON from start:\n{json.dumps(self._plan_view(), ensure_ascii=False)}"
                  f"\n\nTask from the orchestrator:\n{task}")
         res = run_agent(subagent, load_prompt(spec.prompt), brief, spec.tools, spec.max_steps)
-        self.executed.extend(_as_cmd(c) for c in res.tool_calls)
-        report = {"subagent": subagent, "task": task[:300], "steps": res.steps, "tool_calls": len(res.tool_calls),
-                  "stopped": res.stopped, "report": res.text[:2000]}
+        cmds = [_as_cmd(c) for c in res.tool_calls]
+        work = [c for c in cmds if c[0] in ("run", "steady")]
+        repeated = [" ".join(c) for c in work if c in self.executed]  # pipeline work an earlier delegation did
+        self.executed.extend(cmds)
+        s = self.stats.setdefault(subagent, {"delegations": 0, "step_limit_stops": 0, "loop_stops": 0,
+                                             "steps": 0, "tool_calls": 0, "repeated_work": []})
+        s["delegations"] += 1
+        s["steps"] += res.steps
+        s["tool_calls"] += len(res.tool_calls)
+        s["step_limit_stops"] += res.stopped == "step limit"
+        s["loop_stops"] += res.stopped == "loop detected"
+        s["repeated_work"] += repeated
+        report = {"subagent": subagent, "attempt": s["delegations"], "task": task[:300], "steps": res.steps,
+                  "stopped": res.stopped,
+                  # what was actually run, so a re-delegation after an early stop need not redo finished work
+                  "work_done": [" ".join(c) for c in work], "repeated_work": repeated,
+                  "report": res.text[:2000]}
         self.reports.append(report)
         return json.dumps(report, ensure_ascii=False)
 
@@ -153,10 +238,32 @@ class Run:
                     break
 
     def close_out(self) -> dict:
+        orch = load_orch()
+        co = orch.setdefault("closeout", {})
+        today = dt.datetime.now(JST).date().isoformat()
         for phase in ("P4", "P5"):
-            if not self.mode.startswith("phase=") or self.mode.endswith(phase):  # phase mode: only that phase
-                print(f"Close-out: cli.py run {phase}", flush=True)
-                pipeline("run", phase)
+            if self.mode.startswith("phase="):
+                if not self.mode.endswith(phase):  # phase mode: only that phase, never skipped
+                    continue
+            elif phase == "P4" and outputs_hash() == co.get("p4_hash"):
+                self.closeout_notes.append("P4 skipped: no CSV or approval-queue change since the last validation.")
+                continue
+            elif phase == "P5" and outputs_hash() == co.get("p5_hash") and co.get("p5_date") == today \
+                    and not run_attention():
+                # still synced once a day, so edits the student made in the Sheet are pulled back daily
+                self.closeout_notes.append("P5 skipped: nothing changed since today's Sheet sync.")
+                continue
+            print(f"Close-out: cli.py run {phase}", flush=True)
+            r = j(pipeline("run", phase))
+            if r.get("status") == "complete":  # hash after the phase: P4 and P5 may themselves update rows
+                co[f"{phase.lower()}_hash"] = outputs_hash()
+                if phase == "P5":
+                    co["p5_date"] = today
+        if self.stats:
+            orch.setdefault("delegation_history", []).append(
+                {"run_id": self.start.get("run_id"), "date": today, "mode": self.mode, "subagents": self.stats})
+            orch["delegation_history"] = orch["delegation_history"][-200:]
+        save_orch(orch)
         plan_file = data_root() / "tmp" / "plan.txt"
         plan_file.parent.mkdir(parents=True, exist_ok=True)
         body = [self.plan_text or "(the orchestrator wrote no plan)"]
@@ -167,6 +274,11 @@ class Run:
                         f"{(r.get('stopped') + '; ') if r.get('stopped') else ''}{r['report'][:400]}")
         if self.orchestrator_summary:
             body.append("Orchestrator: " + self.orchestrator_summary[:600])
+        for name, st in self.stats.items():
+            body.append(f"Delegations: {name} x{st['delegations']} ({st['steps']} steps, {st['tool_calls']} tool calls; "
+                        f"early stops: {st['step_limit_stops']} step limit, {st['loop_stops']} loop; "
+                        f"repeated work: {', '.join(st['repeated_work']) or 'none'})")
+        body += self.closeout_notes
         u = llm.usage
         body.append(f"Model calls: {u['requests']}; tokens in/out: {u['prompt_tokens']}/{u['completion_tokens']}; "
                     f"models: {', '.join(sorted(u['models'])) or '(none)'}")
@@ -215,6 +327,9 @@ def main() -> int:
         os.environ["TSUCHIYA_GIT"] = "0"
         print(f"Test mode: sandbox copy at {make_test_sandbox()} (v2/ itself is not changed)", flush=True)
 
+    rotated = rotate_logs()
+    if rotated:
+        print(rotated, flush=True)
     start = j(pipeline("start", "--mode", mode))
     if not start.get("proceed"):
         reason = start.get("reason") or start.get("detail") or "start failed"
