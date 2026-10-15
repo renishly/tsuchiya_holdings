@@ -1,7 +1,7 @@
 {
  "closeout": {
-  "p4_hash": "47f147c447d6b71b39d96f03e7f5e6683a4f27551e0e8e713b300858e8d8ed73",
-  "p5_hash": "47f147c447d6b71b39d96f03e7f5e6683a4f27551e0e8e713b300858e8d8ed73",
+  "p4_hash": "06174699b15faba425f872a85006ac344cb9c77c3d43536e2222de92ecc7108f",
+  "p5_hash": "06174699b15faba425f872a85006ac344cb9c77c3d43536e2222de92ecc7108f",
   "p5_date": "2026-10-16"
  },
  "delegation_history": [
@@ -53,8 +53,8 @@
   }
  ],
  "review_snapshot": {
-  "date": "2026-10-16T03:35+09:00",
-  "run_id": "R-20261016-033323",
+  "date": "2026-10-16T04:18+09:00",
+  "run_id": "R-20261016-041350",
   "values": {
    "average_valuated_price": 195.786,
    "target_pe": 12.6846,
@@ -86,5 +86,15 @@
    }
   }
  },
- "last_daily_review": "2026-10-15"
+ "last_daily_review": "2026-10-15",
+ "consensus_snapshot": {
+  "date": "2026-10-16T04:18+09:00",
+  "run_id": "R-20261016-041350",
+  "prices": {
+   "baseline": 195.786,
+   "factor": 310.803
+  },
+  "price": 253.29,
+  "status": "disputed"
+ }
 }
