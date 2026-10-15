@@ -1,45 +1,70 @@
 {
  "closeout": {
-  "p4_hash": "e7b14f82ffa151a8f73f01644a744a71dc0622faa37b666a72b6a53ad3b41905"
+  "p4_hash": "66bb47d7bfa2ba1ae6b3195f590d79bbd4e43581892b0bc66eae2f1e2a1be668"
  },
- "delegation_history": [],
+ "delegation_history": [
+  {
+   "run_id": "R-20261016-030916",
+   "date": "2026-10-16",
+   "mode": "scheduled",
+   "subagents": {
+    "baseline": {
+     "delegations": 1,
+     "step_limit_stops": 0,
+     "loop_stops": 0,
+     "steps": 2,
+     "tool_calls": 1,
+     "repeated_work": [],
+     "attempts": [
+      {
+       "steps": 2,
+       "stopped": "",
+       "work_done": [],
+       "final_report": true
+      }
+     ]
+    }
+   }
+  }
+ ],
  "review_snapshot": {
-  "date": "2026-10-15T22:16+09:00",
-  "run_id": "R-20261015-221538",
+  "date": "2026-10-16T03:12+09:00",
+  "run_id": "R-20261016-030916",
   "values": {
-   "average_valuated_price": 218.452,
-   "target_pe": 20.7624,
-   "target_ev_ebitda": 7.4654,
+   "average_valuated_price": 191.754,
+   "target_pe": 12.6846,
+   "target_ev_ebitda": 11.1292,
+   "factor_implied_price": 310.803,
    "stock_price_jpy": 258.0
   },
   "peers": {
-   "2976": {
-    "name": "日本グランデ",
-    "price": 685.0,
-    "eps_forecast": 29.77,
-    "pe_forward": 23.8159,
-    "ev_ebitda": 9.6424
-   },
-   "205A": {
-    "name": "ロゴスホールディングス",
-    "price": 1564.0,
-    "eps_forecast": 295.63,
-    "pe_forward": 5.4257,
-    "ev_ebitda": 3.4502
+   "1419": {
+    "name": "タマホーム",
+    "price": 2865.0,
+    "eps_forecast": 137.99,
+    "pe_forward": 20.0884,
+    "ev_ebitda": 11.9616
    },
    "1873": {
     "name": "日本ハウスホールディングス",
     "price": 310.0,
     "eps_forecast": 90.25,
-    "pe_forward": 3.4349,
-    "ev_ebitda": 4.3734
+    "pe_forward": 3.446,
+    "ev_ebitda": 4.3837
    },
-   "1419": {
-    "name": "タマホーム",
-    "price": 2865.0,
-    "eps_forecast": 137.99,
-    "pe_forward": 20.7624,
-    "ev_ebitda": 12.3957
+   "8999": {
+    "name": "グランディハウス",
+    "price": 550.0,
+    "eps_forecast": 37.88,
+    "pe_forward": 14.5195,
+    "ev_ebitda": 18.7944
+   },
+   "1928": {
+    "name": "積水ハウス",
+    "price": 3375.0,
+    "eps_forecast": null,
+    "pe_forward": null,
+    "ev_ebitda": 9.377
    }
   }
  },
