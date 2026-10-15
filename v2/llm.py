@@ -194,7 +194,7 @@ def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: i
 DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions"   # alpha endpoint: typed questions -> probabilities
 
 
-def decide(model: str, state: dict, questions: dict, timeout: int = 60) -> dict:
+def decide(model: str, state: dict | str, questions: dict, timeout: int = 60) -> dict:
     """One Decisions API call (OpenRouter /api/alpha/decisions). Returns {"answers": {...}} or {"error": ...}.
     Same free-only guard and per-run request budget as chat calls; never raises."""
     import requests
@@ -213,7 +213,7 @@ def decide(model: str, state: dict, questions: dict, timeout: int = 60) -> dict:
     except Exception as e:
         return {"error": f"{type(e).__name__}"}
     if r.status_code != 200:
-        return {"error": f"HTTP {r.status_code}: {r.text[:200]}"}
+        return {"error": f"HTTP {r.status_code}: {r.text[:400]}"}
     try:
         data = r.json()
     except ValueError:

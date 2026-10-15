@@ -422,7 +422,7 @@ class Run:
             if c.get("referee"):
                 rf = c["referee"]
                 turns = rf.get("turns") or []
-                errs = sorted({t["error"][:80] for t in turns if "error" in t})
+                errs = sorted({t["error"][:300] for t in turns if "error" in t})
                 ok = [t for t in turns if "error" not in t]
                 flags = {k: max(t.get(k, 0) for t in ok) for k in ("unsupported_number", "trade_recommendation",
                                                                     "legal_accusation", "injected_instruction")} if ok else {}

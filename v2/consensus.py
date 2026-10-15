@@ -173,7 +173,8 @@ def referee(transcript: list[dict], debaters: list[dict], result: dict) -> dict:
           for k, (q, f, t) in MONITOR_QUESTIONS.items()}
     for turn in transcript:
         text = json.dumps({k: turn.get(k) for k in ("summary", "claims", "challenges", "concessions")}, ensure_ascii=False)
-        r = llm.decide(REFEREE_MONITOR, {"speaker": turn["name"], "round": str(turn["round"]), "turn": text[:6000]}, qs)
+        # Span-01 scores a conversation span; it takes the state as one string
+        r = llm.decide(REFEREE_MONITOR, f"Speaker: {turn['name']} (round {turn['round']})\n{text[:6000]}", qs)
         out["turns"].append({"name": turn["name"], "round": turn["round"],
                              **({"error": r["error"]} if "error" in r else
                                 {k: round(float(v.get("noul", 0)), 3) for k, v in r["answers"].items() if isinstance(v, dict)})})
