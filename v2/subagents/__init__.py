@@ -23,8 +23,8 @@ class SubagentSpec:
 
 
 def _registry() -> dict[str, SubagentSpec]:
-    from subagents import baseline
-    return {s.name: s for s in (baseline.SPEC,)}
+    from subagents import baseline, factor
+    return {s.name: s for s in (baseline.SPEC, factor.SPEC)}
 
 
 SUBAGENTS = _registry()

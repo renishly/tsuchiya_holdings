@@ -1,6 +1,6 @@
 # Tsuchiya Holdings (1840) research-data agent — v2
 
-v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and a **baseline subagent**. A second subagent (alternative data) can be added beside it later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A27 describe v2).
+v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A29 describe v2).
 
 ## 1. How a run works
 
@@ -13,7 +13,8 @@ GitHub Actions (schedule / Run workflow button / API)
                           Average Valuated Price / Target P/E / Target EV/EBITDA since the last review, daily check
       no events           quiet run: no model request at all
       events → review     orchestrator (model) explains what changed and why; may delegate follow-ups
-        └─ baseline subagent (model + tools): run_phase P1/P2/P3/P4/P6/P9, steady_refresh, peek, log_refusal, log_injection
+        ├─ baseline subagent (model + tools): run_phase P1/P2/P3/P4/P6/P9, steady_refresh, peek, log_refusal, log_injection
+        └─ factor subagent (model + tools): run_factor_model, peek, log_refusal, log_injection
    4. close-out (code)    P4 validation, P5 Sheet sync (both skipped when nothing changed), debug CSV, finish
 └─ workflow commits v2/data, reports, state, logs, raw, inputs → push to main (normal push, never force)
 ```
@@ -23,6 +24,8 @@ GitHub Actions (schedule / Run workflow button / API)
 | Orchestrator | `agent.py`, `prompts/orchestrator.md` | code: start, routine work, event detection, close-out; model: the review and any follow-up delegation |
 | Model layer | `llm.py` | OpenRouter client, free-only guard, fallback models, per-run request budget, tool loop |
 | Baseline subagent | `subagents/baseline.py`, `prompts/baseline.md` | P1 Discover, P2 有報 extraction, P3 統合報告書, P4 validation, P6 valuation (P/E, EV/EBITDA), P9 data dictionary, steady refresh (prices, metrics, daily new-filings check) |
+| Factor subagent | `subagents/factor.py`, `prompts/factor.md`, `pipeline/factors.py` | betas of 1840 to market / size / value proxies (weekly returns, 5 years, Dimson lag), cost of equity r = JGB 1y + β × long-run premia, **factor-implied price** (the price if 1840 had earned exactly its factor-predicted return since 1, 2, 3 and 5 years ago, averaged), residual-income value for reference only. Shown next to the baseline, not in Average Valuated Price |
+| Price store | `pipeline/factors.py` → `raw/market/daily_prices.csv`, `raw/market/jgb_1y.csv` | one yfinance batch per day after 15:30 JST for 1840, the 4 peers and 4 ETFs; MOF 1-year JGB yield. The baseline's share prices also come from this store |
 | Pipeline | `pipeline/*.py` | v1's helpers as real files: every source fetch and file write, with the guardrails (allowlist, robots.txt, rate limits, v2/-only writes, locked rows, 20% change guard, PII filter, injection screen) |
 | Parked | `pipeline/altdata.py`, `pipeline/legal.py` | P7 listings/homepages and P8 legal score, kept for the future alternative-data subagent; refused while parked; `Alternative Data.csv` keeps v1's rows |
 
@@ -88,6 +91,7 @@ The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17
 - **Delegations and loops:** the run summary has a line per subagent, e.g. `Delegations: baseline x2 (8 steps, 6 tool calls; early stops: 1 step limit, 0 loop; repeated work: steady)`. The same numbers are kept per run in `v2/state/orchestrator.json` (`delegation_history`, last 200 runs). A re-delegation is allowed; each report tells the orchestrator what work was already done, so it can continue instead of repeating it.
 - **Headline numbers:** the steady refresh and P6 return a `headline` block (price, P/E, targets, Average Valuated Price, returns), so the models don't search the CSV for them.
 - **Close-out skips:** P4 validation is skipped when no CSV or the approval queue changed since the last validation. P5 Sheet sync is skipped when nothing changed since that day's sync and there is nothing needing attention. The Sheet is still synced at least once a day, so your edits in the Sheet are pulled back daily. Each skip is noted in the run summary.
+- **Factor model:** the dashboard monitor "Factor model (Fama-French style)" shows the factor-implied price (overall and per start date), r, the risk-free rate, betas, alpha and the residual-income reference. Factors are **proxies** from Tokyo-listed ETFs: market = TOPIX ETF 1306 − JGB 1y; size = JPX-Nikkei Mid Small 1493 − TOPIX Core 30 1311; value = Nomura High Dividend 70 1577 − TOPIX 1306. Betas are re-estimated weekly; prices update daily.
 - **Log rotation:** at the first run of a new month, `logs/run_log.jsonl` (gzipped) and `logs/run_summaries.md` move to `logs/archive/<month>/`. Nothing is deleted.
 
 ## 5. Approvals, corrections, inputs

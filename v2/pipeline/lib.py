@@ -85,6 +85,8 @@ ALLOWLIST = {
     # legal / government
     "www.mlit.go.jp": "legal", "etsuran2.mlit.go.jp": "legal", "laws.e-gov.go.jp": "legal",
     "www.retio.or.jp": "legal", "www.reinfolib.mlit.go.jp": "benchmark",
+    # risk-free rate for the factor model: MOF JGB yield CSVs only (Addendum A28)
+    "www.mof.go.jp": "rates:/jgbs/reference/interest_rate/",
 }
 GROUP_DOMAINS = {d for d, k in ALLOWLIST.items() if k.startswith("company")}
 NEVER_FETCH = {"www.xj-storage.jp", "myhome.nifty.com", "www.fudousan.or.jp", "www.hatomarksite.com", "suumo.jp",

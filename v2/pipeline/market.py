@@ -90,9 +90,10 @@ def manual_prices() -> list[dict]:
 YF_SYMBOL = {"1840": "1840.T", "205A": "205A.T", "1873": "1873.T", "1419": "1419.T", "2976": "2976.S"}  # 2976: 札証 only
 
 def yf_prices(st) -> dict:
-    """Addendum A16 (guardrail loosened by the student): latest daily close via yfinance, one batch per run, prices only.
+    """Latest daily close per ticker from the shared daily price store (Addenda A16, A28).
 
-    Returns {ticker: {"close", "date", "symbol", "url"}}; empty on any failure (no retries, no workarounds).
+    The store is updated by factors.update_prices: at most one yfinance batch per JST day, after the TSE close.
+    This function itself never calls Yahoo. Returns {ticker: {"close", "date", "symbol", "url"}}.
     """
     cr = run_ctx(st)
     if "yf_prices" in cr:
@@ -101,21 +102,13 @@ def yf_prices(st) -> dict:
     if cr.get("mode") == "test":
         cr["yf_prices"] = out
         return out
-    try:
-        import yfinance as yf
-        syms = list(YF_SYMBOL.values())
-        df = yf.download(syms, period="7d", interval="1d", progress=False, auto_adjust=False, group_by="ticker", threads=False)
-        for t, sym in YF_SYMBOL.items():
-            try:
-                c = df[sym]["Close"].dropna()
-            except (KeyError, TypeError):
-                continue
-            if len(c) and float(c.iloc[-1]) > 0:
-                out[t] = {"close": float(c.iloc[-1]), "date": c.index[-1].strftime("%Y-%m-%d"), "symbol": sym,
-                          "url": f"https://finance.yahoo.com/quote/{sym}/history/"}
-        log(st, "yfinance", {"symbols": syms}, f"{len(out)} closes")
-    except Exception as e:
-        log(st, "yfinance", {}, f"unavailable: {type(e).__name__}: {str(e)[:120]}")
+    import factors
+    upd = factors.update_prices(st)
+    for t in YF_SYMBOL:
+        c = factors.latest_close(t)
+        if c:
+            out[t] = c
+    log(st, "price_store", {"update": upd}, f"{len(out)} latest closes from the store")
     cr["yf_prices"] = out
     return out
 
@@ -125,7 +118,7 @@ def best_price(st, ticker: str) -> dict:
     yv = yf_prices(st).get(ticker)
     if yv and not (man and man[-1]["quote_time_jst"][:10] >= yv["date"]):
         return {"price": yv["close"], "quote_time": f"{yv['date']}T15:30:00+09:00", "price_type": "close",
-                "source_type": "market data (Yahoo Finance via yfinance, third-party; Addendum A16)", "source_url": yv["url"],
+                "source_type": "market data (Yahoo Finance via yfinance, third-party; Addenda A16, A28)", "source_url": yv["url"],
                 "location": f"daily close {yv['date']} ({yv['symbol']})", "third_party": True, "irbank": None}
     ib = None
     try:

@@ -534,7 +534,10 @@ HEADLINE = [("Stock Price", "stock_price_jpy"), ("Market Cap", "market_cap_jpy")
             ("Target Price (P/E, 5-year average EPS)", "price_pe_5y_avg_eps"), ("Target EV/EBITDA", "target_ev_ebitda"),
             ("Target Price (EV/EBITDA)", "price_ev_ebitda"), ("Average Valuated Price", "average_valuated_price"),
             ("Expected Return (P/E, 5-year average EPS)", "return_pe_5y_avg_eps"),
-            ("Expected Return (EV/EBITDA)", "return_ev_ebitda"), ("Dividend Yield (forecast)", "dividend_yield_forecast")]
+            ("Expected Return (EV/EBITDA)", "return_ev_ebitda"), ("Dividend Yield (forecast)", "dividend_yield_forecast"),
+            # factor subagent (A28-A29): its own numbers, shown next to the baseline, not in the average
+            ("Factor-implied Price", "factor_implied_price"), ("Cost of Equity (factor model)", "cost_of_equity_factor"),
+            ("Residual Income Value (reference)", "residual_income_value_reference")]
 
 def headline(base) -> dict:
     """The key 1840 baseline numbers in one small block, so a model never has to search the CSV for them.
@@ -556,7 +559,8 @@ def headline(base) -> dict:
 PEER_KEYS = [("Stock Price", "price"), ("EPS (company forecast)", "eps_forecast"), ("P/E (forward)", "pe_forward"),
              ("EV/EBITDA (trailing)", "ev_ebitda")]
 WATCH = [("Average Valuated Price", "average_valuated_price"), ("Target P/E", "target_pe"),
-         ("Target EV/EBITDA", "target_ev_ebitda"), ("Stock Price", "stock_price_jpy")]
+         ("Target EV/EBITDA", "target_ev_ebitda"), ("Stock Price", "stock_price_jpy"),
+         ("Factor-implied Price", "factor_implied_price")]
 
 def _num(r):
     try:
@@ -581,6 +585,21 @@ def review_view(base) -> dict:
                 days[(r["quote_time_jst"] or r["access_date_jst"])[:10]] = v
         hist[key] = [[d, v] for d, v in sorted(days.items())[-7:]]
     return {"headline": headline(base), "peers": peers, "history_7d": hist}
+
+def cmd_factors(a):
+    """Fama-French-style factor model (Addenda A28-A29): price store, risk-free, betas, r, implied price."""
+    import factors
+    st = load_state()
+    run_ctx(st)
+    S = stores()
+    try:
+        res = factors.run(st, S["Securities Reports"], S["Baseline Metrics"])
+    except (FetchError, GuardrailError, BudgetStop) as e:
+        res = {"error": str(e)[:200]}
+    res["csv"] = S["Baseline Metrics"].save(st)
+    save_state(st)
+    log(st, "factors", {}, {k: res.get(k) for k in ("cost_of_equity", "factor_implied_price", "error")})
+    return out(res)
 
 def cmd_headline(a):
     return out(review_view(CsvStore("Baseline Metrics")))
@@ -653,6 +672,18 @@ def _dashboard_finish(st, cr, S) -> str:
             "note": "Agent baseline calculated from public data; the target and view are the student's (syllabus 2.5).",
         }
         dashboard.set_monitor(val, "Valuation (agent baseline)")
+        fac = {
+            "factor-implied price (JPY)": show("Factor-implied Price"),
+            "by start date (1y / 2y / 3y / 5y)": " / ".join(str(show(f"Factor-implied Price ({h}y start)")) for h in (1, 2, 3, 5)),
+            "cost of equity r": show("Cost of Equity (factor model)"),
+            "risk-free (JGB 1y)": show("Risk-free rate (JGB 1y)"),
+            "betas market / SMB / HML": " / ".join(str(show(f"Beta: {k} (factor model)")) for k in ("market", "size SMB", "value HML")),
+            "alpha (annual)": show("Alpha, annualised (factor model)"),
+            "residual income value (reference only)": show("Residual Income Value (reference)"),
+            "note": "Factor proxies from Tokyo-listed ETFs, not Kenneth French's factors. Shown next to the baseline; "
+                    "it enters the final number only through the planned consensus.",
+        }
+        dashboard.set_monitor(fac, "Factor model (Fama-French style)")
         legal = S["Alternative Data"].get(record_id("legal_score", "total"))
         if legal and legal["value"]:
             dashboard.set_monitor(f"{legal['value']} / 100 (exposure measure, not a finding of wrongdoing)", "Legal penalty score")
@@ -694,6 +725,7 @@ def main():
     s = sub.add_parser("refusal"); s.add_argument("text"); s.add_argument("--source", default=""); s.set_defaults(fn=cmd_refusal)
     s = sub.add_parser("injection"); s.add_argument("--url", required=True); s.add_argument("--excerpt", required=True); s.set_defaults(fn=cmd_injection)
     s = sub.add_parser("headline"); s.set_defaults(fn=cmd_headline)
+    s = sub.add_parser("factors"); s.set_defaults(fn=cmd_factors)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)
     a = ap.parse_args()
