@@ -1,0 +1,8 @@
+openai>=1.40
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+pdfplumber>=0.11
+gspread>=6.0
+google-auth>=2.29
+yfinance>=0.2.40

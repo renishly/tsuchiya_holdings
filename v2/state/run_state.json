@@ -1,0 +1,587 @@
+{
+  "schema_version": 1,
+  "phases": {
+    "P1": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T08:03:18+09:00",
+      "fail_streak": 0
+    },
+    "P2": {
+      "status": "complete",
+      "cursor": [
+        "S100NAA0",
+        "S100Q0PX",
+        "S100SO3Q",
+        "S100V551",
+        "S100XHBD"
+      ],
+      "last_success": "2026-10-09T08:25:19+09:00",
+      "fail_streak": 0
+    },
+    "P3": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T08:04:00+09:00",
+      "fail_streak": 0
+    },
+    "P4": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T13:14:12+09:00",
+      "fail_streak": 0
+    },
+    "P5": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T13:14:19+09:00",
+      "fail_streak": 0
+    },
+    "P6": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T08:49:35+09:00",
+      "fail_streak": 0
+    },
+    "P7": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T13:09:30+09:00",
+      "fail_streak": 0
+    },
+    "P8": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T08:32:42+09:00",
+      "fail_streak": 0
+    },
+    "P9": {
+      "status": "complete",
+      "cursor": null,
+      "last_success": "2026-10-09T13:14:12+09:00",
+      "fail_streak": 0
+    }
+  },
+  "daily": {
+    "wayback_done": [
+      "https://www.tsuchiyahome.jp/modelhouse/|2023",
+      "https://www.tsuchiyahome.jp/modelhouse/|2024",
+      "https://www.tsuchiyahome.jp/realestate/|2021",
+      "https://www.tsuchiyahome.jp/modelhouse/|2021",
+      "https://www.tsuchiyahome.jp/modelhouse/|2025",
+      "https://www.tsuchiyahome.jp/realestate/|2022",
+      "https://www.tsuchiyahome.jp/modelhouse/|2022",
+      "https://www.tsuchiyahome.jp/realestate/|2023",
+      "https://www.tsuchiyahome.jp/realestate/|2025",
+      "https://www.tsuchiyahome.jp/event/|2023",
+      "https://www.tsuchiyahome.jp/event/|2024",
+      "https://www.tsuchiyahome.jp/lineup/|2021",
+      "https://www.tsuchiyahome.jp/lineup/|2022",
+      "https://www.tsuchiyahome.jp/lineup/|2023",
+      "https://www.hometopia.jp/|2021",
+      "https://www.hometopia.jp/|2022",
+      "https://www.hometopia.jp/|2023",
+      "https://www.tsuchiyahome.jp/realestate/|2024",
+      "https://www.tsuchiyahome.jp/event/|2025",
+      "https://www.tsuchiyahome.jp/lineup/|2024",
+      "https://www.tsuchiyahome.jp/event/|2021",
+      "https://www.tsuchiyahome.jp/event/|2022",
+      "https://www.tsuchiyahome.jp/lineup/|2025",
+      "https://www.hometopia.jp/|2025",
+      "https://tsuchiyafudosan.jp/service|2021",
+      "https://tsuchiyafudosan.jp/service|2022",
+      "https://tsuchiyafudosan.jp/service|2023",
+      "https://tsuchiyafudosan.jp/store|2021",
+      "https://tsuchiyafudosan.jp/store|2022",
+      "https://tsuchiyafudosan.jp/store|2024",
+      "https://tsuchiyafudosan.jp/store|2025",
+      "https://iestdot.com/|2022",
+      "https://iestdot.com/|2023"
+    ],
+    "listings": "2026-10-09",
+    "legal": "2026-10-09",
+    "news_searched": "2026-10-09",
+    "filings": "2026-10-09"
+  },
+  "robots": {
+    "www.tsuchiya.co.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.tsuchiya.co.jp/wp-sitemap.xml\n"
+    },
+    "irbank.net": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nAllow: /\n\n# 検索結果ページ（無限URL生成）\nDisallow: /search\n\nSitemap: https://irbank.net/sitemap_index.xml\n"
+    },
+    "iestdot.com": {
+      "date": "2026-10-09",
+      "txt": ""
+    },
+    "mylist-v2.realnetpro.com": {
+      "date": "2026-10-09",
+      "txt": ""
+    },
+    "tsuchiyafudosan.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
+    },
+    "www.tsuchiyahome.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
+    },
+    "www.hometopia.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\r\nDisallow: /wp-admin/\r\nAllow: /wp-admin/admin-ajax.php\r\n\r\nSitemap: https://www.hometopia.jp/sitemap.xml\n"
+    },
+    "web.archive.org": {
+      "date": "2026-10-09",
+      "txt": ""
+    },
+    "www.mlit.go.jp": {
+      "date": "2026-10-09",
+      "txt": ""
+    },
+    "laws.e-gov.go.jp": {
+      "date": "2026-10-09",
+      "txt": ""
+    },
+    "www.nippon-grande.co.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nDisallow: /2025-wp/wp-admin/\nAllow: /2025-wp/wp-admin/admin-ajax.php\n\nSitemap: https://www.nippon-grande.co.jp/wp-sitemap.xml\n"
+    },
+    "logos-holdings.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\r\nDisallow: /wp/wp-admin/\r\nAllow: /wp/wp-admin/admin-ajax.php\r\n\r\nSitemap: https://logos-holdings.jp/sitemap.xml\r\nSitemap: https://logos-holdings.jp/sitemap.rss\n"
+    },
+    "www.nihonhouse-hd.co.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.nihonhouse-hd.co.jp/wp-sitemap.xml\n\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.xml\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.html\n"
+    },
+    "www.tamahome.jp": {
+      "date": "2026-10-09",
+      "txt": "User-agent: *\nDisallow: /qkeioebqx4/wp-admin/\nAllow: /qkeioebqx4/wp-admin/admin-ajax.php\n\nSitemap: https://www.tamahome.jp/wp-sitemap.xml\n"
+    }
+  },
+  "blocked_by_policy": {},
+  "consumed_approvals": [
+    "AR-20261009-01"
+  ],
+  "approved": {
+    "sheets_first_write": {
+      "id": "AR-20261009-01",
+      "layout": {
+        "Securities Reports": 25,
+        "Integrated Reports": 22,
+        "Baseline Metrics": 26,
+        "Alternative Data": 44,
+        "Agent Warnings": 8
+      },
+      "at": "2026-10-09T08:32:47+09:00"
+    }
+  },
+  "documents": {
+    "tsuchiya": {
+      "fy": {
+        "第46期": {
+          "period_end": "2021-10-31",
+          "asr": {
+            "docID": "S100NAA0",
+            "docTypeCode": "120",
+            "periodStart": "2020-11-01",
+            "periodEnd": "2021-10-31",
+            "docDescription": "有価証券報告書－第46期(令和2年11月1日－令和3年10月31日)",
+            "submitDateTime": "2022-01-27 14:42",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2022-01-31",
+            "2022-01-28",
+            "2022-01-27"
+          ]
+        },
+        "第47期": {
+          "period_end": "2022-10-31",
+          "asr": {
+            "docID": "S100Q0PX",
+            "docTypeCode": "120",
+            "periodStart": "2021-11-01",
+            "periodEnd": "2022-10-31",
+            "docDescription": "有価証券報告書－第47期(2021/11/01－2022/10/31)",
+            "submitDateTime": "2023-01-26 15:36",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2023-01-31",
+            "2023-01-30",
+            "2023-01-27",
+            "2023-01-26"
+          ]
+        },
+        "第48期": {
+          "period_end": "2023-10-31",
+          "asr": {
+            "docID": "S100SO3Q",
+            "docTypeCode": "120",
+            "periodStart": "2022-11-01",
+            "periodEnd": "2023-10-31",
+            "docDescription": "有価証券報告書－第48期(2022/11/01－2023/10/31)",
+            "submitDateTime": "2024-01-25 11:08",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2024-01-31",
+            "2024-01-30",
+            "2024-01-29",
+            "2024-01-26",
+            "2024-01-25"
+          ]
+        },
+        "第49期": {
+          "period_end": "2024-10-31",
+          "asr": {
+            "docID": "S100V551",
+            "docTypeCode": "120",
+            "periodStart": "2023-11-01",
+            "periodEnd": "2024-10-31",
+            "docDescription": "有価証券報告書－第49期(2023/11/01－2024/10/31)",
+            "submitDateTime": "2025-01-28 12:35",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2025-01-31",
+            "2025-01-30",
+            "2025-01-29",
+            "2025-01-28"
+          ]
+        },
+        "第50期": {
+          "period_end": "2025-10-31",
+          "asr": {
+            "docID": "S100XHBD",
+            "docTypeCode": "120",
+            "periodStart": "2024-11-01",
+            "periodEnd": "2025-10-31",
+            "docDescription": "有価証券報告書－第50期(2024/11/01－2025/10/31)",
+            "submitDateTime": "2026-01-26 14:45",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2026-01-30",
+            "2026-01-29",
+            "2026-01-28",
+            "2026-01-27",
+            "2026-01-26"
+          ]
+        }
+      },
+      "scanned": {
+        "2022-01-31": true,
+        "2022-01-28": true,
+        "2022-01-27": true,
+        "2023-01-31": true,
+        "2023-01-30": true,
+        "2023-01-27": true,
+        "2023-01-26": true,
+        "2024-01-31": true,
+        "2024-01-30": true,
+        "2024-01-29": true,
+        "2024-01-26": true,
+        "2024-01-25": true,
+        "2025-01-31": true,
+        "2025-01-30": true,
+        "2025-01-29": true,
+        "2025-01-28": true,
+        "2026-01-30": true,
+        "2026-01-29": true,
+        "2026-01-28": true,
+        "2026-01-27": true,
+        "2026-01-26": true
+      },
+      "corrections": []
+    },
+    "integrated_search": {
+      "urls": [
+        "https://www.tsuchiya.co.jp/ir/",
+        "https://www.tsuchiya.co.jp/ir/news/"
+      ],
+      "found": [],
+      "date": "2026-10-09"
+    },
+    "integrated_websearch": [
+      {
+        "query_or_url": "土屋ホールディングス 統合報告書",
+        "title": "株式会社土屋ホールディングス — IR資料 (edinetdb.jp, third-party; claims 2 integrated reports, unverified, domain not allowlisted)",
+        "url": "https://edinetdb.jp/company/E00240/ir-docs/",
+        "is_integrated_report": false,
+        "candidate_substitute": false
+      },
+      {
+        "query_or_url": "土屋ホールディングス 統合報告書 2025",
+        "title": "No 統合報告書 found; results were 有報/決算短信 PDFs only",
+        "url": "https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100XHBD.pdf",
+        "is_integrated_report": false,
+        "candidate_substitute": false
+      },
+      {
+        "query_or_url": "土屋ホールディングス 統合報告書 2023",
+        "title": "No 統合報告書 found; results were 有報/決算短信 PDFs only",
+        "url": "https://www2.jpx.co.jp/disc/18400/140120230614503163.pdf",
+        "is_integrated_report": false,
+        "candidate_substitute": false
+      },
+      {
+        "query_or_url": "土屋ホールディングス 統合報告書 2022 / 2021 / 2024 tsuchiya.co.jp",
+        "title": "No 統合報告書 found on tsuchiya.co.jp via search",
+        "url": "https://www.tsuchiya.co.jp/",
+        "is_integrated_report": false,
+        "candidate_substitute": false
+      }
+    ],
+    "peer:2976": {
+      "fy": {
+        "latest": {
+          "period_end": "2026-03-31",
+          "asr": {
+            "docID": "S100YIXO",
+            "docTypeCode": "120",
+            "periodStart": "2025-04-01",
+            "periodEnd": "2026-03-31",
+            "docDescription": "有価証券報告書－第23期(2025/04/01－2026/03/31)",
+            "submitDateTime": "2026-06-25 16:06",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2026-06-30",
+            "2026-06-29",
+            "2026-06-26",
+            "2026-06-25"
+          ]
+        }
+      },
+      "scanned": {
+        "2026-06-30": true,
+        "2026-06-29": true,
+        "2026-06-26": true,
+        "2026-06-25": true
+      },
+      "corrections": [],
+      "latest_facts": {
+        "docID": "S100YIXO",
+        "source_url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100YIXO",
+        "fetched": "2026-10-09T08:25:32+09:00",
+        "debt": 2486587000.0,
+        "cash": 1191566000.0,
+        "op": 139135000.0,
+        "da": 90621000.0,
+        "shares_issued": 1343600.0,
+        "treasury": null
+      }
+    },
+    "peer:205A": {
+      "fy": {
+        "latest": {
+          "period_end": "2026-05-31",
+          "asr": {
+            "docID": "S100YYTC",
+            "docTypeCode": "120",
+            "periodStart": "2025-06-01",
+            "periodEnd": "2026-05-31",
+            "docDescription": "有価証券報告書－第6期(2025/06/01－2026/05/31)",
+            "submitDateTime": "2026-08-26 14:25",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2026-08-31",
+            "2026-08-28",
+            "2026-08-27",
+            "2026-08-26"
+          ]
+        }
+      },
+      "scanned": {
+        "2026-08-31": true,
+        "2026-08-28": true,
+        "2026-08-27": true,
+        "2026-08-26": true
+      },
+      "corrections": [],
+      "latest_facts": {
+        "docID": "S100YYTC",
+        "source_url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100YYTC",
+        "fetched": "2026-10-09T08:25:38+09:00",
+        "debt": 8764384000.0,
+        "cash": 9113390000.0,
+        "op": 1449416000.0,
+        "da": 228170000.0,
+        "shares_issued": 3923885.0,
+        "treasury": null
+      }
+    },
+    "peer:1873": {
+      "fy": {
+        "latest": {
+          "period_end": "2026-04-30",
+          "asr": {
+            "docID": "S100YR5P",
+            "docTypeCode": "120",
+            "periodStart": "2025-05-01",
+            "periodEnd": "2026-04-30",
+            "docDescription": "有価証券報告書－第58期(2025/05/01－2026/04/30)",
+            "submitDateTime": "2026-07-22 10:00",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2026-07-31",
+            "2026-07-30",
+            "2026-07-29",
+            "2026-07-28",
+            "2026-07-27",
+            "2026-07-24",
+            "2026-07-23",
+            "2026-07-22"
+          ]
+        }
+      },
+      "scanned": {
+        "2026-07-31": true,
+        "2026-07-30": true,
+        "2026-07-29": true,
+        "2026-07-28": true,
+        "2026-07-27": true,
+        "2026-07-24": true,
+        "2026-07-23": true,
+        "2026-07-22": true
+      },
+      "corrections": [],
+      "latest_facts": {
+        "docID": "S100YR5P",
+        "source_url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100YR5P",
+        "fetched": "2026-10-09T08:49:00+09:00",
+        "debt": 11615000000.0,
+        "cash": 6980000000.0,
+        "op": 2380000000.0,
+        "da": 1515000000.0,
+        "shares_issued": 40000000.0,
+        "treasury": 1800.0
+      }
+    },
+    "peer:1419": {
+      "fy": {
+        "latest": {
+          "period_end": "2026-05-31",
+          "asr": {
+            "docID": "S100YYFR",
+            "docTypeCode": "120",
+            "periodStart": "2025-06-01",
+            "periodEnd": "2026-05-31",
+            "docDescription": "有価証券報告書－第28期(2025/06/01－2026/05/31)",
+            "submitDateTime": "2026-08-26 15:30",
+            "xbrlFlag": "1",
+            "pdfFlag": "1",
+            "csvFlag": "1",
+            "parentDocID": null
+          },
+          "searched_dates": [
+            "2026-08-31",
+            "2026-08-28",
+            "2026-08-27",
+            "2026-08-26"
+          ]
+        }
+      },
+      "scanned": {
+        "2026-08-31": true,
+        "2026-08-28": true,
+        "2026-08-27": true,
+        "2026-08-26": true
+      },
+      "corrections": [],
+      "latest_facts": {
+        "docID": "S100YYFR",
+        "source_url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100YYFR",
+        "fetched": "2026-10-09T08:49:05+09:00",
+        "debt": 15102000000.0,
+        "cash": 21176000000.0,
+        "op": 3842000000.0,
+        "da": 2368000000.0,
+        "shares_issued": 29455800.0,
+        "treasury": 467600.0
+      }
+    },
+    "seen_recent": []
+  },
+  "current_run": null,
+  "last_price": {
+    "1840": {
+      "price": 260.0,
+      "quote_time": "2026-10-09T15:30:00+09:00"
+    }
+  },
+  "history": [
+    {
+      "run_id": "R-20261009-080141",
+      "ended": "2026-10-09T08:13:53+09:00",
+      "iterations": 87,
+      "attention": 0
+    },
+    {
+      "run_id": "R-20261009-082502",
+      "ended": "2026-10-09T08:33:03+09:00",
+      "iterations": 90,
+      "attention": 2
+    },
+    {
+      "run_id": "R-20261009-084841",
+      "ended": "2026-10-09T09:03:38+09:00",
+      "iterations": 88,
+      "attention": 2
+    },
+    {
+      "run_id": "R-20261009-091647",
+      "ended": "2026-10-09T09:22:06+09:00",
+      "iterations": 34,
+      "attention": 0
+    },
+    {
+      "run_id": "R-20261009-095745",
+      "ended": "2026-10-09T10:04:58+09:00",
+      "iterations": 38,
+      "attention": 0
+    },
+    {
+      "run_id": "R-20261009-100555",
+      "ended": "2026-10-09T10:12:42+09:00",
+      "iterations": 41,
+      "attention": 0
+    },
+    {
+      "run_id": "R-20261009-125314",
+      "ended": "2026-10-09T13:14:23+09:00",
+      "iterations": 65,
+      "attention": 0
+    }
+  ]
+}
