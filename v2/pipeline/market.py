@@ -87,7 +87,7 @@ def manual_prices() -> list[dict]:
                 continue
     return rows
 
-YF_SYMBOL = {"1840": "1840.T", "205A": "205A.T", "1873": "1873.T", "1419": "1419.T", "2976": "2976.S"}  # 2976: 札証 only
+YF_SYMBOL = {"1840": "1840.T", "1873": "1873.T", "1419": "1419.T", "8999": "8999.T", "1928": "1928.T"}  # A30 peers
 
 def yf_prices(st) -> dict:
     """Latest daily close per ticker from the shared daily price store (Addenda A16, A28).
@@ -162,16 +162,26 @@ def manual_sources(ticker: str) -> list[dict]:
 def find_forecast_docs(st, ticker: str) -> list[dict]:
     """Return candidate forecast PDFs from the company's IR page (plus student-supplied URLs), newest first."""
     from bs4 import BeautifulSoup
-    base = CONFIG["peer_ir"].get(ticker)
+    tmpl = CONFIG["peer_ir"].get(ticker)
     extra = manual_sources(ticker)
-    if not base:
+    if not tmpl:
         return sorted(extra, key=lambda d: d["date"], reverse=True)
-    try:
-        body, meta = fetch(st, base, purpose="IR page: find latest 決算短信")
-    except (FetchError, GuardrailError) as e:
-        log(st, "forecast", {"ticker": ticker}, f"IR page unavailable: {e}")
-        return sorted(extra, key=lambda d: d["date"], reverse=True)
-    soup = BeautifulSoup(body, "lxml")
+    # A page per calendar year (e.g. 日本ハウスHD): read this year's and last year's, since January's may be empty.
+    y = int(iso()[:4])
+    bases = [tmpl.format(year=y), tmpl.format(year=y - 1)] if "{year}" in tmpl else [tmpl]
+    out = []
+    for base in bases:
+        try:
+            body, meta = fetch(st, base, purpose="IR page: find latest 決算短信")
+        except (FetchError, GuardrailError) as e:
+            log(st, "forecast", {"ticker": ticker, "url": base}, f"IR page unavailable: {e}")
+            continue
+        out += _forecast_links(BeautifulSoup(body, "lxml"), base)
+    out += [e for e in extra if e["url"] not in {o["url"] for o in out}]
+    out.sort(key=lambda d: d["date"], reverse=True)
+    return out
+
+def _forecast_links(soup, base: str) -> list[dict]:
     out = []
     for a in soup.find_all("a", href=True):
         href = urllib.parse.urljoin(base, a["href"])
@@ -184,11 +194,14 @@ def find_forecast_docs(st, ticker: str) -> list[dict]:
         from lib import injection_hits
         if injection_hits(text):
             continue  # link text carrying instructions is not followed
-        m = re.search(r"(20\d\d)[./年](\d{1,2})[./月](\d{1,2})", text)
-        date = f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m else ""
+        m = (re.search(r"(20\d\d)[./年](\d{1,2})[./月](\d{1,2})", text)
+             or re.search(r"(?<![\d.])(\d\d)\.(\d{2})\.(\d{2})(?![\d.])", text)        # e.g. 26.09.10
+             or re.search(r"(20\d\d)(\d{2})(\d{2})", href.rsplit("/", 1)[-1]))       # e.g. t20260910.pdf
+        date = ""
+        if m:
+            yy = m.group(1) if len(m.group(1)) == 4 else "20" + m.group(1)
+            date = f"{yy}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
         out.append({"url": href, "title": text, "date": date, "page": base})
-    out += [e for e in extra if e["url"] not in {o["url"] for o in out}]
-    out.sort(key=lambda d: d["date"], reverse=True)
     return out
 
 def parse_forecast_pdf(pdf_bytes: bytes) -> dict:

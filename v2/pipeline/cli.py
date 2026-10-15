@@ -362,6 +362,12 @@ def cmd_steady(a):
     cr = run_ctx(st)
     res = {"headline": None}
     S = stores()
+    # Peers' latest 有報 (EV/EBITDA inputs): re-checked once a month, at most 2 peers per run, so a peer's new
+    # annual report (or a new peer, A30) is picked up without re-running P6.
+    try:
+        res["peer_inputs"] = metrics.peer_inputs(st)
+    except (FetchError, GuardrailError, BudgetStop) as e:
+        res["peer_inputs"] = {"error": str(e)[:160]}
     try:
         r = metrics.current(st, S["Securities Reports"], S["Baseline Metrics"])
         cr["attention"].extend(w for w in r["warnings"] if "moved" in w or "disagree" in w)

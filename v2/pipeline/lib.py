@@ -41,14 +41,17 @@ CONFIG = {
         "第46期": "2021-10-31", "第47期": "2022-10-31", "第48期": "2023-10-31",
         "第49期": "2024-10-31", "第50期": "2025-10-31",
     },
-    "peer_ir": {"2976": "https://www.nippon-grande.co.jp/ir/", "205A": "https://logos-holdings.jp/ir/",
-                "1873": "https://www.nihonhouse-hd.co.jp/ir/", "1419": "https://www.tamahome.jp/company/ir/library/library_02.html",
+    "peer_ir": {  # pages whose HTML links the 決算短信 / 業績予想の修正 PDFs directly (Addendum A30)
+                "1419": "https://www.tamahome.jp/company/ir/library/library_02.html",
+                "1873": "https://www.nihonhouse-hd.co.jp/company/irlist/?y={year}",  # one page per calendar year
+                "8999": "https://www.grandy.co.jp/ir/library",
+                "1928": "https://www.sekisuihouse.co.jp/company/financial/library/",
                 "1840": "https://www.tsuchiya.co.jp/ir/news/"},
-    "peers": [  # Addendum A2
-        {"ticker": "2976", "name": "日本グランデ", "fy_end_month": 3},
-        {"ticker": "205A", "name": "ロゴスホールディングス", "fy_end_month": 5},
-        {"ticker": "1873", "name": "日本ハウスホールディングス", "fy_end_month": 4},
+    "peers": [  # Addendum A30 (replaces A2; changing the set needs approval)
         {"ticker": "1419", "name": "タマホーム", "fy_end_month": 5},
+        {"ticker": "1873", "name": "日本ハウスホールディングス", "fy_end_month": 4},
+        {"ticker": "8999", "name": "グランディハウス", "fy_end_month": 3},
+        {"ticker": "1928", "name": "積水ハウス", "fy_end_month": 1},
     ],
     "budgets": {"max_iterations": 150, "max_minutes": 60, "max_requests_per_domain": 25,
                 "max_same_url": 2, "lock_stale_hours": 3, "change_guard_ratio": 0.20},
@@ -80,7 +83,7 @@ ALLOWLIST = {
     # market data (Addendum A8): irbank daily close + cross-check; JPX reference pages only
     "irbank.net": "market", "www.jpx.co.jp": "reference",
     # peer IR sites, 決算短信 only (Addendum A9)
-    "www.tamahome.jp": "peer-ir", "logos-holdings.jp": "peer-ir", "www.nippon-grande.co.jp": "peer-ir",
+    "www.tamahome.jp": "peer-ir", "www.grandy.co.jp": "peer-ir", "www.sekisuihouse.co.jp": "peer-ir",
     "www.nihonhouse-hd.co.jp": "peer-ir",
     # legal / government
     "www.mlit.go.jp": "legal", "etsuran2.mlit.go.jp": "legal", "laws.e-gov.go.jp": "legal",

@@ -31,7 +31,7 @@ from lib import (CONFIG, ROOT, BudgetStop, FetchError, GuardrailError, fetch, is
 STORE_FILE = "raw/market/daily_prices.csv"
 RF_FILE = "raw/market/jgb_1y.csv"
 STORE_SYMBOLS = {  # ticker or factor leg -> Yahoo symbol (A28 scope; changing it needs approval)
-    "1840": "1840.T", "205A": "205A.T", "1873": "1873.T", "1419": "1419.T", "2976": "2976.S",
+    "1840": "1840.T", "1873": "1873.T", "1419": "1419.T", "8999": "8999.T", "1928": "1928.T",
     "TOPIX": "1306.T", "CORE30": "1311.T", "MIDSMALL": "1493.T", "HIDIV": "1577.T",
 }
 HISTORY_START = "2016-10-01"
