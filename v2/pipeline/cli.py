@@ -10,6 +10,7 @@ finish; the baseline subagent's tools call run / steady / peek / refusal / injec
   python3 v2/pipeline/cli.py refusal "<what was requested>" --source <url|instruction>
   python3 v2/pipeline/cli.py injection --url <url> --excerpt "<short quote>"
   python3 v2/pipeline/cli.py peek "<csv name>" [--where col=value] [--limit 5]
+  python3 v2/pipeline/cli.py headline         # 1840 headline, peer inputs, 7-day history (no active run needed)
   python3 v2/pipeline/cli.py finish --plan tmp/plan.txt
 
 Every command prints one JSON object. Exit code 0 unless the input was invalid.
@@ -552,6 +553,38 @@ def headline(base) -> dict:
     res["price_date_source"] = f"{px['quote_time_jst'][:10]} / {px['source_type']}" if px else "not available"
     return res
 
+PEER_KEYS = [("Stock Price", "price"), ("EPS (company forecast)", "eps_forecast"), ("P/E (forward)", "pe_forward"),
+             ("EV/EBITDA (trailing)", "ev_ebitda")]
+WATCH = [("Average Valuated Price", "average_valuated_price"), ("Target P/E", "target_pe"),
+         ("Target EV/EBITDA", "target_ev_ebitda"), ("Stock Price", "stock_price_jpy")]
+
+def _num(r):
+    try:
+        return round(float(r["value"]), 4)
+    except (TypeError, ValueError, KeyError):
+        return None
+
+def review_view(base) -> dict:
+    """What the orchestrator's review needs: the 1840 headline, each peer's inputs to the target multiples, and the
+    last 7 days of the watched values (one value per day)."""
+    peers = {}
+    for p in CONFIG["peers"]:
+        peers[p["ticker"]] = {"name": p["name"], **{k: (_num(r) if (r := _latest(base, p["ticker"], m)) else None)
+                                                   for m, k in PEER_KEYS}}
+    hist = {}
+    for metric, key in WATCH:
+        days = {}
+        for r in sorted((r for r in base.rows.values() if r["ticker"] == "1840" and r["metric"] == metric),
+                        key=lambda r: (r["quote_time_jst"] or r["access_date_jst"])):
+            v = _num(r)
+            if v is not None:
+                days[(r["quote_time_jst"] or r["access_date_jst"])[:10]] = v
+        hist[key] = [[d, v] for d, v in sorted(days.items())[-7:]]
+    return {"headline": headline(base), "peers": peers, "history_7d": hist}
+
+def cmd_headline(a):
+    return out(review_view(CsvStore("Baseline Metrics")))
+
 def _dashboard_finish(st, cr, S) -> str:
     """Send this run's chosen results: one 'run summary' output, NEEDS ATTENTION items, and a few monitors."""
     try:
@@ -580,6 +613,9 @@ def _dashboard_finish(st, cr, S) -> str:
         dict_page = ROOT / "reports" / "report_list.html"
         if dict_page.exists():
             dashboard.set_monitor(dict_page, "Data dictionary (report_list.html)")
+        debug_csv = ROOT / "logs" / "debug_runs.csv"  # written by v2/agent.py: per-subagent run debugging
+        if debug_csv.exists():
+            dashboard.set_monitor(debug_csv, "Debug log (debug_runs.csv)")
         base = S["Baseline Metrics"]
         px = _latest(base, "1840", "Stock Price")
         if px:  # single value: the latest market price (JPY)
@@ -657,6 +693,7 @@ def main():
     s = sub.add_parser("integrated-record"); s.add_argument("path"); s.set_defaults(fn=cmd_integrated)
     s = sub.add_parser("refusal"); s.add_argument("text"); s.add_argument("--source", default=""); s.set_defaults(fn=cmd_refusal)
     s = sub.add_parser("injection"); s.add_argument("--url", required=True); s.add_argument("--excerpt", required=True); s.set_defaults(fn=cmd_injection)
+    s = sub.add_parser("headline"); s.set_defaults(fn=cmd_headline)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)
     a = ap.parse_args()

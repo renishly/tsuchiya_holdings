@@ -1,6 +1,6 @@
 # Tsuchiya Holdings (1840) research-data agent — v2
 
-v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and a **baseline subagent**. A second subagent (alternative data) can be added beside it later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A23 describe v2).
+v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and a **baseline subagent**. A second subagent (alternative data) can be added beside it later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A27 describe v2).
 
 ## 1. How a run works
 
@@ -8,16 +8,19 @@ v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 age
 GitHub Actions (schedule / Run workflow button / API)
 └─ v2/agent.py
    1. start (code)        pipeline/cli.py start: lock, state, approvals, dashboard check-in → run plan JSON
-   2. orchestrate (model) orchestrator: write_plan → delegate(subagent, task) → reads reports → summary
+   2. routine (code)      each subagent's deterministic steps: unfinished build phases in order, else steady refresh + P9
+   3. events? (code)      instruction, unfinished build, a step that failed, NEEDS ATTENTION, a >3% move in
+                          Average Valuated Price / Target P/E / Target EV/EBITDA since the last review, daily check
+      no events           quiet run: no model request at all
+      events → review     orchestrator (model) explains what changed and why; may delegate follow-ups
         └─ baseline subagent (model + tools): run_phase P1/P2/P3/P4/P6/P9, steady_refresh, peek, log_refusal, log_injection
-      fallback (code)     if the model API is unavailable: each subagent's deterministic steps
-   3. close-out (code)    P4 validation, P5 Sheet sync, finish (run summary, state, dashboard)
+   4. close-out (code)    P4 validation, P5 Sheet sync (both skipped when nothing changed), debug CSV, finish
 └─ workflow commits v2/data, reports, state, logs, raw, inputs → push to main (normal push, never force)
 ```
 
 | Part | File | Owns |
 |---|---|---|
-| Orchestrator | `agent.py`, `prompts/orchestrator.md` | run plan, delegation, summary; start and close-out in code |
+| Orchestrator | `agent.py`, `prompts/orchestrator.md` | code: start, routine work, event detection, close-out; model: the review and any follow-up delegation |
 | Model layer | `llm.py` | OpenRouter client, free-only guard, fallback models, per-run request budget, tool loop |
 | Baseline subagent | `subagents/baseline.py`, `prompts/baseline.md` | P1 Discover, P2 有報 extraction, P3 統合報告書, P4 validation, P6 valuation (P/E, EV/EBITDA), P9 data dictionary, steady refresh (prices, metrics, daily new-filings check) |
 | Pipeline | `pipeline/*.py` | v1's helpers as real files: every source fetch and file write, with the guardrails (allowlist, robots.txt, rate limits, v2/-only writes, locked rows, 20% change guard, PII filter, injection screen) |
@@ -78,6 +81,9 @@ The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17
   Without `LLM_API_KEY` this runs the deterministic fallback. Test mode always works on a temporary copy, so `v2/` is left unchanged.
 
 ## 4. What each run records
+
+- **Review events:** every run summary says which events triggered a review, or "none, so the model was not called". A review compares against the snapshot taken at the previous review (`v2/state/orchestrator.json`), so small daily moves add up until they cross 3% (`REVIEW_THRESHOLD` variable, e.g. `0.05` for 5%). The first run at or after 15:30 JST each day is always reviewed (the daily check). If the model is unavailable, the routine work is still done and the review is retried next run.
+- **Debug CSV:** `v2/logs/debug_runs.csv`, uploaded to the dashboard as the monitor "Debug log (debug_runs.csv)". One row per subagent per run: whether a review was called and why, model requests and tokens, what the code ran, whether the model ran the subagent, delegations and reruns, rounds to a final report, steps and tool calls, early stops (step limit, loop) and what it had reached before each stop, repeated work, and whether P4/P5 ran or were skipped. `consensus_rounds` is "n/a" until there are two subagents.
 
 - **Delegations and loops:** the run summary has a line per subagent, e.g. `Delegations: baseline x2 (8 steps, 6 tool calls; early stops: 1 step limit, 0 loop; repeated work: steady)`. The same numbers are kept per run in `v2/state/orchestrator.json` (`delegation_history`, last 200 runs). A re-delegation is allowed; each report tells the orchestrator what work was already done, so it can continue instead of repeating it.
 - **Headline numbers:** the steady refresh and P6 return a `headline` block (price, P/E, targets, Average Valuated Price, returns), so the models don't search the CSV for them.

@@ -47,6 +47,7 @@ jobs:
           FREE_ONLY: ${{ vars.FREE_ONLY }}
           MAX_STEPS: ${{ vars.MAX_STEPS }}
           MAX_LLM_REQUESTS: ${{ vars.MAX_LLM_REQUESTS }}
+          REVIEW_THRESHOLD: ${{ vars.REVIEW_THRESHOLD }}
           EDINET_API_KEY: ${{ secrets.EDINET_API_KEY }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
