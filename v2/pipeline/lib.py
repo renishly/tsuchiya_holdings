@@ -45,13 +45,11 @@ CONFIG = {
                 "1419": "https://www.tamahome.jp/company/ir/library/library_02.html",
                 "1873": "https://www.nihonhouse-hd.co.jp/company/irlist/?y={year}",  # one page per calendar year
                 "8999": "https://www.grandy.co.jp/ir/library",
-                "1928": "https://www.sekisuihouse.co.jp/company/financial/library/",
                 "1840": "https://www.tsuchiya.co.jp/ir/news/"},
-    "peers": [  # Addendum A30 (replaces A2; changing the set needs approval)
+    "peers": [  # Addenda A30-A31 (replace A2; changing the set needs approval)
         {"ticker": "1419", "name": "タマホーム", "fy_end_month": 5},
         {"ticker": "1873", "name": "日本ハウスホールディングス", "fy_end_month": 4},
         {"ticker": "8999", "name": "グランディハウス", "fy_end_month": 3},
-        {"ticker": "1928", "name": "積水ハウス", "fy_end_month": 1},
     ],
     "budgets": {"max_iterations": 150, "max_minutes": 60, "max_requests_per_domain": 25,
                 "max_same_url": 2, "lock_stale_hours": 3, "change_guard_ratio": 0.20},
@@ -83,7 +81,7 @@ ALLOWLIST = {
     # market data (Addendum A8): irbank daily close + cross-check; JPX reference pages only
     "irbank.net": "market", "www.jpx.co.jp": "reference",
     # peer IR sites, 決算短信 only (Addendum A9)
-    "www.tamahome.jp": "peer-ir", "www.grandy.co.jp": "peer-ir", "www.sekisuihouse.co.jp": "peer-ir",
+    "www.tamahome.jp": "peer-ir", "www.grandy.co.jp": "peer-ir",
     "www.nihonhouse-hd.co.jp": "peer-ir",
     # legal / government
     "www.mlit.go.jp": "legal", "etsuran2.mlit.go.jp": "legal", "laws.e-gov.go.jp": "legal",

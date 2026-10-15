@@ -22,7 +22,7 @@ from lib import (CONFIG, ROOT, BudgetStop, CsvStore, FetchError, GuardrailError,
 
 API = "https://api.edinet-fsa.go.jp/api/v2"
 DOC_TYPES = {"120": "有価証券報告書", "130": "訂正有価証券報告書"}
-PEER_EDINET = {"1873": "E00197", "1419": "E27305", "8999": "E04044", "1928": "E00143"}  # Addendum A30
+PEER_EDINET = {"1873": "E00197", "1419": "E27305", "8999": "E04044"}  # Addenda A30-A31
 
 def _key():
     k = os.environ.get("EDINET_API_KEY", "")

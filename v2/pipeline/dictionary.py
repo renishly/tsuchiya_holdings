@@ -35,7 +35,7 @@ COLUMNS = {
     "xbrl_element": ("XBRL element ID the value was read from (jppfs_cor / jpcrp_cor taxonomy).", "text", ""),
     "report_title": ("Title of the integrated report, or 'not published'.", "text", ""),
     "section": ("Section of the integrated report.", "text", ""),
-    "ticker": ("Securities code of the company the metric belongs to (Tsuchiya or a peer).", "text", "1840, 1419, 1873, 8999, 1928 (2976, 205A: former peers, history only)"),
+    "ticker": ("Securities code of the company the metric belongs to (Tsuchiya or a peer).", "text", "1840, 1419, 1873, 8999 (2976, 205A, 1928: former peers, history only)"),
     "company_name": ("Company name.", "text", ""),
     "metric": ("Metric name (see the metric list below).", "text", ""),
     "basis": ("actual (filed figures), actual (決算短信), company forecast (会社予想), market (quotes), derived (computed for a fiscal year), derived-current (computed from today's price).", "enum", ""),

@@ -1,6 +1,6 @@
 # Tsuchiya Holdings (1840) research-data agent — v2
 
-v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A30 describe v2).
+v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A31 describe v2).
 
 ## 1. How a run works
 
@@ -25,7 +25,7 @@ GitHub Actions (schedule / Run workflow button / API)
 | Model layer | `llm.py` | OpenRouter client, free-only guard, fallback models, per-run request budget, tool loop |
 | Baseline subagent | `subagents/baseline.py`, `prompts/baseline.md` | P1 Discover, P2 有報 extraction, P3 統合報告書, P4 validation, P6 valuation (P/E, EV/EBITDA), P9 data dictionary, steady refresh (prices, metrics, daily new-filings check) |
 | Factor subagent | `subagents/factor.py`, `prompts/factor.md`, `pipeline/factors.py` | betas of 1840 to market / size / value proxies (weekly returns, 5 years, Dimson lag), cost of equity r = JGB 1y + β × long-run premia, **factor-implied price** (the price if 1840 had earned exactly its factor-predicted return since 1, 2, 3 and 5 years ago, averaged), residual-income value for reference only. Shown next to the baseline, not in Average Valuated Price |
-| Price store | `pipeline/factors.py` → `raw/market/daily_prices.csv`, `raw/market/jgb_1y.csv` | one yfinance batch per day after 15:30 JST for 1840, the 4 peers (A30) and 4 ETFs; MOF 1-year JGB yield. The baseline's share prices also come from this store |
+| Price store | `pipeline/factors.py` → `raw/market/daily_prices.csv`, `raw/market/jgb_1y.csv` | one yfinance batch per day after 15:30 JST for 1840, the 3 peers (A30–A31) and 4 ETFs; MOF 1-year JGB yield. The baseline's share prices also come from this store |
 | Pipeline | `pipeline/*.py` | v1's helpers as real files: every source fetch and file write, with the guardrails (allowlist, robots.txt, rate limits, v2/-only writes, locked rows, 20% change guard, PII filter, injection screen) |
 | Parked | `pipeline/altdata.py`, `pipeline/legal.py` | P7 listings/homepages and P8 legal score, kept for the future alternative-data subagent; refused while parked; `Alternative Data.csv` keeps v1's rows |
 
@@ -122,7 +122,7 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 ## 8. Known limitations
 
 - Everything in `v1/README.md` §9 still applies (Yahoo/irbank prices, forward EBITDA assumption), except peer forecasts: irbank blocks GitHub Actions (HTTP 403).
-- **Peers (A30):** タマホーム (1419), 日本ハウスHD (1873), グランディハウス (8999), 積水ハウス (1928). Each one's forecast is read from its own IR page, which links the 決算短信 PDFs directly; its EV/EBITDA inputs come from its latest 有報 on EDINET, re-checked monthly in the daily refresh. 日本グランデ and ロゴスHD were dropped because their IR documents are served from xj-storage.jp (robots.txt disallows automated access); their past rows stay as history. J-Quants was ruled out: its terms forbid use by a class or seminar.
+- **Peers (A30–A31):** タマホーム (1419), 日本ハウスHD (1873), グランディハウス (8999). Each one's forecast is read from its own IR page, which links the 決算短信 PDFs directly; its EV/EBITDA inputs come from its latest 有報 on EDINET, re-checked monthly in the daily refresh. 日本グランデ and ロゴスHD were dropped because their IR documents are served from xj-storage.jp (robots.txt disallows automated access); 積水ハウス was dropped because its website returns HTTP 403 to GitHub's servers. Past rows of former peers stay as history. J-Quants was ruled out: its terms forbid use by a class or seminar.
 - **P7/P8 are parked.** Listings, homepage snapshots and the legal penalty score are not refreshed; the dashboard's legal score monitor shows v1's last value.
 - **No model web search** (Addendum A22). The 統合報告書 search uses the IR-page scan only; news for the legal score is not collected.
 - **Free models** can be busy or retired at short notice, and their providers may log prompts. Prompts contain only public data and run state.

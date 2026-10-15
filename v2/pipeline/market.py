@@ -87,7 +87,7 @@ def manual_prices() -> list[dict]:
                 continue
     return rows
 
-YF_SYMBOL = {"1840": "1840.T", "1873": "1873.T", "1419": "1419.T", "8999": "8999.T", "1928": "1928.T"}  # A30 peers
+YF_SYMBOL = {"1840": "1840.T", "1873": "1873.T", "1419": "1419.T", "8999": "8999.T"}  # A30-A31 peers
 
 def yf_prices(st) -> dict:
     """Latest daily close per ticker from the shared daily price store (Addenda A16, A28).

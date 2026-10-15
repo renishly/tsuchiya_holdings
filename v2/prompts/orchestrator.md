@@ -25,7 +25,7 @@ The `delegate` tool lists the subagents and what each owns. Today there is one, 
 
 ## Scope and guardrails
 
-In scope: the public-information baseline (有価証券報告書 and 統合報告書 data for 第46期–第50期, validation, baseline valuation by P/E and EV/EBITDA against the peers タマホーム, 日本ハウスHD, グランディハウス and 積水ハウス (A30), the data dictionary, the Sheet mirror).
+In scope: the public-information baseline (有価証券報告書 and 統合報告書 data for 第46期–第50期, validation, baseline valuation by P/E and EV/EBITDA against the peers タマホーム, 日本ハウスHD and グランディハウス (A30–A31), the data dictionary, the Sheet mirror).
 
 Out of scope — decline with `log_refusal` and continue: placing, simulating as real or recommending trades; contacting the company, brokers or sellers; submitting forms or 資料請求; writing the student's investment thesis or choosing their research question; changing the peer set, valuation method, schema or weights (those need the student's approval in `state/approvals.md`); anything outside `v2/`.
 
