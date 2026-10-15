@@ -1,6 +1,6 @@
 # Tsuchiya Holdings (1840) research-data agent — v2
 
-v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A31 describe v2).
+v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A33 describe v2).
 
 ## 1. How a run works
 
@@ -93,6 +93,22 @@ The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17
 - **Close-out skips:** P4 validation is skipped when no CSV or the approval queue changed since the last validation. P5 Sheet sync is skipped when nothing changed since that day's sync and there is nothing needing attention. The Sheet is still synced at least once a day, so your edits in the Sheet are pulled back daily. Each skip is noted in the run summary.
 - **Factor model:** the dashboard monitor "Factor model (Fama-French style)" shows the factor-implied price (overall and per start date), r, the risk-free rate, betas, alpha and the residual-income reference. Factors are **proxies** from Tokyo-listed ETFs: market = TOPIX ETF 1306 − JGB 1y; size = JPX-Nikkei Mid Small 1493 − TOPIX Core 30 1311; value = Nomura High Dividend 70 1577 − TOPIX 1306. Betas are re-estimated weekly; prices update daily.
 - **Log rotation:** at the first run of a new month, `logs/run_log.jsonl` (gzipped) and `logs/run_summaries.md` move to `logs/archive/<month>/`. Nothing is deleted.
+
+## 4b. Consensus between subagents
+
+When there is no consensus yet, a debater's price moved more than 3% since the last consensus, a NEEDS ATTENTION item appeared, or the consensus is 7 days old, the subagents debate:
+
+| Step | Who | What |
+|---|---|---|
+| Evidence board | code | every number the debate may use, under a stable key (headline, peers, factor model, 7-day history) |
+| Round 1 | each subagent, independently | confidence (low/medium/high), up to 5 claims citing board keys |
+| Round 2 | each subagent | sees the other's validated position; challenges, concessions, revised confidence |
+| Checks | code | a claim citing an unknown key or a number not on the board is rejected and not shown to the other side |
+| Consensus price | code | weighted mean of the computed prices (baseline Average Valuated Price, factor-implied price); "agreed" if within 15%, else "disputed" with the range |
+| Statement | orchestrator | what each side argues, the core disagreement, what would settle it |
+| Referees (optional) | Mercury Decide, Span-01 Lite | `REFEREE_MODE=shadow`: scores each turn (unsupported numbers, trade advice, legal claims, engagement, concessions) and judges which view is better supported; logged only |
+
+Settings (repository variables): `CONSENSUS_WEIGHTING` (`equal` default, or `confidence`), `CONSENSUS_AGREE_WITHIN` (0.15), `CONSENSUS_ROUNDS` (2), `REFEREE_MODE` (`off` default, or `shadow`). Outputs: Baseline Metrics rows "Consensus Valuated Price", "Consensus range low/high"; dashboard monitor "Consensus valuation"; the full debate in `logs/consensus_log.jsonl`.
 
 ## 5. Approvals, corrections, inputs
 

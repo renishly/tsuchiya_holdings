@@ -20,6 +20,9 @@ class SubagentSpec:
     max_steps: int = 8
     # Deterministic work used when the model API is unavailable: (start_plan) -> list of pipeline arg tuples.
     fallback: object = None
+    # Consensus (A32): the headline key holding this subagent's valuation price, if it takes part in the debate.
+    valuation_key: str | None = None
+    valuation_label: str = ""
 
 
 def _registry() -> dict[str, SubagentSpec]:

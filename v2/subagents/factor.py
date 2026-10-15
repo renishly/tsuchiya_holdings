@@ -49,4 +49,6 @@ SPEC = SubagentSpec(
     tools=TOOLS,
     max_steps=4,
     fallback=fallback,
+    valuation_key="factor_implied_price",
+    valuation_label="Factor-implied Price (Fama-French-style market view)",
 )

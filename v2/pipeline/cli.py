@@ -543,7 +543,8 @@ HEADLINE = [("Stock Price", "stock_price_jpy"), ("Market Cap", "market_cap_jpy")
             ("Expected Return (EV/EBITDA)", "return_ev_ebitda"), ("Dividend Yield (forecast)", "dividend_yield_forecast"),
             # factor subagent (A28-A29): its own numbers, shown next to the baseline, not in the average
             ("Factor-implied Price", "factor_implied_price"), ("Cost of Equity (factor model)", "cost_of_equity_factor"),
-            ("Residual Income Value (reference)", "residual_income_value_reference")]
+            ("Residual Income Value (reference)", "residual_income_value_reference"),
+            ("Consensus Valuated Price", "consensus_valuated_price")]
 
 def headline(base) -> dict:
     """The key 1840 baseline numbers in one small block, so a model never has to search the CSV for them.
@@ -606,6 +607,32 @@ def cmd_factors(a):
     save_state(st)
     log(st, "factors", {}, {k: res.get(k) for k in ("cost_of_equity", "factor_implied_price", "error")})
     return out(res)
+
+def cmd_consensus_record(a):
+    """Write the consensus result (computed by v2/consensus.py) as Baseline Metrics rows (Addendum A32)."""
+    from metrics import Writer
+    st = load_state()
+    run_ctx(st)
+    res = json.loads((ROOT / a.path).read_text(encoding="utf-8"))
+    base = CsvStore("Baseline Metrics")
+    ids = [r["record_id"] for m in ("Average Valuated Price", "Factor-implied Price") if (r := _latest(base, "1840", m))]
+    w = Writer(st, base, "1840", CONFIG["company_name"])
+    today = iso()[:10]
+    common = dict(url="https://disclosure2.edinet-fsa.go.jp/", title="consensus between subagents", location="",
+                  source_type="derived", key_extra=today)
+    prices = ", ".join(f"{k} {v:.2f}" for k, v in res["prices"].items())
+    weights = ", ".join(f"{k} {v:.0%}" for k, v in res["weights"].items())
+    note = (f"Status: {res['status']} (spread {res['spread']:.1%}; agreed if within the configured limit). "
+            f"Prices: {prices}. Weights ({res['weighting']}): {weights}. Rounds: {res['rounds']}; "
+            f"rejected claims: {res['rejected_claims']}. {res.get('statement', '')}")[:900]
+    w.put("Consensus Valuated Price", "derived (consensus)", "", res["price"], "JPY/share",
+          "= weighted mean of the subagents' computed prices (weights from the configured rule)", ids, note=note, **common)
+    w.put("Consensus range low", "derived (consensus)", "", res["range"][0], "JPY/share", "= lowest subagent price", ids, **common)
+    w.put("Consensus range high", "derived (consensus)", "", res["range"][1], "JPY/share", "= highest subagent price", ids, **common)
+    saved = base.save(st)
+    save_state(st)
+    log(st, "consensus", {"status": res["status"]}, {"price": res["price"], "range": res["range"]})
+    return out({"recorded": True, "csv": saved})
 
 def cmd_headline(a):
     return out(review_view(CsvStore("Baseline Metrics")))
@@ -690,6 +717,16 @@ def _dashboard_finish(st, cr, S) -> str:
                     "it enters the final number only through the planned consensus.",
         }
         dashboard.set_monitor(fac, "Factor model (Fama-French style)")
+        con = _latest(base, "1840", "Consensus Valuated Price")
+        if con:  # A32: the final number; the student's own target and view remain separate
+            dashboard.set_monitor({
+                "consensus price (JPY)": show("Consensus Valuated Price"),
+                "range (JPY)": f"{show('Consensus range low')} - {show('Consensus range high')}",
+                "current market price (JPY)": show("Stock Price"),
+                "date": con["access_date_jst"][:10],
+                "details": con["correction_note"][:600],
+                "note": "Agent consensus between the baseline and factor subagents; the target and view are the student's.",
+            }, "Consensus valuation")
         legal = S["Alternative Data"].get(record_id("legal_score", "total"))
         if legal and legal["value"]:
             dashboard.set_monitor(f"{legal['value']} / 100 (exposure measure, not a finding of wrongdoing)", "Legal penalty score")
@@ -732,6 +769,7 @@ def main():
     s = sub.add_parser("injection"); s.add_argument("--url", required=True); s.add_argument("--excerpt", required=True); s.set_defaults(fn=cmd_injection)
     s = sub.add_parser("headline"); s.set_defaults(fn=cmd_headline)
     s = sub.add_parser("factors"); s.set_defaults(fn=cmd_factors)
+    s = sub.add_parser("consensus-record"); s.add_argument("path"); s.set_defaults(fn=cmd_consensus_record)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)
     a = ap.parse_args()

@@ -190,5 +190,37 @@ def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: i
     return AgentResult("(stopped: reached step limit)", max_steps, calls, "step limit")
 
 
+# --- Decisions API (optional referee models, Addendum A33) -----------------------------------------------------
+DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions"   # alpha endpoint: typed questions -> probabilities
+
+
+def decide(model: str, state: dict, questions: dict, timeout: int = 60) -> dict:
+    """One Decisions API call (OpenRouter /api/alpha/decisions). Returns {"answers": {...}} or {"error": ...}.
+    Same free-only guard and per-run request budget as chat calls; never raises."""
+    import requests
+    if not API_KEY:
+        return {"error": "LLM_API_KEY not set"}
+    if IS_OPENROUTER and FREE_ONLY and not model.endswith(":free"):
+        return {"error": f"{model} is not a free model (FREE_ONLY)"}
+    if usage["requests"] >= MAX_LLM_REQUESTS:
+        return {"error": f"per-run model request budget reached ({MAX_LLM_REQUESTS})"}
+    usage["requests"] += 1
+    try:
+        r = requests.post(DECISIONS_URL, timeout=timeout,
+                          headers={"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json",
+                                   "X-Title": "Tsuchiya Holdings agent v2"},
+                          json={"model": model, "state": state, "questions": questions})
+    except Exception as e:
+        return {"error": f"{type(e).__name__}"}
+    if r.status_code != 200:
+        return {"error": f"HTTP {r.status_code}: {r.text[:200]}"}
+    try:
+        data = r.json()
+    except ValueError:
+        return {"error": "response was not JSON"}
+    usage["models"].add(data.get("model") or model)
+    return {"answers": data.get("answers") or {}, "usage": data.get("usage")}
+
+
 def load_prompt(name: str) -> str:
     return (ROOT / "prompts" / f"{name}.md").read_text(encoding="utf-8")

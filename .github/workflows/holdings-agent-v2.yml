@@ -13,6 +13,10 @@ on:
         description: "Optional instruction for the orchestrator (blank = normal run)"
         required: false
         default: ""
+      referee_mode:
+        description: "Referee models for the consensus debate: off or shadow (blank = repository variable)"
+        required: false
+        default: ""
   repository_dispatch:
     types: [run-agent]
 
@@ -48,6 +52,10 @@ jobs:
           MAX_STEPS: ${{ vars.MAX_STEPS }}
           MAX_LLM_REQUESTS: ${{ vars.MAX_LLM_REQUESTS }}
           REVIEW_THRESHOLD: ${{ vars.REVIEW_THRESHOLD }}
+          CONSENSUS_ROUNDS: ${{ vars.CONSENSUS_ROUNDS }}
+          CONSENSUS_AGREE_WITHIN: ${{ vars.CONSENSUS_AGREE_WITHIN }}
+          CONSENSUS_WEIGHTING: ${{ vars.CONSENSUS_WEIGHTING }}
+          REFEREE_MODE: ${{ github.event.inputs.referee_mode || vars.REFEREE_MODE }}
           EDINET_API_KEY: ${{ secrets.EDINET_API_KEY }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}

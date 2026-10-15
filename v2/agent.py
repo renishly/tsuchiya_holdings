@@ -46,6 +46,7 @@ REVIEW_THRESHOLD = float(os.getenv("REVIEW_THRESHOLD") or "0.03")
 REVIEW_WATCH = {"average_valuated_price": "Average Valuated Price", "target_pe": "Target P/E",
                 "target_ev_ebitda": "Target EV/EBITDA", "factor_implied_price": "Factor-implied Price"}
 DAILY_CHECK_AFTER = (15, 30)  # JST: the first run at or after the TSE close each day is always reviewed
+CONSENSUS_MAX_AGE_DAYS = 7    # A32: a consensus is re-debated at least weekly even when nothing moved
 
 
 def data_root() -> Path:
@@ -132,9 +133,9 @@ def rotate_logs() -> str:
         with open(arch / "run_summaries.md", "a", encoding="utf-8") as dst:
             dst.write(summaries.read_text(encoding="utf-8"))
         summaries.unlink()
-    debug = logs / "debug_runs.csv"
-    if debug.exists():
-        debug.rename(arch / "debug_runs.csv")
+    for name in ("debug_runs.csv", "consensus_log.jsonl"):
+        if (logs / name).exists():
+            (logs / name).rename(arch / name)
     return f"logs from {started} archived to logs/archive/{started}/"
 
 
@@ -167,6 +168,7 @@ class Run:
         self.events: list[str] = []
         self.orch_updates: dict = {}                # review snapshot / daily-check date, saved in the close-out
         self.closeout_status = {"P4": "not run", "P5": "not run"}
+        self.consensus: dict | None = None
 
     # --- orchestrator tools ---------------------------------------------------------------------------------
     def delegate(self, subagent: str, task: str) -> str:
@@ -275,6 +277,61 @@ class Run:
             ev.append("daily check (first run after the TSE close today)")
         return ev
 
+    def debaters(self, view: dict) -> list[dict]:
+        from subagents import SUBAGENTS
+        head = view.get("headline") or {}
+        out = []
+        for spec in SUBAGENTS.values():
+            v = head.get(spec.valuation_key) if spec.valuation_key else None
+            if isinstance(v, (int, float)) and v > 0:
+                out.append({"name": spec.name, "label": spec.valuation_label, "price": float(v),
+                            "system": load_prompt("debate") + "\n\n## Your view\n\n" + load_prompt(spec.prompt)})
+        return out
+
+    def consensus_due(self, view: dict, orch: dict) -> list[str]:
+        """Why a consensus debate is needed now (empty = the last consensus still stands)."""
+        deb = self.debaters(view)
+        if len(deb) < 2 or self.mode.startswith("phase="):
+            return []
+        snap = orch.get("consensus_snapshot")
+        if not snap:
+            return ["no consensus yet"]
+        why = []
+        for d in deb:
+            then = (snap.get("prices") or {}).get(d["name"])
+            if not then:
+                why.append(f"{d['name']} has no price in the last consensus")
+            elif abs(d["price"] / then - 1) > REVIEW_THRESHOLD:
+                why.append(f"{d['name']} price {then} -> {d['price']} ({d['price'] / then - 1:+.1%}) since the consensus of {snap['date']}")
+        age = (dt.datetime.now(JST) - dt.datetime.fromisoformat(snap["date"])).days
+        if age >= CONSENSUS_MAX_AGE_DAYS:
+            why.append(f"consensus is {age} days old")
+        if any(e.startswith("needs attention") for e in self.events):
+            why.append("a NEEDS ATTENTION item")
+        return why
+
+    def run_consensus(self, view: dict, reasons: list[str]) -> None:
+        import consensus
+        llm.check_settings()
+        deb = self.debaters(view)
+        print(f"Consensus debate ({', '.join(d['name'] for d in deb)}): {'; '.join(reasons)}", flush=True)
+        res = consensus.run(deb, consensus.evidence_board(view, self.routine_results), load_prompt("orchestrator"))
+        res["reasons"] = reasons
+        self.consensus = res
+        root = data_root()
+        (root / "tmp").mkdir(parents=True, exist_ok=True)
+        (root / "tmp" / "consensus.json").write_text(json.dumps(res, ensure_ascii=False), encoding="utf-8")
+        with open(root / "logs" / "consensus_log.jsonl", "a", encoding="utf-8") as f:
+            f.write(json.dumps({"run_id": self.start.get("run_id"), "date": dt.datetime.now(JST).isoformat(timespec="seconds"),
+                                **res}, ensure_ascii=False) + "\n")
+        rec = j(pipeline("consensus-record", "tmp/consensus.json"))
+        if rec.get("error"):
+            self.closeout_notes.append(f"Consensus not recorded: {rec}")
+        self.orch_updates["consensus_snapshot"] = {
+            "date": dt.datetime.now(JST).isoformat(timespec="minutes"), "run_id": self.start.get("run_id"),
+            "prices": res["prices"], "price": res["price"], "status": res["status"]}
+        print(f"Consensus: {res['status']} at {res['price']} (range {res['range']}, weights {res['weights']})", flush=True)
+
     def review(self, view: dict, orch: dict) -> None:
         """The model's job on an event: read what the code did and what changed, follow up if needed, explain."""
         from subagents import SUBAGENTS
@@ -287,7 +344,10 @@ class Run:
                 f"\n\nAt the last review ({snap.get('date', 'none')}):\n"
                 f"{json.dumps({k: snap.get(k) for k in ('values', 'peers')}, ensure_ascii=False) if snap else 'no earlier review'}"
                 + (f"\n\nInstruction from the user's manual/API trigger (still bound by your guardrails):\n"
-                   f"{self.instruction}" if self.instruction else ""))
+                   f"{self.instruction}" if self.instruction else "")
+                + (f"\n\nConsensus reached this run (final; do not recompute):\n"
+                   f"{json.dumps({k: v for k, v in self.consensus.items() if k not in ('transcript', 'referee')}, ensure_ascii=False)[:3000]}"
+                   if self.consensus else ""))
         res = run_agent("orchestrator", load_prompt("orchestrator"), task, self._tools(SUBAGENTS), ORCHESTRATOR_STEPS)
         self.orchestrator_summary = res.text.strip()[:1500]
         today = dt.datetime.now(JST)
@@ -354,6 +414,13 @@ class Run:
         for r in self.reports:
             body.append(f"Subagent {r['subagent']}: {r['task'][:120]} -> "
                         f"{(r.get('stopped') + '; ') if r.get('stopped') else ''}{r['report'][:400]}")
+        if self.consensus:
+            c = self.consensus
+            body.append(f"Consensus ({c['status']}): {c['price']} JPY, range {c['range'][0]}-{c['range'][1]}, "
+                        f"weights {c['weights']}, confidence {c['confidence']}, rejected claims {c['rejected_claims']}. "
+                        + c.get("statement", "")[:500])
+            if c.get("referee"):
+                body.append("Referees (shadow, log only): see logs/consensus_log.jsonl")
         if self.orchestrator_summary:
             body.append("Review: " + self.orchestrator_summary[:900])
         for name, st in self.stats.items():
@@ -395,7 +462,9 @@ class Run:
                     "ran_by_code": ", ".join(r["command"] for r in self.routine_results if r["subagent"] == name) or "no",
                     "ran_by_model": "yes" if attempts else "no", "delegations": len(attempts),
                     "reruns": max(len(attempts) - 1, 0), "rounds_to_final_report": final_at or ("" if not attempts else "none"),
-                    "consensus_rounds": "n/a (one subagent)" if len(SUBAGENTS) < 2 else "",
+                    "consensus_rounds": ("n/a (one subagent)" if len(SUBAGENTS) < 2 else
+                                         str(self.consensus["rounds"]) if self.consensus and name in self.consensus["prices"]
+                                         else ""),
                     "total_steps": st.get("steps", 0), "tool_calls": st.get("tool_calls", 0),
                     "step_limit_stops": st.get("step_limit_stops", 0), "loop_stops": st.get("loop_stops", 0),
                     "reached_before_stop": " ; ".join(stops), "repeated_work": ", ".join(st.get("repeated_work", [])),
@@ -469,6 +538,11 @@ def main() -> int:
             orch = load_orch()
             view = j(pipeline("headline"))
             run.events = run.detect_events(view, orch)
+            why = run.consensus_due(view, orch)
+            if why:
+                run.events.append("consensus due: " + "; ".join(why))
+                run.run_consensus(view, why)
+                view = j(pipeline("headline"))  # now includes the consensus price
             if run.events:
                 print("Review events:\n  " + "\n  ".join(run.events), flush=True)
                 run.review(view, orch)
