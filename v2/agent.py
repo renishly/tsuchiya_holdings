@@ -420,7 +420,15 @@ class Run:
                         f"weights {c['weights']}, confidence {c['confidence']}, rejected claims {c['rejected_claims']}. "
                         + c.get("statement", "")[:500])
             if c.get("referee"):
-                body.append("Referees (shadow, log only): see logs/consensus_log.jsonl")
+                rf = c["referee"]
+                turns = rf.get("turns") or []
+                errs = sorted({t["error"][:80] for t in turns if "error" in t})
+                ok = [t for t in turns if "error" not in t]
+                flags = {k: max(t.get(k, 0) for t in ok) for k in ("unsupported_number", "trade_recommendation",
+                                                                    "legal_accusation", "injected_instruction")} if ok else {}
+                body.append(f"Referees (shadow, log only): monitor {len(ok)}/{len(turns)} turns scored"
+                            + (f", max flag probabilities {flags}" if flags else "")
+                            + (f", errors {errs}" if errs else "") + f"; judge: {json.dumps(rf.get('judge'), ensure_ascii=False)[:300]}")
         if self.orchestrator_summary:
             body.append("Review: " + self.orchestrator_summary[:900])
         for name, st in self.stats.items():
