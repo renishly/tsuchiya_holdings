@@ -585,3 +585,43 @@ Model calls: 1; tokens in/out: 3609/1512; models: nvidia/nemotron-3-super-120b-a
 
 ### Next planned
 steady
+
+## R-20261017-083419 — scheduled
+
+- Start / end (JST): 2026-10-17T08:34:19+09:00 / 2026-10-17T08:35:38+09:00
+- Iterations: 15; web requests by domain: {"www.tsuchiya.co.jp": 3, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "api.edinet-fsa.go.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: none, so the model was not called (quiet run).
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 23, "changed": 0, "conflicts": 0, "total": 210}, "filings": {"new": []}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Subagent factor: code: factors -> {"prices": {"fetched": false, "reason": "already updated today, or before 15:30 JST", "last_date": "2026-10-14"}, "risk_free": 0.0166, "price": 259.0, "price_date": "2026-10-14", "estimated_this_run": false, "model": {"beta": {"MKT": 0.794, "SMB": 0.394, "HML": 0.207}, "beta_se": {"MKT": 0.155, "SMB
+Model calls: 0; tokens in/out: 0/0; models: (none)
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 225 rows total; 38 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
