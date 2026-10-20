@@ -26,3 +26,5 @@ R-20261020-091919,2026-10-20T09:20:02+09:00,scheduled,no,,,0,0,0,,baseline,"stea
 R-20261020-091919,2026-10-20T09:20:02+09:00,scheduled,no,,,0,0,0,,factor,factors,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261020-214305,2026-10-20T21:44:15+09:00,scheduled,yes,daily check (first run after the TSE close today),,1,4014,1219,nvidia/nemotron-3-ultra-550b-a55b:free,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261020-214305,2026-10-20T21:44:15+09:00,scheduled,yes,daily check (first run after the TSE close today),,1,4014,1219,nvidia/nemotron-3-ultra-550b-a55b:free,factor,factors,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261021-085151,2026-10-21T08:52:34+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261021-085151,2026-10-21T08:52:34+09:00,scheduled,no,,,0,0,0,,factor,factors,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
