@@ -2,9 +2,9 @@
 
 Run from the repository root (GitHub Actions does this):
 
-    python v2/agent.py                       # Mode: scheduled (default)
-    python v2/agent.py --mode test           # frozen fixtures, sandbox copy: no network, Sheet, dashboard or git
-    python v2/agent.py --mode phase=P6       # one phase once, for debugging
+    python v2/app/agent.py                       # Mode: scheduled (default)
+    python v2/app/agent.py --mode test           # frozen fixtures, sandbox copy: no network, Sheet, dashboard or git
+    python v2/app/agent.py --mode phase=P6       # one phase once, for debugging
 
 Flow of one run:
   1. start (code): lock, state, approvals, dashboard check-in -> the run plan as JSON. Stops here if another run

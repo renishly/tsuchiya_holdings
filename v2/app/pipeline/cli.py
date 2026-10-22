@@ -1,17 +1,17 @@
-"""Pipeline CLI for the Tsuchiya research-data agent (v2). The LLM orchestrator (v2/agent.py) calls start and
+"""Pipeline CLI for the Tsuchiya research-data agent (v2). The LLM orchestrator (v2/app/agent.py) calls start and
 finish; the baseline subagent's tools call run / steady / peek / refusal / injection. Usage (from the repo root):
 
-  python3 v2/pipeline/cli.py start --mode scheduled|test|phase=P3
-  python3 v2/pipeline/cli.py plan
-  python3 v2/pipeline/cli.py run P1 ... P9
-  python3 v2/pipeline/cli.py steady            # every-run refresh + due daily tasks
-  python3 v2/pipeline/cli.py news-ingest tmp/news.json
-  python3 v2/pipeline/cli.py integrated-record tmp/integrated.json
-  python3 v2/pipeline/cli.py refusal "<what was requested>" --source <url|instruction>
-  python3 v2/pipeline/cli.py injection --url <url> --excerpt "<short quote>"
-  python3 v2/pipeline/cli.py peek "<csv name>" [--where col=value] [--limit 5]
-  python3 v2/pipeline/cli.py headline         # 1840 headline, peer inputs, 7-day history (no active run needed)
-  python3 v2/pipeline/cli.py finish --plan tmp/plan.txt
+  python3 v2/app/pipeline/cli.py start --mode scheduled|test|phase=P3
+  python3 v2/app/pipeline/cli.py plan
+  python3 v2/app/pipeline/cli.py run P1 ... P9
+  python3 v2/app/pipeline/cli.py steady            # every-run refresh + due daily tasks
+  python3 v2/app/pipeline/cli.py news-ingest tmp/news.json
+  python3 v2/app/pipeline/cli.py integrated-record tmp/integrated.json
+  python3 v2/app/pipeline/cli.py refusal "<what was requested>" --source <url|instruction>
+  python3 v2/app/pipeline/cli.py injection --url <url> --excerpt "<short quote>"
+  python3 v2/app/pipeline/cli.py peek "<csv name>" [--where col=value] [--limit 5]
+  python3 v2/app/pipeline/cli.py headline         # 1840 headline, peer inputs, 7-day history (no active run needed)
+  python3 v2/app/pipeline/cli.py finish --plan tmp/plan.txt
 
 Every command prints one JSON object. Exit code 0 unless the input was invalid.
 """
@@ -665,7 +665,7 @@ def _dashboard_finish(st, cr, S) -> str:
         dict_page = ROOT / "reports" / "report_list.html"
         if dict_page.exists():
             dashboard.set_monitor(dict_page, "Data dictionary (report_list.html)")
-        debug_csv = ROOT / "logs" / "debug_runs.csv"  # written by v2/agent.py: per-subagent run debugging
+        debug_csv = ROOT / "logs" / "debug_runs.csv"  # written by v2/app/agent.py: per-subagent run debugging
         if debug_csv.exists():
             dashboard.set_monitor(debug_csv, "Debug log (debug_runs.csv)")
         base = S["Baseline Metrics"]

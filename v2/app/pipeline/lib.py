@@ -1,8 +1,8 @@
 """Shared runtime for the Tsuchiya Holdings (1840) research-data agent.
 
-v2: these helpers were embedded in v1/SKILL.md; they now live in v2/pipeline/ and are
+v2: these helpers were embedded in v1/SKILL.md; they now live in v2/app/pipeline/ and are
 called by the baseline subagent's tools (v2/subagents/baseline.py) and the orchestrator
-(v2/agent.py). Builder edits only; the agent never modifies them.
+(v2/app/agent.py). Builder edits only; the agent never modifies them.
 
 Every guardrail that can be enforced in code lives here:
   - all writes go through safe_path() (v2/ only, never agent code or prompts, never approvals.md)
@@ -29,7 +29,7 @@ import urllib.robotparser
 from pathlib import Path
 
 JST = dt.timezone(dt.timedelta(hours=9), "JST")
-ROOT = Path(os.environ.get("TSUCHIYA_ROOT", Path(__file__).resolve().parent.parent)).resolve()
+ROOT = Path(os.environ.get("TSUCHIYA_ROOT", Path(__file__).resolve().parent.parent.parent)).resolve()  # v2/
 UA = "TsuchiyaResearchAgent/1.0 (academic research; Fukuhara Seminar; read-only, low rate)"
 
 # ---------------------------------------------------------------- configuration
@@ -105,8 +105,8 @@ def iso(t: dt.datetime | None = None) -> str:
     return (t or now()).isoformat(timespec="seconds")
 
 # Agent code and standing instructions: the agent never modifies these (v2 replaces "never modify SKILL.md").
-PROTECTED_DIRS = ("pipeline", "subagents", "prompts")
-PROTECTED_FILES = ("agent.py", "llm.py", "prompt2.org", "requirements.txt", "list_models.py", "README.md")
+PROTECTED_DIRS = ("app",)                       # all agent code and prompts (v2/app/)
+PROTECTED_FILES = ("prompt2.org", "README.md")
 
 def safe_path(rel: str | Path) -> Path:
     """Resolve a path under v2/ and refuse anything outside it or protected files."""

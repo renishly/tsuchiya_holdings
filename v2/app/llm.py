@@ -17,7 +17,8 @@ from typing import Callable
 
 from openai import APIStatusError, BadRequestError, NotFoundError, OpenAI, RateLimitError
 
-ROOT = Path(__file__).resolve().parent          # v2/
+APP = Path(__file__).resolve().parent           # v2/app/ (code)
+ROOT = APP.parent                               # v2/ (data, state, logs)
 REPO = ROOT.parent                              # repository root
 
 # --- Settings -----------------------------------------------------------------------------------------------
@@ -128,11 +129,11 @@ class Tool:
 
 
 def pipeline(*args: str, timeout: int = 1800) -> str:
-    """Run one guarded pipeline command (v2/pipeline/cli.py) and return its JSON result as text.
+    """Run one guarded pipeline command (v2/app/pipeline/cli.py) and return its JSON result as text.
     The pipeline is our own code: it gets the real environment (EDINET key, Sheet credentials, dashboard key)
     and enforces the allowlist, write paths, locked rows and budgets itself. Nothing model-written runs."""
     try:
-        r = subprocess.run([sys.executable, str(ROOT / "pipeline" / "cli.py"), *args], cwd=REPO,
+        r = subprocess.run([sys.executable, str(APP / "pipeline" / "cli.py"), *args], cwd=REPO,
                            capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired:
         return json.dumps({"error": "timeout", "detail": f"cli.py {args[0]} exceeded {timeout}s"})
@@ -223,4 +224,4 @@ def decide(model: str, state: dict | str, questions: dict, timeout: int = 60) ->
 
 
 def load_prompt(name: str) -> str:
-    return (ROOT / "prompts" / f"{name}.md").read_text(encoding="utf-8")
+    return (APP / "prompts" / f"{name}.md").read_text(encoding="utf-8")

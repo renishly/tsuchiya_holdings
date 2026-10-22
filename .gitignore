@@ -5,6 +5,7 @@
 !/v1/
 !/v2/
 !/.github/
+!/changelogs/
 # never commit secrets or scratch
 project secrets/
 secrets/

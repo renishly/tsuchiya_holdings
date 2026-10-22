@@ -38,9 +38,9 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: v2/requirements.txt
+          cache-dependency-path: v2/app/requirements.txt
 
-      - run: pip install -r v2/requirements.txt
+      - run: pip install -r v2/app/requirements.txt
 
       - name: Run agent
         env:
@@ -65,7 +65,7 @@ jobs:
           AGENT_MODE: ${{ github.event.inputs.mode || github.event.client_payload.mode || 'scheduled' }}
           AGENT_INSTRUCTION: ${{ github.event.inputs.instruction || github.event.client_payload.instruction || '' }}
           TSUCHIYA_GIT: "0"            # the next step commits; the pipeline does not push by itself
-        run: python v2/agent.py
+        run: python v2/app/agent.py
 
       - name: Commit outputs
         if: ${{ always() && (github.event.inputs.mode || github.event.client_payload.mode || 'scheduled') != 'test' }}

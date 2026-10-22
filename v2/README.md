@@ -6,7 +6,7 @@ v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 age
 
 ```
 GitHub Actions (schedule / Run workflow button / API)
-└─ v2/agent.py
+└─ v2/app/agent.py
    1. start (code)        pipeline/cli.py start: lock, state, approvals, dashboard check-in → run plan JSON
    2. routine (code)      each subagent's deterministic steps: unfinished build phases in order, else steady refresh + P9
    3. events? (code)      instruction, unfinished build, a step that failed, NEEDS ATTENTION, a >3% move in
@@ -18,6 +18,8 @@ GitHub Actions (schedule / Run workflow button / API)
    4. close-out (code)    P4 validation, P5 Sheet sync (both skipped when nothing changed), debug CSV, finish
 └─ workflow commits v2/data, reports, state, logs, raw, inputs → push to main (normal push, never force)
 ```
+
+All code and prompts are in `v2/app/`; the paths below are relative to it. Data, state and logs stay in `v2/`.
 
 | Part | File | Owns |
 |---|---|---|
@@ -76,10 +78,10 @@ The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17
   A `204` response means the run was queued.
 - **Locally** (from the repo root, Python 3.11+):
   ```bash
-  pip install -r v2/requirements.txt
+  pip install -r v2/app/requirements.txt
   ```
   ```bash
-  python3 v2/agent.py --mode test
+  python3 v2/app/agent.py --mode test
   ```
   Without `LLM_API_KEY` this runs the deterministic fallback. Test mode always works on a temporary copy, so `v2/` is left unchanged.
 
@@ -116,10 +118,10 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 
 ## 6. Adding a subagent
 
-1. Create `v2/subagents/<name>.py` with a `SPEC = SubagentSpec(name, description, prompt, tools, max_steps, fallback)`. Each tool should wrap a pipeline command (see `baseline.py`).
-2. Write `v2/prompts/<name>.md`.
-3. Add it to `_registry()` in `v2/subagents/__init__.py`. The orchestrator's `delegate` tool lists it automatically.
-4. For the alternative-data subagent: un-park P7/P8 in `pipeline/cli.py` (`PARKED`, `DAILY_TASKS`), and give the new subagent `run_phase` for them.
+1. Create `v2/app/subagents/<name>.py` with a `SPEC = SubagentSpec(name, description, prompt, tools, max_steps, fallback)`. Each tool should wrap a pipeline command (see `baseline.py`).
+2. Write `v2/app/prompts/<name>.md`.
+3. Add it to `_registry()` in `v2/app/subagents/__init__.py`. The orchestrator's `delegate` tool lists it automatically.
+4. For the alternative-data subagent: un-park P7/P8 in `app/pipeline/cli.py` (`PARKED`, `DAILY_TASKS`), and give the new subagent `run_phase` for them.
 5. For cross-communication: the orchestrator can already pass one subagent's report into another's task. Describe the exchange you want in `prompts/orchestrator.md`, and raise `MAX_DELEGATIONS` in `agent.py` if needed.
 
 ## 7. Troubleshooting
@@ -142,5 +144,5 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 - **P7/P8 are parked.** Listings, homepage snapshots and the legal penalty score are not refreshed; the dashboard's legal score monitor shows v1's last value.
 - **No model web search** (Addendum A22). The 統合報告書 search uses the IR-page scan only; news for the legal score is not collected.
 - **Free models** can be busy or retired at short notice, and their providers may log prompts. Prompts contain only public data and run state.
-- **Evals:** v1's scenario runner drives the Claude Code skill. Porting it to `v2/agent.py` is still to do; test mode and fixtures already work.
+- **Evals:** v1's scenario runner drives the Claude Code skill. Porting it to `v2/app/agent.py` is still to do; test mode and fixtures already work.
 - **GitHub Actions** treats scheduled runs as best effort (often minutes late). Private repos get 2,000 free minutes a month; a run takes about 2–5 minutes.
