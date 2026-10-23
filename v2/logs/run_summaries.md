@@ -1072,3 +1072,47 @@ Model calls: 1; tokens in/out: 4110/2470; models: nvidia/nemotron-3-ultra-550b-a
 
 ### Next planned
 steady
+
+## R-20261023-085922 — scheduled
+
+- Start / end (JST): 2026-10-23T08:59:22+09:00 / 2026-10-23T09:03:50+09:00
+- Iterations: 14; web requests by domain: {"www.tsuchiya.co.jp": 3, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 1, "api.edinet-fsa.go.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: consensus due: consensus is 7 days old
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 23, "changed": 0, "conflicts": 0, "total": 458}, "filings": {"new": []}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Subagent factor: code: factors -> {"prices": {"fetched": false, "reason": "already updated today, or before 15:30 JST", "last_date": "2026-10-22"}, "risk_free": 0.01657, "price": 251.0, "price_date": "2026-10-22", "estimated_this_run": true, "model": {"beta": {"MKT": 0.788, "SMB": 0.396, "HML": 0.178}, "beta_se": {"MKT": 0.154, "SMB
+Consensus (disputed): 250.38 JPY, range 191.56-309.19, weights {'baseline': 0.5, 'factor': 0.5}, confidence {'baseline': 'low', 'factor': 'medium'}, rejected claims 9. Consensus: disputed. Equal-weighted mean ¥253.3 vs market ¥250.4; 47% spread between baseline ¥191.6 (low confidence) and factor ¥309.2 (medium confidence). Baseline: zero forecast EPS, negative trailing EPS, peer P/E 3.5–20.4 makes mean 11.9 unreliable; returns −34.8% (P/E) / −4.6% (EV/EBITDA) plus 4.0% yield. Factor: R² 0.118, value beta 0.178 (SE 0.198), cost of equity 11.2% (7.1–15.3%), start-date spread ¥276–342 (24%). Residual income reference ¥117.7 flags downside. No model clears the 15%
+Review: **Review — 2026-10-23 scheduled (consensus 7 days old)**
+
+No material change since last review (2026-10-22). All watched values are within 1% of last review: average valuated price ¥191.56 (flat), target P/E 11.94 (flat), target EV/EBITDA 11.80 (flat), factor implied price ¥309.2 (−0.8%), stock price ¥251 (flat). Peer inputs unchanged. The consensus remains **disputed** (47% spread, baseline low confidence / factor medium confidence) with equal-weighted mean ¥250.4 vs market ¥250.4. Factor model refreshed (R² 0.118, cost of equity 11.2%, 5-year start spread ¥276–342). Baseline unchanged: zero forecast EPS, negative trailing EPS, peer mean P/E 11.9 unreliable. Nothing to delegate; student should note consensus age if using it for thesis timing.
+Model calls: 10; tokens in/out: 56358/8913; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 476 rows total; 41 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
