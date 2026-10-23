@@ -1,0 +1,65 @@
+{
+ "items": {
+  "E-f580b629": {
+   "id": "E-f580b629",
+   "date": "2026-09-14",
+   "ticker": "1840",
+   "title": "2026.09.14 IRニュース 「通期業績予想の修正に関するお知らせ」",
+   "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/f30bacafc0c615eb072fc445cea37d06.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "backfill"
+  },
+  "E-ddb5b3b3": {
+   "id": "E-ddb5b3b3",
+   "date": "2026-09-14",
+   "ticker": "1840",
+   "title": "2026.09.14 決算短信 「2026年10月期 第３四半期決算短信」",
+   "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/fec832f8c638b037ba8ba1282c8f44d0.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "backfill"
+  },
+  "E-4f2e08d6": {
+   "id": "E-4f2e08d6",
+   "date": "2026-10-13",
+   "ticker": "1419",
+   "title": "2026年10月13日 2027年５月期第１四半期 決算短信〔日本基準〕(連結) (566KB)",
+   "url": "https://www.tamahome.jp/company/ir/upload_file/m005-m005_02/20261013-1.pdf?e=3438",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "2026-10-23T21:38:34+09:00"
+  },
+  "E-cb2df70f": {
+   "id": "E-cb2df70f",
+   "date": "2026-07-14",
+   "ticker": "1419",
+   "title": "2026年07月14日 2026年５月期 決算短信〔日本基準〕(連結) (648KB)",
+   "url": "https://www.tamahome.jp/company/ir/upload_file/m005-m005_02/tannshinn.pdf?e=8451",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "backfill"
+  },
+  "E-a1ca9cf5": {
+   "id": "E-a1ca9cf5",
+   "date": "2026-09-04",
+   "ticker": "1873",
+   "title": "2026年09月04日 2027年４月期 第１四半期決算短信〔日本基準〕（連結）",
+   "url": "https://www.nihonhouse-hd.co.jp/pdf/ir/20260904-1.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "backfill"
+  },
+  "E-c5043a07": {
+   "id": "E-c5043a07",
+   "date": "2026-07-30",
+   "ticker": "1873",
+   "title": "2026年07月30日 固定資産の譲渡に伴う特別利益及び固定資産の除却に伴う特別損失の計上並びに業績予想の修正に関するお知らせ",
+   "url": "https://www.nihonhouse-hd.co.jp/pdf/ir/20260730.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "backfill"
+  }
+ },
+ "last_check": "2026-10-23T21:39:53+09:00"
+}

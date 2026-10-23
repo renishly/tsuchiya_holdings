@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-23T17:44:05+09:00",
+      "last_success": "2026-10-23T21:43:46+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-23T17:44:13+09:00",
+      "last_success": "2026-10-23T21:43:54+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-23T13:56:22+09:00",
+      "last_success": "2026-10-23T21:38:34+09:00",
       "fail_streak": 0
     }
   },
@@ -2388,13 +2388,233 @@
           "note": ""
         }
       }
+    },
+    "valuation_docs": {
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/f30bacafc0c615eb072fc445cea37d06.pdf": {
+        "kind": "revision",
+        "title": "2026.09.14 IRニュース 「通期業績予想の修正に関するお知らせ」",
+        "date": "2026-09-14",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/f30bacafc0c615eb072fc445cea37d06.pdf",
+        "fy": "FY ending 2026-10",
+        "prev": {
+          "revenue": 35000.0,
+          "operating_profit": 400.0,
+          "eps": 10.08
+        },
+        "new": {
+          "revenue": 33500.0,
+          "operating_profit": 0.0,
+          "eps": 0.0
+        }
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/fec832f8c638b037ba8ba1282c8f44d0.pdf": {
+        "kind": "quarterly",
+        "title": "2026.09.14 決算短信 「2026年10月期 第３四半期決算短信」",
+        "date": "2026-09-14",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/09/fec832f8c638b037ba8ba1282c8f44d0.pdf",
+        "months": 9,
+        "fy": "FY ending 2026-10",
+        "da_prior_ytd": 258332000.0,
+        "da_ytd": 311829000.0,
+        "bps": 467.03
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2026/06/6195598004221ec874ebb67568f4b241.pdf": {
+        "kind": "quarterly",
+        "title": "2026.06.15 決算短信 「2026年10月期 第２四半期（中間期）決算短信」",
+        "date": "2026-06-15",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/06/6195598004221ec874ebb67568f4b241.pdf",
+        "months": 6,
+        "fy": "FY ending 2026-10",
+        "bps": 471.02
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2026/03/21303111605092f2c3ba55537b447421.pdf": {
+        "kind": "quarterly",
+        "title": "2026.03.13 決算短信 「2026年10月期第1四半期決算短信」",
+        "date": "2026-03-13",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2026/03/21303111605092f2c3ba55537b447421.pdf",
+        "months": 3,
+        "fy": "FY ending 2026-10",
+        "da_prior_ytd": 84955000.0,
+        "da_ytd": 94320000.0,
+        "bps": 480.94
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2025/12/b5960b4d3ab656eb5be793cc69c9c5f6.pdf": {
+        "kind": "annual",
+        "title": "2025.12.15 決算短信 「2025年10月期決算短信」",
+        "date": "2025-12-15",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2025/12/b5960b4d3ab656eb5be793cc69c9c5f6.pdf",
+        "forecast_fy": "FY ending 2026-10",
+        "forecast_op": 400.0,
+        "unit_scale": 1000000
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2025/12/6c413fd0b0c5220423b1067bb78e1539.pdf": {
+        "kind": "revision",
+        "title": "2025.12.04 IRニュース 「通期業績予想の修正に関するお知らせ」",
+        "date": "2025-12-04",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2025/12/6c413fd0b0c5220423b1067bb78e1539.pdf",
+        "fy": "FY ending 2025-10",
+        "prev": {
+          "revenue": 32000.0,
+          "operating_profit": 5.0,
+          "eps": 0.19
+        },
+        "new": {
+          "revenue": 31456.0,
+          "operating_profit": -122.0,
+          "eps": -3.66
+        }
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2025/09/cb1410bcb2eb0e49fcdafbbd22870a02.pdf": {
+        "kind": "quarterly",
+        "title": "2025.09.12 IRニュース 「2025年10月期第３四半期決算短信」",
+        "date": "2025-09-12",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2025/09/cb1410bcb2eb0e49fcdafbbd22870a02.pdf",
+        "months": 9,
+        "fy": "FY ending 2025-10",
+        "da_prior_ytd": 263315000.0,
+        "da_ytd": 258332000.0,
+        "bps": 467.25
+      },
+      "https://www.tsuchiya.co.jp/wp-content/uploads/2025/09/bfd6de9019c2f5a24e9548c27db9d6bc.pdf": {
+        "kind": "revision",
+        "title": "2025.09.12 IRニュース 「通期業績予想の修正に関するお知らせ」",
+        "date": "2025-09-12",
+        "url": "https://www.tsuchiya.co.jp/wp-content/uploads/2025/09/bfd6de9019c2f5a24e9548c27db9d6bc.pdf",
+        "fy": "FY ending 2025-10",
+        "prev": {
+          "revenue": 35000.0,
+          "operating_profit": 580.0,
+          "eps": 20.0
+        },
+        "new": {
+          "revenue": 32000.0,
+          "operating_profit": 5.0,
+          "eps": 0.19
+        }
+      }
+    },
+    "md_series": {
+      "lumber": {
+        "series": {
+          "202001": 101.3,
+          "202002": 101.1,
+          "202003": 101.1,
+          "202004": 100.7,
+          "202005": 100.6,
+          "202006": 100,
+          "202007": 99.2,
+          "202008": 98.9,
+          "202009": 98.7,
+          "202010": 99.2,
+          "202011": 99.4,
+          "202012": 99.7,
+          "202101": 100.6,
+          "202102": 101.3,
+          "202103": 102.5,
+          "202104": 105.5,
+          "202105": 112,
+          "202106": 123.6,
+          "202107": 134.5,
+          "202108": 145.2,
+          "202109": 156.9,
+          "202110": 165.6,
+          "202111": 166.1,
+          "202112": 168.1,
+          "202201": 169.7,
+          "202202": 170.4,
+          "202203": 171.2,
+          "202204": 174.9,
+          "202205": 177.6,
+          "202206": 178.3,
+          "202207": 177.9,
+          "202208": 175.5,
+          "202209": 170.2,
+          "202210": 166.1,
+          "202211": 163.5,
+          "202212": 160.5,
+          "202301": 154.8,
+          "202302": 150.6,
+          "202303": 145.7,
+          "202304": 141.7,
+          "202305": 139.7,
+          "202306": 138.2,
+          "202307": 136.7,
+          "202308": 135.5,
+          "202309": 135.9,
+          "202310": 136.1,
+          "202311": 136.6,
+          "202312": 135.7,
+          "202401": 136.8,
+          "202402": 136.1,
+          "202403": 135.7,
+          "202404": 135.4,
+          "202405": 135.7,
+          "202406": 135.4,
+          "202407": 136.2,
+          "202408": 135.7,
+          "202409": 134.7,
+          "202410": 133.3,
+          "202411": 132.3,
+          "202412": 132.2,
+          "202501": 132,
+          "202502": 133.1,
+          "202503": 133.5,
+          "202504": 135.2,
+          "202505": 135.7,
+          "202506": 136,
+          "202507": 136.6,
+          "202508": 136.8,
+          "202509": 137.2,
+          "202510": 137.3,
+          "202511": 137.4,
+          "202512": 137.3,
+          "202601": 137.3,
+          "202602": 138.8,
+          "202603": 139.2,
+          "202604": 140.2,
+          "202605": 144.2,
+          "202606": 147.2,
+          "202607": 148.9,
+          "202608": 148.7,
+          "202609": 148.9
+        },
+        "fetched": "2026-10-23",
+        "source": "https://www.stat-search.boj.or.jp/api/v1/getDataCode?db=PR01&code=PRCG20_2200320001"
+      },
+      "land": {
+        "series": {}
+      }
+    },
+    "md_context": {
+      "forecast_fy": "FY ending 2026-10",
+      "forecast_operating_profit": 0.0,
+      "guidance_date": "2026-09-14",
+      "months_left": 0.26,
+      "discount_baseline": 5855783.333333333,
+      "supply_costs_pct": 0.13449899125757003,
+      "land_price_pct": null,
+      "cap": 15389706.52650022,
+      "cap_rule": "largest past guidance miss × months left / 12 (shrinks as the fiscal year ends)"
+    },
+    "peer_bps": {
+      "S100YYFR": 1023.5,
+      "S100YR5P": 569.62,
+      "S100YIKY": 868.21
+    },
+    "debate_signal": {
+      "value": 0.0,
+      "date": "2026-10-23",
+      "mode": "shadow",
+      "expires": "2026-11-22",
+      "items": [],
+      "note": ""
     }
   },
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 251.0,
-      "quote_time": "2026-10-22T15:30:00+09:00"
+      "price": 250.0,
+      "quote_time": "2026-10-23T15:30:00+09:00"
     }
   },
   "history": [
@@ -2565,11 +2785,22 @@
       "ended": "2026-10-23T17:44:13+09:00",
       "iterations": 335,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261023-213704",
+      "ended": "2026-10-23T21:43:54+09:00",
+      "iterations": 20,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
     "changelog": "v2.007",
     "research_summary": "2026-10-23-n156",
-    "factor_monitor_removed": true
+    "factor_monitor_removed": true,
+    "summary_report": "reports/summary_2026-10-23.html"
+  },
+  "reports": {
+    "last_summary": "2026-10-23T21:40:40+09:00",
+    "latest_file": "reports/summary_2026-10-23.html"
   }
 }
