@@ -29,7 +29,7 @@ import urllib.robotparser
 from pathlib import Path
 
 JST = dt.timezone(dt.timedelta(hours=9), "JST")
-ROOT = Path(os.environ.get("TSUCHIYA_ROOT", Path(__file__).resolve().parent.parent.parent)).resolve()  # v2/
+ROOT = Path(os.environ.get("TSUCHIYA_ROOT", Path(__file__).resolve().parent.parent)).resolve()  # v2/app/
 UA = "TsuchiyaResearchAgent/1.0 (academic research; Fukuhara Seminar; read-only, low rate)"
 
 # ---------------------------------------------------------------- configuration
@@ -105,8 +105,8 @@ def iso(t: dt.datetime | None = None) -> str:
     return (t or now()).isoformat(timespec="seconds")
 
 # Agent code and standing instructions: the agent never modifies these (v2 replaces "never modify SKILL.md").
-PROTECTED_DIRS = ("app",)                       # all agent code and prompts (v2/app/)
-PROTECTED_FILES = ("prompt2.org", "README.md")
+PROTECTED_DIRS = ("pipeline", "subagents", "prompts")   # agent code and prompts inside v2/app/
+PROTECTED_FILES = ("agent.py", "llm.py", "consensus.py", "list_models.py", "requirements.txt", "prompt2.org", "README.md")
 
 def safe_path(rel: str | Path) -> Path:
     """Resolve a path under v2/ and refuse anything outside it or protected files."""
@@ -330,9 +330,9 @@ def _sess():
 
 def fixture_dir() -> Path:
     """Frozen test sources. v2 reuses v1's fixtures until it has its own evals/ folder."""
-    base = ROOT / "evals" / "fixtures"
-    if not base.exists():
-        base = ROOT.parent / "v1" / "evals" / "fixtures"
+    cands = [ROOT / "evals" / "fixtures", ROOT.parent / "v1" / "evals" / "fixtures",
+             ROOT.parent.parent / "v1" / "evals" / "fixtures"]   # test sandbox, or v2/app/ in the repository
+    base = next((c for c in cands if c.exists()), cands[-1])
     return base / os.environ.get("TSUCHIYA_FIXTURE_SET", "default")
 
 def fixture_index() -> dict:

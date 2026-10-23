@@ -526,7 +526,7 @@ def cmd_finish(a):
     return out({"finished": cr["run_id"], "summary_lines": len(body.splitlines()), "attention": cr["attention"], "git": committed,
                 "dashboard": dash})
 
-REPO_DATA = "https://github.com/renishly/tsuchiya_holdings/tree/main/v2/data"
+REPO_DATA = "https://github.com/renishly/tsuchiya_holdings/tree/main/v2/app/data"
 
 def _latest(base, ticker, metric):
     rows = [r for r in base.rows.values() if r["ticker"] == ticker and r["metric"] == metric and r["value"] != ""]

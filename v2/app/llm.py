@@ -18,8 +18,8 @@ from typing import Callable
 from openai import APIStatusError, BadRequestError, NotFoundError, OpenAI, RateLimitError
 
 APP = Path(__file__).resolve().parent           # v2/app/ (code)
-ROOT = APP.parent                               # v2/ (data, state, logs)
-REPO = ROOT.parent                              # repository root
+ROOT = APP                                      # v2/app/ is also the data root (data, state, logs)
+REPO = ROOT.parent.parent                       # repository root
 
 # --- Settings -----------------------------------------------------------------------------------------------
 BASE_URL = os.getenv("LLM_BASE_URL") or "https://openrouter.ai/api/v1"

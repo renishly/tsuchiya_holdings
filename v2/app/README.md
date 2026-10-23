@@ -1,6 +1,6 @@
 # Tsuchiya Holdings (1840) research-data agent — v2
 
-v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/prompt2.org` (local only; addenda A19–A33 describe v2).
+v2 runs on **GitHub Actions** with **OpenRouter free models**. The single v1 agent (`v1/SKILL.md` as a Claude Code routine) is split into an **orchestrator** and two subagents: the **baseline subagent** (public-information valuation) and the **factor subagent** (a Fama–French-style market view). An alternative-data subagent and a consensus between subagents come later. The data, guardrails and helper code are v1's. The specification is `v2/app/prompt2.org` (local only; addenda A19–A33 describe v2).
 
 ## 1. How a run works
 
@@ -19,7 +19,7 @@ GitHub Actions (schedule / Run workflow button / API)
 └─ workflow commits v2/data, reports, state, logs, raw, inputs → push to main (normal push, never force)
 ```
 
-All code and prompts are in `v2/app/`; the paths below are relative to it. Data, state and logs stay in `v2/`.
+Everything for the agent is in `v2/app/` (code, prompts, data, state, logs, evals); the paths below are relative to it. `v2/changelog/` has one page per update; `v2/resources/` holds local materials for prompt communication.
 
 | Part | File | Owns |
 |---|---|---|
@@ -87,10 +87,10 @@ The schedule (`17 7,21 * * *` UTC, about 16:17 JST after the TSE close and 06:17
 
 ## 4. What each run records
 
-- **Review events:** every run summary says which events triggered a review, or "none, so the model was not called". A review compares against the snapshot taken at the previous review (`v2/state/orchestrator.json`), so small daily moves add up until they cross 3% (`REVIEW_THRESHOLD` variable, e.g. `0.05` for 5%). The first run at or after 15:30 JST each day is always reviewed (the daily check). If the model is unavailable, the routine work is still done and the review is retried next run.
-- **Debug CSV:** `v2/logs/debug_runs.csv`, uploaded to the dashboard as the monitor "Debug log (debug_runs.csv)". One row per subagent per run: whether a review was called and why, model requests and tokens, what the code ran, whether the model ran the subagent, delegations and reruns, rounds to a final report, steps and tool calls, early stops (step limit, loop) and what it had reached before each stop, repeated work, and whether P4/P5 ran or were skipped. `consensus_rounds` is "n/a" until there are two subagents.
+- **Review events:** every run summary says which events triggered a review, or "none, so the model was not called". A review compares against the snapshot taken at the previous review (`v2/app/state/orchestrator.json`), so small daily moves add up until they cross 3% (`REVIEW_THRESHOLD` variable, e.g. `0.05` for 5%). The first run at or after 15:30 JST each day is always reviewed (the daily check). If the model is unavailable, the routine work is still done and the review is retried next run.
+- **Debug CSV:** `v2/app/logs/debug_runs.csv`, uploaded to the dashboard as the monitor "Debug log (debug_runs.csv)". One row per subagent per run: whether a review was called and why, model requests and tokens, what the code ran, whether the model ran the subagent, delegations and reruns, rounds to a final report, steps and tool calls, early stops (step limit, loop) and what it had reached before each stop, repeated work, and whether P4/P5 ran or were skipped. `consensus_rounds` is "n/a" until there are two subagents.
 
-- **Delegations and loops:** the run summary has a line per subagent, e.g. `Delegations: baseline x2 (8 steps, 6 tool calls; early stops: 1 step limit, 0 loop; repeated work: steady)`. The same numbers are kept per run in `v2/state/orchestrator.json` (`delegation_history`, last 200 runs). A re-delegation is allowed; each report tells the orchestrator what work was already done, so it can continue instead of repeating it.
+- **Delegations and loops:** the run summary has a line per subagent, e.g. `Delegations: baseline x2 (8 steps, 6 tool calls; early stops: 1 step limit, 0 loop; repeated work: steady)`. The same numbers are kept per run in `v2/app/state/orchestrator.json` (`delegation_history`, last 200 runs). A re-delegation is allowed; each report tells the orchestrator what work was already done, so it can continue instead of repeating it.
 - **Headline numbers:** the steady refresh and P6 return a `headline` block (price, P/E, targets, Average Valuated Price, returns), so the models don't search the CSV for them.
 - **Close-out skips:** P4 validation is skipped when no CSV or the approval queue changed since the last validation. P5 Sheet sync is skipped when nothing changed since that day's sync and there is nothing needing attention. The Sheet is still synced at least once a day, so your edits in the Sheet are pulled back daily. Each skip is noted in the run summary.
 - **Factor model:** the dashboard monitor "Factor model (Fama-French style)" shows the factor-implied price (overall and per start date), r, the risk-free rate, betas, alpha and the residual-income reference. Factors are **proxies** from Tokyo-listed ETFs: market = TOPIX ETF 1306 − JGB 1y; size = JPX-Nikkei Mid Small 1493 − TOPIX Core 30 1311; value = Nomura High Dividend 70 1577 − TOPIX 1306. Betas are re-estimated weekly; prices update daily.
@@ -114,7 +114,7 @@ Settings (repository variables): `CONSENSUS_WEIGHTING` (`equal` default, or `con
 
 ## 5. Approvals, corrections, inputs
 
-Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writing `APPROVE AR-…` on its own line in `v2/state/approvals.md` and committing it to `main`. Mark corrections with `student-verified` / `student-corrected` in the Sheet or the CSV. Optional inputs go in `v2/inputs/`.
+Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writing `APPROVE AR-…` on its own line in `v2/app/state/approvals.md` and committing it to `main`. Mark corrections with `student-verified` / `student-corrected` in the Sheet or the CSV. Optional inputs go in `v2/app/inputs/`.
 
 ## 6. Adding a subagent
 

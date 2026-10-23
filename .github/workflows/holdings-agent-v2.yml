@@ -72,7 +72,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add v2/data v2/reports v2/state v2/logs v2/raw v2/inputs
+          git add v2/app/data v2/app/reports v2/app/state v2/app/logs v2/app/raw v2/app/inputs
           if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
           git commit -m "agent v2 run $(date -u +%FT%H%MZ) (${{ github.event_name }})"
           # Normal pushes only (never force). If main moved, rebase our data commit on top once.

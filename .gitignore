@@ -5,7 +5,6 @@
 !/v1/
 !/v2/
 !/.github/
-!/changelogs/
 # never commit secrets or scratch
 project secrets/
 secrets/
@@ -23,8 +22,9 @@ v1/.dashboard.env
 .env
 v1/HOW_THE_AGENT_WORKS.html
 v1/AGENT_RUNDOWN.html
-v2/tmp/
-v2/state/run.lock
-v2/.dashboard.env
+v2/app/tmp/
+v2/app/state/run.lock
+v2/app/.dashboard.env
 v2/**/__pycache__/
-v2/prompt2.org
+v2/app/prompt2.org
+v2/resources/

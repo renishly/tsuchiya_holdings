@@ -58,7 +58,7 @@ ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap
   <div class="eyebrow">Tsuchiya Holdings (1840) agent · changelog</div>
   <h1>v2.003: directory reorganisation</h1>
   <div class="meta"><span>23 Oct 2026</span><span>Addendum A34</span><span>No change to what the agent computes</span></div>
-  <p>The agent's code and prompts now live in <code>v2/app/</code>, apart from its data. Two new folders sit at the repository root: <code>changelogs/</code> (one page per update) and <code>resources/</code> (materials for prompt communication).</p>
+  <p>Everything belonging to the agent (code, prompts, data, state, logs, evals) now lives in <code>v2/app/</code>. Beside it in <code>v2/</code> are two new folders: <code>changelog/</code> (one page per update) and <code>resources/</code> (materials for prompt communication).</p>
 </header>
 
 <section>
@@ -85,12 +85,12 @@ tsuchiya_holdings_agent/
 │  ├─ <span class="hl">app/</span>
 │  │  ├─ agent.py  llm.py  consensus.py
 │  │  ├─ list_models.py  requirements.txt
-│  │  └─ pipeline/  subagents/  prompts/
-│  ├─ data/ state/ logs/ raw/
-│  ├─ inputs/ reports/ evals/
-│  └─ README.md  prompt2.org
-├─ <span class="hl">changelogs/</span>  v2.003.html
-├─ <span class="hl">resources/</span>   v2_system_report.html …
+│  │  ├─ pipeline/  subagents/  prompts/
+│  │  ├─ data/ state/ logs/ raw/
+│  │  ├─ inputs/ reports/ evals/
+│  │  └─ README.md  prompt2.org
+│  ├─ <span class="hl">changelog/</span>  v2.003.html
+│  └─ <span class="hl">resources/</span>  explainer, system report
 └─ general_prompt_references/</pre></div>
   </div>
 </section>
@@ -101,13 +101,13 @@ tsuchiya_holdings_agent/
     <table>
       <thead><tr><th>Item</th><th>Change</th><th>Type</th></tr></thead>
       <tbody>
-        <tr><td>Agent code and prompts</td><td><code>v2/*.py</code>, <code>pipeline/</code>, <code>subagents/</code>, <code>prompts/</code> → <code>v2/app/</code> (git history kept)</td><td><span class="pill moved">moved</span></td></tr>
-        <tr><td>Data root</td><td>still <code>v2/</code>; the code now finds it one level up from <code>app/</code></td><td><span class="pill none">same</span></td></tr>
-        <tr><td>Guardrail: protected paths</td><td>the agent may not write anywhere in <code>v2/app/</code>, <code>prompt2.org</code> or <code>README.md</code></td><td><span class="pill new">updated</span></td></tr>
-        <tr><td>Workflows</td><td>run <code>v2/app/agent.py</code>, install <code>v2/app/requirements.txt</code>, list models from <code>v2/app/list_models.py</code></td><td><span class="pill new">updated</span></td></tr>
-        <tr><td><code>changelogs/</code></td><td>new; one page per update, <code>v2.NNN.html</code>; committed to the repository</td><td><span class="pill new">new</span></td></tr>
-        <tr><td><code>resources/</code></td><td>new; prompt-communication materials; kept local (git-ignored, like the prompt files)</td><td><span class="pill new">new</span></td></tr>
-        <tr><td>System report</td><td><code>v2_system_report.html</code> → <code>resources/</code></td><td><span class="pill moved">moved</span></td></tr>
+        <tr><td>Everything in v2</td><td>code, prompts, data, state, logs, raw, inputs, reports, evals, README and prompt → <code>v2/app/</code> (git history kept)</td><td><span class="pill moved">moved</span></td></tr>
+        <tr><td>Data root</td><td><code>v2/app/</code> (was <code>v2/</code>); the code and the data are in the same folder</td><td><span class="pill new">updated</span></td></tr>
+        <tr><td>Guardrail: protected paths</td><td>the agent may not write to its code, prompts, <code>prompt2.org</code> or <code>README.md</code> in <code>v2/app/</code></td><td><span class="pill new">updated</span></td></tr>
+        <tr><td>Workflows</td><td>run <code>v2/app/agent.py</code>, install <code>v2/app/requirements.txt</code>, commit <code>v2/app/data</code>, <code>state</code>, <code>logs</code> …</td><td><span class="pill new">updated</span></td></tr>
+        <tr><td><code>v2/changelog/</code></td><td>new; one page per update, <code>v2.NNN.html</code>; committed to the repository</td><td><span class="pill new">new</span></td></tr>
+        <tr><td><code>v2/resources/</code></td><td>new; prompt-communication materials; kept local (git-ignored, like the prompt files)</td><td><span class="pill new">new</span></td></tr>
+        <tr><td>System report</td><td><code>v2_system_report.html</code> → <code>v2/resources/</code>; the accounting-valuation explainer is there too</td><td><span class="pill moved">moved</span></td></tr>
         <tr><td>Docs</td><td>README paths; <code>prompt2.org</code> paths and addendum A34</td><td><span class="pill new">updated</span></td></tr>
         <tr><td>Valuation, data, schedule, models</td><td>no change</td><td><span class="pill none">same</span></td></tr>
       </tbody>
@@ -119,7 +119,7 @@ tsuchiya_holdings_agent/
   <h2>Checked</h2>
   <ul>
     <li>Test mode from the new location: full routine (baseline steady + P9, factor model), validation and Sheet dry run.</li>
-    <li>Guardrail: writes to <code>app/</code>, <code>prompt2.org</code> and outside <code>v2/</code> are refused; <code>data/</code> and <code>logs/</code> are allowed.</li>
+    <li>Guardrail: writes to the code, prompts, <code>prompt2.org</code> and outside <code>v2/app/</code> are refused; <code>data/</code> and <code>logs/</code> are allowed.</li>
     <li>A test-mode run on GitHub Actions after the push (see the run summary of that run).</li>
   </ul>
 </section>
