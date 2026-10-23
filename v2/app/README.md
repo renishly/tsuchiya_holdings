@@ -151,3 +151,8 @@ Same as v1 (see `v1/README.md` §6–7), with paths under `v2/`. Approve by writ
 - **Md** (forecast discount on operating profit): Discount Baseline from Tsuchiya's guidance record; land prices (MLIT) and the BOJ lumber index logged with coefficient 0 until fitted; Debate Signal 0 until the Md debate exists.
 - **Skills** (`skills/<name>/SKILL.md`, A36): loaded on demand through `load_skill`; see the deck `v2/resources/agent_skill_tree.html`.
 - The factor subagent was removed (A36); the consensus debate is inactive until Debater A/B exist.
+
+## v2.006: M1, panel backtest, research agent
+
+- **Research run** (`python v2/app/agent.py --mode research`; weekly on Sunday ~03:37 JST, or workflow_dispatch with mode `research`): `pipeline/universe.py` screens 22 listed housebuilders and collects six annual reports each from EDINET (resumable); `pipeline/modelfit.py` builds the panel, fits M1 (P/B and EV/EBITDA equations), runs the backtest and proposes weights; the `research` subagent writes a summary.
+- **Approval:** the result is pending in `state/model_params.json` with a request in `state/pending_approvals.md`; write `APPROVE AR-…` in `state/approvals.md` to use the new M1 coefficients and weights in the daily valuation. Report: `reports/backtest_latest.html`.

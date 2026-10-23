@@ -6,3 +6,4 @@ pdfplumber>=0.11
 gspread>=6.0
 google-auth>=2.29
 yfinance>=0.2.40
+numpy>=1.26

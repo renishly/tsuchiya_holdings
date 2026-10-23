@@ -63,6 +63,16 @@ if os.environ.get("TSUCHIYA_FIXTURE_SET"):
         if os.environ.get(_env):
             CONFIG["budgets"][_k] = int(os.environ[_env])
 
+# Research runs (A39) scan EDINET's daily lists and download the universe's filings: their own, larger budgets.
+RESEARCH_BUDGETS = {"max_iterations": 5000, "max_requests_per_domain": 900, "max_minutes": 55}
+
+
+def budget(st_or_cr: dict, key: str):
+    cr = st_or_cr.get("current_run") or st_or_cr if isinstance(st_or_cr, dict) else {}
+    if (cr or {}).get("mode") == "research" and key in RESEARCH_BUDGETS:
+        return RESEARCH_BUDGETS[key]
+    return CONFIG["budgets"][key]
+
 # The only endpoint the agent may POST to: a public search form (no login, no inquiry, no 資料請求).
 POST_ALLOW = {"https://www.mlit.go.jp/nega-inf/cgi-bin/search.cgi"}
 
@@ -198,10 +208,9 @@ def tick(st: dict, n: int = 1):
     cr["iterations"] = cr.get("iterations", 0) + n
     started = dt.datetime.fromisoformat(cr["started"])
     minutes = (now() - started).total_seconds() / 60
-    b = CONFIG["budgets"]
-    if cr["iterations"] >= b["max_iterations"]:
+    if cr["iterations"] >= budget(cr, "max_iterations"):
         raise BudgetStop(f"iteration budget reached ({cr['iterations']})")
-    if minutes >= b["max_minutes"]:
+    if minutes >= budget(cr, "max_minutes"):
         raise BudgetStop(f"time budget reached ({minutes:.0f} min)")
 
 # ---------------------------------------------------------------- approvals
@@ -363,7 +372,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
     if url_counts.get(full, 0) >= CONFIG["budgets"]["max_same_url"]:
         log(st, "fetch", {"url": full}, "loop detected: same URL fetched more than twice")
         raise BudgetStop(f"loop detected: {full}")
-    if counts.get(host, 0) >= CONFIG["budgets"]["max_requests_per_domain"]:
+    if counts.get(host, 0) >= budget(cr, "max_requests_per_domain"):
         raise BudgetStop(f"domain budget reached for {host}")
     tick(st)
     url_counts[full] = url_counts.get(full, 0) + 1

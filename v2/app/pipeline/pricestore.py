@@ -64,9 +64,21 @@ def _fixture(name):
     return f"evals/market/{name}"   # frozen copies for Mode: test (the test sandbox copies evals/market)
 
 
+def symbols(st=None) -> dict[str, str]:
+    """Tickers in the daily batch: Tsuchiya and peers, plus the M1 universe once it is screened (A39)."""
+    out = dict(STORE_SYMBOLS)
+    if st is not None:
+        try:
+            import universe
+            out.update({t: f"{t}.T" for t in universe.members(st)})
+        except Exception:
+            pass
+    return out
+
+
 def latest_close(ticker: str) -> dict | None:
     """Latest stored close for the baseline (no network). None if the store has nothing for it."""
-    sym = STORE_SYMBOLS.get(ticker)
+    sym = STORE_SYMBOLS.get(ticker) or f"{ticker}.T"
     rows = load_store().get(sym or "", [])
     if not rows:
         return None
@@ -89,26 +101,28 @@ def update_prices(st) -> dict:
         return {"source": "fixture", "fetched": False}
     store = load_store()
     empty = not store
-    if not empty and not _due(st, "price_store"):
+    missing = [s for s in symbols(st).values() if s not in store]   # a new universe member: fetch its history now
+    if not empty and not missing and not _due(st, "price_store"):
         return {"fetched": False, "reason": "already updated today, or before 15:30 JST",
                 "last_date": max(v[-1][0] for v in store.values())}
     if cr.get("price_store_tried"):
         return {"fetched": False, "reason": "already tried this run"}
     cr["price_store_tried"] = True
+    syms_map = symbols(st)
     starts = {s: (HISTORY_START if s not in store else
                   (dt.date.fromisoformat(store[s][-1][0]) - dt.timedelta(days=10)).isoformat())
-              for s in STORE_SYMBOLS.values()}
+              for s in syms_map.values()}
     start = min(starts.values())
     try:
         import yfinance as yf
-        syms = list(STORE_SYMBOLS.values())
+        syms = list(syms_map.values())
         df = yf.download(syms, start=start, interval="1d", progress=False, auto_adjust=False, actions=True,
                          group_by="ticker", threads=False)
     except Exception as e:  # Yahoo block or rate limit: keep the store as it is, no workaround (A16/A28)
-        log(st, "yfinance", {"symbols": len(STORE_SYMBOLS)}, f"unavailable: {type(e).__name__}: {str(e)[:120]}")
+        log(st, "yfinance", {"symbols": len(syms_map)}, f"unavailable: {type(e).__name__}: {str(e)[:120]}")
         return {"fetched": False, "error": f"yfinance unavailable: {type(e).__name__}"}
     added, refetch = 0, []
-    for sym in STORE_SYMBOLS.values():
+    for sym in syms_map.values():
         try:
             sub = df[sym]
             closes = sub["Close"]
@@ -139,5 +153,5 @@ def update_prices(st) -> dict:
     if refetch:  # history re-based (split): drop it so the next daily update downloads it again
         rows = [r for r in rows if r["symbol"] not in refetch]
         _write_csv(STORE_FILE, sorted(rows, key=lambda r: (r["symbol"], r["date"])), ["date", "symbol", "close", "dividend"])
-    log(st, "yfinance", {"symbols": len(STORE_SYMBOLS), "start": start}, f"{added} new daily rows; re-based: {refetch}")
+    log(st, "yfinance", {"symbols": len(syms_map), "start": start}, f"{added} new daily rows; re-based: {refetch}")
     return {"fetched": True, "new_rows": added, "rebased": refetch}

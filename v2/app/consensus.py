@@ -51,6 +51,12 @@ def evidence_board(view: dict, routine_results: list[dict]) -> dict:
     return board
 
 
+def _flatten_all(obj) -> dict:
+    out: dict = {}
+    _flatten("", obj, out)
+    return out
+
+
 def _board_numbers(board: dict) -> list[float]:
     nums = []
     for v in board.values():

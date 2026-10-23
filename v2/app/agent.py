@@ -361,6 +361,25 @@ class Run:
         if any(e.startswith("daily check") for e in self.events):
             self.orch_updates["last_daily_review"] = today.date().isoformat()
 
+    def research_summary(self) -> None:
+        """A40: the research agent reads the run's results and writes a summary; code checks every number in it."""
+        import consensus
+        from subagents import SUBAGENTS
+        spec = SUBAGENTS["research"]
+        llm.check_settings()
+        view = pipeline("research-view")
+        res = run_agent("research", load_prompt(spec.prompt), "Summarise this research run for the student's approval "
+                        "decision. Read it with read_research first.", spec.tools, spec.max_steps, skills=spec.skills)
+        text = res.text.strip()
+        nums = consensus._board_numbers(consensus._flatten_all(json.loads(view)))
+        bad = consensus._unverified_numbers(text, nums)
+        if bad:  # numbers that are not in the results are flagged in the text, not trusted
+            text += f"\n\n(Code check: {len(bad)} number(s) not found in the results and not verified: {', '.join(bad[:8])})"
+        root = data_root()
+        (root / "tmp").mkdir(exist_ok=True)
+        (root / "tmp" / "research_summary.md").write_text(text, encoding="utf-8")
+        print("Research summary stored: " + pipeline("research-summary", "tmp/research_summary.md"), flush=True)
+
     def _tools(self, SUBAGENTS) -> list:
         return [
             Tool("delegate", "Give one subagent a task and get back its report. Subagents: " +
@@ -514,9 +533,9 @@ def main() -> int:
     ap.add_argument("--instruction", default=os.getenv("AGENT_INSTRUCTION") or "")
     a = ap.parse_args()
     mode = a.mode.strip()
-    if mode not in ("scheduled", "test") and not (mode.startswith("phase=P") and mode[7:] in "123456789"
-                                                   and len(mode) == 8):
-        print(f"Unknown mode {mode!r}; use scheduled, test or phase=P1..P9", file=sys.stderr)
+    if mode not in ("scheduled", "test", "research") and not (mode.startswith("phase=P") and mode[7:] in "123456789"
+                                                               and len(mode) == 8):
+        print(f"Unknown mode {mode!r}; use scheduled, test, research or phase=P1..P9", file=sys.stderr)
         return 2
     if mode == "test":
         os.environ.setdefault("TSUCHIYA_FIXTURE_SET", "default")
@@ -539,10 +558,17 @@ def main() -> int:
     print(f"Run {start['run_id']} ({mode}); next phase: {start.get('next_phase')}; "
           f"model: {llm.MODEL or '(unset)'}; backups: {', '.join(llm.FALLBACK_MODELS) or '(none)'}", flush=True)
     try:
+        if mode == "research":  # A39-A40: universe, panel, M1 fit, backtest, proposed weights (code only; resumable)
+            r = j(pipeline("research", timeout=3300))
+            run.routine_results.append({"command": "research", "result": r})
+            print("Research: " + json.dumps(r, ensure_ascii=False)[:1500], flush=True)
+            if isinstance(r.get("model"), dict) and r["model"].get("version"):
+                run.research_summary()
         # 1. the routine work is always done by code
-        run.routine("Routine work by code; the model reviews only when an event needs judgement.")
+        else:
+            run.routine("Routine work by code; the model reviews only when an event needs judgement.")
         # 2. the model is called only for events (phase=Pn debug runs never call it)
-        if not mode.startswith("phase="):
+        if not mode.startswith("phase=") and mode != "research":
             orch = load_orch()
             view = j(pipeline("headline"))
             run.events = run.detect_events(view, orch)

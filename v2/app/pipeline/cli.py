@@ -620,6 +620,76 @@ def review_view(base) -> dict:
         hist[key] = [[d, v] for d, v in sorted(days.items())[-7:]]
     return {"headline": headline(base), "peers": peers, "history_7d": hist}
 
+def cmd_research(a):
+    """Research run (A39-A40): universe discovery and filings (resumable), price history, then M1 fit + backtest."""
+    import modelfit
+    import pricestore
+    import universe
+    st = load_state()
+    cr = run_ctx(st)
+    res = {}
+    try:
+        res["universe"] = universe.refresh(st, max_days=int(os.environ.get("RESEARCH_MAX_DAYS", "400")),
+                                           max_downloads=int(os.environ.get("RESEARCH_MAX_DOWNLOADS", "30")))
+    except (FetchError, GuardrailError, BudgetStop) as e:
+        res["universe"] = {"paused": str(e)[:200]}
+    save_state(st)
+    if cr.get("mode") != "test":
+        try:
+            res["prices"] = pricestore.update_prices(st)
+        except Exception as e:  # Yahoo unavailable: the backtest waits for the next run
+            res["prices"] = {"error": f"{type(e).__name__}: {str(e)[:120]}"}
+        save_state(st)
+    u = res["universe"]
+    # fit whenever the panel is large enough; the coverage (filings still missing) is reported with it
+    res["model"] = modelfit.research(st)
+    if isinstance(res["model"], dict):
+        res["model"]["filings_still_missing"] = (u.get("discovery") or {}).get("remaining") if isinstance(u, dict) else None
+    save_state(st)
+    log(st, "research", {}, {k: (v if k != "universe" else "see result") for k, v in res.items() if k != "prices"})
+    return out(res)
+
+def research_view() -> dict:
+    """The latest research run, trimmed for the research agent (A40)."""
+    import modelfit
+    import universe
+    prm = modelfit.load_params()
+    cur = prm.get("pending") or prm.get("approved")
+    if not cur:
+        return {"status": "no research run yet"}
+    r = lambda d: {k: round(v, 4) if isinstance(v, float) else v for k, v in (d or {}).items()}
+    pend = [x for x in lib.pending_requests() if x["kind"] == "model_params" and x["params"].get("version") == cur["version"]]
+    return {"version": cur["version"], "status": cur.get("status"), "approval_id": pend[0]["id"] if pend else cur.get("approval"),
+            "panel": cur.get("panel"),
+            "m1_pb": {"coef": r(cur["m1"]["coef"]), "n": cur["m1"]["n"], "scale": round(cur["m1"]["scale"], 3)},
+            "m1_ev": ({"coef": r(cur["m1_ev"]["coef"]), "n": cur["m1_ev"]["n"], "scale": round(cur["m1_ev"]["scale"], 3)}
+                      if cur.get("m1_ev") else "not fitted"),
+            "tsuchiya": {"features": r({k: v for k, v in (cur["tsuchiya"].get("features") or {}).items() if k in ("roe_norm", "growth", "margin")}),
+                         "fitted_pb": r(cur["tsuchiya"].get("fitted_pb")), "fitted_ev_ebitda": r(cur["tsuchiya"].get("fitted_ev"))},
+            "backtest": cur.get("backtest"), "weights": cur.get("weights"),
+            "screen": {t: {"company": universe.CANDIDATES[t][1], "share": s.get("share"), "in_universe": s.get("pass"), "note": s.get("note")}
+                       for t, s in (cur.get("screen") or {}).items() if t in universe.CANDIDATES},
+            "approved_in_use": (prm.get("approved") or {}).get("version")}
+
+def cmd_research_view(a):
+    return out(research_view())
+
+def cmd_research_summary(a):
+    """Store the research agent's summary (already number-checked by agent.py) with the pending parameters."""
+    import modelfit
+    st = load_state()
+    run_ctx(st)
+    text = (ROOT / a.path).read_text(encoding="utf-8")[:4000]
+    prm = modelfit.load_params()
+    cur = prm.get("pending") or prm.get("approved")
+    if not cur:
+        return out({"stored": False, "reason": "no research run"})
+    cur["summary"] = text
+    write_text(modelfit.PARAMS, json.dumps(prm, ensure_ascii=False, indent=1))
+    write_text("reports/research_summary_latest.md", f"# Research run {cur['version']}\n\n{text}\n")
+    log(st, "research", {"version": cur["version"]}, "summary stored")
+    return out({"stored": True, "version": cur["version"]})
+
 def cmd_consensus_record(a):
     """Write the consensus result (computed by v2/consensus.py) as Baseline Metrics rows (Addendum A32)."""
     from metrics import Writer
@@ -731,6 +801,29 @@ def _dashboard_finish(st, cr, S) -> str:
             "note": "value = target multiple × (company forecast − Md); positive Md lowers the forecast. Land and supply "
                     "costs are logged with coefficient 0 until fitted on the panel (A37).",
         }, "Md (forecast discount)")
+        try:  # A39-A40: the latest research run (M1 fit, backtest, proposed weights) and its approval state
+            import modelfit
+            prm = modelfit.load_params()
+            cur = prm.get("pending") or prm.get("approved")
+            if cur:
+                bt = cur.get("backtest", {}).get("methods", {})
+                dashboard.set_monitor({
+                    "version": cur["version"], "status": cur.get("status"), "approval": cur.get("approval", "see Pending approvals"),
+                    "panel": cur.get("panel"), "M1 coefficients": {k: round(v, 4) for k, v in cur["m1"]["coef"].items()},
+                    "Tsuchiya fitted P/B": round((cur.get("tsuchiya", {}).get("fitted_pb") or {}).get("pb", float("nan")), 3),
+                    "backtest (mean IC / t)": {k: f"{r['mean_ic']} / {r['t_nw']}" for k, r in bt.items()},
+                    "proposed weights": (cur.get("weights") or {}).get("weights"),
+                    "approved version in use": (prm.get("approved") or {}).get("version", "none (equal weights)"),
+                }, "Research (M1 and backtest)")
+            rep_ = ROOT / "reports" / "backtest_latest.html"
+            if rep_.exists():
+                dashboard.set_monitor(rep_, "Backtest report (backtest_latest.html)")
+            if cur and cur.get("summary") and st.setdefault("dashboard_sent", {}).get("research_summary") != cur["version"]:
+                if dashboard.output(f"Research run {cur['version']}:\n{cur['summary']}", "research summary"):
+                    st["dashboard_sent"]["research_summary"] = cur["version"]
+                    save_state(st)
+        except Exception as e:
+            dashboard.report(f"research monitor failed: {type(e).__name__}", "error")
         sent0 = st.setdefault("dashboard_sent", {})
         if not sent0.get("factor_monitor_removed"):  # v2.005 (A36): factor model removed; the parked legal score
             dashboard.delete_monitors("Factor model (Fama-French style)")   # (P8) waits for the alternative-data
@@ -861,6 +954,9 @@ def main():
     s = sub.add_parser("injection"); s.add_argument("--url", required=True); s.add_argument("--excerpt", required=True); s.set_defaults(fn=cmd_injection)
     s = sub.add_parser("headline"); s.set_defaults(fn=cmd_headline)
     s = sub.add_parser("consensus-record"); s.add_argument("path"); s.set_defaults(fn=cmd_consensus_record)
+    s = sub.add_parser("research"); s.set_defaults(fn=cmd_research)
+    s = sub.add_parser("research-view"); s.set_defaults(fn=cmd_research_view)
+    s = sub.add_parser("research-summary"); s.add_argument("path"); s.set_defaults(fn=cmd_research_summary)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)
     a = ap.parse_args()

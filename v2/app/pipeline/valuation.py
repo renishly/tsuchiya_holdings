@@ -428,13 +428,47 @@ def run(st, w, *, L, last_pe, price, price_id, fc, fids, peers, debt, cash, shar
         f = 0.5 if (m2["regime"] or dep_only) else 1.0
         methods["EV/EBITDA (own history)"] = (ev["price"], pid, f, "own-history median" + (" (weight halved)" if f < 1 else ""))
 
-    # ---- combine
-    total = sum(f for _, _, f, _ in methods.values() if f > 0)
-    weights = {k: round(f / total, 3) for k, (_, _, f, _) in methods.items() if f > 0} if total else {}
+    # M1: statistical comparables (A39). Approved parameters carry weight; pending ones give a reference row only.
+    import modelfit
+    live = modelfit.live_params(st)
+    params = live or modelfit.load_params().get("pending")
+    feats = modelfit.latest_features("1840") if params else None
+    if params and feats and bps:
+        pr = modelfit.predict(params["m1"], feats)
+        pid = put("Target Price (M1, P/B regression)", "derived-current", "", pr["pb"] * bps, "JPY/share",
+                  "= fitted P/B (log P/B on ROE_norm, growth, log revenue, year effect; universe of listed housebuilders) × latest BPS",
+                  [], note=f"Fitted P/B {pr['pb']:.3f} (80% interval {pr['low']:.3f}–{pr['high']:.3f}; year effect {pr['year_effect']}); "
+                           f"parameters {params['version']} ({'approved' if live else 'pending approval: reference only'}); "
+                           f"ROE_norm {feats['roe_norm']:.4f}, growth {feats['growth']:.4f}")
+        methods["M1 (P/B regression)"] = (pr["pb"] * bps, pid, 1.0 if live else 0.0,
+                                          "statistical comparables" + ("" if live else " (pending approval: weight 0)"))
+        put("Valuation range M1 low", "derived-current", "", pr["low"] * bps, "JPY/share", "= fitted P/B low (80%) × BPS", [pid])
+        put("Valuation range M1 high", "derived-current", "", pr["high"] * bps, "JPY/share", "= fitted P/B high (80%) × BPS", [pid])
+    if params and params.get("m1_ev") and feats and feats.get("margin") is not None and ebitda_adj and ebitda_adj > 0 \
+            and net_cash is not None and shares:
+        pe_ = modelfit.predict(params["m1_ev"], feats)
+        if pe_:
+            p = (pe_["multiple"] * ebitda_adj + net_cash) / shares
+            pid = put("Target Price (M1, EV/EBITDA regression)", "derived-current", "", p, "JPY/share",
+                      "= [fitted EV/EBITDA (margin, growth, log revenue, year effect) × (forecast 営業利益 − Md + forward depreciation) "
+                      "+ net cash] ÷ shares", [md_id, fda_id],
+                      note=f"Fitted EV/EBITDA {pe_['multiple']:.2f} (80% interval {pe_['low']:.2f}–{pe_['high']:.2f}); parameters "
+                           f"{params['version']} ({'approved' if live else 'pending approval: reference only'})"
+                           + ("; rests on depreciation (F5)" if dep_only else ""))
+            f = (0.5 if dep_only else 1.0) if live else 0.0
+            methods["M1 (EV/EBITDA regression)"] = (p, pid, f, "statistical comparables (EV/EBITDA)" +
+                                                    ("" if live else " (pending approval: weight 0)") + (" (depreciation only)" if dep_only else ""))
+
+    # ---- combine: approved backtest weights when available (× the fallback factor), else equal
+    base_w = (live or {}).get("weights", {}).get("weights", {}) if live else {}
+    raw = {k: (base_w.get(k, 1 / max(1, len(methods))) if live else 1.0) * f for k, (_, _, f, _) in methods.items() if f > 0}
+    total = sum(raw.values())
+    weights = {k: round(v / total, 3) for k, v in raw.items() if v > 0} if total else {}
     comb = sum(weights[k] * methods[k][0] for k in weights) if weights else None
     prices = [methods[k][0] for k in weights]
     put("Method weights", "derived-current", "", json.dumps(weights, ensure_ascii=False) if weights else None, "json",
-        "equal across valid methods, halved for a fallback basis (until the backtest sets weights)", [],
+        (f"approved backtest weights ({live['version']}) × fallback factor" if live else
+         "equal across valid methods, halved for a fallback basis (until approved backtest weights exist)"), [],
         note="; ".join(f"{k}: ¥{methods[k][0]:,.1f} ({methods[k][3]})" for k in weights))
     put("Valuation range low", "derived-current", "", min(prices) if prices else None, "JPY/share", "= lowest valid method price", [])
     put("Valuation range high", "derived-current", "", max(prices) if prices else None, "JPY/share", "= highest valid method price", [])

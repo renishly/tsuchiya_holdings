@@ -3,10 +3,11 @@ name: Holdings agent v2
 on:
   schedule:
     - cron: "17 7,21 * * *"   # ~16:17 JST (after the 15:30 TSE close) and ~06:17 JST (daily filings check)
+    - cron: "37 18 * * 6"      # ~03:37 JST Sunday: research run (M1 universe, panel, backtest; A39-A40), resumable
   workflow_dispatch:
     inputs:
       mode:
-        description: "scheduled, test, or phase=P1..P9"
+        description: "scheduled, test, research, or phase=P1..P9"
         required: false
         default: "scheduled"
       instruction:
@@ -65,7 +66,7 @@ jobs:
           DASHBOARD_API_KEY_CA: ${{ secrets.DASHBOARD_API_KEY_CA }}
           DASHBOARD_API_KEY_DEBATER_A: ${{ secrets.DASHBOARD_API_KEY_DEBATER_A }}
           DASHBOARD_API_KEY_DEBATER_B: ${{ secrets.DASHBOARD_API_KEY_DEBATER_B }}
-          AGENT_MODE: ${{ github.event.inputs.mode || github.event.client_payload.mode || 'scheduled' }}
+          AGENT_MODE: ${{ github.event.inputs.mode || github.event.client_payload.mode || (github.event.schedule == '37 18 * * 6' && 'research') || 'scheduled' }}
           AGENT_INSTRUCTION: ${{ github.event.inputs.instruction || github.event.client_payload.instruction || '' }}
           TSUCHIYA_GIT: "0"            # the next step commits; the pipeline does not push by itself
         run: python v2/app/agent.py
