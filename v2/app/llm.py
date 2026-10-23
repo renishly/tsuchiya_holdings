@@ -145,6 +145,54 @@ def pipeline(*args: str, timeout: int = 1800) -> str:
     return json.dumps({"error": f"exit {r.returncode}", "detail": tail})
 
 
+# --- Skills (SKILL.md folders, Addendum A36) -----------------------------------------------------------------
+SKILLS_DIR = APP / "skills"
+
+
+def _skill_meta(name: str) -> dict:
+    """Frontmatter (name, description) and body of skills/<name>/SKILL.md; {} if missing."""
+    p = SKILLS_DIR / name / "SKILL.md"
+    if not p.exists():
+        return {}
+    text = p.read_text(encoding="utf-8")
+    meta, body = {"name": name, "description": ""}, text
+    if text.startswith("---"):
+        head, _, body = text[3:].partition("\n---")
+        key = None
+        for line in head.strip().splitlines():
+            if line[:1].isspace() and key:  # continuation of a folded value
+                meta[key] += " " + line.strip()
+            elif ":" in line:
+                key, _, val = line.partition(":")
+                key = key.strip()
+                meta[key] = val.strip()
+    meta["body"] = body.strip()
+    return meta
+
+
+def skills_index(names: list[str]) -> str:
+    """What an agent sees at the start: one line per skill (name and description). Bodies load on demand."""
+    rows = [f"- {m['name']}: {m['description']}" for n in names if (m := _skill_meta(n))]
+    return ("\n\n## Skills\n\nLoad a skill with `load_skill` before doing what it covers; follow its steps. "
+            "Skills are instructions, not data sources.\n" + "\n".join(rows)) if rows else ""
+
+
+def skills_tool(names: list[str]) -> Tool:
+    def load_skill(name: str, reference: str = "") -> str:
+        if name not in names:
+            return f"Error: skill {name!r} is not available to you; available: {', '.join(names)}"
+        if reference:
+            ref = SKILLS_DIR / name / "references" / Path(reference).name
+            return ref.read_text(encoding="utf-8") if ref.exists() else f"Error: no reference {reference!r} in {name}"
+        m = _skill_meta(name)
+        refs = sorted(p.name for p in (SKILLS_DIR / name / "references").glob("*.md")) \
+            if (SKILLS_DIR / name / "references").exists() else []
+        return m.get("body", "") + (f"\n\nReferences (load with reference=...): {', '.join(refs)}" if refs else "")
+    return Tool("load_skill", "Load the full instructions of one of your skills (or one of its reference files).",
+                {"type": "object", "properties": {"name": {"type": "string", "enum": names},
+                                                  "reference": {"type": "string"}}, "required": ["name"]}, load_skill)
+
+
 # --- Agent loop: think, call tools, repeat ------------------------------------------------------------------
 @dataclass
 class AgentResult:
@@ -154,7 +202,11 @@ class AgentResult:
     stopped: str = ""  # "", "step limit", "loop detected"
 
 
-def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: int = MAX_STEPS) -> AgentResult:
+def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: int = MAX_STEPS,
+              skills: list[str] | None = None) -> AgentResult:
+    if skills:  # the skill index goes into the system prompt; bodies load through the load_skill tool
+        system += skills_index(skills)
+        tools = [*tools, skills_tool(skills)]
     registry = {t.name: t for t in tools}
     schemas = [t.schema() for t in tools] or None
     messages = [{"role": "system", "content": system}, {"role": "user", "content": task}]

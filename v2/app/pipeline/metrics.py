@@ -244,8 +244,16 @@ def current(st, sec: CsvStore, base: CsvStore, peers_too: bool = True) -> dict:
                     [r["record_id"] for r in eps_rows], url=eps_rows[-1]["source_url"] if eps_rows else "https://disclosure2.edinet-fsa.go.jp/",
                     title="有価証券報告書 (5 years)", location="EPS per filing", period_label=f"{len(eps_rows)} fiscal years",
                     note="" if len(eps_rows) == 5 else f"Only {len(eps_rows)} of 5 fiscal years available; average over those.")
-    targets(st, base, w, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today,
-            norm_eps=norm, norm_id=norm_id, eps_actual=_v(eps_a) if eps_a else None, eps_actual_id=eps_a["record_id"] if eps_a else None)
+    tg = targets(st, base, w, price, price_id, feps, fids, dy, febitda, debt, cash, shares, shares_ids, peers, today,
+                 norm_eps=norm, norm_id=norm_id, eps_actual=_v(eps_a) if eps_a else None, eps_actual_id=eps_a["record_id"] if eps_a else None)
+    import valuation  # v2.005 (A37-A38): fixes F1-F7, M2, P/B, Md and the combined value with weights
+    try:
+        out["valuation"] = valuation.run(st, w, L=L, last_pe=last_pe, price=price, price_id=price_id, fc=fc, fids=fids, peers=peers,
+                                         debt=debt, cash=cash, shares=shares, shares_ids=shares_ids, dy=dy, today=today,
+                                         tpe=tg["tpe"], tpe_id=tg["tpe_id"], eps_actual=_v(eps_a) if eps_a else None,
+                                         eps_actual_id=eps_a["record_id"] if eps_a else None)
+    except BudgetStop as e:
+        out["warnings"].append(f"valuation stopped by the request budget: {e}")
     return out
 
 # ---------------------------------------------------------------- peers
@@ -325,6 +333,7 @@ def peer_metrics(st, base: CsvStore) -> dict:
             if None not in (mcap, debt, cash, da):
                 ev = mcap + debt - cash
                 eb = inp["op"] + da
+                r.update(ev=ev, da=da, price=price, docID=inp.get("docID"))  # for F1 (forward) and P/B (v2.005)
                 r["ev_ebitda"] = ev / eb if eb > 0 and ev > 0 else None  # negative/n.m. multiples are excluded
                 r["ev_ebitda_id"] = w.put("EV/EBITDA (trailing)", "derived-current", "", r["ev_ebitda"] or "not meaningful", "times",
                                           "= (price × shares ex-treasury + interest-bearing debt − cash) / (営業利益 + 減価償却費), latest 有報 actuals",
@@ -406,19 +415,8 @@ def targets(st, base, w: Writer, price, price_id, feps, fids, dy, febitda, debt,
               "JPY/share", "= (Forward EBITDA × Target EV/EBITDA − Net debt) / shares", [tm_id],
               url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
               note="Inputs missing (target multiple, forward EBITDA, net debt or shares).")
-    # Average valuated price = mean of the P/E method price and the EV/EBITDA method price (Addendum A18).
-    pe_basis = next((b for b in ("forecast", "trailing", "5-year average") if b in method), None)
-    if "ev_ebitda" in method:
-        method["ev_ebitda"] = (method["ev_ebitda"][0], tps_id)
-    parts = [(f"P/E ({pe_basis} EPS)", *method[pe_basis])] if pe_basis else []
-    if "ev_ebitda" in method:
-        parts.append(("EV/EBITDA", *method["ev_ebitda"]))
-    avgp = statistics.mean(p for _, p, _ in parts) if len(parts) == 2 else None
-    w.put("Average Valuated Price", "derived-current", "", avgp, "JPY/share",
-          "= (P/E method price + EV/EBITDA method price) / 2; P/E method uses forecast EPS, else trailing EPS, else 5-year average EPS",
-          [i for _, _, i in parts], url="https://disclosure2.edinet-fsa.go.jp/", title="derived", location="", key_extra=today,
-          note=("Methods: " + "; ".join(f"{n} = {p:.2f}" for n, p, _ in parts)) if avgp is not None
-          else "Needs both a P/E method price and an EV/EBITDA price; not computed (not imputed).")
+    # v2.005: the combined value (Average Valuated Price) is written by valuation.run (A38), not here.
+    return {"tpe": tpe, "tpe_id": tpe_id}
 
 # ---------------------------------------------------------------- peer EV inputs from EDINET (cursor)
 def latest_filed_fy_end(today, month: int):

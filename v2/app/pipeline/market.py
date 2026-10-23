@@ -92,7 +92,7 @@ YF_SYMBOL = {"1840": "1840.T", "1873": "1873.T", "1419": "1419.T", "8999": "8999
 def yf_prices(st) -> dict:
     """Latest daily close per ticker from the shared daily price store (Addenda A16, A28).
 
-    The store is updated by factors.update_prices: at most one yfinance batch per JST day, after the TSE close.
+    The store is updated by pricestore.update_prices: at most one yfinance batch per JST day, after the TSE close.
     This function itself never calls Yahoo. Returns {ticker: {"close", "date", "symbol", "url"}}.
     """
     cr = run_ctx(st)
@@ -102,10 +102,10 @@ def yf_prices(st) -> dict:
     if cr.get("mode") == "test":
         cr["yf_prices"] = out
         return out
-    import factors
-    upd = factors.update_prices(st)
+    import pricestore
+    upd = pricestore.update_prices(st)
     for t in YF_SYMBOL:
-        c = factors.latest_close(t)
+        c = pricestore.latest_close(t)
         if c:
             out[t] = c
     log(st, "price_store", {"update": upd}, f"{len(out)} latest closes from the store")

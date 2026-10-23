@@ -92,5 +92,8 @@ SPEC = SubagentSpec(
     max_steps=8,
     fallback=fallback,
     valuation_key="average_valuated_price",
+    skills=["filings-ingest", "market-data", "data-validation", "data-inspection", "peer-multiples",
+            "forecast-inputs", "forecast-discount", "own-history", "pb-method", "valuation-combine",
+            "data-dictionary", "guardrails"],
     valuation_label="Average Valuated Price (P/E and EV/EBITDA vs peers)",
 )

@@ -6,7 +6,7 @@ one subagent's report into another's task, which is where cross-communication be
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from llm import Tool
 
@@ -23,11 +23,13 @@ class SubagentSpec:
     # Consensus (A32): the headline key holding this subagent's valuation price, if it takes part in the debate.
     valuation_key: str | None = None
     valuation_label: str = ""
+    # Skills (A36): skills/<name>/SKILL.md folders this agent may load; only names and descriptions are shown up front.
+    skills: list[str] = field(default_factory=list)
 
 
 def _registry() -> dict[str, SubagentSpec]:
-    from subagents import baseline, factor
-    return {s.name: s for s in (baseline.SPEC, factor.SPEC)}
+    from subagents import baseline
+    return {s.name: s for s in (baseline.SPEC,)}
 
 
 SUBAGENTS = _registry()

@@ -1,6 +1,6 @@
 """Consensus between subagents (Addenda A32-A33): a moderated debate with code-enforced rules.
 
-  code     evidence board: every number the debate may use, under a stable key (headline, peers, factor model)
+  code     evidence board: every number the debate may use, under a stable key (headline, peers, 7-day history)
   round 1  each debating subagent states its position independently (no anchoring on the other)
   round 2+ each sees the others' validated positions and may challenge, concede, or change its confidence
   code     checks every claim: cited evidence keys must exist and every number must be on the board; claims that
@@ -43,15 +43,11 @@ def _flatten(prefix: str, obj, out: dict):
 
 def evidence_board(view: dict, routine_results: list[dict]) -> dict:
     """Every value the debate may cite, flattened to stable keys, e.g. 'headline.target_pe', 'peers.1419.pe_forward',
-    'factor.model.beta.MKT', 'history_7d.average_valuated_price.0.1'."""
+'history_7d.average_valuated_price.0.1'."""
     board: dict = {}
     _flatten("headline", view.get("headline") or {}, board)
     _flatten("peers", view.get("peers") or {}, board)
     _flatten("history_7d", view.get("history_7d") or {}, board)
-    for r in routine_results:
-        if r.get("command") == "factors":
-            res = {k: v for k, v in (r.get("result") or {}).items() if k not in ("csv", "prices", "notes")}
-            _flatten("factor", res, board)
     return board
 
 

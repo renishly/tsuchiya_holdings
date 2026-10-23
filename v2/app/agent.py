@@ -44,9 +44,10 @@ ORCHESTRATOR_STEPS = 6
 # daily moves add up until they cross the threshold.
 REVIEW_THRESHOLD = float(os.getenv("REVIEW_THRESHOLD") or "0.03")
 REVIEW_WATCH = {"average_valuated_price": "Average Valuated Price", "target_pe": "Target P/E",
-                "target_ev_ebitda": "Target EV/EBITDA", "factor_implied_price": "Factor-implied Price"}
+                "target_ev_ebitda": "Target EV/EBITDA"}
 DAILY_CHECK_AFTER = (15, 30)  # JST: the first run at or after the TSE close each day is always reviewed
 CONSENSUS_MAX_AGE_DAYS = 7    # A32: a consensus is re-debated at least weekly even when nothing moved
+ORCHESTRATOR_SKILLS = ["event-review", "delegate-task", "guardrails"]   # A36: skills/<name>/SKILL.md
 
 
 def data_root() -> Path:
@@ -61,7 +62,7 @@ def make_test_sandbox() -> Path:
         if (ROOT / d).exists():
             shutil.copytree(ROOT / d, tmp / "v2" / d)
     (tmp / "v2" / "state" / "run.lock").unlink(missing_ok=True)
-    if (ROOT / "evals" / "market").exists():  # frozen price/rate history for the factor model
+    if (ROOT / "evals" / "market").exists():  # frozen daily price store for test mode
         shutil.copytree(ROOT / "evals" / "market", tmp / "v2" / "evals" / "market")
     fixtures = ROOT / "evals" / "fixtures"
     if not fixtures.exists():
@@ -179,13 +180,13 @@ class Run:
         if len(self.reports) >= MAX_DELEGATIONS:
             return json.dumps({"error": f"delegation limit reached ({MAX_DELEGATIONS} per run)"})
         print(f"Delegating to {subagent}: {task[:200]}", flush=True)
-        done = sorted({" ".join(c) for c in self.executed if c[0] in ("run", "steady", "factors")})
+        done = sorted({" ".join(c) for c in self.executed if c[0] in ("run", "steady")})
         brief = (f"Mode: {self.mode}\nRun plan JSON from start:\n{json.dumps(self._plan_view(), ensure_ascii=False)}"
                  f"\nAlready run this run (do not repeat unless the task asks for a re-run): {', '.join(done) or 'nothing'}"
                  f"\n\nTask from the orchestrator:\n{task}")
-        res = run_agent(subagent, load_prompt(spec.prompt), brief, spec.tools, spec.max_steps)
+        res = run_agent(subagent, load_prompt(spec.prompt), brief, spec.tools, spec.max_steps, skills=spec.skills)
         cmds = [_as_cmd(c) for c in res.tool_calls]
-        work = [c for c in cmds if c[0] in ("run", "steady", "factors")]
+        work = [c for c in cmds if c[0] in ("run", "steady")]
         repeated = [" ".join(c) for c in work if c in self.executed]  # pipeline work an earlier delegation did
         self.executed.extend(cmds)
         s = self.stats.setdefault(subagent, {"delegations": 0, "step_limit_stops": 0, "loop_stops": 0,
@@ -348,7 +349,8 @@ class Run:
                 + (f"\n\nConsensus reached this run (final; do not recompute):\n"
                    f"{json.dumps({k: v for k, v in self.consensus.items() if k not in ('transcript', 'referee')}, ensure_ascii=False)[:3000]}"
                    if self.consensus else ""))
-        res = run_agent("orchestrator", load_prompt("orchestrator"), task, self._tools(SUBAGENTS), ORCHESTRATOR_STEPS)
+        res = run_agent("orchestrator", load_prompt("orchestrator"), task, self._tools(SUBAGENTS), ORCHESTRATOR_STEPS,
+                        skills=ORCHESTRATOR_SKILLS)
         self.orchestrator_summary = res.text.strip()[:1500]
         today = dt.datetime.now(JST)
         fresh = j(pipeline("headline"))  # snapshot after any follow-up work the review started
@@ -491,8 +493,6 @@ def _as_cmd(sig: str) -> tuple[str, ...]:
         return ("run", str(a.get("phase")))
     if name == "steady_refresh":
         return ("steady",)
-    if name == "run_factor_model":
-        return ("factors",)
     return (name,)
 
 

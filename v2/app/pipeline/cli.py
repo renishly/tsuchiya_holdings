@@ -568,10 +568,11 @@ HEADLINE = [("Stock Price", "stock_price_jpy"), ("Market Cap", "market_cap_jpy")
             ("Target Price (EV/EBITDA)", "price_ev_ebitda"), ("Average Valuated Price", "average_valuated_price"),
             ("Expected Return (P/E, 5-year average EPS)", "return_pe_5y_avg_eps"),
             ("Expected Return (EV/EBITDA)", "return_ev_ebitda"), ("Dividend Yield (forecast)", "dividend_yield_forecast"),
-            # factor subagent (A28-A29): its own numbers, shown next to the baseline, not in the average
-            ("Factor-implied Price", "factor_implied_price"), ("Cost of Equity (factor model)", "cost_of_equity_factor"),
-            ("Residual Income Value (reference)", "residual_income_value_reference"),
-            ("Consensus Valuated Price", "consensus_valuated_price")]
+            ("Consensus Valuated Price", "consensus_valuated_price"),
+            # v2.005 (A37-A38): combined value, range, weights and Md
+            ("Valuation range low", "valuation_range_low"), ("Valuation range high", "valuation_range_high"),
+            ("Expected Return (combined)", "return_combined"), ("Method weights", "method_weights"),
+            ("Md (operating profit)", "md_operating_profit"), ("Md (EPS)", "md_eps")]
 
 def headline(base) -> dict:
     """The key 1840 baseline numbers in one small block, so a model never has to search the CSV for them.
@@ -593,8 +594,7 @@ def headline(base) -> dict:
 PEER_KEYS = [("Stock Price", "price"), ("EPS (company forecast)", "eps_forecast"), ("P/E (forward)", "pe_forward"),
              ("EV/EBITDA (trailing)", "ev_ebitda")]
 WATCH = [("Average Valuated Price", "average_valuated_price"), ("Target P/E", "target_pe"),
-         ("Target EV/EBITDA", "target_ev_ebitda"), ("Stock Price", "stock_price_jpy"),
-         ("Factor-implied Price", "factor_implied_price")]
+         ("Target EV/EBITDA", "target_ev_ebitda"), ("Stock Price", "stock_price_jpy")]
 
 def _num(r):
     try:
@@ -620,21 +620,6 @@ def review_view(base) -> dict:
         hist[key] = [[d, v] for d, v in sorted(days.items())[-7:]]
     return {"headline": headline(base), "peers": peers, "history_7d": hist}
 
-def cmd_factors(a):
-    """Fama-French-style factor model (Addenda A28-A29): price store, risk-free, betas, r, implied price."""
-    import factors
-    st = load_state()
-    run_ctx(st)
-    S = stores()
-    try:
-        res = factors.run(st, S["Securities Reports"], S["Baseline Metrics"])
-    except (FetchError, GuardrailError, BudgetStop) as e:
-        res = {"error": str(e)[:200]}
-    res["csv"] = S["Baseline Metrics"].save(st)
-    save_state(st)
-    log(st, "factors", {}, {k: res.get(k) for k in ("cost_of_equity", "factor_implied_price", "error")})
-    return out(res)
-
 def cmd_consensus_record(a):
     """Write the consensus result (computed by v2/consensus.py) as Baseline Metrics rows (Addendum A32)."""
     from metrics import Writer
@@ -642,7 +627,7 @@ def cmd_consensus_record(a):
     run_ctx(st)
     res = json.loads((ROOT / a.path).read_text(encoding="utf-8"))
     base = CsvStore("Baseline Metrics")
-    ids = [r["record_id"] for m in ("Average Valuated Price", "Factor-implied Price") if (r := _latest(base, "1840", m))]
+    ids = [r["record_id"] for m in ("Average Valuated Price",) if (r := _latest(base, "1840", m))]
     w = Writer(st, base, "1840", CONFIG["company_name"])
     today = iso()[:10]
     common = dict(url="https://disclosure2.edinet-fsa.go.jp/", title="consensus between subagents", location="",
@@ -717,36 +702,41 @@ def _dashboard_finish(st, cr, S) -> str:
         val = {
             "current market price (JPY)": show("Stock Price"),
             "market price date / source": f"{px['quote_time_jst'][:10]} / {px['source_type']}" if px else "not available",
-            "target P/E (peer mean)": show("Target P/E"),
-            "price via P/E, forecast EPS (JPY)": show("Target Price (P/E)"),
-            "price via P/E, trailing EPS (JPY)": show("Target Price (P/E, trailing EPS)"),
-            "price via P/E, 5-year average EPS (JPY)": show("Target Price (P/E, 5-year average EPS)"),
-            "target EV/EBITDA (peer mean)": show("Target EV/EBITDA"),
-            "price via EV/EBITDA (JPY)": show("Target Price (EV/EBITDA)"),
-            "average valuated price (JPY)": show("Average Valuated Price"),
-            "average uses": (avg or {}).get("correction_note", "") or "not available",
-            "return via P/E, 5-year average EPS": show("Expected Return (P/E, 5-year average EPS)"),
-            "return via EV/EBITDA": show("Expected Return (EV/EBITDA)"),
-            "inputs: forecast EPS / 5-year average EPS": f"{show('EPS (company forecast)')} / {show('EPS (5-year average, actual)')}",
-            "dividend yield (forecast)": show("Dividend Yield (forecast)"),
-            "note": "Agent baseline calculated from public data; the target and view are the student's (syllabus 2.5).",
+            "combined value (JPY)": show("Average Valuated Price"),
+            "range (JPY)": f"{show('Valuation range low')} - {show('Valuation range high')}",
+            "expected return (combined)": show("Expected Return (combined)"),
+            "P/E method (JPY)": show("Target Price (P/E, v2.005)"),
+            "EPS basis used": show("EPS basis used (P/E)"),
+            "EV/EBITDA method, forward (JPY)": show("Target Price (EV/EBITDA, forward, F1)"),
+            "own history, P/B (JPY)": show("Target Price (own history, P/B, M2)"),
+            "own history, EV/EBITDA (JPY)": show("Target Price (own history, EV/EBITDA, M2)"),
+            "reference: P/B vs peers (JPY, weight 0)": show("Target Price (P/B, peers)"),
+            "reference: EV/EBITDA trailing pair (JPY)": show("Target Price (EV/EBITDA, trailing pair, F1)"),
+            "inputs: forward depreciation / normalised EPS": f"{show('Depreciation (forward, F7)')} / {show('EPS (normalised, ordinary profit, F3)')}",
+            "note": "Agent baseline calculated from public data (v2.005); the target and view are the student's (syllabus 2.5).",
         }
         dashboard.set_monitor(val, "Valuation (agent baseline)")
-        fac = {
-            "factor-implied price (JPY)": show("Factor-implied Price"),
-            "by start date (1y / 2y / 3y / 5y)": " / ".join(str(show(f"Factor-implied Price ({h}y start)")) for h in (1, 2, 3, 5)),
-            "cost of equity r": show("Cost of Equity (factor model)"),
-            "risk-free (JGB 1y)": show("Risk-free rate (JGB 1y)"),
-            "betas market / SMB / HML": " / ".join(str(show(f"Beta: {k} (factor model)")) for k in ("market", "size SMB", "value HML")),
-            "alpha (annual)": show("Alpha, annualised (factor model)"),
-            "residual income value (reference only)": show("Residual Income Value (reference)"),
-            "note": "Factor proxies from Tokyo-listed ETFs, not Kenneth French's factors. Shown next to the baseline; "
-                    "it enters the final number only through the planned consensus.",
-        }
-        dashboard.set_monitor(fac, "Factor model (Fama-French style)")
-        legal = S["Alternative Data"].get(record_id("legal_score", "total"))
-        if legal and legal["value"]:
-            dashboard.set_monitor(f"{legal['value']} / 100 (exposure measure, not a finding of wrongdoing)", "Legal penalty score")
+        wr = _latest(base, "1840", "Method weights")
+        dashboard.set_monitor({"weights": json.loads(wr["value"]) if wr and wr["value"].startswith("{") else "not available",
+                               "methods": (wr or {}).get("correction_note", "")[:600],
+                               "rule": "equal across valid methods, halved for a fallback basis, until the backtest sets weights (A38)"},
+                              "Model weights")
+        dashboard.set_monitor({
+            "Md, operating profit (JPY)": show("Md (operating profit)"),
+            "Md, EPS (JPY/share)": show("Md (EPS)"),
+            "Discount Baseline (JPY)": show("Md: Discount Baseline"),
+            "Land Price Ave (% since guidance)": show("Md: Land Price Ave (% since guidance)"),
+            "Supply Costs (% since guidance)": show("Md: Supply Costs (% since guidance)"),
+            "Debate Signal": "0 (Md debate not built yet)",
+            "note": "value = target multiple × (company forecast − Md); positive Md lowers the forecast. Land and supply "
+                    "costs are logged with coefficient 0 until fitted on the panel (A37).",
+        }, "Md (forecast discount)")
+        sent0 = st.setdefault("dashboard_sent", {})
+        if not sent0.get("factor_monitor_removed"):  # v2.005 (A36): factor model removed; the parked legal score
+            dashboard.delete_monitors("Factor model (Fama-French style)")   # (P8) waits for the alternative-data
+            dashboard.delete_monitors("Legal penalty score")                # subagent and leaves the Main page
+            sent0["factor_monitor_removed"] = True
+            save_state(st)
         # A35: version on every dashboard agent; Main also outputs the stored changelog once per version
         ver, ver_file = current_version()
         dashboard.set_monitor(ver, "Version")
@@ -795,7 +785,8 @@ def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
                 "weights": (res or {}).get("weights", {}),
                 "date": con["access_date_jst"][:10],
                 "details": con["correction_note"][:600],
-                "note": "Agent consensus between the debating subagents; the target and view are the student's.",
+                "note": "Last consensus between the debating subagents (inactive since v2.005: the factor subagent "
+                        "was removed). The target and view are the student's.",
             }, "Consensus valuation")
         else:
             ca.set_monitor("no consensus yet", "Consensus valuation")
@@ -815,12 +806,13 @@ def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
             continue
         c.set_monitor(ver, "Version")
         name = names[idx] if len(names) > idx else None
-        c.set_monitor(f"currently the '{name}' side of the consensus debate (A32), until the Md debaters are built"
-                      if name else "no debate yet", "Role")
+        c.set_monitor("inactive since v2.005: the factor subagent was removed (A36) and the Md debaters are not built "
+                      f"yet. Shown below for reference: the '{name}' side of the last debate." if name else
+                      "inactive: no debate yet", "Role")
         if name:
             turns = [t for t in res.get("transcript", []) if t.get("name") == name]
             last = turns[-1] if turns else {}
-            c.set_monitor({"date": res.get("date", "")[:10], "run_id": res.get("run_id"), "price argued (JPY)": res["prices"].get(name),
+            c.set_monitor({"status": "reference only (last debate before v2.005)", "date": res.get("date", "")[:10], "run_id": res.get("run_id"), "price argued (JPY)": res["prices"].get(name),
                            "confidence": last.get("confidence"), "summary": (last.get("summary") or "")[:800],
                            "claims kept": len(last.get("claims") or []), "claims rejected": len(last.get("rejected") or []),
                            "concessions": last.get("concessions") or []}, "Latest position")
@@ -868,7 +860,6 @@ def main():
     s = sub.add_parser("refusal"); s.add_argument("text"); s.add_argument("--source", default=""); s.set_defaults(fn=cmd_refusal)
     s = sub.add_parser("injection"); s.add_argument("--url", required=True); s.add_argument("--excerpt", required=True); s.set_defaults(fn=cmd_injection)
     s = sub.add_parser("headline"); s.set_defaults(fn=cmd_headline)
-    s = sub.add_parser("factors"); s.set_defaults(fn=cmd_factors)
     s = sub.add_parser("consensus-record"); s.add_argument("path"); s.set_defaults(fn=cmd_consensus_record)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)

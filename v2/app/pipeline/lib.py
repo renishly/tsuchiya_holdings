@@ -86,8 +86,8 @@ ALLOWLIST = {
     # legal / government
     "www.mlit.go.jp": "legal", "etsuran2.mlit.go.jp": "legal", "laws.e-gov.go.jp": "legal",
     "www.retio.or.jp": "legal", "www.reinfolib.mlit.go.jp": "benchmark",
-    # risk-free rate for the factor model: MOF JGB yield CSVs only (Addendum A28)
-    "www.mof.go.jp": "rates:/jgbs/reference/interest_rate/",
+    # Md public data (Addendum A38): BOJ time-series API (CGPI lumber and wood products)
+    "www.stat-search.boj.or.jp": "statistics:/api/",
 }
 GROUP_DOMAINS = {d for d, k in ALLOWLIST.items() if k.startswith("company")}
 NEVER_FETCH = {"www.xj-storage.jp", "myhome.nifty.com", "www.fudousan.or.jp", "www.hatomarksite.com", "suumo.jp",
@@ -105,7 +105,7 @@ def iso(t: dt.datetime | None = None) -> str:
     return (t or now()).isoformat(timespec="seconds")
 
 # Agent code and standing instructions: the agent never modifies these (v2 replaces "never modify SKILL.md").
-PROTECTED_DIRS = ("pipeline", "subagents", "prompts")   # agent code and prompts inside v2/app/
+PROTECTED_DIRS = ("pipeline", "subagents", "prompts", "skills")   # agent code, prompts and skills inside v2/app/
 PROTECTED_FILES = ("agent.py", "llm.py", "consensus.py", "list_models.py", "requirements.txt", "prompt2.org", "README.md")
 
 def safe_path(rel: str | Path) -> Path:
@@ -300,7 +300,7 @@ def _domain_ok(st, url: str):
     return host
 
 def _robots_allowed(st, host: str, url: str, session) -> bool:
-    if host.startswith("api.") or host == "www.reinfolib.mlit.go.jp":
+    if host.startswith("api.") or host in ("www.reinfolib.mlit.go.jp", "www.stat-search.boj.or.jp"):
         return True  # documented APIs
     today = now().date().isoformat()
     rc = st["robots"].get(host)
