@@ -323,10 +323,27 @@ def run(st, w, *, L, last_pe, price, price_id, fc, fids, peers, debt, cash, shar
         [], url=REINFOLIB, title="国土交通省 不動産情報ライブラリ", source_type="government API",
         note=(f"{lnd_note}. Coefficient {COEF['land']} until fitted on the panel (A37): logged, not yet in Md."
               if land.get("series") or os.environ.get("REINFOLIB_API_KEY") else "REINFOLIB_API_KEY not set."))
-    md_op = (base or 0.0) + COEF["land"] * (lnd or 0.0) + COEF["supply"] * (sup or 0.0)
-    md_op = md_op if base is not None or lnd is not None or sup is not None else None
+    # context for the Md debate (A41): what the measured parts already cover, and the cap for the Debate Signal
+    st["documents"]["md_context"] = {
+        "forecast_fy": (fc or {}).get("fiscal_year"), "forecast_operating_profit": fop,
+        "guidance_date": guidance_date.isoformat() if guidance_date else None,
+        "months_left": round(months_left, 2) if months_left is not None else None,
+        "discount_baseline": base, "supply_costs_pct": sup, "land_price_pct": lnd,
+        "cap": (cap * min(1.0, (months_left or 0) / 12)) if cap else None,
+        "cap_rule": "largest past guidance miss × months left / 12 (shrinks as the fiscal year ends)"}
+    # Debate Signal (A41-A42): from the latest Md debate, while it has not expired; applied only in live mode
+    ds = st["documents"].get("debate_signal") or {}
+    ds_val = ds.get("value") if ds and ds.get("expires", "") >= today else None
+    ds_live = ds_val is not None and ds.get("mode") == "live"
+    put("Md: Debate Signal (shadow)" if not ds_live else "Md: Debate Signal", "debate", "", ds_val, "JPY",
+        "= cap × Σ p(bucket) × share × evidence score of the better-supported side (C&A decision, consensus rule in code)", [],
+        note=(f"Debate of {ds['date']} ({ds.get('mode')} mode; expires {ds.get('expires')}); items {', '.join(ds.get('items') or []) or 'none'}. "
+              + (ds.get("note") or "") + ("" if ds_live else " Shadow mode: logged, not applied to Md."))
+        if ds_val is not None else "No Md debate yet (or the last one expired).")
+    md_op = (base or 0.0) + COEF["land"] * (lnd or 0.0) + COEF["supply"] * (sup or 0.0) + (ds_val if ds_live else 0.0)
+    md_op = md_op if base is not None or lnd is not None or sup is not None or ds_live else None
     md_id = put("Md (operating profit)", "derived-current", "", md_op, "JPY",
-                "= Discount Baseline + coef_land × Land Price Ave + coef_supply × Supply Costs + Debate Signal (0: not built)",
+                "= Discount Baseline + coef_land × Land Price Ave + coef_supply × Supply Costs + Debate Signal (live mode only)",
                 [], note="Positive lowers the company's forecast. Subtracted from forecast 営業利益 before valuation.")
     md_eps = md_op * (1 - TAX_RATE) / shares if md_op is not None and shares else None
     md_eps_id = put("Md (EPS)", "derived-current", "", md_eps, "JPY/share", f"= Md (operating profit) × (1 − {TAX_RATE:.1%}) ÷ shares", [md_id])

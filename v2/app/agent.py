@@ -170,6 +170,7 @@ class Run:
         self.orch_updates: dict = {}                # review snapshot / daily-check date, saved in the close-out
         self.closeout_status = {"P4": "not run", "P5": "not run"}
         self.consensus: dict | None = None
+        self.md_debate_result: dict | None = None
 
     # --- orchestrator tools ---------------------------------------------------------------------------------
     def delegate(self, subagent: str, task: str) -> str:
@@ -360,6 +361,44 @@ class Run:
             "peers": fresh.get("peers")}
         if any(e.startswith("daily check") for e in self.events):
             self.orch_updates["last_daily_review"] = today.date().isoformat()
+
+    def md_debate(self, paused: list[str]) -> None:
+        """Gate 0 every run; the debate itself at the daily check, or at once when a new Tsuchiya notice appears."""
+        import mdebate
+        gate = j(pipeline("evidence"))
+        new = gate.get("gate0") or []
+        if not new:
+            print("Md debate: gate 0 closed (no new evidence); no model call.", flush=True)
+            return
+        daily = any(e.startswith("daily check") for e in self.events)
+        if not (daily or gate.get("company_notice")):
+            print(f"Md debate: {len(new)} new item(s) wait for the daily check.", flush=True)
+            return
+        if paused:
+            print(f"Md debate due but paused on the dashboard ({', '.join(paused)}): skipped.", flush=True)
+            return
+        llm.check_settings()
+        ctx = j(pipeline("md-context"))
+        res = mdebate.run(gate, ctx, "new company notice" if gate.get("company_notice") else "daily check")
+        root = data_root()
+        (root / "tmp").mkdir(exist_ok=True)
+        (root / "tmp" / "debate.json").write_text(json.dumps(res, ensure_ascii=False), encoding="utf-8")
+        rec = j(pipeline("debate-record", "tmp/debate.json"))
+        self.md_debate_result = res
+        msg = (f"md debate: {len(new)} new item(s), {len(res.get('items') or [])} flagged, stopped {res.get('stopped_at')}; "
+               f"Debate Signal ¥{res.get('signal', 0):,.0f} ({(rec.get('debate_signal') or {}).get('mode', '?')} mode)")
+        print(msg, flush=True)
+        self.events.append(msg)
+
+    def weekly_report(self) -> None:
+        if not any(e.startswith("daily check") for e in self.events):
+            return
+        due = j(pipeline("report-due"))
+        if not due.get("due"):
+            return
+        import reporter
+        llm.check_settings()
+        print("Weekly summary: " + reporter.write(data_root()), flush=True)
 
     def research_summary(self) -> None:
         """A40: the research agent reads the run's results and writes a summary; code checks every number in it."""
@@ -560,7 +599,7 @@ def main() -> int:
     try:
         if mode == "research":  # A39-A40: universe, panel, M1 fit, backtest, proposed weights (code only; resumable)
             r = j(pipeline("research", timeout=3300))
-            run.routine_results.append({"command": "research", "result": r})
+            run.routine_results.append({"subagent": "research", "command": "research", "result": r})
             print("Research: " + json.dumps(r, ensure_ascii=False)[:1500], flush=True)
             if isinstance(r.get("model"), dict) and r["model"].get("version"):
                 run.research_summary()
@@ -581,6 +620,10 @@ def main() -> int:
                 run.events.append("consensus due: " + "; ".join(why))
                 run.run_consensus(view, why)
                 view = j(pipeline("headline"))  # now includes the consensus price
+            # A41-A42: the Md debate (gate 0 in code; scouts, debaters and C&A only when it opens) and the weekly summary
+            if mode != "test":
+                run.md_debate(paused)
+                run.weekly_report()
             if run.events:
                 print("Review events:\n  " + "\n  ".join(run.events), flush=True)
                 run.review(view, orch)

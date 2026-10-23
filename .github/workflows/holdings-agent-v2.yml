@@ -57,6 +57,12 @@ jobs:
           CONSENSUS_AGREE_WITHIN: ${{ vars.CONSENSUS_AGREE_WITHIN }}
           CONSENSUS_WEIGHTING: ${{ vars.CONSENSUS_WEIGHTING }}
           REFEREE_MODE: ${{ github.event.inputs.referee_mode || vars.REFEREE_MODE }}
+          # Md debate and reporter (A41-A42): models per agent (blank = MODEL; Debater B defaults to the first fallback)
+          DEBATER_A_MODEL: ${{ vars.DEBATER_A_MODEL }}
+          DEBATER_B_MODEL: ${{ vars.DEBATER_B_MODEL }}
+          SCOUT_MODEL: ${{ vars.SCOUT_MODEL }}
+          REPORTER_MODEL: ${{ vars.REPORTER_MODEL }}
+          DEBATE_SIGNAL_MODE: ${{ vars.DEBATE_SIGNAL_MODE }}
           EDINET_API_KEY: ${{ secrets.EDINET_API_KEY }}
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}

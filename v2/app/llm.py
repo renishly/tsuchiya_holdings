@@ -66,12 +66,15 @@ def client() -> OpenAI:
 
 
 # --- Model call ---------------------------------------------------------------------------------------------
-def chat(messages: list[dict], tools: list[dict] | None = None):
-    kwargs = {"model": MODEL, "messages": messages}
+def chat(messages: list[dict], tools: list[dict] | None = None, model: str | None = None):
+    m = model or MODEL   # an agent may run on its own model (Debater A and B use different families, A41)
+    if IS_OPENROUTER and FREE_ONLY and not m.endswith(":free"):
+        raise ModelUnavailable(f"{m} is not a free model (FREE_ONLY)")
+    kwargs = {"model": m, "messages": messages}
     if tools:
         kwargs["tools"] = tools
     if FALLBACK_MODELS and IS_OPENROUTER:
-        kwargs["extra_body"] = {"models": [MODEL, *FALLBACK_MODELS]}  # tried in order if one fails
+        kwargs["extra_body"] = {"models": [m, *[f for f in FALLBACK_MODELS if f != m]]}  # tried in order if one fails
     for attempt in range(4):
         if usage["requests"] >= MAX_LLM_REQUESTS:
             raise ModelUnavailable(f"per-run model request budget reached ({MAX_LLM_REQUESTS})")
@@ -122,6 +125,7 @@ class Tool:
     description: str
     parameters: dict
     fn: Callable[..., str]
+    max_chars: int = TOOL_RESULT_CHARS   # what the model sees of this tool's result (evidence and digests are longer)
 
     def schema(self) -> dict:
         return {"type": "function", "function": {"name": self.name, "description": self.description,
@@ -203,7 +207,7 @@ class AgentResult:
 
 
 def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: int = MAX_STEPS,
-              skills: list[str] | None = None) -> AgentResult:
+              skills: list[str] | None = None, model: str | None = None) -> AgentResult:
     if skills:  # the skill index goes into the system prompt; bodies load through the load_skill tool
         system += skills_index(skills)
         tools = [*tools, skills_tool(skills)]
@@ -212,7 +216,7 @@ def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: i
     messages = [{"role": "system", "content": system}, {"role": "user", "content": task}]
     calls: list[str] = []
     for step in range(1, max_steps + 1):
-        msg = chat(messages, schemas).choices[0].message
+        msg = chat(messages, schemas, model).choices[0].message
         if not msg.tool_calls:
             return AgentResult(msg.content or "", step, calls)
         messages.append({"role": "assistant", "content": msg.content or "",
@@ -237,7 +241,7 @@ def run_agent(name: str, system: str, task: str, tools: list[Tool], max_steps: i
                 except Exception as e:  # a tool must never crash the run
                     result = f"Error: {tool.name} failed: {type(e).__name__}: {str(e)[:200]}"
             messages.append({"role": "tool", "tool_call_id": call.id,
-                             "content": str(result)[:TOOL_RESULT_CHARS]})
+                             "content": str(result)[:tool.max_chars if tool else TOOL_RESULT_CHARS]})
         if len(calls) >= 3 and calls[-3:] == [calls[-1]] * 3:
             return AgentResult("(stopped: loop detected)", step, calls, "loop detected")
     return AgentResult("(stopped: reached step limit)", max_steps, calls, "step limit")

@@ -116,7 +116,7 @@ def iso(t: dt.datetime | None = None) -> str:
 
 # Agent code and standing instructions: the agent never modifies these (v2 replaces "never modify SKILL.md").
 PROTECTED_DIRS = ("pipeline", "subagents", "prompts", "skills")   # agent code, prompts and skills inside v2/app/
-PROTECTED_FILES = ("agent.py", "llm.py", "consensus.py", "list_models.py", "requirements.txt", "prompt2.org", "README.md")
+PROTECTED_FILES = ("agent.py", "llm.py", "consensus.py", "list_models.py", "requirements.txt", "prompt2.org", "README.md", "mdebate.py", "reporter.py")
 
 def safe_path(rel: str | Path) -> Path:
     """Resolve a path under v2/ and refuse anything outside it or protected files."""

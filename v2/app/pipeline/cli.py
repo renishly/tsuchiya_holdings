@@ -629,8 +629,9 @@ def cmd_research(a):
     cr = run_ctx(st)
     res = {}
     try:
-        res["universe"] = universe.refresh(st, max_days=int(os.environ.get("RESEARCH_MAX_DAYS", "400")),
-                                           max_downloads=int(os.environ.get("RESEARCH_MAX_DOWNLOADS", "30")))
+        # within the research budget of 900 EDINET requests per run: up to 700 date lists + 150 downloads
+        res["universe"] = universe.refresh(st, max_days=int(os.environ.get("RESEARCH_MAX_DAYS", "700")),
+                                           max_downloads=int(os.environ.get("RESEARCH_MAX_DOWNLOADS", "150")))
     except (FetchError, GuardrailError, BudgetStop) as e:
         res["universe"] = {"paused": str(e)[:200]}
     save_state(st)
@@ -648,6 +649,143 @@ def cmd_research(a):
     save_state(st)
     log(st, "research", {}, {k: (v if k != "universe" else "see result") for k, v in res.items() if k != "prices"})
     return out(res)
+
+def cmd_evidence(a):
+    """Gate 0 (A41): collect new items onto the evidence board; list the ones not yet considered by a debate."""
+    import evidence
+    st = load_state()
+    run_ctx(st)
+    res = evidence.collect(st)
+    save_state(st)
+    return out(res)
+
+def cmd_evidence_items(a):
+    """Items from the board for the scouts and debaters (by id, or by topic among the gate-0 items)."""
+    import evidence
+    b = evidence.load_board()
+    ids = set(a.ids.split(",")) if a.ids else None
+    items = [v for v in b["items"].values() if (ids is None or v["id"] in ids) and (not a.topic or v["topic"] == a.topic)]
+    if ids is None and not a.topic:
+        items = items[-30:]
+    return out({"items": sorted(items, key=lambda x: x["date"], reverse=True)[:30]})
+
+def cmd_evidence_close(a):
+    import evidence
+    st = load_state()
+    run_ctx(st)
+    evidence.close_gate(st)
+    save_state(st)
+    return out({"closed": True})
+
+def cmd_linkcheck(a):
+    """A43: resolve, snapshot and excerpt each flagged item's source (code, no model)."""
+    import linkcheck
+    st = load_state()
+    run_ctx(st)
+    res = linkcheck.check(st, [i for i in a.ids.split(",") if i])
+    save_state(st)
+    return out(res)
+
+def cmd_claimcheck(a):
+    """A43: every number in a claim must appear in the text of an item it cites; returns annotated positions."""
+    import linkcheck
+    positions = json.loads((ROOT / a.path).read_text(encoding="utf-8"))
+    summary = linkcheck.check_claims(positions)
+    return out({"summary": summary, "positions": positions})
+
+def cmd_md_context(a):
+    st = load_state()
+    return out(st["documents"].get("md_context") or {})
+
+def cmd_report_due(a):
+    """Weekly summary due? 7+ days since the last one, or 5+ Md debates since it (A42)."""
+    import evidence
+    st = load_state()
+    last = st.get("reports", {}).get("last_summary", "")
+    n = sum(1 for c in evidence.read_cases() if c.get("recorded", "") > last and c.get("stopped_at") != "gate 1 (scouts flagged nothing)")
+    age = (now() - dt.datetime.fromisoformat(last)).days if last else None
+    due = last == "" or (age is not None and age >= 7) or n >= 5
+    return out({"due": due, "days_since": age, "debates_since": n})
+
+def cmd_debate_memory(a):
+    import evidence
+    return out(evidence.memory(a.name))
+
+def cmd_debate_record(a):
+    """Store a debate's result (computed in agent.py by the consensus rule) as the Debate Signal for Md (A42)."""
+    import evidence
+    st = load_state()
+    run_ctx(st)
+    res = json.loads((ROOT / a.path).read_text(encoding="utf-8"))
+    sig = evidence.record(st, res)
+    save_state(st)
+    return out({"recorded": True, "debate_signal": sig})
+
+def cmd_digest(a):
+    """The reporter's input (A42): condensed record since the last report; tables are built from this by code."""
+    import evidence
+    import modelfit
+    st = load_state()
+    base = CsvStore("Baseline Metrics")
+    since = st.setdefault("reports", {}).get("last_summary", "")
+    hist = {}
+    for metric in ("Stock Price", "Average Valuated Price", "Md (operating profit)", "Target Price (P/E, v2.005)",
+                   "Target Price (EV/EBITDA, forward, F1)", "Target Price (own history, P/B, M2)",
+                   "Target Price (M1, P/B regression)", "Target Price (M1, EV/EBITDA regression)"):
+        days = {}
+        for r in base.rows.values():
+            if r["ticker"] == "1840" and r["metric"] == metric and r["value"] not in ("", "not meaningful"):
+                try:
+                    days[(r["quote_time_jst"] or r["access_date_jst"])[:10]] = round(float(r["value"]), 2)
+                except ValueError:
+                    pass
+        hist[metric] = sorted(days.items())[-7:]
+    w = _latest(base, "1840", "Method weights")
+    prm = modelfit.load_params()
+    cases = [c for c in evidence.read_cases() if c.get("recorded", "") > since]
+    return out({"since": since or "first report", "values_last_7_days": hist,
+                "weights": json.loads(w["value"]) if w and w["value"].startswith("{") else None,
+                "md": {m: (lambda r: r["value"] if r else None)(_latest(base, "1840", m)) for m in
+                       ("Md (operating profit)", "Md: Discount Baseline", "Md: Supply Costs (% since guidance)",
+                        "Md: Land Price Ave (% since guidance)", "Md: Debate Signal (shadow)")},
+                "debates": [{"date": c["recorded"][:10], "items": c.get("items"), "signal": c.get("signal"),
+                             "mode": c.get("mode"), "stopped_at": c.get("stopped_at"), "note": c.get("note")} for c in cases],
+                "research": {"pending": (prm.get("pending") or {}).get("version"), "approved": (prm.get("approved") or {}).get("version"),
+                             "accepted_methods": ((prm.get("pending") or prm.get("approved") or {}).get("weights") or {}).get("accepted")},
+                "attention": [x for r in st.get("history", [])[-14:] for x in ([] if not r.get("attention") else [r["run_id"]])]})
+
+def cmd_report_write(a):
+    """Build the weekly summary report: code tables from the digest + the reporter's checked narrative (A42)."""
+    import html as H
+    st = load_state()
+    run_ctx(st)
+    d = json.loads(_capture(lambda: cmd_digest(a)))
+    text = (ROOT / a.path).read_text(encoding="utf-8")[:8000]
+    today = iso()[:10]
+    rows = "".join(f"<tr><td>{H.escape(m)}</td>" + "".join(f"<td>{v}</td>" for _, v in s) + "</tr>"
+                   for m, s in d["values_last_7_days"].items() if s)
+    dates = max((s for s in d["values_last_7_days"].values()), key=len, default=[])
+    deb = "".join(f"<tr><td>{c['date']}</td><td>{len(c.get('items') or [])}</td><td>{c.get('signal')}</td><td>{H.escape(c.get('mode') or '')}</td>"
+                  f"<td>{H.escape(c.get('stopped_at') or '')}</td></tr>" for c in d["debates"]) or "<tr><td colspan=5>no debate</td></tr>"
+    body = "".join(f"<p>{H.escape(p)}</p>" for p in text.split("\n\n") if p.strip())
+    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Summary {today}</title><style>body{{font-family:system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 16px;line-height:1.55}}
+table{{border-collapse:collapse;width:100%;margin:.5rem 0 1.5rem;font-size:.85rem}}td,th{{border-bottom:1px solid #ddd;padding:4px 6px;text-align:left}}th{{background:#f4f4f4}}
+@media (prefers-color-scheme:dark){{body{{background:#141917;color:#e2e8e5}}th{{background:#222a28}}td,th{{border-color:#2c3532}}}}</style></head><body>
+<h1>Tsuchiya Holdings (1840): summary, {today}</h1><p><i>Written by the reporter agent from the agent's own records; numbers checked by code. Agent baseline from public data; the target and view are the student's.</i></p>
+{body}
+<h2>Values, last 7 data days (JPY)</h2><table><tr><th>Item</th>{''.join(f'<th>{x}</th>' for x, _ in dates)}</tr>{rows}</table>
+<h2>Weights</h2><p>{H.escape(json.dumps(d['weights'], ensure_ascii=False))}</p>
+<h2>Md</h2><p>{H.escape(json.dumps(d['md'], ensure_ascii=False))}</p>
+<h2>Debates since the last report</h2><table><tr><th>Date</th><th>Items</th><th>Debate Signal (JPY)</th><th>Mode</th><th>Stopped at</th></tr>{deb}</table>
+<h2>Research</h2><p>{H.escape(json.dumps(d['research'], ensure_ascii=False))}</p></body></html>"""
+    rel = f"reports/summary_{today}.html"
+    write_text(rel, page)
+    write_text("reports/summary_latest.html", page)
+    st.setdefault("reports", {})["last_summary"] = iso()
+    st["reports"]["latest_file"] = rel
+    save_state(st)
+    return out({"written": rel})
 
 def research_view() -> dict:
     """The latest research run, trimmed for the research agent (A40)."""
@@ -797,7 +935,7 @@ def _dashboard_finish(st, cr, S) -> str:
             "Discount Baseline (JPY)": show("Md: Discount Baseline"),
             "Land Price Ave (% since guidance)": show("Md: Land Price Ave (% since guidance)"),
             "Supply Costs (% since guidance)": show("Md: Supply Costs (% since guidance)"),
-            "Debate Signal": "0 (Md debate not built yet)",
+            "Debate Signal (JPY)": show("Md: Debate Signal (shadow)") if _latest(base, "1840", "Md: Debate Signal (shadow)") else show("Md: Debate Signal"),
             "note": "value = target multiple × (company forecast − Md); positive Md lowers the forecast. Land and supply "
                     "costs are logged with coefficient 0 until fitted on the panel (A37).",
         }, "Md (forecast discount)")
@@ -818,6 +956,11 @@ def _dashboard_finish(st, cr, S) -> str:
             rep_ = ROOT / "reports" / "backtest_latest.html"
             if rep_.exists():
                 dashboard.set_monitor(rep_, "Backtest report (backtest_latest.html)")
+            rp = (st.get("reports") or {}).get("latest_file")
+            if rp and st.setdefault("dashboard_sent", {}).get("summary_report") != rp and (ROOT / rp).exists():
+                if dashboard.output(ROOT / rp, "weekly summary"):  # A42: the reporter's summary, once per report
+                    st["dashboard_sent"]["summary_report"] = rp
+                    save_state(st)
             if cur and cur.get("summary") and st.setdefault("dashboard_sent", {}).get("research_summary") != cur["version"]:
                 if dashboard.output(f"Research run {cur['version']}:\n{cur['summary']}", "research summary"):
                     st["dashboard_sent"]["research_summary"] = cur["version"]
@@ -860,6 +1003,10 @@ def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
     Until the Md debaters exist, Debater A/B carry the two sides of the current consensus debate (A32): the first
     and second debating subagent, in the order they debate."""
     import dashboard
+    import evidence
+    cases = [c for c in evidence.read_cases() if c.get("stopped_at") != "gate 1 (scouts flagged nothing)"]
+    if cases:  # v2.007: the Md debate replaces the old valuation debate on these pages
+        return _dashboard_md_debate(st, cases[-1], ver)
     sent = []
     res = _last_consensus()
     sent_before = st.setdefault("dashboard_sent", {})
@@ -920,6 +1067,50 @@ def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
         save_state(st)
     return sent
 
+def _dashboard_md_debate(st, case: dict, ver: str) -> list[str]:
+    """C&A: the decision and the Debate Signal; Debater A/B: their own positions (A41-A42). Records sent once."""
+    import dashboard
+    sent_before = st.setdefault("dashboard_sent", {})
+    new = sent_before.get("md_case") != case.get("recorded")
+    sent = []
+    ca = dashboard.client("ca")
+    if ca.enabled():
+        ca.set_monitor(ver, "Version")
+        dec = case.get("decision") or {}
+        ca.set_monitor({"date": case.get("recorded", "")[:10], "trigger": case.get("trigger"), "items": case.get("items"),
+                        "stopped at": case.get("stopped_at"), "Debate Signal (JPY)": round(case.get("signal") or 0.0),
+                        "mode": case.get("mode"), "rule": case.get("note"),
+                        "note": "Positive lowers the company's operating-profit forecast (like Md). Shadow mode: logged, not applied."},
+                       "Md debate: Debate Signal")
+        ca.set_monitor({"judge": dec.get("model"), "evidence score A": dec.get("evidence_a"), "evidence score B": dec.get("evidence_b"),
+                        "better supported": dec.get("supported"), "bucket": dec.get("bucket"), "error": dec.get("error"),
+                        "turn monitor (Span-01 Lite)": case.get("monitor")}, "Arbitration (decision models)")
+        ca.set_monitor(None, "Consensus valuation")
+        if new:
+            ca.output({k: v for k, v in case.items() if k not in ("transcript", "positions")}, "md debate record")
+        ca.flush()
+        sent.append("C&A")
+    for prof in ("debater_a", "debater_b"):
+        c = dashboard.client(prof)
+        if not c.enabled():
+            continue
+        pos = (case.get("positions") or {}).get(prof)
+        c.set_monitor(ver, "Version")
+        c.set_monitor(f"{'Debater A (proposer)' if prof == 'debater_a' else 'Debater B (sceptic)'} in the Md debate"
+                      + (f"; model {pos.get('model')}" if pos else ""), "Role")
+        c.set_monitor({"date": case.get("recorded", "")[:10], "direction": pos.get("direction"), "size (JPY)": pos.get("size_jpy"),
+                       "confidence": pos.get("confidence"), "summary": pos.get("summary"), "claims kept": len(pos.get("claims") or []),
+                       "claims rejected": pos.get("rejected_claims"), "concessions": pos.get("concessions")}
+                      if pos else f"no position: debate stopped at {case.get('stopped_at')}", "Latest position")
+        if new and pos:
+            c.output({"recorded": case.get("recorded"), "turns": [t for t in case.get("transcript", []) if t.get("name") == prof]}, "debate turns")
+        c.flush()
+        sent.append(dashboard.LABELS[prof].replace("Tsuchibot ", ""))
+    if new and sent:
+        sent_before["md_case"] = case.get("recorded")
+        save_state(st)
+    return sent
+
 def _git_commit(cr) -> str:
     """Cloud routine (Addenda A1, A11): commit outputs; plain push of the current branch; never force."""
     top = ROOT.parent
@@ -956,6 +1147,17 @@ def main():
     s = sub.add_parser("consensus-record"); s.add_argument("path"); s.set_defaults(fn=cmd_consensus_record)
     s = sub.add_parser("research"); s.set_defaults(fn=cmd_research)
     s = sub.add_parser("research-view"); s.set_defaults(fn=cmd_research_view)
+    s = sub.add_parser("evidence"); s.set_defaults(fn=cmd_evidence)
+    s = sub.add_parser("evidence-items"); s.add_argument("--ids", default=""); s.add_argument("--topic", default=""); s.set_defaults(fn=cmd_evidence_items)
+    s = sub.add_parser("evidence-close"); s.set_defaults(fn=cmd_evidence_close)
+    s = sub.add_parser("debate-memory"); s.add_argument("name"); s.set_defaults(fn=cmd_debate_memory)
+    s = sub.add_parser("md-context"); s.set_defaults(fn=cmd_md_context)
+    s = sub.add_parser("linkcheck"); s.add_argument("--ids", required=True); s.set_defaults(fn=cmd_linkcheck)
+    s = sub.add_parser("claimcheck"); s.add_argument("path"); s.set_defaults(fn=cmd_claimcheck)
+    s = sub.add_parser("report-due"); s.set_defaults(fn=cmd_report_due)
+    s = sub.add_parser("debate-record"); s.add_argument("path"); s.set_defaults(fn=cmd_debate_record)
+    s = sub.add_parser("digest"); s.set_defaults(fn=cmd_digest)
+    s = sub.add_parser("report-write"); s.add_argument("path"); s.set_defaults(fn=cmd_report_write)
     s = sub.add_parser("research-summary"); s.add_argument("path"); s.set_defaults(fn=cmd_research_summary)
     s = sub.add_parser("peek"); s.add_argument("csv"); s.add_argument("--where", action="append"); s.add_argument("--limit", type=int, default=5); s.set_defaults(fn=cmd_peek)
     s = sub.add_parser("finish"); s.add_argument("--plan", default="tmp/plan.txt"); s.set_defaults(fn=cmd_finish)

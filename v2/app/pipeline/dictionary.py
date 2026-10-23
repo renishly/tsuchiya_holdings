@@ -150,6 +150,8 @@ METRICS = {
     "Md: Land Price Ave (% since guidance)": "MLIT 不動産情報ライブラリ Hokkaido 宅地(土地) median ¥/㎡: latest quarter ÷ last quarter before the guidance date − 1. Coefficient 0 until fitted.",
     "Md (operating profit)": "Forecast discount on 営業利益 (yen): Discount Baseline + coefficient × land + coefficient × supply costs + Debate Signal (0 until built).",
     "Md (EPS)": "Md (operating profit) × (1 − 30.4%) ÷ shares outstanding.",
+    "Md: Debate Signal (shadow)": "Adjustment to forecast 営業利益 from the latest Md debate (C&A decision, consensus rule in code); logged, not applied (shadow mode).",
+    "Md: Debate Signal": "Adjustment to forecast 営業利益 from the latest Md debate, applied to Md (live mode).",
     "EPS basis used (P/E)": "F2 chain: forecast EPS − Md if ≥ 25% of normalised EPS, else trailing EPS, else clean normalised EPS.",
     "Target Price (P/E, v2.005)": "Target P/E × the EPS basis used (F2/F3).",
     "Target EV/EBITDA (forward, F1)": "Mean of peers' EV ÷ (forecast 営業利益 + latest 減価償却費); the trailing mean if fewer than two peers have a forecast.",

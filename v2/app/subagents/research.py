@@ -21,7 +21,7 @@ TOOLS = [
     Tool("read_research",
          "Read the latest research run: universe screen, panel size, M1 coefficients (P/B and EV/EBITDA equations), "
          "Tsuchiya's fitted multiples, backtest measures per method, proposed weights and the approval status.",
-         {"type": "object", "properties": {}}, read_research),
+         {"type": "object", "properties": {}}, read_research, max_chars=12000),
     Tool("log_refusal", "Record a request you declined as out of scope or prohibited.",
          {"type": "object", "properties": {"request": {"type": "string"}, "source": {"type": "string"}},
           "required": ["request"]}, log_refusal),
