@@ -547,6 +547,10 @@ def main() -> int:
             view = j(pipeline("headline"))
             run.events = run.detect_events(view, orch)
             why = run.consensus_due(view, orch)
+            paused = [p for p in (start.get("dashboard") or {}).get("paused_profiles", []) if p in ("ca", "debater_a", "debater_b")]
+            if why and paused:  # A35: pausing C&A or a debater on the dashboard skips the debate, not the run
+                print(f"Consensus due but paused on the dashboard ({', '.join(paused)}): debate skipped.", flush=True)
+                why = []
             if why:
                 run.events.append("consensus due: " + "; ".join(why))
                 run.run_consensus(view, why)

@@ -95,7 +95,21 @@ def _dashboard_start(st, mode) -> dict:
             log(st, "dashboard", {}, "paused: run skipped")
             return {"enabled": True, "paused": True}
         dashboard.report(f"Agent online: run {st['current_run']['run_id']} ({mode})", "status")
-        return {"enabled": True, "paused": False, "reachable": bool(reply), "buffered": dashboard.pending()}
+        # the other dashboard agents (A35): pausing C&A or a debater skips the consensus debate, not the run
+        others, paused = [], []
+        for prof in dashboard.configured():
+            if prof == "main":
+                continue
+            c = dashboard.client(prof)
+            c.check_in(every=DASH_EVERY)
+            others.append(prof)
+            if c.is_paused():
+                paused.append(prof)
+                c.report("Paused on the dashboard: debate skipped this run", "status")
+            else:
+                c.report(f"Online: run {st['current_run']['run_id']} ({mode})", "status")
+        return {"enabled": True, "paused": False, "reachable": bool(reply), "buffered": dashboard.pending(),
+                "agents": ["main"] + others, "paused_profiles": paused}
     except Exception as e:  # the dashboard must never stop the agent
         log(st, "dashboard", {}, f"check-in failed: {type(e).__name__}")
         return {"enabled": False}
@@ -527,6 +541,19 @@ def cmd_finish(a):
                 "dashboard": dash})
 
 REPO_DATA = "https://github.com/renishly/tsuchiya_holdings/tree/main/v2/app/data"
+CHANGELOG_DIR = ROOT.parent / "changelog"   # v2/changelog/v2.NNN.html (tracked)
+
+def current_version() -> tuple[str, Path | None]:
+    """The latest changelog entry, e.g. ("v2.004", path). Every dashboard agent shows it as its version (A35)."""
+    best = None
+    for f in CHANGELOG_DIR.glob("v*.html") if CHANGELOG_DIR.exists() else []:
+        try:
+            key = tuple(int(x) for x in f.stem.lstrip("v").split("."))
+        except ValueError:
+            continue
+        if best is None or key > best[0]:
+            best = (key, f)
+    return (best[1].stem, best[1]) if best else ("unknown", None)
 
 def _latest(base, ticker, metric):
     rows = [r for r in base.rows.values() if r["ticker"] == ticker and r["metric"] == metric and r["value"] != ""]
@@ -717,23 +744,96 @@ def _dashboard_finish(st, cr, S) -> str:
                     "it enters the final number only through the planned consensus.",
         }
         dashboard.set_monitor(fac, "Factor model (Fama-French style)")
-        con = _latest(base, "1840", "Consensus Valuated Price")
-        if con:  # A32: the final number; the student's own target and view remain separate
-            dashboard.set_monitor({
-                "consensus price (JPY)": show("Consensus Valuated Price"),
-                "range (JPY)": f"{show('Consensus range low')} - {show('Consensus range high')}",
-                "current market price (JPY)": show("Stock Price"),
-                "date": con["access_date_jst"][:10],
-                "details": con["correction_note"][:600],
-                "note": "Agent consensus between the baseline and factor subagents; the target and view are the student's.",
-            }, "Consensus valuation")
         legal = S["Alternative Data"].get(record_id("legal_score", "total"))
         if legal and legal["value"]:
             dashboard.set_monitor(f"{legal['value']} / 100 (exposure measure, not a finding of wrongdoing)", "Legal penalty score")
+        # A35: version on every dashboard agent; Main also outputs the stored changelog once per version
+        ver, ver_file = current_version()
+        dashboard.set_monitor(ver, "Version")
+        sent = st.setdefault("dashboard_sent", {})
+        if ver_file and sent.get("changelog") != ver and dashboard.output(ver_file, "changelog"):
+            sent["changelog"] = ver
+            save_state(st)
+        others = _dashboard_debate(st, base, cr, show, ver)
         left = dashboard.flush()
-        return f"sent; {left} item(s) buffered" if left else "sent"
+        return (f"sent; {left} item(s) buffered" if left else "sent") + (f"; also {', '.join(others)}" if others else "")
     except Exception as e:
         return f"dashboard error: {type(e).__name__}"
+
+def _last_consensus() -> dict | None:
+    p = ROOT / "logs" / "consensus_log.jsonl"
+    if not p.exists():
+        return None
+    last = None
+    for line in p.read_text(encoding="utf-8").splitlines():
+        try:
+            last = json.loads(line)
+        except ValueError:
+            continue
+    return last
+
+def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
+    """C&A gets the consensus and arbitration; each debater gets only its own positions (no overlap with Main).
+    Until the Md debaters exist, Debater A/B carry the two sides of the current consensus debate (A32): the first
+    and second debating subagent, in the order they debate."""
+    import dashboard
+    sent = []
+    res = _last_consensus()
+    sent_before = st.setdefault("dashboard_sent", {})
+    new = bool(res and res.get("run_id") == cr["run_id"] and sent_before.get("debate") != cr["run_id"])
+    names = list((res or {}).get("prices", {}))
+    ca = dashboard.client("ca")
+    if ca.enabled():
+        ca.set_monitor(ver, "Version")
+        con = _latest(base, "1840", "Consensus Valuated Price")
+        if con:  # A32: the final number; the student's own target and view remain separate
+            ca.set_monitor({
+                "consensus price (JPY)": show("Consensus Valuated Price"),
+                "range (JPY)": f"{show('Consensus range low')} - {show('Consensus range high')}",
+                "current market price (JPY)": show("Stock Price"),
+                "status": (res or {}).get("status", "not available"),
+                "weights": (res or {}).get("weights", {}),
+                "date": con["access_date_jst"][:10],
+                "details": con["correction_note"][:600],
+                "note": "Agent consensus between the debating subagents; the target and view are the student's.",
+            }, "Consensus valuation")
+        else:
+            ca.set_monitor("no consensus yet", "Consensus valuation")
+        ref = (res or {}).get("referee")
+        ca.set_monitor({"mode": "off (REFEREE_MODE)", "note": "decision models not called"} if not ref else
+                       {"mode": ref.get("mode"), "judge": ref.get("judge_model"), "monitor": ref.get("monitor_model"),
+                        "judgement": ref.get("judge") or ref.get("error"), "turns scored": len(ref.get("turns") or []),
+                        "note": "shadow mode: logged only, changes nothing (A33)" if ref.get("mode") == "shadow" else ""},
+                       "Arbitration (decision models)")
+        if new:
+            ca.output({k: v for k, v in res.items() if k not in ("transcript", "referee")}, "consensus record")
+        ca.flush()
+        sent.append("C&A")
+    for prof, idx in (("debater_a", 0), ("debater_b", 1)):
+        c = dashboard.client(prof)
+        if not c.enabled():
+            continue
+        c.set_monitor(ver, "Version")
+        name = names[idx] if len(names) > idx else None
+        c.set_monitor(f"currently the '{name}' side of the consensus debate (A32), until the Md debaters are built"
+                      if name else "no debate yet", "Role")
+        if name:
+            turns = [t for t in res.get("transcript", []) if t.get("name") == name]
+            last = turns[-1] if turns else {}
+            c.set_monitor({"date": res.get("date", "")[:10], "run_id": res.get("run_id"), "price argued (JPY)": res["prices"].get(name),
+                           "confidence": last.get("confidence"), "summary": (last.get("summary") or "")[:800],
+                           "claims kept": len(last.get("claims") or []), "claims rejected": len(last.get("rejected") or []),
+                           "concessions": last.get("concessions") or []}, "Latest position")
+            if new:
+                c.output({"run_id": res["run_id"], "turns": [{k: t.get(k) for k in ("round", "confidence", "summary", "claims",
+                                                                                       "challenges", "concessions", "rejected")}
+                                                              for t in turns]}, "debate turns")
+        c.flush()
+        sent.append(dashboard.LABELS[prof].replace("Tsuchibot ", ""))
+    if new and sent:  # this run's debate records go out once
+        sent_before["debate"] = cr["run_id"]
+        save_state(st)
+    return sent
 
 def _git_commit(cr) -> str:
     """Cloud routine (Addenda A1, A11): commit outputs; plain push of the current branch; never force."""

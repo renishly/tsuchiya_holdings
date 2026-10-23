@@ -45,6 +45,7 @@ The models never run code they write. Every tool is one pipeline command, so a m
    | `GOOGLE_APPLICATION_CREDENTIALS` | the **whole JSON text** of the service-account key (`~/.config/tsuchiya/sa.json`) |
    | `GOOGLE_SHEET_ID` | same as v1 |
    | `DASHBOARD_URL`, `DASHBOARD_API_KEY` | same as v1 |
+   | `DASHBOARD_API_KEY_CA`, `DASHBOARD_API_KEY_DEBATER_A`, `DASHBOARD_API_KEY_DEBATER_B` | the C&A and debater dashboard agents (A35); optional, each is skipped when unset |
    | `REINFOLIB_API_KEY` | optional; only the parked P7 uses it |
 
    To copy the JSON without opening it in an editor:
