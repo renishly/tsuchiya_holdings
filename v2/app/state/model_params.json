@@ -1,0 +1,513 @@
+{
+ "pending": {
+  "version": "2026-10-23-n156",
+  "status": "pending approval",
+  "m1": {
+   "year_effects": {
+    "2016": -0.939490237027045,
+    "2017": -0.9930552809697483,
+    "2018": -0.9416486661193777,
+    "2019": -1.2121124913325938,
+    "2020": -1.3765488863180915,
+    "2021": -1.2356801311586463,
+    "2022": -1.2568674943333396,
+    "2023": -1.14776222071042,
+    "2024": -1.1738068481225243,
+    "2025": -1.0545955094465065,
+    "2026": -1.0522540308459642
+   },
+   "year_counts": {
+    "2016": 1,
+    "2017": 12,
+    "2018": 11,
+    "2019": 14,
+    "2020": 15,
+    "2021": 16,
+    "2022": 16,
+    "2023": 19,
+    "2024": 17,
+    "2025": 19,
+    "2026": 16
+   },
+   "coef": {
+    "roe_norm": 6.21731894754999,
+    "growth": -1.0757337866714467,
+    "log_revenue": 0.007330169963090517
+   },
+   "y": "log_pb",
+   "winsor": {
+    "roe_norm": [
+     0.005325,
+     0.28708333333333336
+    ],
+    "growth": [
+     -0.05995221989427818,
+     0.2806263118114001
+    ],
+    "log_revenue": [
+     23.341353896308455,
+     29.04952771018913
+    ]
+   },
+   "scale": 0.3727659761679318,
+   "n": 156,
+   "r2_weighted": 0.5452520663724776
+  },
+  "m1_ev": {
+   "year_effects": {
+    "2016": 26.932670942359866,
+    "2017": 30.21589207357147,
+    "2018": 29.291929726913207,
+    "2019": 30.658587777719084,
+    "2020": 30.383024344516887,
+    "2021": 31.172373980876504,
+    "2022": 30.159272130324553,
+    "2023": 31.52782778029054,
+    "2024": 33.617276244008245,
+    "2025": 32.07895576899526,
+    "2026": 31.99763736676429
+   },
+   "year_counts": {
+    "2016": 1,
+    "2017": 10,
+    "2018": 10,
+    "2019": 12,
+    "2020": 14,
+    "2021": 14,
+    "2022": 14,
+    "2023": 18,
+    "2024": 16,
+    "2025": 19,
+    "2026": 16
+   },
+   "coef": {
+    "margin": -49.32898692539642,
+    "growth": 5.365022906235193,
+    "log_revenue": -0.7500363667376745
+   },
+   "y": "ev_ebitda",
+   "winsor": {
+    "margin": [
+     0.01099497990912301,
+     0.11362524682366412
+    ],
+    "growth": [
+     -0.04819019837699826,
+     0.2932801152666744
+    ],
+    "log_revenue": [
+     23.345134046752072,
+     29.051956073193093
+    ]
+   },
+   "scale": 4.3538259171529745,
+   "n": 144,
+   "r2_weighted": 0.2302771219870784
+  },
+  "backtest": {
+   "months": 106,
+   "period": [
+    "2016-12",
+    "2025-10"
+   ],
+   "methods": {
+    "M1 (P/B regression)": {
+     "months": 75,
+     "mean_ic": 0.0689,
+     "t_nw": 1.15,
+     "top_minus_bottom": 0.0645,
+     "hit_rate": 0.505,
+     "median_abs_error": 0.259
+    },
+    "P/B (own history)": {
+     "months": 75,
+     "mean_ic": 0.0628,
+     "t_nw": 0.56,
+     "top_minus_bottom": 0.0476,
+     "hit_rate": 0.451,
+     "median_abs_error": 0.18
+    },
+    "P/B (peers)": {
+     "months": 106,
+     "mean_ic": -0.1042,
+     "t_nw": -1.73,
+     "top_minus_bottom": -0.162,
+     "hit_rate": 0.433,
+     "median_abs_error": 0.365
+    },
+    "P/E (peers, trailing)": {
+     "months": 106,
+     "mean_ic": 0.1093,
+     "t_nw": 2.32,
+     "top_minus_bottom": 0.1074,
+     "hit_rate": 0.51,
+     "median_abs_error": 0.345
+    },
+    "M1 (EV/EBITDA regression)": {
+     "months": 75,
+     "mean_ic": -0.075,
+     "t_nw": -1.37,
+     "top_minus_bottom": -0.0417,
+     "hit_rate": 0.424,
+     "median_abs_error": 0.512
+    },
+    "EV/EBITDA (own history)": {
+     "months": 75,
+     "mean_ic": -0.1166,
+     "t_nw": -1.54,
+     "top_minus_bottom": -0.0158,
+     "hit_rate": 0.417,
+     "median_abs_error": 0.34
+    },
+    "EV/EBITDA (peers)": {
+     "months": 99,
+     "mean_ic": -0.0097,
+     "t_nw": -0.13,
+     "top_minus_bottom": -0.046,
+     "hit_rate": 0.451,
+     "median_abs_error": 0.479
+    }
+   }
+  },
+  "weights": {
+   "weights": {
+    "M1 (P/B regression)": 0.0714,
+    "P/B (own history)": 0.0714,
+    "P/B (peers)": 0.0714,
+    "P/E": 0.5714,
+    "M1 (EV/EBITDA regression)": 0.0714,
+    "EV/EBITDA (own history)": 0.0714,
+    "EV/EBITDA": 0.0714
+   },
+   "accepted": [
+    "P/E"
+   ],
+   "rule": "accepted if mean IC > 0 and Newey-West t ≥ 2; weight = ½ equal share + ½ share by accepted IC (equal if none accepted). The live P/E and EV/EBITDA methods use forward figures; their backtest uses trailing figures (no point-in-time forecast history)."
+  },
+  "tsuchiya": {
+   "features": {
+    "fy_end": "2025-10-31",
+    "published": "2026-01-26",
+    "bps": 505.95,
+    "eps": null,
+    "roe_norm": 0.02398252983768648,
+    "growth": -0.03233344658151427,
+    "log_revenue": 24.171882189153298,
+    "ebitda": 233146000.0,
+    "debt": 3079167000.0,
+    "cash": 4795443000.0,
+    "shares": 25775388.872418225,
+    "margin": 0.00404161189967521
+   },
+   "fitted_pb": {
+    "pb": 0.5009841535819882,
+    "low": 0.3107030385216473,
+    "high": 0.8077974497271435,
+    "year_effect": "2026"
+   },
+   "fitted_ev": {
+    "multiple": 13.152005770671163,
+    "low": 7.572142475247911,
+    "high": 18.731869066094415,
+    "year_effect": "2026"
+   }
+  },
+  "created": "2026-10-23T17:43:41+09:00",
+  "screen": {
+   "1419": {
+    "share": 0.706,
+    "pass": true,
+    "segments": {
+     "HousingReportableSegmentsMember": 0.706,
+     "RealEstateReportableSegmentsMember": 0.285,
+     "FinancingReportableSegmentsMember": 0.005,
+     "EnergyBusinessReportableSegmentsMember": 0.004
+    },
+    "residential": [
+     "HousingReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "1420": {
+    "share": null,
+    "segments": {},
+    "pass": true,
+    "note": "single segment or no segment revenue tagged: passes"
+   },
+   "1431": {
+    "share": null,
+    "segments": {},
+    "pass": true,
+    "note": "single segment or no segment revenue tagged: passes"
+   },
+   "1840": {
+    "share": 1.0,
+    "pass": true,
+    "segments": {
+     "HousingBusinessReportableSegmentsMember": 0.586,
+     "EnlargementOfABuildeingAndRenovationBusinessReportableSegmentsMember": 0.124,
+     "RealEstateBusinessReportableSegmentsMember": 0.277,
+     "HouseLeaseBusinessReportableSegmentsMember": 0.012
+    },
+    "residential": [
+     "EnlargementOfABuildeingAndRenovationBusinessReportableSegmentsMember",
+     "HouseLeaseBusinessReportableSegmentsMember",
+     "HousingBusinessReportableSegmentsMember",
+     "RealEstateBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "1873": {
+    "share": 0.855,
+    "pass": true,
+    "segments": {
+     "HousingReportableSegmentsMember": 0.855,
+     "HotelReportableSegmentsMember": 0.14,
+     "OtherReportableSegmentsMember": 0.005
+    },
+    "residential": [
+     "HousingReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "1878": {
+    "share": 0.285,
+    "pass": false,
+    "segments": {
+     "ConstructionReportableSegmentsMember": 0.285,
+     "RealEstateLeaseBusinessReportableSegmentMember": 0.631,
+     "RealEstateDevelopmentBusinessReportableSegmentMember": 0.077,
+     "FinanceReportableSegmentsMember": 0.007
+    },
+    "residential": [
+     "ConstructionReportableSegmentsMember"
+    ],
+    "note": "ConstructionReportableSegmentsMember: 大東建託 建設事業: construction of rental apartment buildings for landowners"
+   },
+   "1911": {
+    "share": 0.886,
+    "pass": true,
+    "segments": {
+     "TimberAndBuildingMaterialsBusinessReportableSegmentsMember": 0.103,
+     "HousingBusinessReportableSegmentsMember": 0.26,
+     "ConstructionAndRealEstateDivisionReportableSegmentsMember": 0.626,
+     "EnvironmentAndResourcesDivisionReportableSegmentsMember": 0.011
+    },
+    "residential": [
+     "ConstructionAndRealEstateDivisionReportableSegmentsMember",
+     "HousingBusinessReportableSegmentsMember"
+    ],
+    "note": "HousingBusinessReportableSegmentsMember: 住宅事業: domestic custom-built houses; ConstructionAndRealEstateDivisionReportableSegmentsMember: 住友林業 建築・不動産事業: mainly US/Australian housing"
+   },
+   "1925": {
+    "share": 0.547,
+    "pass": true,
+    "segments": {
+     "SingleFamilyHousesReportableSegmentsMember": 0.241,
+     "RentalHousingReportableSegmentsMember": 0.257,
+     "CondominiumsReportableSegmentsMember": 0.049,
+     "CommercialFacilitiesReportableSegmentsMember": 0.231,
+     "LogisticsBusinessAndCorporateFacilitiesReportableSegmentsMember": 0.207,
+     "EnvironmentAndEnergyReportableSegmentMember": 0.016
+    },
+    "residential": [
+     "CondominiumsReportableSegmentsMember",
+     "RentalHousingReportableSegmentsMember",
+     "SingleFamilyHousesReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "1928": {
+    "share": 0.769,
+    "pass": true,
+    "segments": {
+     "CustomDetachedHousesReportableSegmentMember": 0.114,
+     "RentalHousingAndCommercialBuildingsReportableSegmentMember": 0.133,
+     "ArchitecturalCivilEngineeringReportableSegmentMember": 0.071,
+     "RentalHousingManagementReportableSegmentMember": 0.169,
+     "RemodelingReportableSegmentMember": 0.045,
+     "DevelopmentReportableSegmentMember": 0.16,
+     "OverseasReportableSegmentMember": 0.307
+    },
+    "residential": [
+     "CustomDetachedHousesReportableSegmentMember",
+     "OverseasReportableSegmentMember",
+     "RemodelingReportableSegmentMember",
+     "RentalHousingAndCommercialBuildingsReportableSegmentMember",
+     "RentalHousingManagementReportableSegmentMember"
+    ],
+    "note": "DevelopmentReportableSegmentMember: 開発型ビジネス: offices, hotels, logistics and condominium development (mixed); OverseasReportableSegmentMember: 積水ハウス 国際事業: mainly detached and rental housing in the US and Australia"
+   },
+   "2974": {
+    "share": 1.0,
+    "pass": true,
+    "segments": {
+     "CondominiumsReportableSegmentsMember": 0.524,
+     "HousingBusinessReportableSegmentsMember": 0.476
+    },
+    "residential": [
+     "CondominiumsReportableSegmentsMember",
+     "HousingBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "2983": {
+    "share": 0.995,
+    "pass": true,
+    "segments": {
+     "DetachedHousesReportableSegmentMember": 0.995,
+     "RealEstateReproductionAndPropertyResalesReportableSegmentMember": 0.005
+    },
+    "residential": [
+     "DetachedHousesReportableSegmentMember"
+    ],
+    "note": ""
+   },
+   "2999": {
+    "share": null,
+    "segments": {},
+    "pass": true,
+    "note": "single segment or no segment revenue tagged: passes"
+   },
+   "3280": {
+    "share": 0.936,
+    "pass": true,
+    "segments": {
+     "RealEstateSaleInLotsBusinessReportableSegmentsMember": 0.936,
+     "RealEstateManagementBusinessReportableSegmentsMember": 0.039,
+     "RealEstateLeaseBusinessReportableSegmentsMember": 0.025
+    },
+    "residential": [
+     "RealEstateSaleInLotsBusinessReportableSegmentsMember"
+    ],
+    "note": "RealEstateSaleInLotsBusinessReportableSegmentsMember: エストラスト 不動産分譲事業: detached houses and condominiums for sale"
+   },
+   "3288": {
+    "share": 0.554,
+    "pass": true,
+    "segments": {
+     "SingleFamilyHomesRelatedBusinessReportableSegmentMember": 0.502,
+     "CondominiumsReportableSegmentMember": 0.051,
+     "PropertyResalesReportableSegmentMember": 0.163,
+     "OthersReportableSegmentMember": 0.113,
+     "PressanceCorporationCoLtdReportableSegmentMember": 0.17
+    },
+    "residential": [
+     "CondominiumsReportableSegmentMember",
+     "SingleFamilyHomesRelatedBusinessReportableSegmentMember"
+    ],
+    "note": ""
+   },
+   "3291": {
+    "share": null,
+    "segments": {},
+    "pass": true,
+    "note": "single segment or no segment revenue tagged: passes"
+   },
+   "3293": {
+    "share": 0.544,
+    "pass": true,
+    "segments": {
+     "RealEstateAndConstructionReportableSegmentsMember": 0.544,
+     "LeasingReportableSegmentsMember": 0.335,
+     "AssetUtilizationBusinessReportableSegmentMember": 0.057,
+     "HotelReportableSegmentsMember": 0.064
+    },
+    "residential": [
+     "RealEstateAndConstructionReportableSegmentsMember"
+    ],
+    "note": "RealEstateAndConstructionReportableSegmentsMember: アズマハウス 不動産事業・建設事業: built-for-sale and custom houses"
+   },
+   "3465": {
+    "share": 1.0,
+    "pass": true,
+    "segments": {
+     "HousesForSaleReportableSegmentsMember": 0.983,
+     "OrderHouseBusinessReportableSegmentsMember": 0.017
+    },
+    "residential": [
+     "HousesForSaleReportableSegmentsMember",
+     "OrderHouseBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8860": {
+    "share": 0.52,
+    "pass": true,
+    "segments": {
+     "ResidentialDevelopmentReportableSegmentsMember": 0.266,
+     "ExistingHousingReportableSegmentsMember": 0.254,
+     "RealEstateUtilizationReportableSegmentsMember": 0.224,
+     "LeasingAndPropertyManagementReportableSegmentsMember": 0.245,
+     "BusinessRelatedToTheConstructionEquipmentRentalDivisionReportableSegmentsMember": 0.01
+    },
+    "residential": [
+     "ExistingHousingReportableSegmentsMember",
+     "ResidentialDevelopmentReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8904": {
+    "share": 0.709,
+    "pass": true,
+    "segments": {
+     "CustomDetachedHousesReportableSegmentsMember": 0.675,
+     "CondominiumsReportableSegmentsMember": 0.034,
+     "GeneralContractedConstructionReportableSegmentsMember": 0.105,
+     "RealEstateDistributionBusinessReportableSegmentsMember": 0.186
+    },
+    "residential": [
+     "CondominiumsReportableSegmentsMember",
+     "CustomDetachedHousesReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8917": {
+    "share": 1.0,
+    "pass": true,
+    "segments": {
+     "DetachedHousingReportableSegmentsMember": 0.956,
+     "CondominiumAndOtherReportableSegmentsMember": 0.044
+    },
+    "residential": [
+     "CondominiumAndOtherReportableSegmentsMember",
+     "DetachedHousingReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8996": {
+    "share": 0.545,
+    "pass": true,
+    "segments": {
+     "RevenueRealEstateBrokerageReportableSegmentsMember": 0.135,
+     "RevenueFromDetachedHousingReportableSegmentsMember": 0.545,
+     "RevenueFromConstructionReportableSegmentsMember": 0.078,
+     "InsuaranceAgencyCommissionReportableSegmentsMember": 0.003,
+     "RentIncomeOfRealEstateReportableSegmentsMember": 0.239
+    },
+    "residential": [
+     "RevenueFromDetachedHousingReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8999": {
+    "share": 0.939,
+    "pass": true,
+    "segments": {
+     "RealEstateSalesReportableSegmentsMember": 0.939,
+     "ConstructionMaterialSalesReportableSegmentsMember": 0.053,
+     "RealEstateLeasingReportableSegmentsMember": 0.009
+    },
+    "residential": [
+     "RealEstateSalesReportableSegmentsMember"
+    ],
+    "note": ""
+   }
+  },
+  "panel": {
+   "rows": 156,
+   "companies": 18
+  },
+  "summary": "**Universe & panel** — 18 companies passed the residential-revenue screen (≥50% or single-segment); 大東建託 excluded (28.5% residential). Panel: 156 company-years for P/B, 144 for EV/EBITDA.\n\n**M1 equations** — P/B: 3-yr ROE 6.22, growth −1.08, log revenue 0.01 (scale 0.37). EV/EBITDA: 3-yr margin −49.33, growth 5.37, log revenue −0.75 (scale 4.35). Both include year effects; robust regression.\n\n**Tsuchiya fitted multiples (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2 (7.6–18.7). Features: ROE 2.4%, growth −3.2%, margin 0.4%.\n\n**Backtest (106 months, 2016-12–2025-10)** — Only **P/E (peers, trailing)** cleared the acceptance rule (mean IC 0.11, Newey-West t 2.32, top-minus-bottom 10.7%, hit rate 51%). All other methods failed: M1 P/B t 1.15; P/B own history t 0.56; P/B peers negative IC; M1 EV/EBITDA negative IC; EV/EBITDA own history negative IC; EV/EBITDA peers IC ≈ 0.\n\n**Proposed weights** — P/E 57.1%; the other six methods 7.1% each (½ equal + ½ by accepted IC). **Critical caveat**: live P/E and EV/EBITDA use forward figures; their backtest used trailing figures (no point-in-time forecast history).\n\n**Weaknesses** — Only 18 companies; missing prices imply survivorship bias; six of seven methods not accepted by backtest; forward-vs-trailing mismatch for the two live multiples.\n\n(Code check: 1 number(s) not found in the results and not verified: 12)"
+ }
+}
