@@ -1316,3 +1316,39 @@ checks not run this run
 
 ### Next planned
 steady
+
+## R-20261025-060909 — research
+
+- Start / end (JST): 2026-10-25T06:09:09+09:00 / 2026-10-25T06:10:00+09:00
+- Iterations: 0; web requests by domain: {}
+
+### Plan
+(no plan recorded)
+Review events: none, so the model was not called (quiet run).
+Model calls: 2; tokens in/out: 4348/705; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 557 rows total; 0 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261023-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+- AR-20261025-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady

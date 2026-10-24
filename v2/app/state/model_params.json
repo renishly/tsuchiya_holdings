@@ -1,20 +1,20 @@
 {
  "pending": {
-  "version": "2026-10-23-n156",
+  "version": "2026-10-25-n156",
   "status": "pending approval",
   "m1": {
    "year_effects": {
-    "2016": -0.939490237027045,
-    "2017": -0.9930552809697483,
-    "2018": -0.9416486661193777,
-    "2019": -1.2121124913325938,
-    "2020": -1.3765488863180915,
-    "2021": -1.2356801311586463,
-    "2022": -1.2568674943333396,
-    "2023": -1.14776222071042,
-    "2024": -1.1738068481225243,
-    "2025": -1.0545955094465065,
-    "2026": -1.0522540308459642
+    "2016": -0.9394902370270485,
+    "2017": -0.9930552809697595,
+    "2018": -0.9416486661193813,
+    "2019": -1.212112491332596,
+    "2020": -1.3765488863180946,
+    "2021": -1.2356801311586496,
+    "2022": -1.2568674943333422,
+    "2023": -1.147762220710424,
+    "2024": -1.1738068481225228,
+    "2025": -1.0545955094465054,
+    "2026": -1.0522540308459651
    },
    "year_counts": {
     "2016": 1,
@@ -30,9 +30,9 @@
     "2026": 16
    },
    "coef": {
-    "roe_norm": 6.21731894754999,
-    "growth": -1.0757337866714467,
-    "log_revenue": 0.007330169963090517
+    "roe_norm": 6.21731894755,
+    "growth": -1.0757337866714538,
+    "log_revenue": 0.007330169963090771
    },
    "y": "log_pb",
    "winsor": {
@@ -49,23 +49,23 @@
      29.04952771018913
     ]
    },
-   "scale": 0.3727659761679318,
+   "scale": 0.3727659761679347,
    "n": 156,
-   "r2_weighted": 0.5452520663724776
+   "r2_weighted": 0.5452520663724767
   },
   "m1_ev": {
    "year_effects": {
-    "2016": 26.932670942359866,
-    "2017": 30.21589207357147,
-    "2018": 29.291929726913207,
-    "2019": 30.658587777719084,
+    "2016": 26.932670942359852,
+    "2017": 30.215892073571247,
+    "2018": 29.29192972691321,
+    "2019": 30.65858777771907,
     "2020": 30.383024344516887,
-    "2021": 31.172373980876504,
-    "2022": 30.159272130324553,
-    "2023": 31.52782778029054,
-    "2024": 33.617276244008245,
-    "2025": 32.07895576899526,
-    "2026": 31.99763736676429
+    "2021": 31.172373980876515,
+    "2022": 30.15927213032453,
+    "2023": 31.527827780290554,
+    "2024": 33.61727624400846,
+    "2025": 32.07895576899523,
+    "2026": 31.99763736676427
    },
    "year_counts": {
     "2016": 1,
@@ -81,9 +81,9 @@
     "2026": 16
    },
    "coef": {
-    "margin": -49.32898692539642,
-    "growth": 5.365022906235193,
-    "log_revenue": -0.7500363667376745
+    "margin": -49.32898692539672,
+    "growth": 5.365022906235155,
+    "log_revenue": -0.7500363667376746
    },
    "y": "ev_ebitda",
    "winsor": {
@@ -100,9 +100,9 @@
      29.051956073193093
     ]
    },
-   "scale": 4.3538259171529745,
+   "scale": 4.3538259171529985,
    "n": 144,
-   "r2_weighted": 0.2302771219870784
+   "r2_weighted": 0.2302771219870806
   },
   "backtest": {
    "months": 106,
@@ -200,19 +200,19 @@
     "margin": 0.00404161189967521
    },
    "fitted_pb": {
-    "pb": 0.5009841535819882,
-    "low": 0.3107030385216473,
-    "high": 0.8077974497271435,
+    "pb": 0.5009841535819911,
+    "low": 0.310703038521648,
+    "high": 0.8077974497271512,
     "year_effect": "2026"
    },
    "fitted_ev": {
-    "multiple": 13.152005770671163,
-    "low": 7.572142475247911,
-    "high": 18.731869066094415,
+    "multiple": 13.152005770671138,
+    "low": 7.572142475247856,
+    "high": 18.731869066094422,
     "year_effect": "2026"
    }
   },
-  "created": "2026-10-23T17:43:41+09:00",
+  "created": "2026-10-25T06:09:33+09:00",
   "screen": {
    "1419": {
     "share": 0.706,
@@ -508,6 +508,6 @@
    "rows": 156,
    "companies": 18
   },
-  "summary": "**Universe & panel** — 18 companies passed the residential-revenue screen (≥50% or single-segment); 大東建託 excluded (28.5% residential). Panel: 156 company-years for P/B, 144 for EV/EBITDA.\n\n**M1 equations** — P/B: 3-yr ROE 6.22, growth −1.08, log revenue 0.01 (scale 0.37). EV/EBITDA: 3-yr margin −49.33, growth 5.37, log revenue −0.75 (scale 4.35). Both include year effects; robust regression.\n\n**Tsuchiya fitted multiples (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2 (7.6–18.7). Features: ROE 2.4%, growth −3.2%, margin 0.4%.\n\n**Backtest (106 months, 2016-12–2025-10)** — Only **P/E (peers, trailing)** cleared the acceptance rule (mean IC 0.11, Newey-West t 2.32, top-minus-bottom 10.7%, hit rate 51%). All other methods failed: M1 P/B t 1.15; P/B own history t 0.56; P/B peers negative IC; M1 EV/EBITDA negative IC; EV/EBITDA own history negative IC; EV/EBITDA peers IC ≈ 0.\n\n**Proposed weights** — P/E 57.1%; the other six methods 7.1% each (½ equal + ½ by accepted IC). **Critical caveat**: live P/E and EV/EBITDA use forward figures; their backtest used trailing figures (no point-in-time forecast history).\n\n**Weaknesses** — Only 18 companies; missing prices imply survivorship bias; six of seven methods not accepted by backtest; forward-vs-trailing mismatch for the two live multiples.\n\n(Code check: 1 number(s) not found in the results and not verified: 12)"
+  "summary": "**Research run 2026-10-25-n156 — pending approval (AR-20261025-01)**\n\n**Universe & panel** — 18 housebuilders passed the ≥50% residential-revenue screen (Tsuchiya 1840 at 100%; 大東建託 1878 excluded at 28.5%). Panel: 156 company-years (P/B), 144 (EV/EBITDA).\n\n**M1 equations** — P/B: 6.22·ROE₃y − 1.08·g₃y + 0.007·log(rev); scale 0.37. EV/EBITDA: −49.3·margin₃y + 5.37·g₃y − 0.75·log(rev); scale 4.35.\n\n**Tsuchiya fitted (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2× (7.6–18.7×). Inputs: ROE 2.4%, growth −3.2%, margin 0.4%.\n\n**Backtest (Dec 2016 – Oct 2025, 106 months)** — Only **P/E (peers, trailing)** clears the acceptance rule (mean IC 0.109, Newey-West t 2.32). M1 P/B: IC 0.069, t 1.15. P/B peers and all EV/EBITDA methods show negative or insignificant IC. Top-minus-bottom quintile spread positive only for P/E peers (+10.7% annualised) and M1 P/B (+6.5%).\n\n**Proposed weights** — P/E peers 57.1%; the other six methods 7.1% each (½ equal share + ½ IC-weighted among accepted; only P/E accepted).\n\n**Weaknesses to note**\n- Small panel (18 names); survivorship bias from missing delisted prices.\n- Live P/E and EV/EBITDA methods use **forward** estimates; backtest used **trailing** figures (no point-in-time forecast history).\n- Six of seven methods fail the acceptance threshold (mean IC > 0 and t ≥ 2).\n\n(Code check: 3 number(s) not found in the results and not verified: 25, 20261025, 1840)"
  }
 }

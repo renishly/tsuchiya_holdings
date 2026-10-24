@@ -1,15 +1,20 @@
-# Research run 2026-10-23-n156
+# Research run 2026-10-25-n156
 
-**Universe & panel** — 18 companies passed the residential-revenue screen (≥50% or single-segment); 大東建託 excluded (28.5% residential). Panel: 156 company-years for P/B, 144 for EV/EBITDA.
+**Research run 2026-10-25-n156 — pending approval (AR-20261025-01)**
 
-**M1 equations** — P/B: 3-yr ROE 6.22, growth −1.08, log revenue 0.01 (scale 0.37). EV/EBITDA: 3-yr margin −49.33, growth 5.37, log revenue −0.75 (scale 4.35). Both include year effects; robust regression.
+**Universe & panel** — 18 housebuilders passed the ≥50% residential-revenue screen (Tsuchiya 1840 at 100%; 大東建託 1878 excluded at 28.5%). Panel: 156 company-years (P/B), 144 (EV/EBITDA).
 
-**Tsuchiya fitted multiples (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2 (7.6–18.7). Features: ROE 2.4%, growth −3.2%, margin 0.4%.
+**M1 equations** — P/B: 6.22·ROE₃y − 1.08·g₃y + 0.007·log(rev); scale 0.37. EV/EBITDA: −49.3·margin₃y + 5.37·g₃y − 0.75·log(rev); scale 4.35.
 
-**Backtest (106 months, 2016-12–2025-10)** — Only **P/E (peers, trailing)** cleared the acceptance rule (mean IC 0.11, Newey-West t 2.32, top-minus-bottom 10.7%, hit rate 51%). All other methods failed: M1 P/B t 1.15; P/B own history t 0.56; P/B peers negative IC; M1 EV/EBITDA negative IC; EV/EBITDA own history negative IC; EV/EBITDA peers IC ≈ 0.
+**Tsuchiya fitted (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2× (7.6–18.7×). Inputs: ROE 2.4%, growth −3.2%, margin 0.4%.
 
-**Proposed weights** — P/E 57.1%; the other six methods 7.1% each (½ equal + ½ by accepted IC). **Critical caveat**: live P/E and EV/EBITDA use forward figures; their backtest used trailing figures (no point-in-time forecast history).
+**Backtest (Dec 2016 – Oct 2025, 106 months)** — Only **P/E (peers, trailing)** clears the acceptance rule (mean IC 0.109, Newey-West t 2.32). M1 P/B: IC 0.069, t 1.15. P/B peers and all EV/EBITDA methods show negative or insignificant IC. Top-minus-bottom quintile spread positive only for P/E peers (+10.7% annualised) and M1 P/B (+6.5%).
 
-**Weaknesses** — Only 18 companies; missing prices imply survivorship bias; six of seven methods not accepted by backtest; forward-vs-trailing mismatch for the two live multiples.
+**Proposed weights** — P/E peers 57.1%; the other six methods 7.1% each (½ equal share + ½ IC-weighted among accepted; only P/E accepted).
 
-(Code check: 1 number(s) not found in the results and not verified: 12)
+**Weaknesses to note**
+- Small panel (18 names); survivorship bias from missing delisted prices.
+- Live P/E and EV/EBITDA methods use **forward** estimates; backtest used **trailing** figures (no point-in-time forecast history).
+- Six of seven methods fail the acceptance threshold (mean IC > 0 and t ≥ 2).
+
+(Code check: 3 number(s) not found in the results and not verified: 25, 20261025, 1840)

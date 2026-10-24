@@ -286,7 +286,7 @@ ticker,fy_end,item,value,published,doc_id,basis
 1420,2026-03-31,roe,0.087,2026-06-23,S100YGLY,current-year column
 1420,2026-03-31,total_assets,47799063000.0,2026-06-23,S100YGLY,current-year column
 1431,2020-06-30,cash,743222000.0,2020-10-06,S100MHVR,prior-year column (1)
-1431,2020-06-30,debt,0,2020-10-06,S100MHVR,prior-year column (1)
+1431,2020-06-30,debt,0.0,2020-10-06,S100MHVR,prior-year column (1)
 1431,2021-06-30,bps,149.35,2021-09-29,S100MHVR,current-year column
 1431,2021-06-30,cash,3324877000.0,2021-09-29,S100MHVR,current-year column
 1431,2021-06-30,debt,2281220000.0,2021-09-29,S100MHVR,current-year column
@@ -1638,7 +1638,7 @@ ticker,fy_end,item,value,published,doc_id,basis
 3291,2016-03-31,roe,0.1,2016-07-07,S100J111,prior-year column (4)
 3291,2016-03-31,total_assets,992209000000.0,2016-07-07,S100J111,prior-year column (4)
 3293,2017-03-31,cash,2610355000.0,2017-07-07,S100DI45,prior-year column (1)
-3293,2017-03-31,debt,0,2017-07-07,S100DI45,prior-year column (1)
+3293,2017-03-31,debt,0.0,2017-07-07,S100DI45,prior-year column (1)
 3293,2018-03-31,bps,3412.12,2018-06-28,S100DI45,current-year column
 3293,2018-03-31,cash,3024570000.0,2018-06-28,S100DI45,current-year column
 3293,2018-03-31,debt,12181778000.0,2018-06-28,S100DI45,current-year column
