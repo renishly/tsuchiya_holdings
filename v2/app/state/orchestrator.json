@@ -53,10 +53,10 @@
   }
  ],
  "review_snapshot": {
-  "date": "2026-10-24T21:01+09:00",
-  "run_id": "R-20261024-205918",
+  "date": "2026-10-25T21:35+09:00",
+  "run_id": "R-20261025-213340",
   "values": {
-   "average_valuated_price": 155.827,
+   "average_valuated_price": 155.915,
    "target_pe": 11.9814,
    "target_ev_ebitda": 11.8179,
    "stock_price_jpy": 250.0
@@ -85,7 +85,7 @@
    }
   }
  },
- "last_daily_review": "2026-10-24",
+ "last_daily_review": "2026-10-25",
  "consensus_snapshot": {
   "date": "2026-10-23T09:03+09:00",
   "run_id": "R-20261023-085922",
