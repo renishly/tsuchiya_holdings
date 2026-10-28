@@ -1651,3 +1651,44 @@ Model calls: 2; tokens in/out: 7962/1718; models: nvidia/nemotron-3-ultra-550b-a
 
 ### Next planned
 steady
+
+## R-20261028-230005 — scheduled
+
+- Start / end (JST): 2026-10-28T23:00:05+09:00 / 2026-10-28T23:05:36+09:00
+- Iterations: 18; web requests by domain: {"www.tsuchiya.co.jp": 8, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: [].
+Review events: Average Valuated Price 155.146 -> 131.394 (-15.3%) since the review of 2026-10-28T09:33+09:00; Target P/E 11.7005 -> 3.446 (-70.5%) since the review of 2026-10-28T09:33+09:00; Target EV/EBITDA 11.6749 -> 4.3837 (-62.5%) since the review of 2026-10-28T09:33+09:00; daily check (first run after the TSE close today)
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 0, "changed": 21, "conflicts": 0, "total": 769}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: Average Valuated Price fell 15.3% (155.1 → 131.4) and Target P/E dropped 70.5% (11.70 → 3.446) since the 2026-10-28 09:33 review; Target EV/EBITDA fell 62.5% (11.67 → 4.384). The moves coincide with 日本ハウスHD (1873) becoming the effective anchor: its forward P/E (3.446) and EV/EBITDA (4.384) now match the targets exactly, while タマホーム (P/E 20.6, EV/EBITDA 11.9) and グランディハウス (P/E 14.5, EV/EBITDA 18.8) appear excluded from the average. 日本ハウスHD's price dipped slightly (314 → 311), but the structural shift in peer weighting (visible in the 7-day history: Target P/E collapsed on 2026-10-27, Target EV/EBITDA on 2026-10-28) drove the valuation. 1840's price was flat at ¥243; company-forecast EPS remains 0.0, so P/E-based prices are not meaningful. Routine steady refresh and P9 completed; no data errors detected. Student should verify whether the peer-weighting logic (e.g., sector filter, outlier e
+Model calls: 7; tokens in/out: 12354/4581; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 769 rows total; 21 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261023-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+- AR-20261025-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
