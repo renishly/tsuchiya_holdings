@@ -78,6 +78,7 @@ def collect(st, max_excerpts: int = 5) -> dict:
     test = run_ctx(st).get("mode") == "test"
     added, excerpts = [], 0
     first_fill = not b["items"]
+    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=KEEP_DAYS)).isoformat()
     tickers = [CONFIG["company_code"]] + [p["ticker"] for p in CONFIG["peers"]]
     for t in tickers:
         if test:
@@ -89,7 +90,7 @@ def collect(st, max_excerpts: int = 5) -> dict:
             continue
         for d in docs:
             i = _id(d["url"])
-            if i in b["items"] or not d.get("date"):
+            if i in b["items"] or not d.get("date") or d["date"] < cutoff:   # older than the board keeps: skip before fetching
                 continue
             item = {"id": i, "date": d["date"], "ticker": t, "title": d["title"][:200], "url": d["url"],
                     "source": "company IR page", "topic": _topic(d["title"]), "first_seen": iso()}
@@ -109,7 +110,6 @@ def collect(st, max_excerpts: int = 5) -> dict:
                              "title": d.get("docDescription", "EDINET filing")[:200], "url": url, "source": "EDINET",
                              "topic": "company and peers", "first_seen": iso()}
             added.append(i)
-    cutoff = (dt.date.fromisoformat(today) - dt.timedelta(days=KEEP_DAYS)).isoformat()
     b["items"] = {k: v for k, v in b["items"].items() if v["date"] >= cutoff}
     new = [v for v in b["items"].values() if v["first_seen"] not in ("backfill",) and v["first_seen"] > (b.get("last_check") or "")]
     save_board(b)

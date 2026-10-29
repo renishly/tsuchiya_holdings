@@ -409,6 +409,7 @@ def live_params(st) -> dict | None:
             p["approved"] = {**pend, "status": "approved", "approval": ar, "approved_at": iso()}
             p.pop("pending")
             write_text(PARAMS, json.dumps(p, ensure_ascii=False, indent=1))
+            write_text("reports/backtest_latest.html", report_html(p["approved"], ar))   # the report shows the new status
             log(st, "model_params", {"version": pend["version"]}, f"approved ({ar})")
     return p.get("approved")
 
@@ -483,13 +484,18 @@ def report_html(p: dict, ar: str) -> str:
     rows_w = "".join(f"<tr><td>{html.escape(k)}</td><td>{v:.1%}</td></tr>" for k, v in (w.get("weights") or {}).items())
     t = p["tsuchiya"]
     fp = t.get("fitted_pb") or {}
+    if p.get("status") == "approved":
+        status = (f"<p>Status: <b>approved</b> ({html.escape(ar)}, {html.escape(str(p.get('approved_at', ''))[:16].replace('T', ' '))}). "
+                  "These parameters and weights are used in the daily valuation.</p>")
+    else:
+        status = (f"<p>Status: <b>pending approval</b> ({html.escape(ar)}). Nothing below is used in the daily valuation until the "
+                  f"student writes <code>APPROVE {html.escape(ar)}</code> in state/approvals.md.</p>")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Backtest {html.escape(p['version'])}</title><style>body{{font-family:system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 16px;line-height:1.5}}
 table{{border-collapse:collapse;width:100%;margin:.5rem 0 1.5rem}}td,th{{border-bottom:1px solid #ddd;padding:4px 8px;text-align:left}}th{{background:#f4f4f4}}
 @media (prefers-color-scheme:dark){{body{{background:#141917;color:#e2e8e5}}th{{background:#222a28}}td,th{{border-color:#2c3532}}}}</style></head><body>
 <h1>Research run {html.escape(p['version'])}</h1>
-<p>Status: <b>pending approval</b> ({html.escape(ar)}). Nothing below is used in the daily valuation until the student writes
-<code>APPROVE {html.escape(ar)}</code> in state/approvals.md.</p>
+{status}
 <h2>Panel</h2><p>{p['panel']['rows']} company-years from {p['panel']['companies']} companies. Survivorship: delisted housebuilders are missing (no price history).</p>
 <h2>M1: log(P/B) = year effect + b1·ROE_norm + b2·growth + b3·log(revenue)</h2>
 <table><tr><th>Term</th><th>Coefficient</th></tr>{''.join(f"<tr><td>{k}</td><td>{v:.4f}</td></tr>" for k, v in m['coef'].items())}</table>
