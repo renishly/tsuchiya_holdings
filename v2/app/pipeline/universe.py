@@ -73,6 +73,9 @@ SEGMENT_OVERRIDES = {
     "3457": {"RealEstateBusinessReportableSegmentsMember": (True, "And Do 不動産売買事業: buying, renovating and reselling mainly second-hand houses")},
     "1766": {"ConstructionReportableSegmentsMember": (True, "東建コーポレーション 建設事業: rental apartments built for landowners (as 大東建託)")},
     "8850": {"ConstructionBusinessReportableSegmentsMember": (True, "スターツ 建設事業: land-use apartment construction and detached houses")},
+    "8928": {"RealEstateRelatedBusinessReportableSegmentsMember": (True, "穴吹興産 不動産関連事業: condominium and detached-house sales, custom houses")},
+    "8891": {"RealEstateDevelopmentBusinessReportableSegmentMember": (True, "AMG 不動産開発事業: condominiums and detached houses for sale")},
+    "8877": {"SellingOfRealEstateReportableSegmentsMember": (True, "エスリード 不動産販売事業: condominium sales (その他事業 is not tagged by segment)")},
 }
 FUND_FILE = "data/universe_fundamentals.csv"
 FUND_COLS = ["ticker", "fy_end", "item", "value", "published", "doc_id", "basis"]
