@@ -23,18 +23,18 @@ ticker,fy_end,item,value,published,doc_id,basis
 1419,2016-05-31,revenue,138379000000.0,2016-09-06,S100JLRV,prior-year column (4)
 1419,2016-05-31,roe,-0.033,2016-09-06,S100JLRV,prior-year column (4)
 1419,2016-05-31,total_assets,83866000000.0,2016-09-06,S100JLRV,prior-year column (4)
-1419,2017-05-31,bps,463.12,2017-09-06,S100MCGA,prior-year column (4)
+1419,2017-05-31,bps,463.12,2017-09-06,S100JLRV,prior-year column (3)
 1419,2017-05-31,cash,26706000000.0,2017-09-06,S100E19O,prior-year column (1)
 1419,2017-05-31,debt,31317000000.0,2017-09-06,S100E19O,prior-year column (1)
 1419,2017-05-31,depreciation,2209000000.0,2017-09-06,S100E19O,prior-year column (1)
-1419,2017-05-31,eps,30.0,2017-09-06,S100MCGA,prior-year column (4)
-1419,2017-05-31,net_assets,14088000000.0,2017-09-06,S100MCGA,prior-year column (4)
-1419,2017-05-31,net_income,901000000.0,2017-09-06,S100MCGA,prior-year column (4)
+1419,2017-05-31,eps,30.0,2017-09-06,S100JLRV,prior-year column (3)
+1419,2017-05-31,net_assets,14088000000.0,2017-09-06,S100JLRV,prior-year column (3)
+1419,2017-05-31,net_income,901000000.0,2017-09-06,S100JLRV,prior-year column (3)
 1419,2017-05-31,operating_profit,3901000000.0,2017-09-06,S100E19O,prior-year column (1)
-1419,2017-05-31,ordinary_profit,3475000000.0,2017-09-06,S100MCGA,prior-year column (4)
-1419,2017-05-31,revenue,157001000000.0,2017-09-06,S100MCGA,prior-year column (4)
-1419,2017-05-31,roe,0.066,2017-09-06,S100MCGA,prior-year column (4)
-1419,2017-05-31,total_assets,83350000000.0,2017-09-06,S100MCGA,prior-year column (4)
+1419,2017-05-31,ordinary_profit,3475000000.0,2017-09-06,S100JLRV,prior-year column (3)
+1419,2017-05-31,revenue,157001000000.0,2017-09-06,S100JLRV,prior-year column (3)
+1419,2017-05-31,roe,0.066,2017-09-06,S100JLRV,prior-year column (3)
+1419,2017-05-31,total_assets,83350000000.0,2017-09-06,S100JLRV,prior-year column (3)
 1419,2018-05-31,bps,515.3,2018-08-30,S100E19O,current-year column
 1419,2018-05-31,cash,31627000000.0,2018-08-30,S100E19O,current-year column
 1419,2018-05-31,debt,33926000000.0,2018-08-30,S100E19O,current-year column
@@ -47,18 +47,18 @@ ticker,fy_end,item,value,published,doc_id,basis
 1419,2018-05-31,revenue,167915000000.0,2018-08-30,S100E19O,current-year column
 1419,2018-05-31,roe,0.139,2018-08-30,S100E19O,current-year column
 1419,2018-05-31,total_assets,90785000000.0,2018-08-30,S100E19O,current-year column
-1419,2019-05-31,bps,603.47,2019-09-06,S100P32D,prior-year column (3)
+1419,2019-05-31,bps,603.47,2019-09-06,S100JLRV,prior-year column (1)
 1419,2019-05-31,cash,27013000000.0,2019-09-06,S100JLRV,prior-year column (1)
 1419,2019-05-31,debt,19838000000.0,2019-09-06,S100JLRV,prior-year column (1)
 1419,2019-05-31,depreciation,1775000000.0,2019-09-06,S100JLRV,prior-year column (1)
-1419,2019-05-31,eps,130.89,2019-09-06,S100P32D,prior-year column (3)
-1419,2019-05-31,net_assets,18190000000.0,2019-09-06,S100P32D,prior-year column (3)
-1419,2019-05-31,net_income,3934000000.0,2019-09-06,S100P32D,prior-year column (3)
+1419,2019-05-31,eps,130.89,2019-09-06,S100JLRV,prior-year column (1)
+1419,2019-05-31,net_assets,18190000000.0,2019-09-06,S100JLRV,prior-year column (1)
+1419,2019-05-31,net_income,3934000000.0,2019-09-06,S100JLRV,prior-year column (1)
 1419,2019-05-31,operating_profit,7366000000.0,2019-09-06,S100JLRV,prior-year column (1)
-1419,2019-05-31,ordinary_profit,6955000000.0,2019-09-06,S100P32D,prior-year column (3)
-1419,2019-05-31,revenue,186874000000.0,2019-09-06,S100P32D,prior-year column (3)
-1419,2019-05-31,roe,0.234,2019-09-06,S100P32D,prior-year column (3)
-1419,2019-05-31,total_assets,89497000000.0,2019-09-06,S100P32D,prior-year column (3)
+1419,2019-05-31,ordinary_profit,6955000000.0,2019-09-06,S100JLRV,prior-year column (1)
+1419,2019-05-31,revenue,186874000000.0,2019-09-06,S100JLRV,prior-year column (1)
+1419,2019-05-31,roe,0.234,2019-09-06,S100JLRV,prior-year column (1)
+1419,2019-05-31,total_assets,89497000000.0,2019-09-06,S100JLRV,prior-year column (1)
 1419,2020-05-31,bps,718.95,2020-08-27,S100JLRV,current-year column
 1419,2020-05-31,cash,30993000000.0,2020-08-27,S100JLRV,current-year column
 1419,2020-05-31,debt,27384000000.0,2020-08-27,S100JLRV,current-year column
@@ -285,8 +285,56 @@ ticker,fy_end,item,value,published,doc_id,basis
 1420,2026-03-31,revenue,50502579000.0,2026-06-23,S100YGLY,current-year column
 1420,2026-03-31,roe,0.087,2026-06-23,S100YGLY,current-year column
 1420,2026-03-31,total_assets,47799063000.0,2026-06-23,S100YGLY,current-year column
+1430,2023-05-31,bps,664.54,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,cash,5062508000.0,2023-09-06,S100U9Y4,prior-year column (1)
+1430,2023-05-31,debt,3940999000.0,2023-09-06,S100U9Y4,prior-year column (1)
+1430,2023-05-31,depreciation,13238000.0,2023-09-06,S100U9Y4,prior-year column (1)
+1430,2023-05-31,eps,114.8,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,net_assets,7922920000.0,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,net_income,1364690000.0,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,operating_profit,1983751000.0,2023-09-06,S100U9Y4,prior-year column (1)
+1430,2023-05-31,ordinary_profit,1979336000.0,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,revenue,25543522000.0,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,roe,0.184,2023-09-06,S100YXXB,prior-year column (3)
+1430,2023-05-31,total_assets,21466967000.0,2023-09-06,S100YXXB,prior-year column (3)
+1430,2024-05-31,bps,708.48,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,cash,4117604000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,debt,5095443000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,depreciation,18309000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,eps,79.15,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,net_assets,8468076000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,net_income,944916000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,operating_profit,1453677000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,ordinary_profit,1422240000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,revenue,28485091000.0,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,roe,0.115,2024-08-26,S100U9Y4,current-year column
+1430,2024-05-31,total_assets,23717601000.0,2024-08-26,S100U9Y4,current-year column
+1430,2025-05-31,bps,816.73,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,cash,5400034000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,debt,4714443000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,depreciation,12024000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,eps,139.74,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,net_assets,9760903000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,net_income,1669537000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,operating_profit,2579579000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,ordinary_profit,2478439000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,revenue,43194307000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,roe,0.183,2025-09-06,S100YXXB,prior-year column (1)
+1430,2025-05-31,total_assets,24889765000.0,2025-09-06,S100YXXB,prior-year column (1)
+1430,2026-05-31,bps,929.21,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,cash,2624627000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,debt,12437660000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,depreciation,13841000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,eps,157.18,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,net_assets,11145120000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,net_income,1882465000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,operating_profit,2896009000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,ordinary_profit,2689983000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,revenue,36417480000.0,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,roe,0.18,2026-08-24,S100YXXB,current-year column
+1430,2026-05-31,total_assets,32284194000.0,2026-08-24,S100YXXB,current-year column
 1431,2020-06-30,cash,743222000.0,2020-10-06,S100MHVR,prior-year column (1)
-1431,2020-06-30,debt,0.0,2020-10-06,S100MHVR,prior-year column (1)
+1431,2020-06-30,debt,0,2020-10-06,S100MHVR,prior-year column (1)
 1431,2021-06-30,bps,149.35,2021-09-29,S100MHVR,current-year column
 1431,2021-06-30,cash,3324877000.0,2021-09-29,S100MHVR,current-year column
 1431,2021-06-30,debt,2281220000.0,2021-09-29,S100MHVR,current-year column
@@ -359,6 +407,438 @@ ticker,fy_end,item,value,published,doc_id,basis
 1431,2026-06-30,revenue,15679974000.0,2026-09-25,S100Z3WK,current-year column
 1431,2026-06-30,roe,0.022,2026-09-25,S100Z3WK,current-year column
 1431,2026-06-30,total_assets,13494000000.0,2026-09-25,S100Z3WK,current-year column
+1766,2014-04-30,bps,3781.23,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,eps,374.78,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,net_assets,50929000000.0,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,net_income,5048000000.0,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,ordinary_profit,9322000000.0,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,revenue,253198000000.0,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,roe,0.103,2014-08-06,S100DPJA,prior-year column (4)
+1766,2014-04-30,total_assets,126036000000.0,2014-08-06,S100DPJA,prior-year column (4)
+1766,2015-04-30,bps,4156.03,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,eps,423.8,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,net_assets,55944000000.0,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,net_income,5706000000.0,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,ordinary_profit,9629000000.0,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,revenue,265340000000.0,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,roe,0.107,2015-08-06,S100DPJA,prior-year column (3)
+1766,2015-04-30,total_assets,135832000000.0,2015-08-06,S100DPJA,prior-year column (3)
+1766,2016-04-30,bps,4607.85,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,eps,606.33,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,net_assets,62007000000.0,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,net_income,8159000000.0,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,ordinary_profit,13043000000.0,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,revenue,283731000000.0,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,roe,0.138,2016-08-06,S100JBLC,prior-year column (4)
+1766,2016-04-30,total_assets,151062000000.0,2016-08-06,S100JBLC,prior-year column (4)
+1766,2017-04-30,bps,5441.22,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,cash,109430000000.0,2017-08-06,S100DPJA,prior-year column (1)
+1766,2017-04-30,debt,0,2017-08-06,S100DPJA,prior-year column (1)
+1766,2017-04-30,depreciation,1441000000.0,2017-08-06,S100DPJA,prior-year column (1)
+1766,2017-04-30,eps,916.49,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,net_assets,73217000000.0,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,net_income,12331000000.0,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,operating_profit,17480000000.0,2017-08-06,S100DPJA,prior-year column (1)
+1766,2017-04-30,ordinary_profit,18017000000.0,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,revenue,305312000000.0,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,roe,0.182,2017-08-06,S100M2W4,prior-year column (4)
+1766,2017-04-30,total_assets,170267000000.0,2017-08-06,S100M2W4,prior-year column (4)
+1766,2018-04-30,bps,6254.62,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,cash,117572000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,debt,0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,depreciation,1294000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,eps,935.39,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,net_assets,84129000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,net_income,12583000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,operating_profit,19674000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,ordinary_profit,20341000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,revenue,328567000000.0,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,roe,0.16,2018-07-27,S100DPJA,current-year column
+1766,2018-04-30,total_assets,185129000000.0,2018-07-27,S100DPJA,current-year column
+1766,2019-04-30,bps,6874.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,cash,100277000000.0,2019-08-06,S100JBLC,prior-year column (1)
+1766,2019-04-30,debt,0,2019-08-06,S100JBLC,prior-year column (1)
+1766,2019-04-30,depreciation,1580000000.0,2019-08-06,S100JBLC,prior-year column (1)
+1766,2019-04-30,eps,805.42,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,net_assets,92449000000.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,net_income,10832000000.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,operating_profit,15606000000.0,2019-08-06,S100JBLC,prior-year column (1)
+1766,2019-04-30,ordinary_profit,16057000000.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,revenue,328524000000.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,roe,0.123,2019-08-06,S100OT9L,prior-year column (3)
+1766,2019-04-30,total_assets,194882000000.0,2019-08-06,S100OT9L,prior-year column (3)
+1766,2020-04-30,bps,7287.9,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,cash,95992000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,debt,0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,depreciation,2189000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,eps,639.97,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,net_assets,97999000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,net_income,8606000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,operating_profit,12819000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,ordinary_profit,13264000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,revenue,323386000000.0,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,roe,0.09,2020-07-30,S100JBLC,current-year column
+1766,2020-04-30,total_assets,189927000000.0,2020-07-30,S100JBLC,current-year column
+1766,2021-04-30,bps,7847.98,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,cash,104493000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,debt,0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,depreciation,2479000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,eps,749.72,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,net_assets,105517000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,net_income,10080000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,operating_profit,15562000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,ordinary_profit,16499000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,revenue,309809000000.0,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,roe,0.099,2021-07-30,S100M2W4,current-year column
+1766,2021-04-30,total_assets,194424000000.0,2021-07-30,S100M2W4,current-year column
+1766,2022-04-30,bps,8436.45,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,cash,103173000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,debt,0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,depreciation,2233000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,eps,764.25,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,net_assets,113424000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,net_income,10275000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,operating_profit,15039000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,ordinary_profit,15361000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,revenue,311586000000.0,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,roe,0.094,2022-07-29,S100OT9L,current-year column
+1766,2022-04-30,total_assets,194153000000.0,2022-07-29,S100OT9L,current-year column
+1766,2023-04-30,bps,8575.6,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,cash,108479000000.0,2023-08-06,S100U4JY,prior-year column (1)
+1766,2023-04-30,debt,0,2023-08-06,S100U4JY,prior-year column (1)
+1766,2023-04-30,depreciation,2221000000.0,2023-08-06,S100U4JY,prior-year column (1)
+1766,2023-04-30,eps,389.7,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,net_assets,115290000000.0,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,net_income,5239000000.0,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,operating_profit,9738000000.0,2023-08-06,S100U4JY,prior-year column (1)
+1766,2023-04-30,ordinary_profit,10091000000.0,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,revenue,316849000000.0,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,roe,0.046,2023-08-06,S100YS6C,prior-year column (3)
+1766,2023-04-30,total_assets,198449000000.0,2023-08-06,S100YS6C,prior-year column (3)
+1766,2024-04-30,bps,9045.85,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,cash,119323000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,debt,0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,depreciation,2012000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,eps,665.21,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,net_assets,121611000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,net_income,8943000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,operating_profit,13037000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,ordinary_profit,13410000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,revenue,340835000000.0,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,roe,0.075,2024-07-30,S100U4JY,current-year column
+1766,2024-04-30,total_assets,210001000000.0,2024-07-30,S100U4JY,current-year column
+1766,2025-04-30,bps,9949.03,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,cash,134944000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,debt,0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,depreciation,2146000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,eps,1173.64,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,net_assets,133751000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,net_income,15778000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,operating_profit,22258000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,ordinary_profit,22752000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,revenue,366640000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,roe,0.124,2025-08-06,S100YS6C,prior-year column (1)
+1766,2025-04-30,total_assets,228663000000.0,2025-08-06,S100YS6C,prior-year column (1)
+1766,2026-04-30,bps,10481.12,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,cash,116840000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,debt,0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,depreciation,1935000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,eps,1238.21,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,net_assets,116350000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,net_income,16161000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,operating_profit,22373000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,ordinary_profit,23432000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,revenue,386537000000.0,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,roe,0.129,2026-07-24,S100YS6C,current-year column
+1766,2026-04-30,total_assets,215656000000.0,2026-07-24,S100YS6C,current-year column
+1808,2014-03-31,bps,346.17,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,eps,81.36,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,net_assets,119472000000.0,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,net_income,24830000000.0,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,ordinary_profit,25405000000.0,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,revenue,587571000000.0,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,roe,0.213,2014-07-07,S100DD8B,prior-year column (4)
+1808,2014-03-31,total_assets,457408000000.0,2014-07-07,S100DD8B,prior-year column (4)
+1808,2015-03-31,bps,478.45,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,eps,94.64,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,net_assets,144089000000.0,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,net_income,28542000000.0,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,ordinary_profit,41889000000.0,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,revenue,642167000000.0,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,roe,0.217,2015-07-07,S100DD8B,prior-year column (3)
+1808,2015-03-31,total_assets,476914000000.0,2015-07-07,S100DD8B,prior-year column (3)
+1808,2016-03-31,bps,615.21,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,eps,170.41,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,net_assets,185374000000.0,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,net_income,51226000000.0,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,ordinary_profit,67327000000.0,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,revenue,787354000000.0,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,roe,0.312,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2016-03-31,total_assets,589993000000.0,2016-07-07,S100IWYJ,prior-year column (4)
+1808,2017-03-31,bps,791.24,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,cash,201456000000.0,2017-07-07,S100DD8B,prior-year column (1)
+1808,2017-03-31,debt,141851000000.0,2017-07-07,S100DD8B,prior-year column (1)
+1808,2017-03-31,depreciation,3453000000.0,2017-07-07,S100DD8B,prior-year column (1)
+1808,2017-03-31,eps,195.48,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,net_assets,238467000000.0,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,net_income,58762000000.0,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,operating_profit,89032000000.0,2017-07-07,S100DD8B,prior-year column (1)
+1808,2017-03-31,ordinary_profit,88827000000.0,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,revenue,772328000000.0,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,roe,0.278,2017-07-07,S100LUVF,prior-year column (4)
+1808,2017-03-31,total_assets,630937000000.0,2017-07-07,S100LUVF,prior-year column (4)
+1808,2018-03-31,bps,995.44,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,cash,206866000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,debt,125442000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,depreciation,3726000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,eps,241.98,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,net_assets,296835000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,net_income,72289000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,operating_profit,100805000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,ordinary_profit,100497000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,revenue,813276000000.0,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,roe,0.271,2018-06-28,S100DD8B,current-year column
+1808,2018-03-31,total_assets,688308000000.0,2018-06-28,S100DD8B,current-year column
+1808,2019-03-31,bps,1234.13,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,cash,212980000000.0,2019-07-07,S100IWYJ,prior-year column (1)
+1808,2019-03-31,debt,120404000000.0,2019-07-07,S100IWYJ,prior-year column (1)
+1808,2019-03-31,depreciation,4582000000.0,2019-07-07,S100IWYJ,prior-year column (1)
+1808,2019-03-31,eps,293.87,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,net_assets,368051000000.0,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,net_income,87391000000.0,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,operating_profit,98430000000.0,2019-07-07,S100IWYJ,prior-year column (1)
+1808,2019-03-31,ordinary_profit,100369000000.0,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,revenue,890981000000.0,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,roe,0.264,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2019-03-31,total_assets,773219000000.0,2019-07-07,S100OJQ2,prior-year column (3)
+1808,2020-03-31,bps,1323.51,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,cash,151754000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,debt,152262000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,depreciation,4752000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,eps,201.36,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,net_assets,387682000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,net_income,59851000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,operating_profit,85925000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,ordinary_profit,85253000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,revenue,846029000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,roe,0.159,2020-06-26,S100IWYJ,current-year column
+1808,2020-03-31,total_assets,799319000000.0,2020-06-26,S100IWYJ,current-year column
+1808,2021-03-31,bps,1425.93,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,cash,214299000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,debt,267952000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,depreciation,5266000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,eps,168.62,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,net_assets,394365000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,net_income,48258000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,operating_profit,72909000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,ordinary_profit,71832000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,revenue,809438000000.0,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,roe,0.123,2021-06-29,S100LUVF,current-year column
+1808,2021-03-31,total_assets,953659000000.0,2021-06-29,S100LUVF,current-year column
+1808,2022-03-31,bps,1520.73,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,cash,264864000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,debt,311841000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,depreciation,5895000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,eps,198.32,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,net_assets,417667000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,net_income,54490000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,operating_profit,82702000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,ordinary_profit,81871000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,revenue,909708000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,roe,0.134,2022-06-29,S100OJQ2,current-year column
+1808,2022-03-31,total_assets,1081907000000.0,2022-06-29,S100OJQ2,current-year column
+1808,2023-03-31,bps,1666.3,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,cash,208333000000.0,2023-07-07,S100TQ78,prior-year column (1)
+1808,2023-03-31,debt,391500000000.0,2023-07-07,S100TQ78,prior-year column (1)
+1808,2023-03-31,depreciation,6179000000.0,2023-07-07,S100TQ78,prior-year column (1)
+1808,2023-03-31,eps,216.1,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,net_assets,454088000000.0,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,net_income,59326000000.0,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,operating_profit,90162000000.0,2023-07-07,S100TQ78,prior-year column (1)
+1808,2023-03-31,ordinary_profit,88265000000.0,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,revenue,1027277000000.0,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,roe,0.136,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2023-03-31,total_assets,1198105000000.0,2023-07-07,S100YJVQ,prior-year column (3)
+1808,2024-03-31,bps,1874.17,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,cash,283493000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,debt,415000000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,depreciation,7446000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,eps,205.45,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,net_assets,511246000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,net_income,56038000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,operating_profit,85747000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,ordinary_profit,83334000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,revenue,1094421000000.0,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,roe,0.116,2024-06-27,S100TQ78,current-year column
+1808,2024-03-31,total_assets,1351231000000.0,2024-06-27,S100TQ78,current-year column
+1808,2025-03-31,bps,1950.61,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,cash,235798000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,debt,420000000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,depreciation,7999000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,eps,126.2,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,net_assets,532033000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,net_income,34450000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,operating_profit,84701000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,ordinary_profit,83408000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,revenue,1177353000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,roe,0.066,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2025-03-31,total_assets,1365203000000.0,2025-07-07,S100YJVQ,prior-year column (1)
+1808,2026-03-31,bps,2126.38,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,cash,288134000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,debt,425000000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,depreciation,8777000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,eps,204.54,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,net_assets,563451000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,net_income,54839000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,operating_profit,98743000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,ordinary_profit,94051000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,revenue,1273136000000.0,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,roe,0.1,2026-06-25,S100YJVQ,current-year column
+1808,2026-03-31,total_assets,1417724000000.0,2026-06-25,S100YJVQ,current-year column
+1814,2014-03-31,bps,417.6,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,eps,118.5,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,net_assets,4367000000.0,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,net_income,1239000000.0,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,ordinary_profit,1395000000.0,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,revenue,52182000000.0,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,roe,0.316,2014-07-07,S100DDYW,prior-year column (4)
+1814,2014-03-31,total_assets,36210000000.0,2014-07-07,S100DDYW,prior-year column (4)
+1814,2015-03-31,bps,611.29,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,eps,156.24,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,net_assets,6390000000.0,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,net_income,1633000000.0,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,ordinary_profit,1882000000.0,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,revenue,55726000000.0,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,roe,0.304,2015-07-07,S100DDYW,prior-year column (3)
+1814,2015-03-31,total_assets,32855000000.0,2015-07-07,S100DDYW,prior-year column (3)
+1814,2016-03-31,bps,791.2,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,eps,217.26,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,net_assets,8268000000.0,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,net_income,2270000000.0,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,ordinary_profit,3584000000.0,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,revenue,59880000000.0,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,roe,0.31,2016-07-07,S100IWFF,prior-year column (4)
+1814,2016-03-31,total_assets,34707000000.0,2016-07-07,S100IWFF,prior-year column (4)
+1814,2017-03-31,bps,1137.34,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,cash,3209000000.0,2017-07-07,S100DDYW,prior-year column (1)
+1814,2017-03-31,debt,5527000000.0,2017-07-07,S100DDYW,prior-year column (1)
+1814,2017-03-31,depreciation,51000000.0,2017-07-07,S100DDYW,prior-year column (1)
+1814,2017-03-31,eps,339.47,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,net_assets,11882000000.0,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,net_income,3547000000.0,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,operating_profit,4240000000.0,2017-07-07,S100DDYW,prior-year column (1)
+1814,2017-03-31,ordinary_profit,4168000000.0,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,revenue,64539000000.0,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,roe,0.352,2017-07-07,S100LP4G,prior-year column (4)
+1814,2017-03-31,total_assets,39815000000.0,2017-07-07,S100LP4G,prior-year column (4)
+1814,2018-03-31,bps,1326.35,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,cash,7883000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,debt,1866000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,depreciation,92000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,eps,176.96,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,net_assets,13853000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,net_income,1848000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,operating_profit,2601000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,ordinary_profit,2629000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,revenue,52872000000.0,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,roe,0.144,2018-06-27,S100DDYW,current-year column
+1814,2018-03-31,total_assets,38099000000.0,2018-06-27,S100DDYW,current-year column
+1814,2019-03-31,bps,1572.61,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,cash,13524000000.0,2019-07-07,S100IWFF,prior-year column (1)
+1814,2019-03-31,debt,1290000000.0,2019-07-07,S100IWFF,prior-year column (1)
+1814,2019-03-31,depreciation,97000000.0,2019-07-07,S100IWFF,prior-year column (1)
+1814,2019-03-31,eps,269.58,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,net_assets,16421000000.0,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,net_income,2815000000.0,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,operating_profit,3899000000.0,2019-07-07,S100IWFF,prior-year column (1)
+1814,2019-03-31,ordinary_profit,3882000000.0,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,revenue,64864000000.0,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,roe,0.186,2019-07-07,S100OCE0,prior-year column (3)
+1814,2019-03-31,total_assets,43622000000.0,2019-07-07,S100OCE0,prior-year column (3)
+1814,2020-03-31,bps,1680.08,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,cash,9807000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,debt,772000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,depreciation,108000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,eps,181.12,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,net_assets,17632000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,net_income,1897000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,operating_profit,2763000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,ordinary_profit,2770000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,revenue,65167000000.0,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,roe,0.111,2020-06-23,S100IWFF,current-year column
+1814,2020-03-31,total_assets,41406000000.0,2020-06-23,S100IWFF,current-year column
+1814,2021-03-31,bps,1822.51,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,cash,6017000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,debt,490000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,depreciation,126000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,eps,152.83,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,net_assets,19114000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,net_income,1603000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,operating_profit,2214000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,ordinary_profit,2219000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,revenue,56490000000.0,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,roe,0.087,2021-06-25,S100LP4G,current-year column
+1814,2021-03-31,total_assets,40533000000.0,2021-06-25,S100LP4G,current-year column
+1814,2022-03-31,bps,1968.06,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,cash,7320000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,debt,378000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,depreciation,139000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,eps,173.23,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,net_assets,20629000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,net_income,1816000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,operating_profit,2708000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,ordinary_profit,2712000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,revenue,69645000000.0,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,roe,0.091,2022-06-24,S100OCE0,current-year column
+1814,2022-03-31,total_assets,48662000000.0,2022-06-24,S100OCE0,current-year column
+1814,2023-03-31,bps,2055.58,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,cash,9986000000.0,2023-07-07,S100TOSV,prior-year column (1)
+1814,2023-03-31,debt,202000000.0,2023-07-07,S100TOSV,prior-year column (1)
+1814,2023-03-31,depreciation,122000000.0,2023-07-07,S100TOSV,prior-year column (1)
+1814,2023-03-31,eps,126.24,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,net_assets,21536000000.0,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,net_income,1321000000.0,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,operating_profit,1887000000.0,2023-07-07,S100TOSV,prior-year column (1)
+1814,2023-03-31,ordinary_profit,1939000000.0,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,revenue,71834000000.0,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,roe,0.063,2023-07-07,S100YK21,prior-year column (3)
+1814,2023-03-31,total_assets,45625000000.0,2023-07-07,S100YK21,prior-year column (3)
+1814,2024-03-31,bps,2190.88,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,cash,8775000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,debt,4673000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,depreciation,247000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,eps,119.2,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,net_assets,22551000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,net_income,1235000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,operating_profit,1590000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,ordinary_profit,1602000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,revenue,77815000000.0,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,roe,0.056,2024-06-21,S100TOSV,current-year column
+1814,2024-03-31,total_assets,59107000000.0,2024-06-21,S100TOSV,current-year column
+1814,2025-03-31,bps,2200.96,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,cash,4458000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,debt,3203000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,depreciation,493000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,eps,197.48,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,net_assets,22993000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,net_income,2060000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,operating_profit,3695000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,ordinary_profit,3710000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,revenue,89027000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,roe,0.09,2025-07-07,S100YK21,prior-year column (1)
+1814,2025-03-31,total_assets,55595000000.0,2025-07-07,S100YK21,prior-year column (1)
+1814,2026-03-31,bps,2448.81,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,cash,10776000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,debt,2753000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,depreciation,469000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,eps,365.6,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,net_assets,25211000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,net_income,3800000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,operating_profit,6579000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,ordinary_profit,6609000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,revenue,105554000000.0,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,roe,0.158,2026-06-25,S100YK21,current-year column
+1814,2026-03-31,total_assets,59649000000.0,2026-06-25,S100YK21,current-year column
 1840,2013-10-31,bps,510.61,2014-02-06,S100C6D4,prior-year column (4)
 1840,2013-10-31,eps,19.35,2014-02-06,S100C6D4,prior-year column (4)
 1840,2013-10-31,net_assets,13030371000.0,2014-02-06,S100C6D4,prior-year column (4)
@@ -375,14 +855,14 @@ ticker,fy_end,item,value,published,doc_id,basis
 1840,2014-10-31,revenue,27188341000.0,2015-02-06,S100C6D4,prior-year column (3)
 1840,2014-10-31,roe,0.0376,2015-02-06,S100C6D4,prior-year column (3)
 1840,2014-10-31,total_assets,21136038000.0,2015-02-06,S100C6D4,prior-year column (3)
-1840,2015-10-31,bps,525.4,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,eps,6.31,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,net_assets,13407634000.0,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,net_income,161053000.0,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,ordinary_profit,245144000.0,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,revenue,24188011000.0,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,roe,0.012,2016-02-06,S100HT0R,prior-year column (4)
-1840,2015-10-31,total_assets,21544176000.0,2016-02-06,S100HT0R,prior-year column (4)
+1840,2015-10-31,bps,525.4,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,eps,6.31,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,net_assets,13407634000.0,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,net_income,161053000.0,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,ordinary_profit,245144000.0,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,revenue,24188011000.0,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,roe,0.012,2016-02-06,S100C6D4,prior-year column (2)
+1840,2015-10-31,total_assets,21544176000.0,2016-02-06,S100C6D4,prior-year column (2)
 1840,2016-10-31,bps,518.38,2017-02-06,S100KLB5,prior-year column (4)
 1840,2016-10-31,cash,5661985000.0,2017-02-06,S100C6D4,prior-year column (1)
 1840,2016-10-31,debt,271908000.0,2017-02-06,S100C6D4,prior-year column (1)
@@ -725,6 +1205,150 @@ ticker,fy_end,item,value,published,doc_id,basis
 1878,2026-03-31,revenue,1984743000000.0,2026-06-25,S100YFJK,current-year column
 1878,2026-03-31,roe,0.2045,2026-06-25,S100YFJK,current-year column
 1878,2026-03-31,total_assets,1367502000000.0,2026-06-25,S100YFJK,current-year column
+1879,2014-03-31,bps,412.1,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,eps,60.02,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,net_assets,24889000000.0,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,net_income,3508000000.0,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,ordinary_profit,5912000000.0,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,revenue,64115000000.0,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,roe,0.156,2014-07-07,S100DFDW,prior-year column (4)
+1879,2014-03-31,total_assets,85408000000.0,2014-07-07,S100DFDW,prior-year column (4)
+1879,2015-03-31,bps,496.97,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,eps,84.54,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,net_assets,29867000000.0,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,net_income,4942000000.0,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,ordinary_profit,8034000000.0,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,revenue,70078000000.0,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,roe,0.186,2015-07-07,S100DFDW,prior-year column (3)
+1879,2015-03-31,total_assets,83040000000.0,2015-07-07,S100DFDW,prior-year column (3)
+1879,2016-03-31,bps,609.44,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,eps,128.37,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,net_assets,36237000000.0,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,net_income,7504000000.0,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,ordinary_profit,11313000000.0,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,revenue,78146000000.0,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,roe,0.232,2016-07-07,S100IW1X,prior-year column (4)
+1879,2016-03-31,total_assets,85558000000.0,2016-07-07,S100IW1X,prior-year column (4)
+1879,2017-03-31,bps,811.03,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,cash,35048000000.0,2017-07-07,S100DFDW,prior-year column (1)
+1879,2017-03-31,debt,10035000000.0,2017-07-07,S100DFDW,prior-year column (1)
+1879,2017-03-31,depreciation,281000000.0,2017-07-07,S100DFDW,prior-year column (1)
+1879,2017-03-31,eps,217.21,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,net_assets,47445000000.0,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,net_income,12698000000.0,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,operating_profit,12284000000.0,2017-07-07,S100DFDW,prior-year column (1)
+1879,2017-03-31,ordinary_profit,11972000000.0,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,revenue,86857000000.0,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,roe,0.306,2017-07-07,S100LUOV,prior-year column (4)
+1879,2017-03-31,total_assets,93492000000.0,2017-07-07,S100LUOV,prior-year column (4)
+1879,2018-03-31,bps,945.43,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,cash,41811000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,debt,7208000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,depreciation,279000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,eps,152.76,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,net_assets,55270000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,net_income,8930000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,operating_profit,13691000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,ordinary_profit,13531000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,revenue,95340000000.0,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,roe,0.174,2018-06-28,S100DFDW,current-year column
+1879,2018-03-31,total_assets,101490000000.0,2018-06-28,S100DFDW,current-year column
+1879,2019-03-31,bps,1092.68,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,cash,50848000000.0,2019-07-07,S100IW1X,prior-year column (1)
+1879,2019-03-31,debt,0,2019-07-07,S100IW1X,prior-year column (1)
+1879,2019-03-31,depreciation,285000000.0,2019-07-07,S100IW1X,prior-year column (1)
+1879,2019-03-31,eps,172.2,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,net_assets,63879000000.0,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,net_income,10066000000.0,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,operating_profit,14665000000.0,2019-07-07,S100IW1X,prior-year column (1)
+1879,2019-03-31,ordinary_profit,14542000000.0,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,revenue,103250000000.0,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,roe,0.169,2019-07-07,S100OK8D,prior-year column (3)
+1879,2019-03-31,total_assets,105665000000.0,2019-07-07,S100OK8D,prior-year column (3)
+1879,2020-03-31,bps,1253.39,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,cash,57196000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,debt,0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,depreciation,285000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,eps,180.29,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,net_assets,73274000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,net_income,10539000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,operating_profit,14501000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,ordinary_profit,14601000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,revenue,112542000000.0,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,roe,0.154,2020-06-26,S100IW1X,current-year column
+1879,2020-03-31,total_assets,117031000000.0,2020-06-26,S100IW1X,current-year column
+1879,2021-03-31,bps,1400.97,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,cash,62658000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,debt,0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,depreciation,290000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,eps,164.73,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,net_assets,81901000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,net_income,9630000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,operating_profit,13904000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,ordinary_profit,13932000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,revenue,101785000000.0,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,roe,0.124,2021-06-29,S100LUOV,current-year column
+1879,2021-03-31,total_assets,126552000000.0,2021-06-29,S100LUOV,current-year column
+1879,2022-03-31,bps,1567.12,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,cash,65171000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,debt,0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,depreciation,314000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,eps,184.68,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,net_assets,91613000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,net_income,10796000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,operating_profit,15549000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,ordinary_profit,15583000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,revenue,107092000000.0,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,roe,0.124,2022-06-29,S100OK8D,current-year column
+1879,2022-03-31,total_assets,140177000000.0,2022-06-29,S100OK8D,current-year column
+1879,2023-03-31,bps,1751.22,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,cash,74601000000.0,2023-07-07,S100TUX5,prior-year column (1)
+1879,2023-03-31,debt,0,2023-07-07,S100TUX5,prior-year column (1)
+1879,2023-03-31,depreciation,374000000.0,2023-07-07,S100TUX5,prior-year column (1)
+1879,2023-03-31,eps,205.49,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,net_assets,102428000000.0,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,net_income,12013000000.0,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,operating_profit,17186000000.0,2023-07-07,S100TUX5,prior-year column (1)
+1879,2023-03-31,ordinary_profit,17225000000.0,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,revenue,113725000000.0,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,roe,0.124,2023-07-07,S100YHI2,prior-year column (3)
+1879,2023-03-31,total_assets,156025000000.0,2023-07-07,S100YHI2,prior-year column (3)
+1879,2024-03-31,bps,1933.6,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,cash,84173000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,debt,0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,depreciation,318000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,eps,210.06,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,net_assets,113095000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,net_income,12286000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,operating_profit,17577000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,ordinary_profit,17671000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,revenue,133517000000.0,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,roe,0.114,2024-06-27,S100TUX5,current-year column
+1879,2024-03-31,total_assets,168154000000.0,2024-06-27,S100TUX5,current-year column
+1879,2025-03-31,bps,2091.19,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,cash,48653000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,debt,0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,depreciation,385000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,eps,219.13,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,net_assets,122313000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,net_income,12816000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,operating_profit,18310000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,ordinary_profit,18369000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,revenue,131662000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,roe,0.109,2025-07-07,S100YHI2,prior-year column (1)
+1879,2025-03-31,total_assets,172954000000.0,2025-07-07,S100YHI2,prior-year column (1)
+1879,2026-03-31,bps,2300.37,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,cash,54824000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,debt,0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,depreciation,483000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,eps,260.3,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,net_assets,134547000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,net_income,15224000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,operating_profit,20405000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,ordinary_profit,20771000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,revenue,138428000000.0,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,roe,0.119,2026-06-25,S100YHI2,current-year column
+1879,2026-03-31,total_assets,185296000000.0,2026-06-25,S100YHI2,current-year column
 1911,2015-12-31,bps,1374.47,2016-04-07,S100L2ML,prior-year column (5)
 1911,2015-12-31,eps,54.92,2016-04-07,S100L2ML,prior-year column (5)
 1911,2015-12-31,net_assets,265257000000.0,2016-04-07,S100L2ML,prior-year column (5)
@@ -1233,6 +1857,308 @@ ticker,fy_end,item,value,published,doc_id,basis
 2974,2025-09-30,revenue,39093129000.0,2025-12-22,S100XC53,current-year column
 2974,2025-09-30,roe,0.0749,2025-12-22,S100XC53,current-year column
 2974,2025-09-30,total_assets,47264123000.0,2025-12-22,S100XC53,current-year column
+2975,2018-11-30,cash,4075154000.0,2019-03-08,S100I41F,prior-year column (1)
+2975,2018-11-30,debt,0,2019-03-08,S100I41F,prior-year column (1)
+2975,2019-11-30,bps,1014.8,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,cash,4330517000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,debt,55049030000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,depreciation,22312000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,eps,111.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,net_assets,18574363000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,net_income,2023328000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,operating_profit,3627005000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,ordinary_profit,2925980000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,revenue,32164187000.0,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,roe,0.114,2020-02-27,S100I41F,current-year column
+2975,2019-11-30,total_assets,76123203000.0,2020-02-27,S100I41F,current-year column
+2975,2020-11-30,bps,1077.28,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,cash,7405186000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,debt,54424703000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,depreciation,61461000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,eps,94.86,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,net_assets,19713233000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,net_income,1729219000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,operating_profit,3281435000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,ordinary_profit,2496908000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,revenue,39568009000.0,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,roe,0.091,2021-02-25,S100KVFG,current-year column
+2975,2020-11-30,total_assets,76758704000.0,2021-02-25,S100KVFG,current-year column
+2975,2021-11-30,bps,1147.1,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,cash,3112219000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,debt,56427580000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,depreciation,76872000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,eps,130.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,net_assets,21261082000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,net_income,2402041000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,operating_profit,4286894000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,ordinary_profit,3688002000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,revenue,36897079000.0,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,roe,0.118,2022-02-25,S100NKI3,current-year column
+2975,2021-11-30,total_assets,80843629000.0,2022-02-25,S100NKI3,current-year column
+2975,2022-11-30,bps,634.02,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,cash,3110459000.0,2023-03-08,S100SXUQ,prior-year column (1)
+2975,2022-11-30,debt,65194905000.0,2023-03-08,S100SXUQ,prior-year column (1)
+2975,2022-11-30,depreciation,48057000.0,2023-03-08,S100SXUQ,prior-year column (1)
+2975,2022-11-30,eps,107.21,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,net_assets,21273774000.0,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,net_income,3709469000.0,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,operating_profit,6098297000.0,2023-03-08,S100SXUQ,prior-year column (1)
+2975,2022-11-30,ordinary_profit,5418939000.0,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,revenue,48211850000.0,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,roe,0.175,2023-03-08,S100XM43,prior-year column (3)
+2975,2022-11-30,total_assets,90378229000.0,2023-03-08,S100XM43,prior-year column (3)
+2975,2023-11-30,bps,693.58,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,cash,4199966000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,debt,69108702000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,depreciation,58948000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,eps,79.59,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,net_assets,23231308000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,net_income,2664239000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,operating_profit,4846206000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,ordinary_profit,3921299000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,revenue,48877556000.0,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,roe,0.12,2024-02-26,S100SXUQ,current-year column
+2975,2023-11-30,total_assets,94982751000.0,2024-02-26,S100SXUQ,current-year column
+2975,2024-11-30,bps,768.06,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,cash,1904843000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,debt,73295825000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,depreciation,62094000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,eps,92.98,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,net_assets,25499546000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,net_income,3106800000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,operating_profit,5524556000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,ordinary_profit,4607357000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,revenue,55849959000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,roe,0.128,2025-03-08,S100XM43,prior-year column (1)
+2975,2024-11-30,total_assets,102760751000.0,2025-03-08,S100XM43,prior-year column (1)
+2975,2025-11-30,bps,872.58,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,cash,3400884000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,debt,80740165000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,depreciation,76465000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,eps,124.4,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,net_assets,29699793000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,net_income,4184941000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,operating_profit,7314015000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,ordinary_profit,6156962000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,revenue,69158274000.0,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,roe,0.152,2026-02-19,S100XM43,current-year column
+2975,2025-11-30,total_assets,115462303000.0,2026-02-19,S100XM43,current-year column
+2976,2017-03-31,bps,919.42,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,eps,129.34,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,net_assets,919418000.0,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,net_income,129340000.0,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,ordinary_profit,171752000.0,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,revenue,5314741000.0,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,roe,0.149,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2017-03-31,total_assets,8477110000.0,2017-07-07,S100LQ5O,prior-year column (4)
+2976,2018-03-31,bps,1003.07,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,eps,85.65,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,net_assets,1003069000.0,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,net_income,85652000.0,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,ordinary_profit,106189000.0,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,revenue,3772732000.0,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,roe,0.089,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2018-03-31,total_assets,6550973000.0,2018-07-07,S100OCXZ,prior-year column (4)
+2976,2019-03-31,bps,1205.84,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,cash,820510000.0,2019-07-07,S100IX85,prior-year column (1)
+2976,2019-03-31,debt,3314268000.0,2019-07-07,S100IX85,prior-year column (1)
+2976,2019-03-31,depreciation,75150000.0,2019-07-07,S100IX85,prior-year column (1)
+2976,2019-03-31,eps,203.8,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,net_assets,1205842000.0,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,net_income,203800000.0,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,operating_profit,339485000.0,2019-07-07,S100IX85,prior-year column (1)
+2976,2019-03-31,ordinary_profit,317421000.0,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,revenue,5024908000.0,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,roe,0.185,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2019-03-31,total_assets,5095451000.0,2019-07-07,S100OCXZ,prior-year column (3)
+2976,2020-03-31,bps,1340.28,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,cash,2221900000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,debt,3574806000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,depreciation,91275000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,eps,211.97,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,net_assets,1541317000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,net_income,236993000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,operating_profit,328166000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,ordinary_profit,342182000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,revenue,4517793000.0,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,roe,0.173,2020-06-26,S100IX85,current-year column
+2976,2020-03-31,total_assets,7805234000.0,2020-06-26,S100IX85,current-year column
+2976,2021-03-31,bps,1388.29,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,cash,3065361000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,debt,3734471000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,depreciation,90376000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,eps,103.09,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,net_assets,1670803000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,net_income,123856000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,operating_profit,68750000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,ordinary_profit,83440000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,revenue,4314391000.0,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,roe,0.077,2021-06-25,S100LQ5O,current-year column
+2976,2021-03-31,total_assets,8765256000.0,2021-06-25,S100LQ5O,current-year column
+2976,2022-03-31,bps,1394.88,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,cash,3070846000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,debt,4165772000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,depreciation,95784000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,eps,98.98,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,net_assets,1813484000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,net_income,123981000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,operating_profit,149947000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,ordinary_profit,142506000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,revenue,4665954000.0,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,roe,0.071,2022-06-24,S100OCXZ,current-year column
+2976,2022-03-31,total_assets,8263804000.0,2022-06-24,S100OCXZ,current-year column
+2976,2023-03-31,bps,1467.19,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,cash,2562417000.0,2023-07-07,S100TUVS,prior-year column (1)
+2976,2023-03-31,debt,4107587000.0,2023-07-07,S100TUVS,prior-year column (1)
+2976,2023-03-31,depreciation,93791000.0,2023-07-07,S100TUVS,prior-year column (1)
+2976,2023-03-31,eps,120.27,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,net_assets,1971315000.0,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,net_income,156825000.0,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,operating_profit,200366000.0,2023-07-07,S100TUVS,prior-year column (1)
+2976,2023-03-31,ordinary_profit,180270000.0,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,revenue,4563640000.0,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,roe,0.083,2023-07-07,S100YIXO,prior-year column (3)
+2976,2023-03-31,total_assets,8465938000.0,2023-07-07,S100YIXO,prior-year column (3)
+2976,2024-03-31,bps,1492.11,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,cash,1484569000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,debt,3634823000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,depreciation,93365000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,eps,35.85,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,net_assets,2004794000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,net_income,48172000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,operating_profit,106005000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,ordinary_profit,71158000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,revenue,3891067000.0,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,roe,0.024,2024-06-27,S100TUVS,current-year column
+2976,2024-03-31,total_assets,6747097000.0,2024-06-27,S100TUVS,current-year column
+2976,2025-03-31,bps,1429.27,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,cash,604303000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,debt,3002830000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,depreciation,91827000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,eps,-49.3,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,net_assets,1920363000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,net_income,-66237000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,operating_profit,-88818000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,ordinary_profit,-118404000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,revenue,2690300000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,roe,-0.034,2025-07-07,S100YIXO,prior-year column (1)
+2976,2025-03-31,total_assets,5690409000.0,2025-07-07,S100YIXO,prior-year column (1)
+2976,2026-03-31,bps,1494.77,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,cash,1191566000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,debt,2486587000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,depreciation,90621000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,eps,65.01,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,net_assets,2008369000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,net_income,87353000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,operating_profit,139135000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,ordinary_profit,111656000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,revenue,3655302000.0,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,roe,0.044,2026-06-25,S100YIXO,current-year column
+2976,2026-03-31,total_assets,4823516000.0,2026-06-25,S100YIXO,current-year column
+2981,2018-03-31,bps,1133.21,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,eps,191.29,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,net_assets,2632440000.0,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,net_income,436919000.0,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,ordinary_profit,664429000.0,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,revenue,5581200000.0,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,roe,0.183,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2018-03-31,total_assets,6053067000.0,2018-07-07,S100OF5Q,prior-year column (4)
+2981,2019-03-31,bps,1367.04,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,cash,2593398000.0,2019-07-07,S100J0HY,prior-year column (1)
+2981,2019-03-31,debt,3116358000.0,2019-07-07,S100J0HY,prior-year column (1)
+2981,2019-03-31,depreciation,21161000.0,2019-07-07,S100J0HY,prior-year column (1)
+2981,2019-03-31,eps,245.7,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,net_assets,3191619000.0,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,net_income,571611000.0,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,operating_profit,860605000.0,2019-07-07,S100J0HY,prior-year column (1)
+2981,2019-03-31,ordinary_profit,832728000.0,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,revenue,6441093000.0,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,roe,0.196,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2019-03-31,total_assets,6813854000.0,2019-07-07,S100OF5Q,prior-year column (3)
+2981,2020-03-31,bps,1612.35,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,cash,3691032000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,debt,3094013000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,depreciation,21756000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,eps,275.4,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,net_assets,4474916000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,net_income,675228000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,operating_profit,1002606000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,ordinary_profit,969085000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,revenue,8086485000.0,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,roe,0.176,2020-06-26,S100J0HY,current-year column
+2981,2020-03-31,total_assets,8157181000.0,2020-06-26,S100J0HY,current-year column
+2981,2021-03-31,bps,1706.73,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,cash,3643533000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,debt,3866528000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,depreciation,22053000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,eps,153.2,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,net_assets,4820177000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,net_income,429454000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,operating_profit,672336000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,ordinary_profit,639223000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,revenue,8207378000.0,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,roe,0.092,2021-06-24,S100LOIL,current-year column
+2981,2021-03-31,total_assets,9021346000.0,2021-06-24,S100LOIL,current-year column
+2981,2022-03-31,bps,1997.47,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,cash,4505747000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,debt,6046836000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,depreciation,40182000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,eps,331.55,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,net_assets,5648215000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,net_income,937198000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,operating_profit,1471674000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,ordinary_profit,1419119000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,revenue,11129334000.0,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,roe,0.179,2022-06-27,S100OF5Q,current-year column
+2981,2022-03-31,total_assets,12768811000.0,2022-06-27,S100OF5Q,current-year column
+2981,2023-03-31,bps,1156.94,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,cash,4403151000.0,2023-07-07,S100TXIZ,prior-year column (1)
+2981,2023-03-31,debt,6245184000.0,2023-07-07,S100TXIZ,prior-year column (1)
+2981,2023-03-31,depreciation,44282000.0,2023-07-07,S100TXIZ,prior-year column (1)
+2981,2023-03-31,eps,185.71,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,net_assets,6542898000.0,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,net_income,1050262000.0,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,operating_profit,1682782000.0,2023-07-07,S100TXIZ,prior-year column (1)
+2981,2023-03-31,ordinary_profit,1603357000.0,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,revenue,15017028000.0,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,roe,0.172,2023-07-07,S100YHQX,prior-year column (3)
+2981,2023-03-31,total_assets,13896725000.0,2023-07-07,S100YHQX,prior-year column (3)
+2981,2024-03-31,bps,2522.86,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,cash,4376040000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,debt,7483124000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,depreciation,46927000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,eps,279.22,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,net_assets,7146293000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,net_income,790228000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,operating_profit,1279812000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,ordinary_profit,1185058000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,revenue,17041468000.0,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,roe,0.115,2024-06-28,S100TXIZ,current-year column
+2981,2024-03-31,total_assets,15285571000.0,2024-06-28,S100TXIZ,current-year column
+2981,2025-03-31,bps,1472.26,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,cash,4959807000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,debt,12245718000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,depreciation,49324000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,eps,247.9,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,net_assets,8345977000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,net_income,1404730000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,operating_profit,2258830000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,ordinary_profit,2112604000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,revenue,20267874000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,roe,0.181,2025-07-07,S100YHQX,prior-year column (1)
+2981,2025-03-31,total_assets,21794259000.0,2025-07-07,S100YHQX,prior-year column (1)
+2981,2026-03-31,bps,1733.27,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,cash,5715427000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,debt,13950966000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,depreciation,48608000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,eps,326.19,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,net_assets,9870669000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,net_income,1850262000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,operating_profit,3001628000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,ordinary_profit,2779540000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,revenue,23528097000.0,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,roe,0.203,2026-06-24,S100YHQX,current-year column
+2981,2026-03-31,total_assets,25252648000.0,2026-06-24,S100YHQX,current-year column
 2983,2019-01-31,bps,378.07,2019-05-09,S100NXS7,prior-year column (3)
 2983,2019-01-31,eps,105.88,2019-05-09,S100NXS7,prior-year column (3)
 2983,2019-01-31,net_assets,1512268000.0,2019-05-09,S100NXS7,prior-year column (3)
@@ -1325,6 +2251,150 @@ ticker,fy_end,item,value,published,doc_id,basis
 2983,2026-01-31,revenue,48623906000.0,2026-04-21,S100Y03C,current-year column
 2983,2026-01-31,roe,0.365,2026-04-21,S100Y03C,current-year column
 2983,2026-01-31,total_assets,35103915000.0,2026-04-21,S100Y03C,current-year column
+3231,2014-03-31,bps,1863.12,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,eps,140.7,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,net_assets,418697000000.0,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,net_income,26844000000.0,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,ordinary_profit,64058000000.0,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,revenue,532016000000.0,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,roe,0.078,2014-07-07,S100DDHT,prior-year column (4)
+3231,2014-03-31,total_assets,1313887000000.0,2014-07-07,S100DDHT,prior-year column (4)
+3231,2015-03-31,bps,2061.86,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,eps,201.28,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,net_assets,461031000000.0,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,net_income,38441000000.0,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,ordinary_profit,63681000000.0,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,revenue,567159000000.0,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,roe,0.103,2015-07-07,S100DDHT,prior-year column (3)
+3231,2015-03-31,total_assets,1369226000000.0,2015-07-07,S100DDHT,prior-year column (3)
+3231,2016-03-31,bps,2320.84,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,eps,246.42,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,net_assets,456408000000.0,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,net_income,47182000000.0,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,ordinary_profit,72679000000.0,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,revenue,569545000000.0,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,roe,0.112,2016-07-07,S100IVT7,prior-year column (4)
+3231,2016-03-31,total_assets,1485449000000.0,2016-07-07,S100IVT7,prior-year column (4)
+3231,2017-03-31,bps,2508.73,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,cash,47699000000.0,2017-07-07,S100DDHT,prior-year column (1)
+3231,2017-03-31,debt,810100000000.0,2017-07-07,S100DDHT,prior-year column (1)
+3231,2017-03-31,depreciation,16877000000.0,2017-07-07,S100DDHT,prior-year column (1)
+3231,2017-03-31,eps,245.1,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,net_assets,493813000000.0,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,net_income,47005000000.0,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,operating_profit,77271000000.0,2017-07-07,S100DDHT,prior-year column (1)
+3231,2017-03-31,ordinary_profit,68952000000.0,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,revenue,569680000000.0,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,roe,0.101,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2017-03-31,total_assets,1593093000000.0,2017-07-07,S100LN6Y,prior-year column (4)
+3231,2018-03-31,bps,2664.7,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,cash,61347000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,debt,877800000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,depreciation,18824000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,eps,240.89,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,net_assets,514982000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,net_income,46029000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,operating_profit,76660000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,ordinary_profit,68033000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,revenue,623762000000.0,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,roe,0.094,2018-06-26,S100DDHT,current-year column
+3231,2018-03-31,total_assets,1673692000000.0,2018-06-26,S100DDHT,current-year column
+3231,2019-03-31,bps,2854.21,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,cash,118330000000.0,2019-07-07,S100IVT7,prior-year column (1)
+3231,2019-03-31,debt,914000000000.0,2019-07-07,S100IVT7,prior-year column (1)
+3231,2019-03-31,depreciation,19201000000.0,2019-07-07,S100IVT7,prior-year column (1)
+3231,2019-03-31,eps,245.99,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,net_assets,541562000000.0,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,net_income,45873000000.0,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,operating_profit,79162000000.0,2019-07-07,S100IVT7,prior-year column (1)
+3231,2019-03-31,ordinary_profit,69323000000.0,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,revenue,668510000000.0,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,roe,0.089,2019-07-07,S100OE9F,prior-year column (3)
+3231,2019-03-31,total_assets,1759455000000.0,2019-07-07,S100OE9F,prior-year column (3)
+3231,2020-03-31,bps,3031.15,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,cash,77611000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,debt,870000000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,depreciation,19805000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,eps,267.21,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,net_assets,565120000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,net_income,48886000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,operating_profit,81905000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,ordinary_profit,73077000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,revenue,676495000000.0,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,roe,0.091,2020-06-23,S100IVT7,current-year column
+3231,2020-03-31,total_assets,1801273000000.0,2020-06-23,S100IVT7,current-year column
+3231,2021-03-31,bps,3229.8,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,cash,70624000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,debt,1008500000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,depreciation,20021000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,eps,232.53,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,net_assets,586350000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,net_income,42198000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,operating_profit,76333000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,ordinary_profit,65965000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,revenue,580660000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,roe,0.074,2021-06-24,S100LN6Y,current-year column
+3231,2021-03-31,total_assets,1921306000000.0,2021-06-24,S100LN6Y,current-year column
+3231,2022-03-31,bps,3478.14,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,cash,67793000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,debt,1022735000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,depreciation,19089000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,eps,307.81,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,net_assets,621398000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,net_income,55312000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,operating_profit,91210000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,ordinary_profit,82557000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,revenue,645049000000.0,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,roe,0.092,2022-06-24,S100OE9F,current-year column
+3231,2022-03-31,total_assets,2040506000000.0,2022-06-24,S100OE9F,current-year column
+3231,2023-03-31,bps,751.26,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,cash,27770000000.0,2023-07-07,S100TONZ,prior-year column (1)
+3231,2023-03-31,debt,1121548000000.0,2023-07-07,S100TONZ,prior-year column (1)
+3231,2023-03-31,depreciation,20593000000.0,2023-07-07,S100TONZ,prior-year column (1)
+3231,2023-03-31,eps,73.05,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,net_assets,655737000000.0,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,net_income,64520000000.0,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,operating_profit,99598000000.0,2023-07-07,S100TONZ,prior-year column (1)
+3231,2023-03-31,ordinary_profit,94121000000.0,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,revenue,654735000000.0,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,roe,0.101,2023-07-07,S100YH2N,prior-year column (3)
+3231,2023-03-31,total_assets,2110693000000.0,2023-07-07,S100YH2N,prior-year column (3)
+3231,2024-03-31,bps,4002.79,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,cash,53811000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,debt,1192728000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,depreciation,20445000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,eps,392.29,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,net_assets,692440000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,net_income,68164000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,operating_profit,112114000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,ordinary_profit,98248000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,revenue,734715000000.0,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,roe,0.101,2024-06-21,S100TONZ,current-year column
+3231,2024-03-31,total_assets,2251456000000.0,2024-06-21,S100TONZ,current-year column
+3231,2025-03-31,bps,873.4,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,cash,35894000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,debt,1545304000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,depreciation,20888000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,eps,86.77,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,net_assets,751439000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,net_income,74835000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,operating_profit,118958000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,ordinary_profit,106740000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,revenue,757638000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,roe,0.104,2025-07-07,S100YH2N,prior-year column (1)
+3231,2025-03-31,total_assets,2686569000000.0,2025-07-07,S100YH2N,prior-year column (1)
+3231,2026-03-31,bps,938.08,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,cash,36842000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,debt,1599364000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,depreciation,29366000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,eps,96.69,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,net_assets,802729000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,net_income,82880000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,operating_profit,138242000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,ordinary_profit,124807000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,revenue,942505000000.0,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,roe,0.107,2026-06-23,S100YH2N,current-year column
+3231,2026-03-31,total_assets,2811989000000.0,2026-06-23,S100YH2N,current-year column
 3280,2014-02-28,bps,420.19,2014-06-06,S100D1MU,prior-year column (4)
 3280,2014-02-28,eps,108.83,2014-06-06,S100D1MU,prior-year column (4)
 3280,2014-02-28,net_assets,2108000000.0,2014-06-06,S100D1MU,prior-year column (4)
@@ -1469,6 +2539,150 @@ ticker,fy_end,item,value,published,doc_id,basis
 3280,2026-02-28,revenue,22313000000.0,2026-05-27,S100Y6PQ,current-year column
 3280,2026-02-28,roe,0.14,2026-05-27,S100Y6PQ,current-year column
 3280,2026-02-28,total_assets,37663000000.0,2026-05-27,S100Y6PQ,current-year column
+3284,2014-03-31,bps,618.99,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,eps,122.21,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,net_assets,19532000000.0,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,net_income,3856000000.0,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,ordinary_profit,6421000000.0,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,revenue,36943000000.0,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,roe,0.217,2014-07-07,S100DA7J,prior-year column (4)
+3284,2014-03-31,total_assets,48525000000.0,2014-07-07,S100DA7J,prior-year column (4)
+3284,2015-03-31,bps,713.4,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,eps,99.7,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,net_assets,21519000000.0,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,net_income,3079000000.0,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,ordinary_profit,4464000000.0,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,revenue,40033000000.0,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,roe,0.15,2015-07-07,S100DA7J,prior-year column (3)
+3284,2015-03-31,total_assets,62631000000.0,2015-07-07,S100DA7J,prior-year column (3)
+3284,2016-03-31,bps,777.59,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,eps,61.72,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,net_assets,21891000000.0,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,net_income,1835000000.0,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,ordinary_profit,2811000000.0,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,revenue,35943000000.0,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,roe,0.085,2016-07-07,S100IZJN,prior-year column (4)
+3284,2016-03-31,total_assets,74585000000.0,2016-07-07,S100IZJN,prior-year column (4)
+3284,2017-03-31,bps,639.26,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,cash,21383000000.0,2017-07-07,S100DA7J,prior-year column (1)
+3284,2017-03-31,debt,63624000000.0,2017-07-07,S100DA7J,prior-year column (1)
+3284,2017-03-31,depreciation,486000000.0,2017-07-07,S100DA7J,prior-year column (1)
+3284,2017-03-31,eps,87.79,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,net_assets,24530000000.0,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,net_income,3357000000.0,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,operating_profit,5590000000.0,2017-07-07,S100DA7J,prior-year column (1)
+3284,2017-03-31,ordinary_profit,5325000000.0,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,revenue,52726000000.0,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,roe,0.145,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2017-03-31,total_assets,104660000000.0,2017-07-07,S100LQHZ,prior-year column (4)
+3284,2018-03-31,bps,734.45,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,cash,30120000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,debt,79237000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,depreciation,958000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,eps,118.55,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,net_assets,42592000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,net_income,4564000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,operating_profit,7289000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,ordinary_profit,6936000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,revenue,63364000000.0,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,roe,0.136,2018-06-25,S100DA7J,current-year column
+3284,2018-03-31,total_assets,135359000000.0,2018-06-25,S100DA7J,current-year column
+3284,2019-03-31,bps,766.81,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,cash,26112000000.0,2019-07-07,S100IZJN,prior-year column (1)
+3284,2019-03-31,debt,93465000000.0,2019-07-07,S100IZJN,prior-year column (1)
+3284,2019-03-31,depreciation,1076000000.0,2019-07-07,S100IZJN,prior-year column (1)
+3284,2019-03-31,eps,55.68,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,net_assets,43977000000.0,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,net_income,3195000000.0,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,operating_profit,9287000000.0,2019-07-07,S100IZJN,prior-year column (1)
+3284,2019-03-31,ordinary_profit,8478000000.0,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,revenue,89882000000.0,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,roe,0.074,2019-07-07,S100OG6G,prior-year column (3)
+3284,2019-03-31,total_assets,154792000000.0,2019-07-07,S100OG6G,prior-year column (3)
+3284,2020-03-31,bps,738.85,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,cash,31348000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,debt,84918000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,depreciation,1244000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,eps,4.86,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,net_assets,42827000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,net_income,276000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,operating_profit,6692000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,ordinary_profit,5513000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,revenue,85231000000.0,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,roe,0.006,2020-06-26,S100IZJN,current-year column
+3284,2020-03-31,total_assets,143897000000.0,2020-06-26,S100IZJN,current-year column
+3284,2021-03-31,bps,815.78,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,cash,23923000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,debt,84097000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,depreciation,1201000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,eps,50.98,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,net_assets,36368000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,net_income,2878000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,operating_profit,5435000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,ordinary_profit,4616000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,revenue,80222000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,roe,0.081,2021-06-28,S100LQHZ,current-year column
+3284,2021-03-31,total_assets,136030000000.0,2021-06-28,S100LQHZ,current-year column
+3284,2022-03-31,bps,883.66,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,cash,30143000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,debt,72654000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,depreciation,1375000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,eps,86.74,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,net_assets,38960000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,net_income,3068000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,operating_profit,6694000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,ordinary_profit,5692000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,revenue,79542000000.0,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,roe,0.102,2022-06-27,S100OG6G,current-year column
+3284,2022-03-31,total_assets,127905000000.0,2022-06-27,S100OG6G,current-year column
+3284,2023-03-31,bps,983.48,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,cash,28623000000.0,2023-07-07,S100TMSA,prior-year column (1)
+3284,2023-03-31,debt,85784000000.0,2023-07-07,S100TMSA,prior-year column (1)
+3284,2023-03-31,depreciation,1457000000.0,2023-07-07,S100TMSA,prior-year column (1)
+3284,2023-03-31,eps,128.83,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,net_assets,42663000000.0,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,net_income,4557000000.0,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,operating_profit,8425000000.0,2023-07-07,S100TMSA,prior-year column (1)
+3284,2023-03-31,ordinary_profit,7280000000.0,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,revenue,79286000000.0,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,roe,0.138,2023-07-07,S100YB28,prior-year column (3)
+3284,2023-03-31,total_assets,147504000000.0,2023-07-07,S100YB28,prior-year column (3)
+3284,2024-03-31,bps,1091.23,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,cash,29001000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,debt,90662000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,depreciation,1611000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,eps,135.32,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,net_assets,46858000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,net_income,4806000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,operating_profit,8943000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,ordinary_profit,7599000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,revenue,86418000000.0,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,roe,0.131,2024-06-24,S100TMSA,current-year column
+3284,2024-03-31,total_assets,164399000000.0,2024-06-24,S100TMSA,current-year column
+3284,2025-03-31,bps,1185.42,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,cash,27739000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,debt,106633000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,depreciation,1473000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,eps,153.65,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,net_assets,47894000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,net_income,5462000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,operating_profit,9227000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,ordinary_profit,8604000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,revenue,92153000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,roe,0.135,2025-07-07,S100YB28,prior-year column (1)
+3284,2025-03-31,total_assets,179858000000.0,2025-07-07,S100YB28,prior-year column (1)
+3284,2026-03-31,bps,1296.8,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,cash,37697000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,debt,106104000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,depreciation,1169000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,eps,184.71,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,net_assets,55321000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,net_income,7129000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,operating_profit,13800000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,ordinary_profit,11820000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,revenue,138579000000.0,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,roe,0.15,2026-06-17,S100YB28,current-year column
+3284,2026-03-31,total_assets,189192000000.0,2026-06-17,S100YB28,current-year column
 3288,2013-09-30,bps,534.59,2014-01-06,S100BZCU,prior-year column (4)
 3288,2013-09-30,eps,143.91,2014-01-06,S100BZCU,prior-year column (4)
 3288,2013-09-30,net_assets,29963000000.0,2014-01-06,S100BZCU,prior-year column (4)
@@ -1638,7 +2852,7 @@ ticker,fy_end,item,value,published,doc_id,basis
 3291,2016-03-31,roe,0.1,2016-07-07,S100J111,prior-year column (4)
 3291,2016-03-31,total_assets,992209000000.0,2016-07-07,S100J111,prior-year column (4)
 3293,2017-03-31,cash,2610355000.0,2017-07-07,S100DI45,prior-year column (1)
-3293,2017-03-31,debt,0.0,2017-07-07,S100DI45,prior-year column (1)
+3293,2017-03-31,debt,0,2017-07-07,S100DI45,prior-year column (1)
 3293,2018-03-31,bps,3412.12,2018-06-28,S100DI45,current-year column
 3293,2018-03-31,cash,3024570000.0,2018-06-28,S100DI45,current-year column
 3293,2018-03-31,debt,12181778000.0,2018-06-28,S100DI45,current-year column
@@ -1747,6 +2961,150 @@ ticker,fy_end,item,value,published,doc_id,basis
 3293,2026-03-31,revenue,11622373000.0,2026-06-29,S100YL9X,current-year column
 3293,2026-03-31,roe,0.029,2026-06-29,S100YL9X,current-year column
 3293,2026-03-31,total_assets,32056360000.0,2026-06-29,S100YL9X,current-year column
+3457,2014-06-30,bps,42.59,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,eps,11.31,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,net_assets,586276000.0,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,net_income,155619000.0,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,ordinary_profit,204754000.0,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,revenue,13309601000.0,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,roe,0.574,2014-10-06,S100E6JX,prior-year column (4)
+3457,2014-06-30,total_assets,6255491000.0,2014-10-06,S100E6JX,prior-year column (4)
+3457,2015-06-30,bps,85.75,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,eps,24.3,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,net_assets,1439421000.0,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,net_income,353201000.0,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,ordinary_profit,513142000.0,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,revenue,14573347000.0,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,roe,0.349,2015-10-06,S100E6JX,prior-year column (3)
+3457,2015-06-30,total_assets,8201545000.0,2015-10-06,S100E6JX,prior-year column (3)
+3457,2016-06-30,bps,127.92,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,eps,44.16,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,net_assets,2169195000.0,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,net_income,741316000.0,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,ordinary_profit,1182483000.0,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,revenue,17275969000.0,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,roe,0.411,2016-10-06,S100JR4C,prior-year column (4)
+3457,2016-06-30,total_assets,12895108000.0,2016-10-06,S100JR4C,prior-year column (4)
+3457,2017-06-30,bps,163.35,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,cash,3061878000.0,2017-10-06,S100E6JX,prior-year column (1)
+3457,2017-06-30,debt,14285357000.0,2017-10-06,S100E6JX,prior-year column (1)
+3457,2017-06-30,depreciation,223969000.0,2017-10-06,S100E6JX,prior-year column (1)
+3457,2017-06-30,eps,43.51,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,net_assets,2779021000.0,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,net_income,737864000.0,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,operating_profit,1249092000.0,2017-10-06,S100E6JX,prior-year column (1)
+3457,2017-06-30,ordinary_profit,1103019000.0,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,revenue,16848159000.0,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,roe,0.298,2017-10-06,S100MI9H,prior-year column (4)
+3457,2017-06-30,total_assets,20273383000.0,2017-10-06,S100MI9H,prior-year column (4)
+3457,2018-06-30,bps,498.52,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,cash,3685366000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,debt,15616217000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,depreciation,324921000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,eps,74.94,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,net_assets,9686283000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,net_income,1279714000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,operating_profit,2116181000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,ordinary_profit,1908692000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,revenue,22517730000.0,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,roe,0.206,2018-09-27,S100E6JX,current-year column
+3457,2018-06-30,total_assets,30623460000.0,2018-09-27,S100E6JX,current-year column
+3457,2019-06-30,bps,577.84,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,cash,12435884000.0,2019-10-06,S100JR4C,prior-year column (1)
+3457,2019-06-30,debt,23284173000.0,2019-10-06,S100JR4C,prior-year column (1)
+3457,2019-06-30,depreciation,440704000.0,2019-10-06,S100JR4C,prior-year column (1)
+3457,2019-06-30,eps,103.38,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,net_assets,11263720000.0,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,net_income,2006259000.0,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,operating_profit,3156618000.0,2019-10-06,S100JR4C,prior-year column (1)
+3457,2019-06-30,ordinary_profit,3003203000.0,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,revenue,31546107000.0,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,roe,0.192,2019-10-06,S100P93I,prior-year column (3)
+3457,2019-06-30,total_assets,40386770000.0,2019-10-06,S100P93I,prior-year column (3)
+3457,2020-06-30,bps,592.27,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,cash,18768618000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,debt,37791530000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,depreciation,403566000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,eps,52.94,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,net_assets,11578660000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,net_income,1030703000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,operating_profit,1893487000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,ordinary_profit,1716841000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,revenue,32878618000.0,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,roe,0.091,2020-09-25,S100JR4C,current-year column
+3457,2020-06-30,total_assets,54243042000.0,2020-09-25,S100JR4C,current-year column
+3457,2021-06-30,bps,656.34,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,cash,16313713000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,debt,38268200000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,depreciation,438195000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,eps,82.87,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,net_assets,12877010000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,net_income,1616877000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,operating_profit,2589204000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,ordinary_profit,2514101000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,revenue,39037708000.0,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,roe,0.133,2021-09-29,S100MI9H,current-year column
+3457,2021-06-30,total_assets,57306428000.0,2021-09-29,S100MI9H,current-year column
+3457,2022-06-30,bps,706.07,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,cash,13513529000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,debt,44958928000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,depreciation,675316000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,eps,100.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,net_assets,13852670000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,net_income,1955901000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,operating_profit,2871477000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,ordinary_profit,2947578000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,revenue,41395467000.0,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,roe,0.147,2022-09-28,S100P93I,current-year column
+3457,2022-06-30,total_assets,65495794000.0,2022-09-28,S100P93I,current-year column
+3457,2023-06-30,bps,784.67,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,cash,9404000000.0,2023-10-06,S100UFP6,prior-year column (1)
+3457,2023-06-30,debt,60663000000.0,2023-10-06,S100UFP6,prior-year column (1)
+3457,2023-06-30,depreciation,858000000.0,2023-10-06,S100UFP6,prior-year column (1)
+3457,2023-06-30,eps,112.19,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,net_assets,15395000000.0,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,net_income,2195000000.0,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,operating_profit,3176000000.0,2023-10-06,S100UFP6,prior-year column (1)
+3457,2023-06-30,ordinary_profit,3358000000.0,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,revenue,49552000000.0,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,roe,0.151,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2023-06-30,total_assets,83027000000.0,2023-10-06,S100Z3PT,prior-year column (3)
+3457,2024-06-30,bps,865.07,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,cash,9182000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,debt,54923000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,depreciation,909000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,eps,124.75,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,net_assets,17250000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,net_income,2476000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,operating_profit,3587000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,ordinary_profit,3457000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,revenue,67579000000.0,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,roe,0.152,2024-09-27,S100UFP6,current-year column
+3457,2024-06-30,total_assets,79568000000.0,2024-09-27,S100UFP6,current-year column
+3457,2025-06-30,bps,923.77,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,cash,7852000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,debt,47946000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,depreciation,859000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,eps,118.86,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,net_assets,18453000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,net_income,2341000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,operating_profit,2620000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,ordinary_profit,2943000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,revenue,64735000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,roe,0.131,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2025-06-30,total_assets,71973000000.0,2025-10-06,S100Z3PT,prior-year column (1)
+3457,2026-06-30,bps,952.07,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,cash,8954000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,debt,44268000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,depreciation,722000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,eps,72.74,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,net_assets,19018000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,net_income,1452000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,operating_profit,1120000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,ordinary_profit,1120000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,revenue,49617000000.0,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,roe,0.078,2026-09-24,S100Z3PT,current-year column
+3457,2026-06-30,total_assets,67798000000.0,2026-09-24,S100Z3PT,current-year column
 3465,2017-03-31,bps,799.3,2017-07-07,S100LQQY,prior-year column (4)
 3465,2017-03-31,cash,7472106000.0,2017-07-07,S100DEEL,prior-year column (1)
 3465,2017-03-31,debt,17721486000.0,2017-07-07,S100DEEL,prior-year column (1)
@@ -1867,6 +3225,430 @@ ticker,fy_end,item,value,published,doc_id,basis
 3465,2026-03-31,revenue,393905000000.0,2026-06-25,S100YIZP,current-year column
 3465,2026-03-31,roe,0.23,2026-06-25,S100YIZP,current-year column
 3465,2026-03-31,total_assets,355621000000.0,2026-06-25,S100YIZP,current-year column
+3475,2014-10-31,bps,169.96,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,eps,44.05,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,net_assets,712455000.0,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,net_income,184674000.0,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,ordinary_profit,308366000.0,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,revenue,5611312000.0,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,roe,0.298,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2014-10-31,total_assets,4485875000.0,2015-02-06,S100C6RZ,prior-year column (3)
+3475,2015-10-31,bps,303.65,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,eps,134.35,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,net_assets,1272910000.0,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,net_income,563186000.0,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,ordinary_profit,916080000.0,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,revenue,7823976000.0,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,roe,0.567,2016-02-06,S100HTIV,prior-year column (4)
+3475,2015-10-31,total_assets,6246140000.0,2016-02-06,S100HTIV,prior-year column (4)
+3475,2016-10-31,bps,216.45,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,cash,1392252000.0,2017-02-06,S100C6RZ,prior-year column (1)
+3475,2016-10-31,debt,3126588000.0,2017-02-06,S100C6RZ,prior-year column (1)
+3475,2016-10-31,depreciation,5755000.0,2017-02-06,S100C6RZ,prior-year column (1)
+3475,2016-10-31,eps,67.25,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,net_assets,1814745000.0,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,net_income,563833000.0,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,operating_profit,929307000.0,2017-02-06,S100C6RZ,prior-year column (1)
+3475,2016-10-31,ordinary_profit,868720000.0,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,revenue,7393767000.0,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,roe,0.365,2017-02-06,S100KL88,prior-year column (4)
+3475,2016-10-31,total_assets,5862620000.0,2017-02-06,S100KL88,prior-year column (4)
+3475,2017-10-31,bps,533.93,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,cash,2519052000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,debt,8867886000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,depreciation,20706000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,eps,106.11,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,net_assets,3241451000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,net_income,620181000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,operating_profit,907782000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,ordinary_profit,820428000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,revenue,9834402000.0,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,roe,0.245,2018-01-30,S100C6RZ,current-year column
+3475,2017-10-31,total_assets,12613733000.0,2018-01-30,S100C6RZ,current-year column
+3475,2018-10-31,bps,436.28,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,cash,5814176000.0,2019-02-06,S100HTIV,prior-year column (1)
+3475,2018-10-31,debt,4997303000.0,2019-02-06,S100HTIV,prior-year column (1)
+3475,2018-10-31,depreciation,33052000.0,2019-02-06,S100HTIV,prior-year column (1)
+3475,2018-10-31,eps,79.99,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,net_assets,6356697000.0,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,net_income,1071424000.0,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,operating_profit,1678328000.0,2019-02-06,S100HTIV,prior-year column (1)
+3475,2018-10-31,ordinary_profit,1567019000.0,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,revenue,16817869000.0,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,roe,0.223,2019-02-06,S100NAB5,prior-year column (3)
+3475,2018-10-31,total_assets,12434847000.0,2019-02-06,S100NAB5,prior-year column (3)
+3475,2019-10-31,bps,975.37,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,cash,4959562000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,debt,7309938000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,depreciation,56696000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,eps,157.01,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,net_assets,7017512000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,net_income,1127238000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,operating_profit,1755529000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,ordinary_profit,1650357000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,revenue,23376633000.0,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,roe,0.169,2020-01-30,S100HTIV,current-year column
+3475,2019-10-31,total_assets,15191783000.0,2020-01-30,S100HTIV,current-year column
+3475,2020-10-31,bps,569.19,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,cash,6578325000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,debt,16067117000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,depreciation,96349000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,eps,124.48,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,net_assets,8397650000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,net_income,1826407000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,operating_profit,2829209000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,ordinary_profit,2644265000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,revenue,26323011000.0,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,roe,0.237,2021-01-28,S100KL88,current-year column
+3475,2020-10-31,total_assets,25915684000.0,2021-01-28,S100KL88,current-year column
+3475,2021-10-31,bps,642.42,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,cash,7953516000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,debt,8994704000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,depreciation,137543000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,eps,135.03,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,net_assets,9208959000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,net_income,1962050000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,operating_profit,3437125000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,ordinary_profit,3164955000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,revenue,34216619000.0,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,roe,0.223,2022-01-27,S100NAB5,current-year column
+3475,2021-10-31,total_assets,20446304000.0,2022-01-27,S100NAB5,current-year column
+3475,2022-10-31,bps,399.13,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,cash,11656753000.0,2023-02-06,S100SOP9,prior-year column (1)
+3475,2022-10-31,debt,10067825000.0,2023-02-06,S100SOP9,prior-year column (1)
+3475,2022-10-31,depreciation,101816000.0,2023-02-06,S100SOP9,prior-year column (1)
+3475,2022-10-31,eps,99.58,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,net_assets,11471948000.0,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,net_income,2858315000.0,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,operating_profit,4612042000.0,2023-02-06,S100SOP9,prior-year column (1)
+3475,2022-10-31,ordinary_profit,4342062000.0,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,revenue,40048824000.0,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,roe,0.276,2023-02-06,S100XHS4,prior-year column (3)
+3475,2022-10-31,total_assets,24452256000.0,2023-02-06,S100XHS4,prior-year column (3)
+3475,2023-10-31,bps,403.17,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,cash,8040953000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,debt,40380906000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,depreciation,110082000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,eps,35.79,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,net_assets,11608348000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,net_income,1030138000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,operating_profit,2141035000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,ordinary_profit,1788354000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,revenue,22190489000.0,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,roe,0.089,2024-01-30,S100SOP9,current-year column
+3475,2023-10-31,total_assets,53496876000.0,2024-01-30,S100SOP9,current-year column
+3475,2024-10-31,bps,483.72,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,cash,11641964000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,debt,19828375000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,depreciation,160250000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,eps,115.26,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,net_assets,13937058000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,net_income,3320097000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,operating_profit,5451568000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,ordinary_profit,4938241000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,revenue,59753709000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,roe,0.26,2025-02-06,S100XHS4,prior-year column (1)
+3475,2024-10-31,total_assets,39460042000.0,2025-02-06,S100XHS4,prior-year column (1)
+3475,2025-10-31,bps,495.42,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,cash,9516827000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,debt,27798063000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,depreciation,93626000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,eps,53.3,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,net_assets,14546278000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,net_income,1521328000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,operating_profit,2935408000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,ordinary_profit,2586191000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,revenue,54581745000.0,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,roe,0.108,2026-01-28,S100XHS4,current-year column
+3475,2025-10-31,total_assets,46289236000.0,2026-01-28,S100XHS4,current-year column
+8844,2014-03-31,bps,417.49,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,eps,41.52,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,net_assets,14156000000.0,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,net_income,1259000000.0,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,ordinary_profit,1386000000.0,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,revenue,67441000000.0,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,roe,0.0924,2014-07-07,S100D9RH,prior-year column (4)
+8844,2014-03-31,total_assets,70754000000.0,2014-07-07,S100D9RH,prior-year column (4)
+8844,2015-03-31,bps,469.79,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,eps,51.18,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,net_assets,15929000000.0,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,net_income,1735000000.0,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,ordinary_profit,1351000000.0,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,revenue,75620000000.0,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,roe,0.1154,2015-07-07,S100D9RH,prior-year column (3)
+8844,2015-03-31,total_assets,82794000000.0,2015-07-07,S100D9RH,prior-year column (3)
+8844,2016-03-31,bps,574.21,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,eps,107.33,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,net_assets,19470000000.0,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,net_income,3639000000.0,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,ordinary_profit,2959000000.0,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,revenue,87022000000.0,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,roe,0.2056,2016-07-07,S100IWD9,prior-year column (4)
+8844,2016-03-31,total_assets,102293000000.0,2016-07-07,S100IWD9,prior-year column (4)
+8844,2017-03-31,bps,656.02,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,cash,17730000000.0,2017-07-07,S100D9RH,prior-year column (1)
+8844,2017-03-31,debt,56031000000.0,2017-07-07,S100D9RH,prior-year column (1)
+8844,2017-03-31,depreciation,204000000.0,2017-07-07,S100D9RH,prior-year column (1)
+8844,2017-03-31,eps,89.38,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,net_assets,22243000000.0,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,net_income,3030000000.0,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,operating_profit,4084000000.0,2017-07-07,S100D9RH,prior-year column (1)
+8844,2017-03-31,ordinary_profit,3482000000.0,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,revenue,92366000000.0,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,roe,0.1453,2017-07-07,S100LOPS,prior-year column (4)
+8844,2017-03-31,total_assets,110193000000.0,2017-07-07,S100LOPS,prior-year column (4)
+8844,2018-03-31,bps,761.63,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,cash,15342000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,debt,56284000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,depreciation,256000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,eps,108.98,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,net_assets,25824000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,net_income,3695000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,operating_profit,4869000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,ordinary_profit,4367000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,revenue,100829000000.0,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,roe,0.1537,2018-06-22,S100D9RH,current-year column
+8844,2018-03-31,total_assets,115309000000.0,2018-06-22,S100D9RH,current-year column
+8844,2019-03-31,bps,879.54,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,cash,20279000000.0,2019-07-07,S100IWD9,prior-year column (1)
+8844,2019-03-31,debt,68225000000.0,2019-07-07,S100IWD9,prior-year column (1)
+8844,2019-03-31,depreciation,208000000.0,2019-07-07,S100IWD9,prior-year column (1)
+8844,2019-03-31,eps,134.55,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,net_assets,29839000000.0,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,net_income,4562000000.0,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,operating_profit,5380000000.0,2019-07-07,S100IWD9,prior-year column (1)
+8844,2019-03-31,ordinary_profit,5050000000.0,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,revenue,104606000000.0,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,roe,0.164,2019-07-07,S100OIDG,prior-year column (3)
+8844,2019-03-31,total_assets,128183000000.0,2019-07-07,S100OIDG,prior-year column (3)
+8844,2020-03-31,bps,963.38,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,cash,21630000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,debt,78393000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,depreciation,176000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,eps,100.88,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,net_assets,32825000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,net_income,3415000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,operating_profit,6010000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,ordinary_profit,5250000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,revenue,110559000000.0,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,roe,0.1094,2020-06-23,S100IWD9,current-year column
+8844,2020-03-31,total_assets,146023000000.0,2020-06-23,S100IWD9,current-year column
+8844,2021-03-31,bps,1016.29,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,cash,31186000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,debt,69485000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,depreciation,239000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,eps,59.25,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,net_assets,34981000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,net_income,2007000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,operating_profit,2376000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,ordinary_profit,2207000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,revenue,107257000000.0,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,roe,0.0599,2021-06-24,S100LOPS,current-year column
+8844,2021-03-31,total_assets,143513000000.0,2021-06-24,S100LOPS,current-year column
+8844,2022-03-31,bps,1063.23,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,cash,33049000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,debt,81533000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,depreciation,251000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,eps,50.29,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,net_assets,36607000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,net_income,1703000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,operating_profit,3351000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,ordinary_profit,2610000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,revenue,107349000000.0,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,roe,0.0484,2022-06-28,S100OIDG,current-year column
+8844,2022-03-31,total_assets,145210000000.0,2022-06-28,S100OIDG,current-year column
+8844,2023-03-31,bps,1205.03,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,cash,33540000000.0,2023-07-07,S100TSQJ,prior-year column (1)
+8844,2023-03-31,debt,87998000000.0,2023-07-07,S100TSQJ,prior-year column (1)
+8844,2023-03-31,depreciation,275000000.0,2023-07-07,S100TSQJ,prior-year column (1)
+8844,2023-03-31,eps,104.78,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,net_assets,41512000000.0,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,net_income,3524000000.0,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,operating_profit,4924000000.0,2023-07-07,S100TSQJ,prior-year column (1)
+8844,2023-03-31,ordinary_profit,4469000000.0,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,revenue,123374000000.0,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,roe,0.0917,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2023-03-31,total_assets,157384000000.0,2023-07-07,S100YCZ3,prior-year column (3)
+8844,2024-03-31,bps,1317.35,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,cash,34381000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,debt,98132000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,depreciation,320000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,eps,126.33,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,net_assets,45602000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,net_income,4278000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,operating_profit,7422000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,ordinary_profit,6681000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,revenue,124588000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,roe,0.1001,2024-06-25,S100TSQJ,current-year column
+8844,2024-03-31,total_assets,173333000000.0,2024-06-25,S100TSQJ,current-year column
+8844,2025-03-31,bps,1455.07,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,cash,27767000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,debt,100338000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,depreciation,341000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,eps,157.09,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,net_assets,50318000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,net_income,5323000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,operating_profit,9452000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,ordinary_profit,7943000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,revenue,129528000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,roe,0.1133,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2025-03-31,total_assets,176849000000.0,2025-07-07,S100YCZ3,prior-year column (1)
+8844,2026-03-31,bps,1677.18,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,cash,25148000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,debt,95568000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,depreciation,337000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,eps,243.01,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,net_assets,58220000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,net_income,8236000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,operating_profit,12537000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,ordinary_profit,11158000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,revenue,149296000000.0,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,roe,0.1552,2026-06-17,S100YCZ3,current-year column
+8844,2026-03-31,total_assets,185567000000.0,2026-06-17,S100YCZ3,current-year column
+8850,2014-03-31,bps,748.62,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,eps,169.28,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,net_assets,42778000000.0,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,net_income,8100000000.0,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,ordinary_profit,16179000000.0,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,revenue,151033000000.0,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,roe,0.2495,2014-07-07,S100DATY,prior-year column (4)
+8850,2014-03-31,total_assets,172558000000.0,2014-07-07,S100DATY,prior-year column (4)
+8850,2015-03-31,bps,1024.36,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,eps,207.45,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,net_assets,54684000000.0,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,net_income,10657000000.0,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,ordinary_profit,16377000000.0,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,revenue,156752000000.0,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,roe,0.2376,2015-07-07,S100DATY,prior-year column (3)
+8850,2015-03-31,total_assets,178996000000.0,2015-07-07,S100DATY,prior-year column (3)
+8850,2016-03-31,bps,1153.78,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,eps,203.01,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,net_assets,61533000000.0,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,net_income,10680000000.0,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,ordinary_profit,17687000000.0,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,revenue,160174000000.0,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,roe,0.1864,2016-07-07,S100J2HI,prior-year column (4)
+8850,2016-03-31,total_assets,180550000000.0,2016-07-07,S100J2HI,prior-year column (4)
+8850,2017-03-31,bps,1345.72,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,cash,46847000000.0,2017-07-07,S100DATY,prior-year column (1)
+8850,2017-03-31,debt,62458000000.0,2017-07-07,S100DATY,prior-year column (1)
+8850,2017-03-31,depreciation,3343000000.0,2017-07-07,S100DATY,prior-year column (1)
+8850,2017-03-31,eps,259.41,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,net_assets,71683000000.0,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,net_income,13646000000.0,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,operating_profit,20178000000.0,2017-07-07,S100DATY,prior-year column (1)
+8850,2017-03-31,ordinary_profit,20202000000.0,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,revenue,180807000000.0,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,roe,0.2076,2017-07-07,S100LUVW,prior-year column (4)
+8850,2017-03-31,total_assets,192814000000.0,2017-07-07,S100LUVW,prior-year column (4)
+8850,2018-03-31,bps,1558.97,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,cash,38447000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,debt,89350000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,depreciation,3367000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,eps,260.94,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,net_assets,82962000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,net_income,13727000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,operating_profit,20949000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,ordinary_profit,20731000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,revenue,168870000000.0,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,roe,0.1797,2018-06-22,S100DATY,current-year column
+8850,2018-03-31,total_assets,234252000000.0,2018-06-22,S100DATY,current-year column
+8850,2019-03-31,bps,1783.94,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,cash,41174000000.0,2019-07-07,S100J2HI,prior-year column (1)
+8850,2019-03-31,debt,76877000000.0,2019-07-07,S100J2HI,prior-year column (1)
+8850,2019-03-31,depreciation,4166000000.0,2019-07-07,S100J2HI,prior-year column (1)
+8850,2019-03-31,eps,290.16,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,net_assets,94856000000.0,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,net_income,15264000000.0,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,operating_profit,22821000000.0,2019-07-07,S100J2HI,prior-year column (1)
+8850,2019-03-31,ordinary_profit,24006000000.0,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,revenue,195177000000.0,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,roe,0.1736,2019-07-07,S100OLC3,prior-year column (3)
+8850,2019-03-31,total_assets,238900000000.0,2019-07-07,S100OLC3,prior-year column (3)
+8850,2020-03-31,bps,1995.04,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,cash,54138000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,debt,71354000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,depreciation,4616000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,eps,286.26,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,net_assets,106402000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,net_income,15059000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,operating_profit,23912000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,ordinary_profit,24122000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,revenue,209091000000.0,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,roe,0.1515,2020-06-26,S100J2HI,current-year column
+8850,2020-03-31,total_assets,248029000000.0,2020-06-26,S100J2HI,current-year column
+8850,2021-03-31,bps,2290.11,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,cash,66183000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,debt,69763000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,depreciation,4734000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,eps,296.26,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,net_assets,121972000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,net_income,15599000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,operating_profit,22068000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,ordinary_profit,23323000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,revenue,198963000000.0,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,roe,0.1383,2021-06-29,S100LUVW,current-year column
+8850,2021-03-31,total_assets,259040000000.0,2021-06-29,S100LUVW,current-year column
+8850,2022-03-31,bps,2538.57,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,cash,67638000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,debt,74783000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,depreciation,5122000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,eps,332.83,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,net_assets,127676000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,net_income,16772000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,operating_profit,24182000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,ordinary_profit,25789000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,revenue,196578000000.0,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,roe,0.136,2022-06-29,S100OLC3,current-year column
+8850,2022-03-31,total_assets,273287000000.0,2022-06-29,S100OLC3,current-year column
+8850,2023-03-31,bps,2869.5,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,cash,78485000000.0,2023-07-07,S100TUOW,prior-year column (1)
+8850,2023-03-31,debt,65649000000.0,2023-07-07,S100TUOW,prior-year column (1)
+8850,2023-03-31,depreciation,5484000000.0,2023-07-07,S100TUOW,prior-year column (1)
+8850,2023-03-31,eps,407.07,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,net_assets,145086000000.0,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,net_income,20218000000.0,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,operating_profit,28095000000.0,2023-07-07,S100TUOW,prior-year column (1)
+8850,2023-03-31,ordinary_profit,30002000000.0,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,revenue,233871000000.0,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,roe,0.1506,2023-07-07,S100YKTS,prior-year column (3)
+8850,2023-03-31,total_assets,293100000000.0,2023-07-07,S100YKTS,prior-year column (3)
+8850,2024-03-31,bps,3264.6,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,cash,86878000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,debt,73432000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,depreciation,6096000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,eps,444.84,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,net_assets,165318000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,net_income,22095000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,operating_profit,30498000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,ordinary_profit,33396000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,revenue,233408000000.0,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,roe,0.145,2024-06-26,S100TUOW,current-year column
+8850,2024-03-31,total_assets,324109000000.0,2024-06-26,S100TUOW,current-year column
+8850,2025-03-31,bps,3627.61,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,cash,88782000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,debt,69646000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,depreciation,6740000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,eps,492.15,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,net_assets,178239000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,net_income,24274000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,operating_profit,32622000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,ordinary_profit,33404000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,revenue,232978000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,roe,0.1441,2025-07-07,S100YKTS,prior-year column (1)
+8850,2025-03-31,total_assets,333647000000.0,2025-07-07,S100YKTS,prior-year column (1)
+8850,2026-03-31,bps,3986.78,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,cash,74904000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,debt,67689000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,depreciation,7081000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,eps,526.61,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,net_assets,192571000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,net_income,25311000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,operating_profit,36272000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,ordinary_profit,38244000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,revenue,251911000000.0,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,roe,0.1393,2026-06-25,S100YKTS,current-year column
+8850,2026-03-31,total_assets,352746000000.0,2026-06-25,S100YKTS,current-year column
 8860,2014-03-31,bps,676.44,2014-07-07,S100D8PD,prior-year column (4)
 8860,2014-03-31,eps,91.13,2014-07-07,S100D8PD,prior-year column (4)
 8860,2014-03-31,net_assets,24308945000.0,2014-07-07,S100D8PD,prior-year column (4)
@@ -2011,6 +3793,270 @@ ticker,fy_end,item,value,published,doc_id,basis
 8860,2026-03-31,revenue,138332189000.0,2026-06-15,S100YB7Y,current-year column
 8860,2026-03-31,roe,0.0842,2026-06-15,S100YB7Y,current-year column
 8860,2026-03-31,total_assets,193040276000.0,2026-06-15,S100YB7Y,current-year column
+8869,2014-03-31,bps,593.81,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,eps,99.89,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,net_assets,14782000000.0,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,net_income,2486000000.0,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,ordinary_profit,2079000000.0,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,revenue,34573000000.0,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,roe,0.184,2014-07-07,S100DHU0,prior-year column (4)
+8869,2014-03-31,total_assets,57015000000.0,2014-07-07,S100DHU0,prior-year column (4)
+8869,2015-03-31,bps,676.39,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,eps,88.11,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,net_assets,16837000000.0,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,net_income,2193000000.0,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,ordinary_profit,2723000000.0,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,revenue,42254000000.0,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,roe,0.139,2015-07-07,S100DHU0,prior-year column (3)
+8869,2015-03-31,total_assets,55218000000.0,2015-07-07,S100DHU0,prior-year column (3)
+8869,2016-03-31,bps,751.11,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,eps,89.58,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,net_assets,18697000000.0,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,net_income,2229000000.0,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,ordinary_profit,2621000000.0,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,revenue,45145000000.0,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,roe,0.125,2016-07-07,S100IYUR,prior-year column (4)
+8869,2016-03-31,total_assets,59588000000.0,2016-07-07,S100IYUR,prior-year column (4)
+8869,2017-03-31,bps,849.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,cash,16058000000.0,2017-07-07,S100DHU0,prior-year column (1)
+8869,2017-03-31,debt,23743000000.0,2017-07-07,S100DHU0,prior-year column (1)
+8869,2017-03-31,depreciation,206000000.0,2017-07-07,S100DHU0,prior-year column (1)
+8869,2017-03-31,eps,127.2,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,net_assets,21134000000.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,net_income,3166000000.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,operating_profit,4082000000.0,2017-07-07,S100DHU0,prior-year column (1)
+8869,2017-03-31,ordinary_profit,3546000000.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,revenue,53145000000.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,roe,0.159,2017-07-07,S100LTY1,prior-year column (4)
+8869,2017-03-31,total_assets,64225000000.0,2017-07-07,S100LTY1,prior-year column (4)
+8869,2018-03-31,bps,900.39,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,cash,16892000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,debt,25282000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,depreciation,212000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,eps,82.06,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,net_assets,22414000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,net_income,2042000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,operating_profit,2991000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,ordinary_profit,2503000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,revenue,48105000000.0,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,roe,0.094,2018-06-28,S100DHU0,current-year column
+8869,2018-03-31,total_assets,62534000000.0,2018-06-28,S100DHU0,current-year column
+8869,2019-03-31,bps,952.54,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,cash,23862000000.0,2019-07-07,S100IYUR,prior-year column (1)
+8869,2019-03-31,debt,28494000000.0,2019-07-07,S100IYUR,prior-year column (1)
+8869,2019-03-31,depreciation,265000000.0,2019-07-07,S100IYUR,prior-year column (1)
+8869,2019-03-31,eps,81.74,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,net_assets,23712000000.0,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,net_income,2034000000.0,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,operating_profit,3004000000.0,2019-07-07,S100IYUR,prior-year column (1)
+8869,2019-03-31,ordinary_profit,2431000000.0,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,revenue,49971000000.0,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,roe,0.088,2019-07-07,S100OK5U,prior-year column (3)
+8869,2019-03-31,total_assets,71200000000.0,2019-07-07,S100OK5U,prior-year column (3)
+8869,2020-03-31,bps,941.64,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,cash,23294000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,debt,29003000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,depreciation,299000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,eps,19.94,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,net_assets,23440000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,net_income,496000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,operating_profit,1638000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,ordinary_profit,1058000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,revenue,40531000000.0,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,roe,0.021,2020-06-25,S100IYUR,current-year column
+8869,2020-03-31,total_assets,80434000000.0,2020-06-25,S100IYUR,current-year column
+8869,2021-03-31,bps,1037.14,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,cash,22311000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,debt,32585000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,depreciation,211000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,eps,109.32,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,net_assets,25818000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,net_income,2721000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,operating_profit,3626000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,ordinary_profit,3007000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,revenue,50109000000.0,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,roe,0.11,2021-06-29,S100LTY1,current-year column
+8869,2021-03-31,total_assets,76051000000.0,2021-06-29,S100LTY1,current-year column
+8869,2022-03-31,bps,1133.11,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,cash,27452000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,debt,48647000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,depreciation,195000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,eps,110.04,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,net_assets,26568000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,net_income,2597000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,operating_profit,4169000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,ordinary_profit,3160000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,revenue,57209000000.0,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,roe,0.099,2022-06-29,S100OK5U,current-year column
+8869,2022-03-31,total_assets,95708000000.0,2022-06-29,S100OK5U,current-year column
+8869,2023-03-31,bps,1279.38,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,cash,33810000000.0,2023-07-07,S100TWA7,prior-year column (1)
+8869,2023-03-31,debt,57857000000.0,2023-07-07,S100TWA7,prior-year column (1)
+8869,2023-03-31,depreciation,213000000.0,2023-07-07,S100TWA7,prior-year column (1)
+8869,2023-03-31,eps,188.32,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,net_assets,29998000000.0,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,net_income,4415000000.0,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,operating_profit,5941000000.0,2023-07-07,S100TWA7,prior-year column (1)
+8869,2023-03-31,ordinary_profit,4989000000.0,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,revenue,62319000000.0,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,roe,0.156,2023-07-07,S100YJF1,prior-year column (3)
+8869,2023-03-31,total_assets,116538000000.0,2023-07-07,S100YJF1,prior-year column (3)
+8869,2024-03-31,bps,1363.61,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,cash,34552000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,debt,59025000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,depreciation,240000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,eps,118.62,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,net_assets,31973000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,net_income,2781000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,operating_profit,4973000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,ordinary_profit,3990000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,revenue,71250000000.0,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,roe,0.09,2024-06-27,S100TWA7,current-year column
+8869,2024-03-31,total_assets,124151000000.0,2024-06-27,S100TWA7,current-year column
+8869,2025-03-31,bps,1449.15,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,cash,22122000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,debt,86811000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,depreciation,247000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,eps,123.57,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,net_assets,33979000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,net_income,2897000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,operating_profit,5240000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,ordinary_profit,3769000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,revenue,79902000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,roe,0.088,2025-07-07,S100YJF1,prior-year column (1)
+8869,2025-03-31,total_assets,152097000000.0,2025-07-07,S100YJF1,prior-year column (1)
+8869,2026-03-31,bps,1573.49,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,cash,20570000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,debt,86522000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,depreciation,278000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,eps,163.19,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,net_assets,36894000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,net_income,3826000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,operating_profit,7751000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,ordinary_profit,5891000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,revenue,90108000000.0,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,roe,0.108,2026-06-24,S100YJF1,current-year column
+8869,2026-03-31,total_assets,151157000000.0,2026-06-24,S100YJF1,current-year column
+8877,2014-03-31,bps,1868.72,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,eps,117.08,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,net_assets,28836591000.0,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,net_income,1806660000.0,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,ordinary_profit,3213202000.0,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,revenue,29916728000.0,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,roe,0.064,2014-07-07,S100DEEG,prior-year column (4)
+8877,2014-03-31,total_assets,49229147000.0,2014-07-07,S100DEEG,prior-year column (4)
+8877,2015-03-31,bps,1975.67,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,eps,129.3,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,net_assets,30486407000.0,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,net_income,1995200000.0,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,ordinary_profit,3259925000.0,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,revenue,30499004000.0,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,roe,0.067,2015-07-07,S100DEEG,prior-year column (3)
+8877,2015-03-31,total_assets,52949572000.0,2015-07-07,S100DEEG,prior-year column (3)
+8877,2016-03-31,bps,2083.76,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,eps,135.49,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,net_assets,32153877000.0,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,net_income,2090709000.0,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,ordinary_profit,3319253000.0,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,revenue,37144003000.0,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,roe,0.067,2016-07-07,S100J2R8,prior-year column (4)
+8877,2016-03-31,total_assets,57312257000.0,2016-07-07,S100J2R8,prior-year column (4)
+8877,2017-03-31,bps,2261.57,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,cash,26598054000.0,2017-07-07,S100DEEG,prior-year column (1)
+8877,2017-03-31,debt,15401758000.0,2017-07-07,S100DEEG,prior-year column (1)
+8877,2017-03-31,depreciation,144625000.0,2017-07-07,S100DEEG,prior-year column (1)
+8877,2017-03-31,eps,201.49,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,net_assets,34897017000.0,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,net_income,3109135000.0,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,operating_profit,5131983000.0,2017-07-07,S100DEEG,prior-year column (1)
+8877,2017-03-31,ordinary_profit,5054249000.0,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,revenue,39300072000.0,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,roe,0.093,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2017-03-31,total_assets,59535364000.0,2017-07-07,S100LV5Z,prior-year column (4)
+8877,2018-03-31,bps,2516.13,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,cash,26228315000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,debt,14816184000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,depreciation,144791000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,eps,279.07,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,net_assets,38824825000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,net_income,4306211000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,operating_profit,6752638000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,ordinary_profit,6703403000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,revenue,48340224000.0,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,roe,0.117,2018-06-27,S100DEEG,current-year column
+8877,2018-03-31,total_assets,63304726000.0,2018-06-27,S100DEEG,current-year column
+8877,2019-03-31,bps,2769.02,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,cash,23495074000.0,2019-07-07,S100J2R8,prior-year column (1)
+8877,2019-03-31,debt,14533452000.0,2019-07-07,S100J2R8,prior-year column (1)
+8877,2019-03-31,depreciation,146052000.0,2019-07-07,S100J2R8,prior-year column (1)
+8877,2019-03-31,eps,289.99,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,net_assets,42726600000.0,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,net_income,4474627000.0,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,operating_profit,7170347000.0,2019-07-07,S100J2R8,prior-year column (1)
+8877,2019-03-31,ordinary_profit,7237287000.0,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,revenue,57195645000.0,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,roe,0.11,2019-07-07,S100OLEL,prior-year column (3)
+8877,2019-03-31,total_assets,67664476000.0,2019-07-07,S100OLEL,prior-year column (3)
+8877,2020-03-31,bps,3058.84,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,cash,18837673000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,debt,22691769000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,depreciation,184771000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,eps,328.58,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,net_assets,47198032000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,net_income,5070100000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,operating_profit,7948995000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,ordinary_profit,8000033000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,revenue,61638038000.0,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,roe,0.113,2020-06-29,S100J2R8,current-year column
+8877,2020-03-31,total_assets,80494181000.0,2020-06-29,S100J2R8,current-year column
+8877,2021-03-31,bps,3314.13,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,cash,31019369000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,debt,37446547000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,depreciation,264420000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,eps,292.06,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,net_assets,51137007000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,net_income,4506481000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,operating_profit,7018923000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,ordinary_profit,7001643000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,revenue,68999416000.0,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,roe,0.092,2021-06-30,S100LV5Z,current-year column
+8877,2021-03-31,total_assets,104879914000.0,2021-06-30,S100LV5Z,current-year column
+8877,2022-03-31,bps,3609.82,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,cash,26999274000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,debt,44627423000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,depreciation,320327000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,eps,351.83,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,net_assets,55698637000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,net_income,5428687000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,operating_profit,8660236000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,ordinary_profit,8575047000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,revenue,74597912000.0,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,roe,0.102,2022-06-30,S100OLEL,current-year column
+8877,2022-03-31,total_assets,114315904000.0,2022-06-30,S100OLEL,current-year column
+8877,2023-03-31,bps,3951.19,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,cash,26027033000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,debt,62353061000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,depreciation,380232000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,eps,398.4,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,net_assets,60965925000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,net_income,6147224000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,operating_profit,9481393000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,ordinary_profit,9368145000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,revenue,79913787000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,roe,0.105,2023-07-07,S100TXA5,prior-year column (1)
+8877,2023-03-31,total_assets,135867479000.0,2023-07-07,S100TXA5,prior-year column (1)
+8877,2024-03-31,bps,4334.08,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,cash,15716152000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,debt,86625697000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,depreciation,512895000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,eps,487.27,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,net_assets,66873055000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,net_income,7518383000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,operating_profit,11631003000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,ordinary_profit,11346554000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,revenue,80286796000.0,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,roe,0.118,2024-06-28,S100TXA5,current-year column
+8877,2024-03-31,total_assets,168954164000.0,2024-06-28,S100TXA5,current-year column
 8904,2013-08-31,bps,1458.77,2013-12-07,S100BVOT,prior-year column (4)
 8904,2013-08-31,eps,153.25,2013-12-07,S100BVOT,prior-year column (4)
 8904,2013-08-31,net_assets,21543543000.0,2013-12-07,S100BVOT,prior-year column (4)

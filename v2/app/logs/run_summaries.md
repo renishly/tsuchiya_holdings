@@ -1783,3 +1783,38 @@ Model calls: 2; tokens in/out: 7964/3065; models: nvidia/nemotron-3-ultra-550b-a
 
 ### Next planned
 steady
+
+## R-20261030-064418 — research
+
+- Start / end (JST): 2026-10-30T06:44:18+09:00 / 2026-10-30T06:52:07+09:00
+- Iterations: 395; web requests by domain: {"api.edinet-fsa.go.jp": 395}
+
+### Plan
+(no plan recorded)
+Review events: none, so the model was not called (quiet run).
+Model calls: 2; tokens in/out: 5454/1460; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 823 rows total; 0 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261030-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady

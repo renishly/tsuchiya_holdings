@@ -1,188 +1,243 @@
 {
  "pending": {
-  "version": "2026-10-25-n156",
+  "version": "2026-10-30-n193",
   "status": "pending approval",
   "m1": {
    "year_effects": {
-    "2016": -0.9394902370270485,
-    "2017": -0.9930552809697595,
-    "2018": -0.9416486661193813,
-    "2019": -1.212112491332596,
-    "2020": -1.3765488863180946,
-    "2021": -1.2356801311586496,
-    "2022": -1.2568674943333422,
-    "2023": -1.147762220710424,
-    "2024": -1.1738068481225228,
-    "2025": -1.0545955094465054,
-    "2026": -1.0522540308459651
+    "2016": 0.5444166266925359,
+    "2017": 0.03832347112023904,
+    "2018": 0.1206278226305431,
+    "2019": -0.1624148797492519,
+    "2020": -0.27604332956221217,
+    "2021": -0.10824742443328458,
+    "2022": -0.08815203307759545,
+    "2023": 0.07327720750135776,
+    "2024": 0.011855251208754572,
+    "2025": 0.21168679453140127,
+    "2026": 0.2407793049352067
    },
    "year_counts": {
-    "2016": 1,
-    "2017": 12,
-    "2018": 11,
-    "2019": 14,
-    "2020": 15,
-    "2021": 16,
-    "2022": 16,
-    "2023": 19,
-    "2024": 17,
-    "2025": 19,
-    "2026": 16
+    "2016": 2,
+    "2017": 15,
+    "2018": 14,
+    "2019": 17,
+    "2020": 18,
+    "2021": 20,
+    "2022": 20,
+    "2023": 23,
+    "2024": 21,
+    "2025": 23,
+    "2026": 20
    },
    "coef": {
-    "roe_norm": 6.21731894755,
-    "growth": -1.0757337866714538,
-    "log_revenue": 0.007330169963090771
+    "roe_norm": 6.6694495681018005,
+    "growth": 0.3809891484164042,
+    "log_revenue": -0.04368640760808447
    },
    "y": "log_pb",
    "winsor": {
     "roe_norm": [
-     0.005325,
-     0.28708333333333336
+     0.016224633328433647,
+     0.2822665082848664
     ],
     "growth": [
-     -0.05995221989427818,
-     0.2806263118114001
+     -0.05642713692151286,
+     0.26568352650786287
     ],
     "log_revenue": [
-     23.341353896308455,
-     29.04952771018913
+     23.35164806930808,
+     28.99172213905308
     ]
    },
-   "scale": 0.3727659761679347,
-   "n": 156,
-   "r2_weighted": 0.5452520663724767
+   "scale": 0.3949289775342891,
+   "n": 193,
+   "r2_weighted": 0.5671341348347823
   },
   "m1_ev": {
    "year_effects": {
-    "2016": 26.932670942359852,
-    "2017": 30.215892073571247,
-    "2018": 29.29192972691321,
-    "2019": 30.65858777771907,
-    "2020": 30.383024344516887,
-    "2021": 31.172373980876515,
-    "2022": 30.15927213032453,
-    "2023": 31.527827780290554,
-    "2024": 33.61727624400846,
-    "2025": 32.07895576899523,
-    "2026": 31.99763736676427
+    "2017": 4.895242483701132,
+    "2018": 5.1597164225128225,
+    "2019": 5.241175185526048,
+    "2020": 5.086489151231149,
+    "2021": 5.3213873951356,
+    "2022": 5.3781289428927215,
+    "2023": 5.428854450895202,
+    "2024": 5.463452186026646,
+    "2025": 5.565556824962423,
+    "2026": 5.568984913354765
    },
    "year_counts": {
-    "2016": 1,
-    "2017": 10,
-    "2018": 10,
-    "2019": 12,
+    "2017": 2,
+    "2018": 13,
+    "2019": 14,
     "2020": 14,
-    "2021": 14,
-    "2022": 14,
-    "2023": 18,
-    "2024": 16,
-    "2025": 19,
-    "2026": 16
+    "2021": 18,
+    "2022": 18,
+    "2023": 21,
+    "2024": 19,
+    "2025": 23,
+    "2026": 19
    },
    "coef": {
-    "margin": -49.32898692539672,
-    "growth": 5.365022906235155,
-    "log_revenue": -0.7500363667376746
+    "margin": 1.9724126263975452,
+    "growth": 1.077517830856972,
+    "log_revenue": -0.1305595529071147
    },
-   "y": "ev_ebitda",
+   "y": "log_ev_ebitda",
    "winsor": {
     "margin": [
-     0.01099497990912301,
-     0.11362524682366412
+     0.012707339490863886,
+     0.12464990672576454
     ],
     "growth": [
-     -0.04819019837699826,
-     0.2932801152666744
+     -0.04999386219670687,
+     0.2731347880699291
     ],
     "log_revenue": [
-     23.345134046752072,
-     29.051956073193093
+     23.35591366955093,
+     29.04851589227081
     ]
    },
-   "scale": 4.3538259171529985,
-   "n": 144,
-   "r2_weighted": 0.2302771219870806
+   "scale": 0.4560783280529678,
+   "n": 161,
+   "r2_weighted": 0.23873515355037878
   },
   "backtest": {
-   "months": 106,
+   "freq": "annual",
+   "months": 9,
    "period": [
-    "2016-12",
+    "2016-10",
     "2025-10"
    ],
    "methods": {
     "M1 (P/B regression)": {
-     "months": 75,
-     "mean_ic": 0.0689,
-     "t_nw": 1.15,
-     "top_minus_bottom": 0.0645,
-     "hit_rate": 0.505,
-     "median_abs_error": 0.259
+     "months": 7,
+     "mean_ic": 0.1169,
+     "t": 1.91,
+     "top_minus_bottom": 0.0049,
+     "hit_rate": 0.515,
+     "median_abs_error": 0.312
+    },
+    "P/B (own history)": {
+     "months": 7,
+     "mean_ic": 0.011,
+     "t": 0.07,
+     "top_minus_bottom": -0.0522,
+     "hit_rate": 0.459,
+     "median_abs_error": 0.188
+    },
+    "P/B (peers)": {
+     "months": 9,
+     "mean_ic": -0.0059,
+     "t": -0.08,
+     "top_minus_bottom": -0.155,
+     "hit_rate": 0.452,
+     "median_abs_error": 0.422
+    },
+    "P/E (peers, trailing)": {
+     "months": 9,
+     "mean_ic": 0.1334,
+     "t": 1.87,
+     "top_minus_bottom": 0.0473,
+     "hit_rate": 0.459,
+     "median_abs_error": 0.392
+    },
+    "M1 (EV/EBITDA regression)": {
+     "months": 6,
+     "mean_ic": -0.0135,
+     "t": -0.34,
+     "top_minus_bottom": 0.0258,
+     "hit_rate": 0.401,
+     "median_abs_error": 0.529
+    },
+    "EV/EBITDA (own history)": {
+     "months": 7,
+     "mean_ic": -0.1694,
+     "t": -1.59,
+     "top_minus_bottom": -0.0136,
+     "hit_rate": 0.421,
+     "median_abs_error": 0.364
+    },
+    "EV/EBITDA (peers)": {
+     "months": 9,
+     "mean_ic": -0.0381,
+     "t": -1.13,
+     "top_minus_bottom": 0.0781,
+     "hit_rate": 0.405,
+     "median_abs_error": 0.617
+    }
+   },
+   "monthly_reference": {
+    "M1 (P/B regression)": {
+     "months": 85,
+     "mean_ic": 0.1058,
+     "t": 2.81,
+     "top_minus_bottom": 0.1033,
+     "hit_rate": 0.528,
+     "median_abs_error": 0.288
     },
     "P/B (own history)": {
      "months": 75,
-     "mean_ic": 0.0628,
-     "t_nw": 0.56,
-     "top_minus_bottom": 0.0476,
-     "hit_rate": 0.451,
-     "median_abs_error": 0.18
+     "mean_ic": -0.0322,
+     "t": -0.36,
+     "top_minus_bottom": -0.0424,
+     "hit_rate": 0.428,
+     "median_abs_error": 0.203
     },
     "P/B (peers)": {
-     "months": 106,
-     "mean_ic": -0.1042,
-     "t_nw": -1.73,
-     "top_minus_bottom": -0.162,
-     "hit_rate": 0.433,
-     "median_abs_error": 0.365
+     "months": 108,
+     "mean_ic": -0.0388,
+     "t": -0.75,
+     "top_minus_bottom": -0.1359,
+     "hit_rate": 0.451,
+     "median_abs_error": 0.42
     },
     "P/E (peers, trailing)": {
-     "months": 106,
-     "mean_ic": 0.1093,
-     "t_nw": 2.32,
-     "top_minus_bottom": 0.1074,
-     "hit_rate": 0.51,
-     "median_abs_error": 0.345
+     "months": 108,
+     "mean_ic": 0.1241,
+     "t": 3.63,
+     "top_minus_bottom": 0.0605,
+     "hit_rate": 0.505,
+     "median_abs_error": 0.383
     },
     "M1 (EV/EBITDA regression)": {
-     "months": 75,
-     "mean_ic": -0.075,
-     "t_nw": -1.37,
-     "top_minus_bottom": -0.0417,
-     "hit_rate": 0.424,
-     "median_abs_error": 0.512
+     "months": 69,
+     "mean_ic": 0.0348,
+     "t": 1.75,
+     "top_minus_bottom": -0.0122,
+     "hit_rate": 0.469,
+     "median_abs_error": 0.489
     },
     "EV/EBITDA (own history)": {
      "months": 75,
-     "mean_ic": -0.1166,
-     "t_nw": -1.54,
-     "top_minus_bottom": -0.0158,
-     "hit_rate": 0.417,
-     "median_abs_error": 0.34
+     "mean_ic": -0.1345,
+     "t": -2.24,
+     "top_minus_bottom": -0.1631,
+     "hit_rate": 0.449,
+     "median_abs_error": 0.342
     },
     "EV/EBITDA (peers)": {
      "months": 99,
-     "mean_ic": -0.0097,
-     "t_nw": -0.13,
-     "top_minus_bottom": -0.046,
-     "hit_rate": 0.451,
-     "median_abs_error": 0.479
+     "mean_ic": 0.0844,
+     "t": 2.56,
+     "top_minus_bottom": 0.0486,
+     "hit_rate": 0.494,
+     "median_abs_error": 0.599
     }
    }
   },
   "weights": {
    "weights": {
-    "M1 (P/B regression)": 0.0714,
-    "P/B (own history)": 0.0714,
-    "P/B (peers)": 0.0714,
-    "P/E": 0.5714,
-    "M1 (EV/EBITDA regression)": 0.0714,
-    "EV/EBITDA (own history)": 0.0714,
-    "EV/EBITDA": 0.0714
+    "M1 (P/B regression)": 0.1429,
+    "P/B (own history)": 0.1429,
+    "P/B (peers)": 0.1429,
+    "P/E": 0.1429,
+    "M1 (EV/EBITDA regression)": 0.1429,
+    "EV/EBITDA (own history)": 0.1429,
+    "EV/EBITDA": 0.1429
    },
-   "accepted": [
-    "P/E"
-   ],
-   "rule": "accepted if mean IC > 0 and Newey-West t ≥ 2; weight = ½ equal share + ½ share by accepted IC (equal if none accepted). The live P/E and EV/EBITDA methods use forward figures; their backtest uses trailing figures (no point-in-time forecast history)."
+   "accepted": [],
+   "rule": "accepted if mean IC > 0 and t ≥ 2 in the annual backtest (non-overlapping years); weight = ½ equal share + ½ share by accepted IC (equal if none accepted). The live P/E and EV/EBITDA methods use forward figures; their backtest uses trailing figures (no point-in-time forecast history)."
   },
   "tsuchiya": {
    "features": {
@@ -190,29 +245,30 @@
     "published": "2026-01-26",
     "bps": 505.95,
     "eps": null,
-    "roe_norm": 0.02398252983768648,
+    "roe_norm": 0.00970141616692714,
     "growth": -0.03233344658151427,
     "log_revenue": 24.171882189153298,
     "ebitda": 233146000.0,
     "debt": 3079167000.0,
     "cash": 4795443000.0,
     "shares": 25775388.872418225,
-    "margin": 0.00404161189967521
+    "margin": 0.00404161189967521,
+    "ebitda3": 495290666.6666667
    },
    "fitted_pb": {
-    "pb": 0.5009841535819911,
-    "low": 0.310703038521648,
-    "high": 0.8077974497271512,
+    "pb": 0.48708691014341365,
+    "low": 0.29362445586253727,
+    "high": 0.8080173612790966,
     "year_effect": "2026"
    },
    "fitted_ev": {
-    "multiple": 13.152005770671138,
-    "low": 7.572142475247856,
-    "high": 18.731869066094422,
+    "multiple": 11.060044653251145,
+    "low": 6.164635730785563,
+    "high": 19.8429547298363,
     "year_effect": "2026"
    }
   },
-  "created": "2026-10-25T06:09:33+09:00",
+  "created": "2026-10-30T06:51:41+09:00",
   "screen": {
    "1419": {
     "share": 0.706,
@@ -502,12 +558,197 @@
      "RealEstateSalesReportableSegmentsMember"
     ],
     "note": ""
+   },
+   "1430": {
+    "share": 0.245,
+    "pass": false,
+    "segments": {
+     "ConstructionReportableSegmentMember": 0.755,
+     "RealEstateBusinessReportableSegmentMember": 0.245
+    },
+    "residential": [
+     "RealEstateBusinessReportableSegmentMember"
+    ],
+    "note": ""
+   },
+   "1766": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "ConstructionReportableSegmentsMember": 0.427,
+     "LeasingReportableSegmentsMember": 0.573
+    },
+    "residential": [],
+    "note": ""
+   },
+   "1808": {
+    "share": 0.125,
+    "pass": false,
+    "segments": {
+     "ConstructionRelatedBusinessReportableSegmentsMember": 0.644,
+     "RealEstateRelatedBusinessReportableSegmentMember": 0.228,
+     "CondominiumManagementAndOperationBusinessReportableSegmentMember": 0.125,
+     "OverseasBusinessReportableSegmentMember": 0.003
+    },
+    "residential": [
+     "CondominiumManagementAndOperationBusinessReportableSegmentMember"
+    ],
+    "note": ""
+   },
+   "1814": {
+    "share": null,
+    "segments": {},
+    "pass": true,
+    "note": "single segment or no segment revenue tagged: passes"
+   },
+   "1879": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "ConstructionReportableSegmentsMember": 0.604,
+     "DevelopmentReportableSegmentsMember": 0.396
+    },
+    "residential": [],
+    "note": ""
+   },
+   "2975": {
+    "share": 0.955,
+    "pass": true,
+    "segments": {
+     "RenovationCondominiumBusinessReportableSegmentsMember": 0.955,
+     "InvestmentBusinessReportableSegmentsMember": 0.031,
+     "AdvisoryBusinessReportableSegmentsMember": 0.014
+    },
+    "residential": [
+     "RenovationCondominiumBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "2976": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "RealEstateLotReportableSegmentMember": 0.783,
+     "RealEstateLeasingBusinessReportableSegmentMember": 0.168,
+     "RealEstateRelatedReportableSegmentMember": 0.049
+    },
+    "residential": [],
+    "note": ""
+   },
+   "2981": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "SumuzuReportableSegmentMember": 0.995,
+     "LeaseReportableSegmentMember": 0.005
+    },
+    "residential": [],
+    "note": ""
+   },
+   "3231": {
+    "share": 0.796,
+    "pass": true,
+    "segments": {
+     "ResidentialDevelopmentBusinessReportableSegmentsMember": 0.458,
+     "CommercialRealEstateBusinessReportableSegmentsMember": 0.338,
+     "OverseasBusinessReportableSegmentsMember": 0.004,
+     "InvestmentManagementBusinessReportableSegmentsMember": 0.017,
+     "PropertyBrokerageAndCREBusinessReportableSegmentsMember": 0.066,
+     "PropertyAndFacilityManagementBusinessReportableSegmentsMember": 0.116
+    },
+    "residential": [
+     "CommercialRealEstateBusinessReportableSegmentsMember",
+     "ResidentialDevelopmentBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "3284": {
+    "share": 0.457,
+    "pass": false,
+    "segments": {
+     "CondominiumApartmentsForFamiliesAndSinglesReportableSegmentMember": 0.457,
+     "ContinuingCareRetirementCommunityReportableSegmentMember": 0.103,
+     "AssetManagementReportableSegmentMember": 0.38,
+     "PropertyManagementAndRelatedServicesReportableSegmentMember": 0.061
+    },
+    "residential": [
+     "CondominiumApartmentsForFamiliesAndSinglesReportableSegmentMember"
+    ],
+    "note": ""
+   },
+   "3457": {
+    "share": 0.921,
+    "pass": true,
+    "segments": {
+     "FranchiseBusinessReportableSegmentsMember": 0.067,
+     "HouseLeasebackBussinessReportableSegmentsMember": 0.196,
+     "FinanceBusinessReportableSegmentsMember": 0.013,
+     "RealEstateBusinessReportableSegmentsMember": 0.725
+    },
+    "residential": [
+     "HouseLeasebackBussinessReportableSegmentsMember",
+     "RealEstateBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "3475": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "WholesaleReportableSegmentsMember": 0.754,
+     "RetailSalesReportableSegmentsMember": 0.187,
+     "LivenupGroupReportableSegmentMember": 0.058,
+     "OthersReportableSegmentsMember": 0.001
+    },
+    "residential": [],
+    "note": ""
+   },
+   "8844": {
+    "share": 0.402,
+    "pass": false,
+    "segments": {
+     "RealEstateSalesAndBrokerageReportableSegmentsMember": 0.402,
+     "RealEstateSolutionsReportableSegmentsMember": 0.529,
+     "ConstructionWorksReportableSegmentsMember": 0.069
+    },
+    "residential": [
+     "RealEstateSalesAndBrokerageReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8850": {
+    "share": 0.032,
+    "pass": false,
+    "segments": {
+     "ConstructionBusinessReportableSegmentsMember": 0.342,
+     "LeaseIntermediationBusinessReportableSegmentsMember": 0.04,
+     "BuyingAndSellingIntermediationBusinessReportableSegmentsMember": 0.046,
+     "RealEstateManagementReportableSegmentsMember": 0.461,
+     "SaleInLotsRealEstateBusinessReportableSegmentsMember": 0.032,
+     "PublishingBusinessReportableSegmentsMember": 0.035,
+     "ConsultingBusinessReportableSegmentsMember": 0.04,
+     "ProductSaleBusinessReportableSegmentsMember": 0.004
+    },
+    "residential": [
+     "SaleInLotsRealEstateBusinessReportableSegmentsMember"
+    ],
+    "note": ""
+   },
+   "8869": {
+    "share": 0.0,
+    "pass": false,
+    "segments": {
+     "RealEstateManagementBusinessReportableSegmentsMember": 0.91,
+     "RealEstateRentalBusinessReportableSegmentsMember": 0.09
+    },
+    "residential": [],
+    "note": ""
    }
   },
   "panel": {
-   "rows": 156,
-   "companies": 18
+   "rows": 193,
+   "companies": 22
   },
-  "summary": "**Research run 2026-10-25-n156 — pending approval (AR-20261025-01)**\n\n**Universe & panel** — 18 housebuilders passed the ≥50% residential-revenue screen (Tsuchiya 1840 at 100%; 大東建託 1878 excluded at 28.5%). Panel: 156 company-years (P/B), 144 (EV/EBITDA).\n\n**M1 equations** — P/B: 6.22·ROE₃y − 1.08·g₃y + 0.007·log(rev); scale 0.37. EV/EBITDA: −49.3·margin₃y + 5.37·g₃y − 0.75·log(rev); scale 4.35.\n\n**Tsuchiya fitted (2026 year effect)** — P/B 0.50 (0.31–0.81); EV/EBITDA 13.2× (7.6–18.7×). Inputs: ROE 2.4%, growth −3.2%, margin 0.4%.\n\n**Backtest (Dec 2016 – Oct 2025, 106 months)** — Only **P/E (peers, trailing)** clears the acceptance rule (mean IC 0.109, Newey-West t 2.32). M1 P/B: IC 0.069, t 1.15. P/B peers and all EV/EBITDA methods show negative or insignificant IC. Top-minus-bottom quintile spread positive only for P/E peers (+10.7% annualised) and M1 P/B (+6.5%).\n\n**Proposed weights** — P/E peers 57.1%; the other six methods 7.1% each (½ equal share + ½ IC-weighted among accepted; only P/E accepted).\n\n**Weaknesses to note**\n- Small panel (18 names); survivorship bias from missing delisted prices.\n- Live P/E and EV/EBITDA methods use **forward** estimates; backtest used **trailing** figures (no point-in-time forecast history).\n- Six of seven methods fail the acceptance threshold (mean IC > 0 and t ≥ 2).\n\n(Code check: 3 number(s) not found in the results and not verified: 25, 20261025, 1840)"
+  "summary": "**Research run AR-20261030-01 — pending approval**\n\n- **Universe**: 22 housebuilders pass the ≥50% residential revenue screen (193 panel rows). Tsuchiya Holdings (1840) qualifies with 100% residential share. Large developers (Daito, Sekisui, Sumitomo Forestry, Daiwa House) are included; several construction-focused names are excluded.\n\n- **M1 models**: P/B equation (n=193): 3-yr ROE coef 6.67, growth 0.38, log revenue −0.044 (scale 0.395). EV/EBITDA equation (n=161): 3-yr margin coef 1.97, growth 1.08, log revenue −0.131 (scale 0.456). Tsuchiya’s fitted multiples: P/B 0.49 (0.29–0.81), EV/EBITDA 11.1 (6.2–19.8), both with 2026 year effect.\n\n- **Annual backtest (9 non-overlapping years, 2016–2025)**: No method clears the acceptance rule (mean IC > 0 and t ≥ 2). M1 (P/B) comes closest: mean IC 0.12, t=1.91, hit rate 51.5% (7 months). P/E (peers, trailing): mean IC 0.13, t=1.87. All EV/EBITDA methods show negative mean IC. Monthly reference (69–108 months) shows stronger t-stats for M1 (P/B), P/E (peers) and EV/EBITDA (peers), but the annual test is the approval gate.\n\n- **Proposed weights**: Equal 1/7 (≈14.3%) to each of the seven methods because none were accepted. The rule splits weight ½ equal + ½ by accepted IC; with zero accepted, it defaults to equal.\n\n- **Key weaknesses**: (1) Only 7–9 annual observations per method — very low power. (2) Survivorship: panel requires prices at each month-end; delisted names drop out. (3) Forward-vs-trailing mismatch: live P/E and EV/EBITDA use forward estimates; their backtests use trailing figures because no point-in-time forecast history exists. (4) Zero accepted methods means weights carry no backtest validation.\n\n(Code check: 2 number(s) not found in the results and not verified: 20261030, 1840)"
  }
 }
