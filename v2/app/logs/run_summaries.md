@@ -1735,3 +1735,51 @@ Model calls: 3; tokens in/out: 12348/3072; models: nvidia/nemotron-3-ultra-550b-
 
 ### Next planned
 steady
+
+## R-20261029-231547 — scheduled
+
+- Start / end (JST): 2026-10-29T23:15:47+09:00 / 2026-10-29T23:19:54+09:00
+- Iterations: 18; web requests by domain: {"www.tsuchiya.co.jp": 8, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: [].
+Review events: Average Valuated Price 154.248 -> 192.394 (+24.7%) since the review of 2026-10-29T09:57+09:00; Target P/E 11.4782 -> 19.4579 (+69.5%) since the review of 2026-10-29T09:57+09:00; daily check (first run after the TSE close today)
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 0, "changed": 22, "conflicts": 0, "total": 823}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review — 2026-10-29 post-close run**
+
+- **Average Valuated Price** rose from ¥154.25 to ¥192.39 (+24.7%).  
+- **Target P/E** jumped from 11.48× to 19.46× (+69.5%), now matching **タマホーム (1419)**'s forward P/E exactly (19.4579×).  
+- **Target EV/EBITDA** moved from 11.52× to 11.56× (+0.3%), now matching **タマホーム**'s EV/EBITDA (11.5554×).  
+- **Drivers**: タマホーム's price fell slightly (¥2,706 → ¥2,685), its forward P/E fell (19.61× → 19.46×) and EV/EBITDA fell (11.65× → 11.56×). 日本ハウスHD's forward P/E rose 3.0% (3.35× → 3.45×). Other peers unchanged.  
+- **Mechanism**: The baseline valuation now appears to peg 1840's target multiples to タマホーム alone (previously the Target P/E was ~11.5× while タマホーム was ~19.6×). The higher Target P/E lifts the P/E–based valuation (5-yr avg EPS ¥12.87 × 19.46× = ¥250.5) and pulls the weighted average up.  
+- **Student action**: Confirm whether the peer-multiple 
+Model calls: 2; tokens in/out: 7964/3065; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 823 rows total; 22 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261023-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+- AR-20261025-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
