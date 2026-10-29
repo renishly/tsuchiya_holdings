@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T06:51:58+09:00",
+      "last_success": "2026-10-30T07:07:31+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T06:52:07+09:00",
+      "last_success": "2026-10-30T07:07:41+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -179,7 +179,8 @@
   "consumed_approvals": [
     "AR-20261009-01",
     "AR-20261023-01",
-    "AR-20261025-01"
+    "AR-20261025-01",
+    "AR-20261030-01"
   ],
   "approved": {
     "sheets_first_write": {
@@ -1546,7 +1547,8 @@
           "minus8": {
             "docID": "S100C6QY",
             "periodEnd": "2017-10-31",
-            "submitDateTime": "2018-01-29 14:49"
+            "submitDateTime": "2018-01-29 14:49",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100HSYU",
@@ -1557,12 +1559,14 @@
           "minus5": {
             "docID": "S100KLVQ",
             "periodEnd": "2020-10-31",
-            "submitDateTime": "2021-01-29 15:48"
+            "submitDateTime": "2021-01-29 15:48",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100NAD0",
             "periodEnd": "2021-10-31",
-            "submitDateTime": "2022-01-28 16:24"
+            "submitDateTime": "2022-01-28 16:24",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100SOUS",
@@ -1771,32 +1775,38 @@
           "minus8": {
             "docID": "S100DGBD",
             "periodEnd": "2018-03-31",
-            "submitDateTime": "2018-06-28 15:03"
+            "submitDateTime": "2018-06-28 15:03",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100IZUE",
             "periodEnd": "2020-03-31",
-            "submitDateTime": "2020-06-26 15:05"
+            "submitDateTime": "2020-06-26 15:05",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LUJR",
             "periodEnd": "2021-03-31",
-            "submitDateTime": "2021-06-29 15:02"
+            "submitDateTime": "2021-06-29 15:02",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100OJSA",
             "periodEnd": "2022-03-31",
-            "submitDateTime": "2022-06-29 15:04"
+            "submitDateTime": "2022-06-29 15:04",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TWCF",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-27 15:09"
+            "submitDateTime": "2024-06-27 15:09",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YIKY",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-24 15:19"
+            "submitDateTime": "2026-06-24 15:19",
+            "ingested": 2
           }
         },
         "3293": {
@@ -2257,96 +2267,114 @@
           "minus8": {
             "docID": "S100D1AL",
             "periodEnd": "2018-02-28",
-            "submitDateTime": "2018-05-28 11:03"
+            "submitDateTime": "2018-05-28 11:03",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100IO7V",
             "periodEnd": "2020-02-29",
-            "submitDateTime": "2020-05-28 09:01"
+            "submitDateTime": "2020-05-28 09:01",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LF4E",
             "periodEnd": "2021-02-28",
-            "submitDateTime": "2021-05-28 09:31"
+            "submitDateTime": "2021-05-28 09:31",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100O55J",
             "periodEnd": "2022-02-28",
-            "submitDateTime": "2022-05-30 09:15"
+            "submitDateTime": "2022-05-30 09:15",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TITV",
             "periodEnd": "2024-02-29",
-            "submitDateTime": "2024-05-30 09:26"
+            "submitDateTime": "2024-05-30 09:26",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100Y62K",
             "periodEnd": "2026-02-28",
-            "submitDateTime": "2026-05-25 09:33"
+            "submitDateTime": "2026-05-25 09:33",
+            "ingested": 2
           }
         },
         "8881": {
           "minus8": {
             "docID": "S100DGLF",
             "periodEnd": "2018-03-31",
-            "submitDateTime": "2018-06-28 09:33"
+            "submitDateTime": "2018-06-28 09:33",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100J2O4",
             "periodEnd": "2020-03-31",
-            "submitDateTime": "2020-06-26 17:03"
+            "submitDateTime": "2020-06-26 17:03",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LSEL",
             "periodEnd": "2021-03-31",
-            "submitDateTime": "2021-06-28 15:14"
+            "submitDateTime": "2021-06-28 15:14",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100OHM1",
             "periodEnd": "2022-03-31",
-            "submitDateTime": "2022-06-27 14:21"
+            "submitDateTime": "2022-06-27 14:21",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TWRC",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-27 16:06"
+            "submitDateTime": "2024-06-27 16:06",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YK7Q",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-25 10:34"
+            "submitDateTime": "2026-06-25 10:34",
+            "ingested": 2
           }
         },
         "8995": {
           "minus8": {
             "docID": "S100DGII",
             "periodEnd": "2018-03-31",
-            "submitDateTime": "2018-06-28 11:49"
+            "submitDateTime": "2018-06-28 11:49",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100IYOR",
             "periodEnd": "2020-03-31",
-            "submitDateTime": "2020-06-25 13:29"
+            "submitDateTime": "2020-06-25 13:29",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LNV4",
             "periodEnd": "2021-03-31",
-            "submitDateTime": "2021-06-24 11:39"
+            "submitDateTime": "2021-06-24 11:39",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100OI25",
             "periodEnd": "2022-03-31",
-            "submitDateTime": "2022-06-28 11:30"
+            "submitDateTime": "2022-06-28 11:30",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TRB3",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-25 15:39"
+            "submitDateTime": "2024-06-25 15:39",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YI2H",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-24 09:03"
+            "submitDateTime": "2026-06-24 09:03",
+            "ingested": 2
           }
         },
         "8869": {
@@ -2497,7 +2525,8 @@
           "latest": {
             "docID": "S100YHNU",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-23 12:40"
+            "submitDateTime": "2026-06-23 12:40",
+            "ingested": 2
           }
         },
         "1814": {
@@ -2542,64 +2571,76 @@
           "minus8": {
             "docID": "S100DGI0",
             "periodEnd": "2018-03-31",
-            "submitDateTime": "2018-06-27 16:57"
+            "submitDateTime": "2018-06-27 16:57",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100J36B",
             "periodEnd": "2020-03-31",
-            "submitDateTime": "2020-06-29 13:03"
+            "submitDateTime": "2020-06-29 13:03",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LQ1Q",
             "periodEnd": "2021-03-31",
-            "submitDateTime": "2021-06-25 12:40"
+            "submitDateTime": "2021-06-25 12:40",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100OEZU",
             "periodEnd": "2022-03-31",
-            "submitDateTime": "2022-06-24 12:26"
+            "submitDateTime": "2022-06-24 12:26",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TTAZ",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-26 12:27"
+            "submitDateTime": "2024-06-26 12:27",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YIRG",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-24 12:08"
+            "submitDateTime": "2026-06-24 12:08",
+            "ingested": 2
           }
         },
         "8891": {
           "minus8": {
             "docID": "S100DD3E",
             "periodEnd": "2018-03-31",
-            "submitDateTime": "2018-06-26 12:21"
+            "submitDateTime": "2018-06-26 12:21",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100IWNI",
             "periodEnd": "2020-03-31",
-            "submitDateTime": "2020-06-24 09:08"
+            "submitDateTime": "2020-06-24 09:08",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100LSWR",
             "periodEnd": "2021-03-31",
-            "submitDateTime": "2021-06-28 14:20"
+            "submitDateTime": "2021-06-28 14:20",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100OH95",
             "periodEnd": "2022-03-31",
-            "submitDateTime": "2022-06-27 13:04"
+            "submitDateTime": "2022-06-27 13:04",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100TPO7",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-26 13:00"
+            "submitDateTime": "2024-06-26 13:00",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YF0Z",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-22 14:34"
+            "submitDateTime": "2026-06-22 14:34",
+            "ingested": 2
           }
         },
         "3231": {
@@ -2872,32 +2913,38 @@
           "minus8": {
             "docID": "S100E5P4",
             "periodEnd": "2018-06-30",
-            "submitDateTime": "2018-09-25 13:52"
+            "submitDateTime": "2018-09-25 13:52",
+            "ingested": 2
           },
           "minus6": {
             "docID": "S100JRGZ",
             "periodEnd": "2020-06-30",
-            "submitDateTime": "2020-09-28 14:11"
+            "submitDateTime": "2020-09-28 14:11",
+            "ingested": 2
           },
           "minus5": {
             "docID": "S100MIEB",
             "periodEnd": "2021-06-30",
-            "submitDateTime": "2021-09-29 11:39"
+            "submitDateTime": "2021-09-29 11:39",
+            "ingested": 2
           },
           "minus4": {
             "docID": "S100P9HN",
             "periodEnd": "2022-06-30",
-            "submitDateTime": "2022-09-29 12:29"
+            "submitDateTime": "2022-09-29 12:29",
+            "ingested": 2
           },
           "minus2": {
             "docID": "S100UFYL",
             "periodEnd": "2024-06-30",
-            "submitDateTime": "2024-09-27 11:44"
+            "submitDateTime": "2024-09-27 11:44",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100Z4HA",
             "periodEnd": "2026-06-30",
-            "submitDateTime": "2026-09-28 12:36"
+            "submitDateTime": "2026-09-28 12:36",
+            "ingested": 2
           }
         },
         "2975": {
@@ -3000,12 +3047,14 @@
           "minus2": {
             "docID": "S100TS73",
             "periodEnd": "2024-03-31",
-            "submitDateTime": "2024-06-26 13:00"
+            "submitDateTime": "2024-06-26 13:00",
+            "ingested": 2
           },
           "latest": {
             "docID": "S100YGKW",
             "periodEnd": "2026-03-31",
-            "submitDateTime": "2026-06-23 13:15"
+            "submitDateTime": "2026-06-23 13:15",
+            "ingested": 2
           }
         }
       },
@@ -3025,10 +3074,17 @@
           "note": ""
         },
         "1420": {
-          "share": null,
-          "segments": {},
+          "share": 1.0,
           "pass": true,
-          "note": "single segment or no segment revenue tagged: passes"
+          "segments": {
+            "HousingBusinessMember": 0.455,
+            "CondominiumsMember": 0.545
+          },
+          "residential": [
+            "CondominiumsMember",
+            "HousingBusinessMember"
+          ],
+          "note": ""
         },
         "1431": {
           "share": null,
@@ -3054,12 +3110,11 @@
           "note": ""
         },
         "1873": {
-          "share": 0.855,
+          "share": 0.859,
           "pass": true,
           "segments": {
-            "HousingReportableSegmentsMember": 0.855,
-            "HotelReportableSegmentsMember": 0.14,
-            "OtherReportableSegmentsMember": 0.005
+            "HousingReportableSegmentsMember": 0.859,
+            "HotelReportableSegmentsMember": 0.141
           },
           "residential": [
             "HousingReportableSegmentsMember"
@@ -3300,30 +3355,33 @@
           "note": ""
         },
         "1430": {
-          "share": 0.245,
-          "pass": false,
+          "share": 1.0,
+          "pass": true,
           "segments": {
             "ConstructionReportableSegmentMember": 0.755,
             "RealEstateBusinessReportableSegmentMember": 0.245
           },
           "residential": [
+            "ConstructionReportableSegmentMember",
             "RealEstateBusinessReportableSegmentMember"
           ],
-          "note": ""
+          "note": "ConstructionReportableSegmentMember: ファーストコーポレーション 建設事業: construction of condominiums for developers"
         },
         "1766": {
-          "share": 0.0,
+          "share": 0.427,
           "pass": false,
           "segments": {
             "ConstructionReportableSegmentsMember": 0.427,
             "LeasingReportableSegmentsMember": 0.573
           },
-          "residential": [],
-          "note": ""
+          "residential": [
+            "ConstructionReportableSegmentsMember"
+          ],
+          "note": "ConstructionReportableSegmentsMember: 東建コーポレーション 建設事業: rental apartments built for landowners (as 大東建託)"
         },
         "1808": {
-          "share": 0.125,
-          "pass": false,
+          "share": 0.997,
+          "pass": true,
           "segments": {
             "ConstructionRelatedBusinessReportableSegmentsMember": 0.644,
             "RealEstateRelatedBusinessReportableSegmentMember": 0.228,
@@ -3331,9 +3389,11 @@
             "OverseasBusinessReportableSegmentMember": 0.003
           },
           "residential": [
-            "CondominiumManagementAndOperationBusinessReportableSegmentMember"
+            "CondominiumManagementAndOperationBusinessReportableSegmentMember",
+            "ConstructionRelatedBusinessReportableSegmentsMember",
+            "RealEstateRelatedBusinessReportableSegmentMember"
           ],
-          "note": ""
+          "note": "ConstructionRelatedBusinessReportableSegmentsMember: 長谷工 建設関連事業: planning, design and construction of condominiums; detached houses through subsidiaries; RealEstateRelatedBusinessReportableSegmentMember: 長谷工 不動産関連事業: condominium sales, resale brokerage and renovation"
         },
         "1814": {
           "share": null,
@@ -3365,29 +3425,33 @@
           "note": ""
         },
         "2976": {
-          "share": 0.0,
-          "pass": false,
+          "share": 0.783,
+          "pass": true,
           "segments": {
             "RealEstateLotReportableSegmentMember": 0.783,
             "RealEstateLeasingBusinessReportableSegmentMember": 0.168,
             "RealEstateRelatedReportableSegmentMember": 0.049
           },
-          "residential": [],
-          "note": ""
+          "residential": [
+            "RealEstateLotReportableSegmentMember"
+          ],
+          "note": "RealEstateLotReportableSegmentMember: 日本グランデ 不動産分譲事業: condominiums and detached houses for sale (Sapporo)"
         },
         "2981": {
-          "share": 0.0,
-          "pass": false,
+          "share": 0.995,
+          "pass": true,
           "segments": {
             "SumuzuReportableSegmentMember": 0.995,
             "LeaseReportableSegmentMember": 0.005
           },
-          "residential": [],
-          "note": ""
+          "residential": [
+            "SumuzuReportableSegmentMember"
+          ],
+          "note": "SumuzuReportableSegmentMember: ランディックス sumuzu事業: residential land sales, brokerage and custom-house matching, income residences"
         },
         "3231": {
-          "share": 0.796,
-          "pass": true,
+          "share": 0.458,
+          "pass": false,
           "segments": {
             "ResidentialDevelopmentBusinessReportableSegmentsMember": 0.458,
             "CommercialRealEstateBusinessReportableSegmentsMember": 0.338,
@@ -3397,14 +3461,13 @@
             "PropertyAndFacilityManagementBusinessReportableSegmentsMember": 0.116
           },
           "residential": [
-            "CommercialRealEstateBusinessReportableSegmentsMember",
             "ResidentialDevelopmentBusinessReportableSegmentsMember"
           ],
-          "note": ""
+          "note": "CommercialRealEstateBusinessReportableSegmentsMember: 野村不動産 都市開発事業: offices, retail and logistics"
         },
         "3284": {
-          "share": 0.457,
-          "pass": false,
+          "share": 0.56,
+          "pass": true,
           "segments": {
             "CondominiumApartmentsForFamiliesAndSinglesReportableSegmentMember": 0.457,
             "ContinuingCareRetirementCommunityReportableSegmentMember": 0.103,
@@ -3412,9 +3475,10 @@
             "PropertyManagementAndRelatedServicesReportableSegmentMember": 0.061
           },
           "residential": [
-            "CondominiumApartmentsForFamiliesAndSinglesReportableSegmentMember"
+            "CondominiumApartmentsForFamiliesAndSinglesReportableSegmentMember",
+            "ContinuingCareRetirementCommunityReportableSegmentMember"
           ],
-          "note": ""
+          "note": "ContinuingCareRetirementCommunityReportableSegmentMember: フージャース CCRC事業: condominiums for seniors, sold"
         },
         "3457": {
           "share": 0.921,
@@ -3429,27 +3493,31 @@
             "HouseLeasebackBussinessReportableSegmentsMember",
             "RealEstateBusinessReportableSegmentsMember"
           ],
-          "note": ""
+          "note": "RealEstateBusinessReportableSegmentsMember: And Do 不動産売買事業: buying, renovating and reselling mainly second-hand houses"
         },
         "3475": {
-          "share": 0.0,
-          "pass": false,
+          "share": 0.941,
+          "pass": true,
           "segments": {
             "WholesaleReportableSegmentsMember": 0.754,
             "RetailSalesReportableSegmentsMember": 0.187,
             "LivenupGroupReportableSegmentMember": 0.058,
             "OthersReportableSegmentsMember": 0.001
           },
-          "residential": [],
-          "note": ""
+          "residential": [
+            "RetailSalesReportableSegmentsMember",
+            "WholesaleReportableSegmentsMember"
+          ],
+          "note": "WholesaleReportableSegmentsMember: グッドコムアセット: new investment condominiums (GENOVIA) sold in bulk; RetailSalesReportableSegmentsMember: グッドコムアセット: new investment condominiums sold to individuals"
         },
         "8844": {
-          "share": 0.402,
+          "share": 0.323,
           "pass": false,
           "segments": {
-            "RealEstateSalesAndBrokerageReportableSegmentsMember": 0.402,
-            "RealEstateSolutionsReportableSegmentsMember": 0.529,
-            "ConstructionWorksReportableSegmentsMember": 0.069
+            "RealEstateSalesAndBrokerageReportableSegmentsMember": 0.323,
+            "RealEstateSolutionsReportableSegmentsMember": 0.426,
+            "ConstructionWorksReportableSegmentsMember": 0.056,
+            "AccommodationBusinessReportablrSegmentsMember": 0.195
           },
           "residential": [
             "RealEstateSalesAndBrokerageReportableSegmentsMember"
@@ -3457,7 +3525,7 @@
           "note": ""
         },
         "8850": {
-          "share": 0.032,
+          "share": 0.374,
           "pass": false,
           "segments": {
             "ConstructionBusinessReportableSegmentsMember": 0.342,
@@ -3470,18 +3538,128 @@
             "ProductSaleBusinessReportableSegmentsMember": 0.004
           },
           "residential": [
+            "ConstructionBusinessReportableSegmentsMember",
             "SaleInLotsRealEstateBusinessReportableSegmentsMember"
+          ],
+          "note": "ConstructionBusinessReportableSegmentsMember: スターツ 建設事業: land-use apartment construction and detached houses"
+        },
+        "8869": {
+          "share": 0.613,
+          "pass": true,
+          "segments": {
+            "RealEstateManagementBusinessReportableSegmentsMember": 0.074,
+            "RealEstateRentalBusinessReportableSegmentsMember": 0.007,
+            "ResidentialDevelopmentBusinessMember": 0.613,
+            "RealEstateAgencyBusinessMember": 0.305
+          },
+          "residential": [
+            "ResidentialDevelopmentBusinessMember"
           ],
           "note": ""
         },
-        "8869": {
+        "8877": {
           "share": 0.0,
           "pass": false,
           "segments": {
-            "RealEstateManagementBusinessReportableSegmentsMember": 0.91,
-            "RealEstateRentalBusinessReportableSegmentsMember": 0.09
+            "SellingOfRealEstateReportableSegmentsMember": 1.0
           },
           "residential": [],
+          "note": ""
+        },
+        "8881": {
+          "share": 0.0,
+          "pass": false,
+          "segments": {
+            "RealEstateReportableSegmentsMember": 0.358,
+            "ConstructionReportableSegmentsMember": 0.449,
+            "RealEstateManagementReportableSegmentsMember": 0.194
+          },
+          "residential": [],
+          "note": ""
+        },
+        "8891": {
+          "share": 0.0,
+          "pass": false,
+          "segments": {
+            "ConstructionReportableSegmentMember": 0.326,
+            "RealEstateDevelopmentBusinessReportableSegmentMember": 0.647,
+            "RealEstateManagementBusinessReportableSegmentsMember": 0.027
+          },
+          "residential": [],
+          "note": ""
+        },
+        "8892": {
+          "share": 0.471,
+          "pass": false,
+          "segments": {
+            "CondominiumBusinessReportableSegmentsMember": 0.471,
+            "RealEstateDevelopmentBusinessReportableSegmentsMember": 0.385,
+            "LeasingAndPropertyManagementBusinessReportableSegmentsMember": 0.128,
+            "AssetManagementBusinessReportableSegmentsMember": 0.016
+          },
+          "residential": [
+            "CondominiumBusinessReportableSegmentsMember"
+          ],
+          "note": ""
+        },
+        "8897": {
+          "share": 0.938,
+          "pass": true,
+          "segments": {
+            "RealEstateBusinessReportableSegmentsMember": 0.938,
+            "EnergyBusinessReportableSegmentsMember": 0.056,
+            "AssetManagementBusinessReportableSegmentsMember": 0.006
+          },
+          "residential": [
+            "RealEstateBusinessReportableSegmentsMember"
+          ],
+          "note": ""
+        },
+        "8928": {
+          "share": 0.0,
+          "pass": false,
+          "segments": {
+            "RealEstateRelatedBusinessReportableSegmentsMember": 0.749,
+            "HumanResourceServiceBusinessReportableSegmentsMember": 0.046,
+            "FacilitiesOperationBusinessReportableSegmentsMember": 0.064,
+            "MedicalServicsBusinessReportableSegmentsMember": 0.055,
+            "TourismBusinessReportableSegmentsMember": 0.016,
+            "EnergyBusinessMember": 0.069
+          },
+          "residential": [],
+          "note": ""
+        },
+        "8931": {
+          "share": 0.921,
+          "pass": true,
+          "segments": {
+            "CondominiumSalesReportableSegmentsMember": 0.815,
+            "SingleFamilyHouseSalesReportableSegmentsMember": 0.042,
+            "OtherRealEstateSalesReportableSegmentsMember": 0.064,
+            "RentIncomeOfRealEstateReportableSegmentsMember": 0.079
+          },
+          "residential": [
+            "CondominiumSalesReportableSegmentsMember",
+            "OtherRealEstateSalesReportableSegmentsMember",
+            "SingleFamilyHouseSalesReportableSegmentsMember"
+          ],
+          "note": ""
+        },
+        "8995": {
+          "share": 0.994,
+          "pass": true,
+          "segments": {
+            "BuiltForSaleHouseDetachedHouseForInstallmentSalesReportableSegmentsMember": 0.491,
+            "ContractHousingDetachedHouseForInstallmentSalesReportableSegmentsMember": 0.006,
+            "DetachedHouseForInstallmentSalesReportableSegmentsMember": 0.497,
+            "RealEstateIntermediaryReportableSegmentsMember": 0.002,
+            "RealEstateLeasingBusinessReportableSegmentMember": 0.004
+          },
+          "residential": [
+            "BuiltForSaleHouseDetachedHouseForInstallmentSalesReportableSegmentsMember",
+            "ContractHousingDetachedHouseForInstallmentSalesReportableSegmentsMember",
+            "DetachedHouseForInstallmentSalesReportableSegmentsMember"
+          ],
           "note": ""
         }
       },
@@ -4045,11 +4223,17 @@
       "ended": "2026-10-30T06:52:07+09:00",
       "iterations": 395,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261030-070550",
+      "ended": "2026-10-30T07:07:42+09:00",
+      "iterations": 39,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
     "changelog": "v2.009",
-    "research_summary": "2026-10-30-n193",
+    "research_summary": "2026-10-30-n253",
     "factor_monitor_removed": true,
     "summary_report": "reports/summary_2026-10-23.html",
     "old_debate_monitors_removed": true,
