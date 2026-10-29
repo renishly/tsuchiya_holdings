@@ -72,3 +72,5 @@ R-20261030-064418,2026-10-30T06:52:07+09:00,research,no,,,2,5454,1460,nvidia/nem
 R-20261030-064418,2026-10-30T06:52:07+09:00,research,no,,,2,5454,1460,nvidia/nemotron-3-ultra-550b-a55b:free,research,research,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261030-070550,2026-10-30T07:07:41+09:00,research,no,,,2,6129,1266,nvidia/nemotron-3-ultra-550b-a55b:free,baseline,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261030-070550,2026-10-30T07:07:41+09:00,research,no,,,2,6129,1266,nvidia/nemotron-3-ultra-550b-a55b:free,research,research,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261030-071845,2026-10-30T07:19:52+09:00,research,no,,,2,6246,1213,nvidia/nemotron-3-ultra-550b-a55b:free,baseline,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261030-071845,2026-10-30T07:19:52+09:00,research,no,,,2,6246,1213,nvidia/nemotron-3-ultra-550b-a55b:free,research,research,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete

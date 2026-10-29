@@ -1,106 +1,106 @@
 {
  "pending": {
-  "version": "2026-10-30-n253",
+  "version": "2026-10-30-n284",
   "status": "pending approval",
   "m1": {
    "year_effects": {
-    "2016": -0.6842371064402833,
-    "2017": -1.2339854937729555,
-    "2018": -1.2642563435118053,
-    "2019": -1.499544736139732,
-    "2020": -1.6029117783859022,
-    "2021": -1.4283373759679774,
-    "2022": -1.4298600505627113,
-    "2023": -1.2568837752856168,
-    "2024": -1.281568965641708,
-    "2025": -1.192150746715989,
-    "2026": -1.1595927678332483
+    "2016": -1.346096271263124,
+    "2017": -1.433749357164898,
+    "2018": -1.514593610249401,
+    "2019": -1.7577991827803103,
+    "2020": -1.8786480093655393,
+    "2021": -1.7015014607401449,
+    "2022": -1.7076405614645944,
+    "2023": -1.5229913967398134,
+    "2024": -1.5323001082475027,
+    "2025": -1.452577798185802,
+    "2026": -1.443559051884672
    },
    "year_counts": {
-    "2016": 2,
-    "2017": 20,
-    "2018": 19,
-    "2019": 22,
-    "2020": 24,
-    "2021": 26,
-    "2022": 26,
-    "2023": 29,
-    "2024": 28,
-    "2025": 30,
-    "2026": 27
+    "2016": 3,
+    "2017": 23,
+    "2018": 22,
+    "2019": 25,
+    "2020": 27,
+    "2021": 29,
+    "2022": 29,
+    "2023": 32,
+    "2024": 31,
+    "2025": 33,
+    "2026": 30
    },
    "coef": {
-    "roe_norm": 6.388095840239251,
-    "growth": -0.08132108163686728,
-    "log_revenue": 0.012727978287104348
+    "roe_norm": 6.396269877817416,
+    "growth": -0.296598850002419,
+    "log_revenue": 0.02261729589812409
    },
    "y": "log_pb",
    "winsor": {
     "roe_norm": [
-     0.018873325266436744,
-     0.2707100134825041
+     0.02519165718954473,
+     0.2627712478550672
     ],
     "growth": [
-     -0.05667270551238152,
-     0.281680937422158
+     -0.054977177906796806,
+     0.2909331722492516
     ],
     "log_revenue": [
-     22.936811227321613,
-     28.729278162158646
+     22.930505030707902,
+     28.574015665826366
     ]
    },
-   "scale": 0.3692645218438638,
-   "n": 253,
-   "r2_weighted": 0.5935251794242227
+   "scale": 0.3578488767777601,
+   "n": 284,
+   "r2_weighted": 0.5549148583413837
   },
   "m1_ev": {
    "year_effects": {
-    "2017": 4.088252884873193,
-    "2018": 4.19772292165011,
-    "2019": 4.253198623259598,
-    "2020": 4.122126954189386,
-    "2021": 4.361778457767757,
-    "2022": 4.350385470936345,
-    "2023": 4.503879887656492,
-    "2024": 4.5006609541430835,
-    "2025": 4.596221474887886,
-    "2026": 4.6361141772025976
+    "2017": 3.6382231798098084,
+    "2018": 3.650385226352021,
+    "2019": 3.690838616164712,
+    "2020": 3.5800489098905395,
+    "2021": 3.824770729672992,
+    "2022": 3.814926331068982,
+    "2023": 4.032715776173024,
+    "2024": 4.046124852102911,
+    "2025": 4.119162862610808,
+    "2026": 4.157658014940373
    },
    "year_counts": {
     "2017": 2,
-    "2018": 18,
-    "2019": 19,
-    "2020": 19,
-    "2021": 24,
-    "2022": 24,
-    "2023": 27,
-    "2024": 26,
-    "2025": 29,
-    "2026": 26
+    "2018": 21,
+    "2019": 22,
+    "2020": 22,
+    "2021": 27,
+    "2022": 27,
+    "2023": 30,
+    "2024": 29,
+    "2025": 32,
+    "2026": 29
    },
    "coef": {
-    "margin": -3.0958297428702797,
-    "growth": 0.7154773845610333,
-    "log_revenue": -0.08109477925163815
+    "margin": -3.800465004402553,
+    "growth": 0.4550666555337351,
+    "log_revenue": -0.05934131445949063
    },
    "y": "log_ev_ebitda",
    "winsor": {
     "margin": [
-     0.019821825448153998,
-     0.11336158849987746
+     0.025148282427195353,
+     0.1186840455444909
     ],
     "growth": [
-     -0.051720562132072184,
-     0.29262494929596655
+     -0.03991888660717102,
+     0.29644356613049316
     ],
     "log_revenue": [
-     23.161026116611335,
-     28.834830221981512
+     23.07253659549101,
+     28.70562584896784
     ]
    },
-   "scale": 0.45548439315320405,
-   "n": 214,
-   "r2_weighted": 0.20629855687104826
+   "scale": 0.4636705421360355,
+   "n": 241,
+   "r2_weighted": 0.224370958557362
   },
   "backtest": {
    "freq": "annual",
@@ -112,131 +112,132 @@
    "methods": {
     "M1 (P/B regression)": {
      "months": 8,
-     "mean_ic": 0.1246,
-     "t": 2.13,
-     "top_minus_bottom": 0.0167,
-     "hit_rate": 0.522,
-     "median_abs_error": 0.277
+     "mean_ic": 0.1367,
+     "t": 2.48,
+     "top_minus_bottom": 0.0792,
+     "hit_rate": 0.49,
+     "median_abs_error": 0.291
     },
     "P/B (own history)": {
      "months": 7,
-     "mean_ic": 0.0626,
-     "t": 0.66,
-     "top_minus_bottom": -0.0292,
-     "hit_rate": 0.475,
+     "mean_ic": 0.0702,
+     "t": 0.71,
+     "top_minus_bottom": 0.0261,
+     "hit_rate": 0.488,
      "median_abs_error": 0.191
     },
     "P/B (peers)": {
      "months": 9,
-     "mean_ic": -0.0232,
-     "t": -0.62,
-     "top_minus_bottom": -0.1134,
-     "hit_rate": 0.449,
-     "median_abs_error": 0.405
+     "mean_ic": 0.0232,
+     "t": 0.67,
+     "top_minus_bottom": -0.0112,
+     "hit_rate": 0.474,
+     "median_abs_error": 0.369
     },
     "P/E (peers, trailing)": {
      "months": 9,
-     "mean_ic": 0.1357,
-     "t": 2.88,
-     "top_minus_bottom": 0.0988,
-     "hit_rate": 0.525,
-     "median_abs_error": 0.352
+     "mean_ic": 0.1421,
+     "t": 2.64,
+     "top_minus_bottom": 0.0882,
+     "hit_rate": 0.516,
+     "median_abs_error": 0.327
     },
     "M1 (EV/EBITDA regression)": {
      "months": 7,
-     "mean_ic": 0.0881,
-     "t": 1.64,
-     "top_minus_bottom": 0.109,
-     "hit_rate": 0.479,
-     "median_abs_error": 0.519
+     "mean_ic": 0.1768,
+     "t": 3.85,
+     "top_minus_bottom": 0.1903,
+     "hit_rate": 0.513,
+     "median_abs_error": 0.518
     },
     "EV/EBITDA (own history)": {
      "months": 7,
-     "mean_ic": -0.0329,
-     "t": -0.44,
-     "top_minus_bottom": 0.0749,
+     "mean_ic": -0.019,
+     "t": -0.23,
+     "top_minus_bottom": 0.0932,
      "hit_rate": 0.455,
-     "median_abs_error": 0.371
+     "median_abs_error": 0.384
     },
     "EV/EBITDA (peers)": {
      "months": 9,
-     "mean_ic": 0.1085,
-     "t": 1.6,
-     "top_minus_bottom": 0.151,
-     "hit_rate": 0.476,
-     "median_abs_error": 0.524
+     "mean_ic": 0.1017,
+     "t": 1.77,
+     "top_minus_bottom": 0.1262,
+     "hit_rate": 0.541,
+     "median_abs_error": 0.512
     }
    },
    "monthly_reference": {
     "M1 (P/B regression)": {
-     "months": 88,
-     "mean_ic": 0.1334,
-     "t": 4.68,
-     "top_minus_bottom": 0.1077,
-     "hit_rate": 0.527,
+     "months": 90,
+     "mean_ic": 0.1489,
+     "t": 5.53,
+     "top_minus_bottom": 0.1159,
+     "hit_rate": 0.514,
      "median_abs_error": 0.267
     },
     "P/B (own history)": {
      "months": 75,
-     "mean_ic": 0.0429,
-     "t": 0.76,
-     "top_minus_bottom": -0.0077,
-     "hit_rate": 0.486,
-     "median_abs_error": 0.2
+     "mean_ic": 0.0351,
+     "t": 0.66,
+     "top_minus_bottom": -0.0039,
+     "hit_rate": 0.483,
+     "median_abs_error": 0.196
     },
     "P/B (peers)": {
      "months": 108,
-     "mean_ic": -0.025,
-     "t": -0.78,
-     "top_minus_bottom": -0.0821,
-     "hit_rate": 0.451,
-     "median_abs_error": 0.399
+     "mean_ic": 0.0084,
+     "t": 0.26,
+     "top_minus_bottom": -0.0483,
+     "hit_rate": 0.463,
+     "median_abs_error": 0.368
     },
     "P/E (peers, trailing)": {
      "months": 108,
-     "mean_ic": 0.1314,
-     "t": 4.62,
-     "top_minus_bottom": 0.1144,
-     "hit_rate": 0.515,
-     "median_abs_error": 0.332
+     "mean_ic": 0.1513,
+     "t": 5.12,
+     "top_minus_bottom": 0.1201,
+     "hit_rate": 0.532,
+     "median_abs_error": 0.34
     },
     "M1 (EV/EBITDA regression)": {
      "months": 75,
-     "mean_ic": 0.148,
-     "t": 2.28,
-     "top_minus_bottom": 0.1587,
-     "hit_rate": 0.523,
-     "median_abs_error": 0.511
+     "mean_ic": 0.1902,
+     "t": 5.29,
+     "top_minus_bottom": 0.1998,
+     "hit_rate": 0.541,
+     "median_abs_error": 0.5
     },
     "EV/EBITDA (own history)": {
      "months": 75,
-     "mean_ic": -0.0373,
-     "t": -0.67,
-     "top_minus_bottom": -0.0598,
-     "hit_rate": 0.468,
-     "median_abs_error": 0.346
+     "mean_ic": -0.0297,
+     "t": -0.54,
+     "top_minus_bottom": -0.0591,
+     "hit_rate": 0.461,
+     "median_abs_error": 0.352
     },
     "EV/EBITDA (peers)": {
      "months": 99,
-     "mean_ic": 0.1257,
-     "t": 3.36,
-     "top_minus_bottom": 0.1017,
-     "hit_rate": 0.517,
-     "median_abs_error": 0.515
+     "mean_ic": 0.1369,
+     "t": 3.76,
+     "top_minus_bottom": 0.1258,
+     "hit_rate": 0.544,
+     "median_abs_error": 0.51
     }
    }
   },
   "weights": {
    "weights": {
-    "M1 (P/B regression)": 0.3108,
+    "M1 (P/B regression)": 0.2215,
     "P/B (own history)": 0.0714,
     "P/B (peers)": 0.0714,
-    "P/E": 0.3321,
-    "M1 (EV/EBITDA regression)": 0.0714,
+    "P/E": 0.2274,
+    "M1 (EV/EBITDA regression)": 0.2655,
     "EV/EBITDA (own history)": 0.0714,
     "EV/EBITDA": 0.0714
    },
    "accepted": [
+    "M1 (EV/EBITDA regression)",
     "M1 (P/B regression)",
     "P/E"
    ],
@@ -259,19 +260,19 @@
     "ebitda3": 495290666.6666667
    },
    "fitted_pb": {
-    "pb": 0.48251678333396875,
-    "low": 0.30059573625129316,
-    "high": 0.7745367552529899,
+    "pb": 0.4837757825141499,
+    "low": 0.30582175114630883,
+    "high": 0.7652791433896766,
     "year_effect": "2026"
    },
    "fitted_ev": {
-    "multiple": 13.34847145318677,
-    "low": 7.445822092513622,
-    "high": 23.930425401339406,
+    "multiple": 13.639605261078875,
+    "low": 7.528814145340809,
+    "high": 24.710243616942023,
     "year_effect": "2026"
    }
   },
-  "created": "2026-10-30T07:07:11+09:00",
+  "created": "2026-10-30T07:19:14+09:00",
   "screen": {
    "1419": {
     "share": 0.706,
@@ -772,13 +773,15 @@
     "note": ""
    },
    "8877": {
-    "share": 0.0,
-    "pass": false,
+    "share": 1.0,
+    "pass": true,
     "segments": {
      "SellingOfRealEstateReportableSegmentsMember": 1.0
     },
-    "residential": [],
-    "note": ""
+    "residential": [
+     "SellingOfRealEstateReportableSegmentsMember"
+    ],
+    "note": "SellingOfRealEstateReportableSegmentsMember: エスリード 不動産販売事業: condominium sales (その他事業 is not tagged by segment)"
    },
    "8881": {
     "share": 0.0,
@@ -792,15 +795,17 @@
     "note": ""
    },
    "8891": {
-    "share": 0.0,
-    "pass": false,
+    "share": 0.647,
+    "pass": true,
     "segments": {
      "ConstructionReportableSegmentMember": 0.326,
      "RealEstateDevelopmentBusinessReportableSegmentMember": 0.647,
      "RealEstateManagementBusinessReportableSegmentsMember": 0.027
     },
-    "residential": [],
-    "note": ""
+    "residential": [
+     "RealEstateDevelopmentBusinessReportableSegmentMember"
+    ],
+    "note": "RealEstateDevelopmentBusinessReportableSegmentMember: AMG 不動産開発事業: condominiums and detached houses for sale"
    },
    "8892": {
     "share": 0.471,
@@ -830,8 +835,8 @@
     "note": ""
    },
    "8928": {
-    "share": 0.0,
-    "pass": false,
+    "share": 0.749,
+    "pass": true,
     "segments": {
      "RealEstateRelatedBusinessReportableSegmentsMember": 0.749,
      "HumanResourceServiceBusinessReportableSegmentsMember": 0.046,
@@ -840,8 +845,10 @@
      "TourismBusinessReportableSegmentsMember": 0.016,
      "EnergyBusinessMember": 0.069
     },
-    "residential": [],
-    "note": ""
+    "residential": [
+     "RealEstateRelatedBusinessReportableSegmentsMember"
+    ],
+    "note": "RealEstateRelatedBusinessReportableSegmentsMember: 穴吹興産 不動産関連事業: condominium and detached-house sales, custom houses"
    },
    "8931": {
     "share": 0.921,
@@ -878,9 +885,9 @@
    }
   },
   "panel": {
-   "rows": 253,
-   "companies": 29
+   "rows": 284,
+   "companies": 32
   },
-  "summary": "**Research run AR-20261030-02 — pending approval**\n\n**Universe & panel**: 29 housebuilders pass the ≥50% residential revenue screen (253 panel rows). Tsuchiya Holdings (1840, 土屋ホールディングス) is included with 100% residential share.\n\n**M1 equations**:  \n- P/B on 3-yr ROE (6.39), growth (−0.08), log revenue (0.01); n=253, residual scale 0.37.  \n- EV/EBITDA on 3-yr margin (−3.10), growth (0.72), log revenue (−0.08); n=214, scale 0.46.\n\n**Tsuchiya fitted multiples (2026 year effect)**: P/B 0.48 (0.30–0.77); EV/EBITDA 13.3 (7.4–23.9). Inputs: ROE 0.97%, growth −3.23%, margin 0.4%.\n\n**Annual backtest (9 non-overlapping years, 2016–2025)**: Only two methods meet the acceptance rule (mean IC > 0, t ≥ 2):  \n- M1 P/B regression: mean IC 0.12, t=2.13, top–bottom 1.7%, hit 52.2%.  \n- P/E peers (trailing): mean IC 0.14, t=2.88, top–bottom 9.9%, hit 52.5%.  \nAll other methods fail (negative/low IC or t < 2). Monthly reference (75–108 months) shows stronger IC and t for the same two methods.\n\n**Proposed weights**: M1 P/B 31.1%, P/E 33.2%, remaining five methods 7.1% each (½ equal + ½ by accepted IC).  \n\n**Weaknesses to note**: small universe (29 names); annual backtest only 9 observations; five of seven methods rejected; live P/E and EV/EBITDA use forward estimates while backtest uses trailing (no point-in-time forecast history); survivorship — panel requires price history.\n\n(Code check: 3 number(s) not found in the results and not verified: 20261030, 50%, 1840,)"
+  "summary": "Research run v2026-10-30-n284 (pending approval AR-20261030-03)\n\n- Panel: 284 firm-years across 32 listed housebuilders screened for residential revenue ≥50% (1840 土屋ホールディングス passes at 100%).\n- M1 P/B equation (n=284, scale 0.358): log P/B = 6.40×3yr ROE −0.30×growth +0.023×log revenue. M1 EV/EBITDA (n=241, scale 0.464): EV/EBITDA = −3.80×3yr margin +0.46×growth −0.059×log revenue.\n- Tsuchiya fitted multiples (2026 year effect): P/B 0.48 (0.31–0.77); EV/EBITDA 13.6 (7.5–24.7). Features: ROE 0.97%, growth −3.2%, margin 0.4%.\n- Annual backtest (9 non-overlapping years, 2016–2025): three methods clear the acceptance rule (mean IC>0, t≥2) — M1 EV/EBITDA (t=3.85), M1 P/B (t=2.48), P/E peers trailing (t=2.64). Four methods fail: P/B own history (t=0.71), P/B peers (t=0.67), EV/EBITDA own history (t=−0.23), EV/EBITDA peers (t=1.77).\n- Proposed weights blend equal share and accepted-method IC share: M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each other method 7.1%.\n- Weaknesses: only 32 companies; missing prices create survivorship bias; 4 of 7 methods not accepted by the backtest; live P/E and EV/EBITDA use forward estimates while their backtest uses trailing figures (no point-in-time forecast history).\n\n(Code check: 2 number(s) not found in the results and not verified: 20261030, 1840)"
  }
 }
