@@ -37,6 +37,7 @@ import universe
 from lib import ROOT, iso, log, queue_approval, approved, consume, write_text
 
 PARAMS = "state/model_params.json"
+TAX = 0.304                                                    # statutory effective rate used for clean ROE
 REGRESSORS = ["roe_norm", "growth", "log_revenue"]            # P/B equation
 EV_REGRESSORS = ["margin", "growth", "log_revenue"]           # EV/EBITDA equation
 MIN_OBS, MIN_IC_N, Z80 = 30, 6, 1.2816
@@ -72,11 +73,16 @@ def _features(fy: dict, years: list[str], i: int) -> dict | None:
     if not all(k in cur for k in ("bps", "revenue")) or cur["bps"][0] <= 0 or cur["revenue"][0] <= 0:
         return None
     roes = []
-    for y in years[max(0, i - 2): i + 1]:  # ROE is left blank in the summary in a loss year: net income ÷ net assets
-        if "roe" in fy[y]:
-            roes.append(fy[y]["roe"][0])
-        elif "net_income" in fy[y] and fy[y].get("net_assets", (0,))[0] > 0:
-            roes.append(fy[y]["net_income"][0] / fy[y]["net_assets"][0])
+    for y in years[max(0, i - 2): i + 1]:
+        # v2.008: clean ROE = ordinary profit × (1 − 30.4%) ÷ net assets, so one-off gains and losses and unusual
+        # tax charges drop out (like F3); reported ROE (or net income ÷ net assets) only if ordinary profit is missing
+        g = fy[y]
+        if "ordinary_profit" in g and g.get("net_assets", (0,))[0] > 0:
+            roes.append(g["ordinary_profit"][0] * (1 - TAX) / g["net_assets"][0])
+        elif "roe" in g:
+            roes.append(g["roe"][0])
+        elif "net_income" in g and g.get("net_assets", (0,))[0] > 0:
+            roes.append(g["net_income"][0] / g["net_assets"][0])
     if not roes:
         return None
     growth = None
@@ -93,8 +99,11 @@ def _features(fy: dict, years: list[str], i: int) -> dict | None:
     if all(k in cur for k in ("operating_profit", "depreciation", "debt", "cash", "net_assets")):
         margins = [fy[y]["operating_profit"][0] / fy[y]["revenue"][0] for y in years[max(0, i - 2): i + 1]
                    if "operating_profit" in fy[y] and fy[y].get("revenue", (0,))[0] > 0]
+        eb3 = [fy[y]["operating_profit"][0] + fy[y]["depreciation"][0] for y in years[max(0, i - 2): i + 1]
+               if "operating_profit" in fy[y] and "depreciation" in fy[y]]
         out.update(ebitda=cur["operating_profit"][0] + cur["depreciation"][0], debt=cur["debt"][0], cash=cur["cash"][0],
-                   shares=cur["net_assets"][0] / cur["bps"][0], margin=statistics.mean(margins) if margins else None)
+                   shares=cur["net_assets"][0] / cur["bps"][0], margin=statistics.mean(margins) if margins else None,
+                   ebitda3=statistics.mean(eb3) if len(eb3) >= 2 else None)
     return out
 
 
@@ -114,10 +123,12 @@ def panel(members: list[str] | None = None) -> list[dict]:
                 continue
             row = {"ticker": t, **f, "price": px[1], "date": px[0], "year": int(f["published"][:4]),
                    "log_pb": math.log(px[1] / f["bps"])}
-            if f.get("ebitda") and f["ebitda"] > 0 and f.get("margin") is not None:
+            # v2.008: log(EV ÷ 3-year average EBITDA); years where EBITDA dipped below half its 3-year average are left
+            # out, because a temporary dip inflates the multiple without saying anything about value
+            if f.get("ebitda3") and f["ebitda3"] > 0 and f.get("margin") is not None and f["ebitda"] >= 0.5 * f["ebitda3"]:
                 ev = px[1] * f["shares"] + f["debt"] - f["cash"]
-                if ev > 0 and ev / f["ebitda"] < 60:   # extreme multiples (near-zero EBITDA) carry no information
-                    row["ev_ebitda"] = ev / f["ebitda"]
+                if ev > 0:
+                    row["log_ev_ebitda"] = math.log(ev / f["ebitda3"])
             rows.append(row)
     return rows
 
@@ -174,11 +185,12 @@ def predict(model: dict, feats: dict) -> dict:
     if any(feats.get(k) is None for k in model["coef"]):
         return None
     xb = sum(c * min(max(feats[k], model["winsor"][k][0]), model["winsor"][k][1]) for k, c in model["coef"].items())
-    if model.get("y", "log_pb") == "log_pb":
-        pb = math.exp(a + xb)
-        return {"pb": pb, "low": pb * math.exp(-Z80 * model["scale"]), "high": pb * math.exp(Z80 * model["scale"]), "year_effect": good[-1]}
-    m = a + xb   # EV/EBITDA level equation
-    return {"multiple": m, "low": m - Z80 * model["scale"], "high": m + Z80 * model["scale"], "year_effect": good[-1]}
+    y = model.get("y", "log_pb")
+    v = math.exp(a + xb) if y.startswith("log_") else a + xb
+    lo, hi = (v * math.exp(-Z80 * model["scale"]), v * math.exp(Z80 * model["scale"])) if y.startswith("log_") else \
+             (v - Z80 * model["scale"], v + Z80 * model["scale"])
+    key = "pb" if y == "log_pb" else "multiple"
+    return {key: v, "low": lo, "high": hi, "year_effect": good[-1]}
 
 
 def latest_features(ticker: str) -> dict | None:
@@ -239,7 +251,16 @@ def _nw_t(x: list[float], lags: int = 11) -> float | None:
     return float(np.mean(x)) / math.sqrt(v / n) if v > 0 else None
 
 
-def backtest(rows: list[dict] | None = None) -> dict:
+def _t_plain(x: list[float]) -> float | None:
+    if len(x) < 3:
+        return None
+    sd = statistics.stdev(x)
+    return statistics.mean(x) / (sd / math.sqrt(len(x))) if sd > 0 else None
+
+
+def backtest(rows: list[dict] | None = None, freq: str = "annual") -> dict:
+    """freq "annual": one cross-section a year (end of July, after the main filing season), 12-month returns that do
+    not overlap, plain t. freq "monthly": every month-end, overlapping returns, Newey-West t (reference only)."""
     rows = rows if rows is not None else panel()
     P = _prices()
     F = {t: v for t, v in _fund_by_ticker().items() if t in {r["ticker"] for r in rows}}
@@ -255,11 +276,14 @@ def backtest(rows: list[dict] | None = None) -> dict:
     hits = {m: [] for m in methods}
     errs = {m: [] for m in methods}
     months = 0
-    for me in _month_ends(first, end):
+    dates = _month_ends(first, end)
+    if freq == "annual":
+        dates = [d for d in dates if d[5:7] == "07"]
+    for me in dates:
         train = [r for r in rows if r["date"] < me]
         enough = len(train) >= MIN_OBS and len({r["year"] for r in train}) >= 3
         model = fit(train) if enough else None
-        model_ev = fit(train, "ev_ebitda", EV_REGRESSORS) if enough else None
+        model_ev = fit(train, "log_ev_ebitda", EV_REGRESSORS) if enough else None
         later = (dt.date.fromisoformat(me) + dt.timedelta(days=365)).isoformat()
         snap = []
         for t, fy in F.items():
@@ -307,9 +331,9 @@ def backtest(rows: list[dict] | None = None) -> dict:
             v["P/B (peers)"] = med_pb * s["f"]["bps"]
             if med_pe and s["f"]["eps"] and s["f"]["eps"] > 0:
                 v["P/E (peers, trailing)"] = med_pe * s["f"]["eps"]
-            if model_ev and s["f"].get("margin") is not None:
-                pr = predict(model_ev, s["f"])
-                ps = per_share(pr["multiple"], s["f"]) if pr else None
+            if model_ev and s["f"].get("margin") is not None and s["f"].get("ebitda3"):
+                pr = predict(model_ev, s["f"])   # multiple on 3-year average EBITDA, applied to it
+                ps = ((pr["multiple"] * s["f"]["ebitda3"] - s["f"]["debt"] + s["f"]["cash"]) / s["f"]["shares"]) if pr else None
                 if ps and ps > 0:
                     v["M1 (EV/EBITDA regression)"] = ps
             if s["own_ev"]:
@@ -335,11 +359,13 @@ def backtest(rows: list[dict] | None = None) -> dict:
             mg, mr = statistics.median(gaps), statistics.median(rets)
             hits[m].append(statistics.mean(1.0 if (g - mg) * (r - mr) > 0 else 0.0 for g, r in zip(gaps, rets)))
             errs[m].extend(e)
-    res = {"months": months, "period": [first[:7], end[:7]], "methods": {}}
+    res = {"freq": freq, "months": months, "period": [first[:7], end[:7]], "methods": {}}
+    tf = _t_plain if freq == "annual" else _nw_t
     for m in methods:
         x = ics[m]
+        t = tf(x)
         res["methods"][m] = {"months": len(x), "mean_ic": round(statistics.mean(x), 4) if x else None,
-                             "t_nw": round(_nw_t(x), 2) if _nw_t(x) is not None else None,
+                             "t": round(t, 2) if t is not None else None,
                              "top_minus_bottom": round(statistics.mean(spread[m]), 4) if spread[m] else None,
                              "hit_rate": round(statistics.mean(hits[m]), 3) if hits[m] else None,
                              "median_abs_error": round(statistics.median(errs[m]), 3) if errs[m] else None}
@@ -355,14 +381,14 @@ UNTESTED: list[str] = []
 
 def propose_weights(bt: dict) -> dict:
     tested = {LIVE[m]: r for m, r in bt["methods"].items()}
-    accepted = {k: r["mean_ic"] for k, r in tested.items() if r["mean_ic"] and r["mean_ic"] > 0 and (r["t_nw"] or 0) >= 2}
+    accepted = {k: r["mean_ic"] for k, r in tested.items() if r["mean_ic"] and r["mean_ic"] > 0 and (r["t"] or 0) >= 2}
     names = list(tested) + UNTESTED
     eq = 1 / len(names)
     tot = sum(accepted.values())
     w = {k: 0.5 * eq + 0.5 * (accepted.get(k, 0) / tot if tot else eq) for k in names}
     s = sum(w.values())
     return {"weights": {k: round(v / s, 4) for k, v in w.items()}, "accepted": sorted(accepted),
-            "rule": "accepted if mean IC > 0 and Newey-West t ≥ 2; weight = ½ equal share + ½ share by accepted IC "
+            "rule": "accepted if mean IC > 0 and t ≥ 2 in the annual backtest (non-overlapping years); weight = ½ equal share + ½ share by accepted IC "
                     "(equal if none accepted). The live P/E and EV/EBITDA methods use forward figures; their backtest uses "
                     "trailing figures (no point-in-time forecast history)."}
 
@@ -391,10 +417,11 @@ def research(st) -> dict:
     """Fit M1 on the full panel, run the backtest, propose weights; store as pending and queue an approval."""
     rows = panel(universe.members(st))
     model = fit(rows)
-    model_ev = fit(rows, "ev_ebitda", EV_REGRESSORS)
+    model_ev = fit(rows, "log_ev_ebitda", EV_REGRESSORS)
     if not model:
         return {"panel_rows": len(rows), "fit": f"not enough observations ({len(rows)} < {MIN_OBS})"}
-    bt = backtest(rows)
+    bt = backtest(rows, "annual")              # decides acceptance and weights (v2.008)
+    bt["monthly_reference"] = backtest(rows, "monthly")["methods"]
     wts = propose_weights(bt) if "methods" in bt else {}
     feats = latest_features("1840")
     tsu = predict(model, feats) if feats else None
@@ -406,6 +433,11 @@ def research(st) -> dict:
                     "screen": universe._state(st)["screen"],
                     "panel": {"rows": len(rows), "companies": len({r["ticker"] for r in rows})}}
     write_text(PARAMS, json.dumps(p, ensure_ascii=False, indent=1))
+    import lib
+    for r in lib.pending_requests():  # an older research run's request is superseded by this one (only the newest can be approved)
+        if r["kind"] == "model_params" and r["id"] not in st["consumed_approvals"] and r["params"].get("version") != version:
+            consume(st, r["id"])
+            log(st, "research", {"approval": r["id"]}, f"superseded by {version}")
     ar = queue_approval(st, "model_params", "Use the new M1 coefficients and method weights in the daily valuation",
                         PARAMS, {"version": version},
                         "Research run: see reports/backtest_latest.html for the backtest, the M1 fit and the proposed weights.")
@@ -422,7 +454,7 @@ def _ev_section(p: dict) -> str:
     if not me:
         return "<h2>M1: EV/EBITDA equation</h2><p>Not fitted: not enough company-years with full statements yet.</p>"
     fe = (p.get("tsuchiya") or {}).get("fitted_ev") or {}
-    return ("<h2>M1: EV/EBITDA = year effect + c1·margin + c2·growth + c3·log(revenue)</h2><table><tr><th>Term</th><th>Coefficient</th></tr>"
+    return ("<h2>M1: log(EV ÷ 3-year average EBITDA) = year effect + c1·margin + c2·growth + c3·log(revenue)</h2><table><tr><th>Term</th><th>Coefficient</th></tr>"
             + "".join(f"<tr><td>{k}</td><td>{v:.4f}</td></tr>" for k, v in me["coef"].items())
             + f"</table><p>n = {me['n']}; robust residual scale {me['scale']:.3f}; weighted R² {me['r2_weighted']:.3f}. "
               f"Tsuchiya fitted EV/EBITDA {fe.get('multiple', float('nan')):.2f} (80% interval {fe.get('low', float('nan')):.2f}–{fe.get('high', float('nan')):.2f}).</p>")
@@ -445,7 +477,7 @@ def report_html(p: dict, ar: str) -> str:
     """A plain report of one research run: panel, M1 coefficients, backtest measures, proposed weights."""
     import html
     m, bt, w = p["m1"], p["backtest"], p["weights"]
-    rows_bt = "".join(f"<tr><td>{html.escape(k)}</td><td>{r['months']}</td><td>{r['mean_ic']}</td><td>{r['t_nw']}</td>"
+    rows_bt = "".join(f"<tr><td>{html.escape(k)}</td><td>{r['months']}</td><td>{r['mean_ic']}</td><td>{r['t']}</td>"
                       f"<td>{r['top_minus_bottom']}</td><td>{r['hit_rate']}</td><td>{r['median_abs_error']}</td></tr>"
                       for k, r in bt.get("methods", {}).items())
     rows_w = "".join(f"<tr><td>{html.escape(k)}</td><td>{v:.1%}</td></tr>" for k, v in (w.get("weights") or {}).items())
@@ -466,7 +498,7 @@ table{{border-collapse:collapse;width:100%;margin:.5rem 0 1.5rem}}td,th{{border-
 → fitted P/B {fp.get('pb', float('nan')):.3f} (80% interval {fp.get('low', float('nan')):.3f}–{fp.get('high', float('nan')):.3f}).</p>
 {_ev_section(p)}
 {_screen_section(p)}
-<h2>Backtest ({bt.get('months')} months, {' to '.join(bt.get('period', []))})</h2>
+<h2>Backtest ({bt.get('freq', 'monthly')}: {bt.get('months')} cross-sections, {' to '.join(bt.get('period', []))})</h2>
 <table><tr><th>Method</th><th>Months</th><th>Mean rank IC</th><th>t (Newey-West)</th><th>Top − bottom quintile</th><th>Hit rate</th><th>Median abs. error</th></tr>{rows_bt}</table>
 <h2>Proposed weights</h2><p>{html.escape(w.get('rule', ''))}. Accepted: {html.escape(', '.join(w.get('accepted') or []) or 'none')}.</p>
 <table><tr><th>Method</th><th>Weight</th></tr>{rows_w}</table></body></html>"""

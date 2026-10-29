@@ -824,7 +824,8 @@ def cmd_research_summary(a):
         return out({"stored": False, "reason": "no research run"})
     cur["summary"] = text
     write_text(modelfit.PARAMS, json.dumps(prm, ensure_ascii=False, indent=1))
-    write_text("reports/research_summary_latest.md", f"# Research run {cur['version']}\n\n{text}\n")
+    import htmlpages
+    htmlpages.research_summary(cur)  # A44: HTML, no scripts
     log(st, "research", {"version": cur["version"]}, "summary stored")
     return out({"stored": True, "version": cur["version"]})
 
@@ -857,6 +858,48 @@ def cmd_consensus_record(a):
 def cmd_headline(a):
     return out(review_view(CsvStore("Baseline Metrics")))
 
+def _overview_values(st, base, cr, ver, pend) -> dict:
+    """Values for the Main overview page (A44), read from Baseline Metrics, state and the research parameters."""
+    import htmlpages
+    import modelfit
+    def v(metric):
+        r = _latest(base, "1840", metric)
+        return r["value"] if r else None
+    px = _latest(base, "1840", "Stock Price")
+    wr = _latest(base, "1840", "Method weights")
+    weights = json.loads(wr["value"]) if wr and (wr["value"] or "").startswith("{") else {}
+    methods = []
+    for k, metric in htmlpages.METHOD_ROW.items():
+        r = _latest(base, "1840", metric)
+        if not r:
+            continue
+        note = r["correction_note"][:160] if r["correction_note"] else ""
+        methods.append((k, r["value"], weights.get(k), note))
+    mc = st["documents"].get("md_context") or {}
+    ds = st["documents"].get("debate_signal") or {}
+    prm = modelfit.load_params()
+    cur = prm.get("pending") or prm.get("approved") or {}
+    bt = cur.get("backtest") or {}
+    ms = {k: r for k, r in (bt.get("methods") or {}).items() if isinstance(r, dict) and "mean_ic" in r}
+    ms = {k: {**r, "t": r.get("t", r.get("t_nw"))} for k, r in ms.items()}  # runs before v2.008 stored t_nw (monthly)
+    freq = bt.get("freq", "monthly")
+    passed = [k for k, r in ms.items() if (r.get("mean_ic") or 0) > 0 and (r.get("t") or 0) >= 2]
+    n = max((r.get("months") or 0 for r in ms.values()), default=0)
+    sentence = (f"Latest test: {n} {freq} cross-sections ({'one per year' if freq == 'annual' else 'month-ends, overlapping'}); "
+                + (f"passed: {', '.join(passed)}." if passed else "no method passed the bar yet, so all valid methods keep equal weights."))
+    return {"price": v("Stock Price"), "price_date": px["quote_time_jst"][:10] if px else "", "combined": v("Average Valuated Price"),
+            "range_low": v("Valuation range low"), "range_high": v("Valuation range high"),
+            "expected_return": v("Expected Return (combined)"), "md": v("Md (operating profit)"), "methods": methods,
+            "weights_rule": (wr or {}).get("formula", ""),
+            "md_parts": {"forecast_op": mc.get("forecast_operating_profit"), "forecast_fy": mc.get("forecast_fy"),
+                         "guidance_date": mc.get("guidance_date"), "months_left": mc.get("months_left"),
+                         "baseline": v("Md: Discount Baseline"), "supply": v("Md: Supply Costs (% since guidance)"),
+                         "land": v("Md: Land Price Ave (% since guidance)"),
+                         "debate": v("Md: Debate Signal") or v("Md: Debate Signal (shadow)"), "debate_mode": ds.get("mode")},
+            "research": {"version": cur.get("version"), "status": cur.get("status"), "methods": ms, "sentence": sentence,
+                         "approved": (prm.get("approved") or {}).get("version")},
+            "pending": pend, "version": ver, "run_id": cr["run_id"]}
+
 def _dashboard_finish(st, cr, S) -> str:
     """Send this run's chosen results: one 'run summary' output, NEEDS ATTENTION items, and a few monitors."""
     try:
@@ -869,9 +912,9 @@ def _dashboard_finish(st, cr, S) -> str:
         pend = [r["id"] + " " + r["kind"] for r in lib.pending_requests() if r["id"] not in st["consumed_approvals"]]
         for a_ in cr["attention"]:
             dashboard.report(f"NEEDS ATTENTION: {a_}"[:300], "error")
-        dashboard.output({"run_id": cr["run_id"], "mode": cr["mode"], "phases_worked": list(dict.fromkeys(cr["phases_worked"])),
-                          "rows_total": rows, "needs_attention": cr["attention"], "pending_approvals": pend,
-                          "notes": cr["notes"][:5], "data": REPO_DATA}, "run summary")
+        import htmlpages  # A44: every report is a script-free HTML file
+        ver, ver_file = current_version()
+        dashboard.output(ROOT / htmlpages.run_summary(cr, phases, rows, pend, ver), "run summary")
         done = sum(1 for p in ACTIVE if phases[p] == "complete")
         dashboard.set_monitor(f"{done}/{len(ACTIVE)} baseline phases complete; last run {cr['run_id']}"
                               + (f"; {len(cr['attention'])} item(s) need attention" if cr["attention"] else ""), "Status")
@@ -949,7 +992,7 @@ def _dashboard_finish(st, cr, S) -> str:
                     "version": cur["version"], "status": cur.get("status"), "approval": cur.get("approval", "see Pending approvals"),
                     "panel": cur.get("panel"), "M1 coefficients": {k: round(v, 4) for k, v in cur["m1"]["coef"].items()},
                     "Tsuchiya fitted P/B": round((cur.get("tsuchiya", {}).get("fitted_pb") or {}).get("pb", float("nan")), 3),
-                    "backtest (mean IC / t)": {k: f"{r['mean_ic']} / {r['t_nw']}" for k, r in bt.items()},
+                    "backtest, annual (mean IC / t)": {k: f"{r['mean_ic']} / {r.get('t', r.get('t_nw'))}" for k, r in bt.items() if isinstance(r, dict) and "mean_ic" in r},
                     "proposed weights": (cur.get("weights") or {}).get("weights"),
                     "approved version in use": (prm.get("approved") or {}).get("version", "none (equal weights)"),
                 }, "Research (M1 and backtest)")
@@ -962,7 +1005,7 @@ def _dashboard_finish(st, cr, S) -> str:
                     st["dashboard_sent"]["summary_report"] = rp
                     save_state(st)
             if cur and cur.get("summary") and st.setdefault("dashboard_sent", {}).get("research_summary") != cur["version"]:
-                if dashboard.output(f"Research run {cur['version']}:\n{cur['summary']}", "research summary"):
+                if dashboard.output(ROOT / htmlpages.research_summary(cur), "research summary"):
                     st["dashboard_sent"]["research_summary"] = cur["version"]
                     save_state(st)
         except Exception as e:
@@ -974,7 +1017,10 @@ def _dashboard_finish(st, cr, S) -> str:
             sent0["factor_monitor_removed"] = True
             save_state(st)
         # A35: version on every dashboard agent; Main also outputs the stored changelog once per version
-        ver, ver_file = current_version()
+        try:  # A44: the plain-language overview of the Main page, first on the page
+            dashboard.set_monitor(ROOT / htmlpages.overview_main(_overview_values(st, base, cr, ver, pend)), "Overview (read me first)")
+        except Exception as e:
+            dashboard.report(f"overview page failed: {type(e).__name__}: {str(e)[:120]}", "error")
         dashboard.set_monitor(ver, "Version")
         sent = st.setdefault("dashboard_sent", {})
         if ver_file and sent.get("changelog") != ver and dashboard.output(ver_file, "changelog"):
@@ -986,90 +1032,31 @@ def _dashboard_finish(st, cr, S) -> str:
     except Exception as e:
         return f"dashboard error: {type(e).__name__}"
 
-def _last_consensus() -> dict | None:
-    p = ROOT / "logs" / "consensus_log.jsonl"
-    if not p.exists():
-        return None
-    last = None
-    for line in p.read_text(encoding="utf-8").splitlines():
-        try:
-            last = json.loads(line)
-        except ValueError:
-            continue
-    return last
-
 def _dashboard_debate(st, base, cr, show, ver) -> list[str]:
-    """C&A gets the consensus and arbitration; each debater gets only its own positions (no overlap with Main).
-    Until the Md debaters exist, Debater A/B carry the two sides of the current consensus debate (A32): the first
-    and second debating subagent, in the order they debate."""
+    """C&A and Debater A/B show the Md debate (A41-A42). The valuation debate of v2.004-v2.006 (baseline vs factor)
+    is retired: its monitors are removed once, so the pages never show factor-era results again."""
     import dashboard
     import evidence
-    cases = [c for c in evidence.read_cases() if c.get("stopped_at") != "gate 1 (scouts flagged nothing)"]
-    if cases:  # v2.007: the Md debate replaces the old valuation debate on these pages
-        return _dashboard_md_debate(st, cases[-1], ver)
-    sent = []
-    res = _last_consensus()
-    sent_before = st.setdefault("dashboard_sent", {})
-    new = bool(res and res.get("run_id") == cr["run_id"] and sent_before.get("debate") != cr["run_id"])
-    names = list((res or {}).get("prices", {}))
-    ca = dashboard.client("ca")
-    if ca.enabled():
-        ca.set_monitor(ver, "Version")
-        con = _latest(base, "1840", "Consensus Valuated Price")
-        if con:  # A32: the final number; the student's own target and view remain separate
-            ca.set_monitor({
-                "consensus price (JPY)": show("Consensus Valuated Price"),
-                "range (JPY)": f"{show('Consensus range low')} - {show('Consensus range high')}",
-                "current market price (JPY)": show("Stock Price"),
-                "status": (res or {}).get("status", "not available"),
-                "weights": (res or {}).get("weights", {}),
-                "date": con["access_date_jst"][:10],
-                "details": con["correction_note"][:600],
-                "note": "Last consensus between the debating subagents (inactive since v2.005: the factor subagent "
-                        "was removed). The target and view are the student's.",
-            }, "Consensus valuation")
-        else:
-            ca.set_monitor("no consensus yet", "Consensus valuation")
-        ref = (res or {}).get("referee")
-        ca.set_monitor({"mode": "off (REFEREE_MODE)", "note": "decision models not called"} if not ref else
-                       {"mode": ref.get("mode"), "judge": ref.get("judge_model"), "monitor": ref.get("monitor_model"),
-                        "judgement": ref.get("judge") or ref.get("error"), "turns scored": len(ref.get("turns") or []),
-                        "note": "shadow mode: logged only, changes nothing (A33)" if ref.get("mode") == "shadow" else ""},
-                       "Arbitration (decision models)")
-        if new:
-            ca.output({k: v for k, v in res.items() if k not in ("transcript", "referee")}, "consensus record")
-        ca.flush()
-        sent.append("C&A")
-    for prof, idx in (("debater_a", 0), ("debater_b", 1)):
-        c = dashboard.client(prof)
-        if not c.enabled():
-            continue
-        c.set_monitor(ver, "Version")
-        name = names[idx] if len(names) > idx else None
-        c.set_monitor("inactive since v2.005: the factor subagent was removed (A36) and the Md debaters are not built "
-                      f"yet. Shown below for reference: the '{name}' side of the last debate." if name else
-                      "inactive: no debate yet", "Role")
-        if name:
-            turns = [t for t in res.get("transcript", []) if t.get("name") == name]
-            last = turns[-1] if turns else {}
-            c.set_monitor({"status": "reference only (last debate before v2.005)", "date": res.get("date", "")[:10], "run_id": res.get("run_id"), "price argued (JPY)": res["prices"].get(name),
-                           "confidence": last.get("confidence"), "summary": (last.get("summary") or "")[:800],
-                           "claims kept": len(last.get("claims") or []), "claims rejected": len(last.get("rejected") or []),
-                           "concessions": last.get("concessions") or []}, "Latest position")
-            if new:
-                c.output({"run_id": res["run_id"], "turns": [{k: t.get(k) for k in ("round", "confidence", "summary", "claims",
-                                                                                       "challenges", "concessions", "rejected")}
-                                                              for t in turns]}, "debate turns")
-        c.flush()
-        sent.append(dashboard.LABELS[prof].replace("Tsuchibot ", ""))
-    if new and sent:  # this run's debate records go out once
-        sent_before["debate"] = cr["run_id"]
+    sent0 = st.setdefault("dashboard_sent", {})
+    if not sent0.get("old_debate_monitors_removed"):
+        for prof in ("ca", "debater_a", "debater_b"):
+            c = dashboard.client(prof)
+            if c.enabled():
+                for name in ("Consensus valuation", "Arbitration (decision models)", "Role", "Latest position"):
+                    c.delete_monitors(name)
+        sent0["old_debate_monitors_removed"] = True
         save_state(st)
-    return sent
+    cases = evidence.read_cases()
+    return _dashboard_md_debate(st, cases[-1] if cases else None, ver)
 
-def _dashboard_md_debate(st, case: dict, ver: str) -> list[str]:
+def _dashboard_md_debate(st, case: dict | None, ver: str) -> list[str]:
     """C&A: the decision and the Debate Signal; Debater A/B: their own positions (A41-A42). Records sent once."""
     import dashboard
+    import evidence
+    import htmlpages
+    board = evidence.load_board().get("items", {})
+    case = case or {"recorded": "", "stopped_at": "no Md debate yet (gate 0 has not opened at a daily check)", "items": [],
+                    "signal": 0.0, "mode": "shadow", "note": "", "positions": {}}
     sent_before = st.setdefault("dashboard_sent", {})
     new = sent_before.get("md_case") != case.get("recorded")
     sent = []
@@ -1085,9 +1072,10 @@ def _dashboard_md_debate(st, case: dict, ver: str) -> list[str]:
         ca.set_monitor({"judge": dec.get("model"), "evidence score A": dec.get("evidence_a"), "evidence score B": dec.get("evidence_b"),
                         "better supported": dec.get("supported"), "bucket": dec.get("bucket"), "error": dec.get("error"),
                         "turn monitor (Span-01 Lite)": case.get("monitor")}, "Arbitration (decision models)")
-        ca.set_monitor(None, "Consensus valuation")
-        if new:
-            ca.output({k: v for k, v in case.items() if k not in ("transcript", "positions")}, "md debate record")
+        ca.set_monitor(ROOT / htmlpages.overview_ca(case if case.get("recorded") else None, board, evidence.read_cases(), ver),
+                       "Overview (read me first)")
+        if new and case.get("recorded"):
+            ca.output(ROOT / htmlpages.debate_record(case, board), "md debate record")
         ca.flush()
         sent.append("C&A")
     for prof in ("debater_a", "debater_b"):
@@ -1102,8 +1090,10 @@ def _dashboard_md_debate(st, case: dict, ver: str) -> list[str]:
                        "confidence": pos.get("confidence"), "summary": pos.get("summary"), "claims kept": len(pos.get("claims") or []),
                        "claims rejected": pos.get("rejected_claims"), "concessions": pos.get("concessions")}
                       if pos else f"no position: debate stopped at {case.get('stopped_at')}", "Latest position")
+        c.set_monitor(ROOT / htmlpages.overview_debater(prof, case if case.get("recorded") else None, evidence.memory(prof), ver),
+                      "Overview (read me first)")
         if new and pos:
-            c.output({"recorded": case.get("recorded"), "turns": [t for t in case.get("transcript", []) if t.get("name") == prof]}, "debate turns")
+            c.output(ROOT / htmlpages.debate_turns(prof, case), "debate turns")
         c.flush()
         sent.append(dashboard.LABELS[prof].replace("Tsuchibot ", ""))
     if new and sent:
