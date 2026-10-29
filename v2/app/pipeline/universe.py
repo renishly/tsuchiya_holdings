@@ -1,6 +1,7 @@
 """M1 universe (Addendum A39, v2.006): listed Japanese housebuilders, their annual-report history and the screen.
 
-Candidates: listed companies in TSE 建設業 / 不動産業 whose core business is building or selling houses, checked
+Candidates: listed companies in TSE 建設業 / 不動産業 whose core business is building or selling houses (from v2.009 also
+condominium developers, residential construction and renovation firms, A45), checked
 against EDINET's code list (listed, with an EDINET code). The proposal's screen (D1) is applied to each candidate's
 latest 有報: the residential share of segment revenue must be at least 50% (segments matched by name); a company
 reporting a single segment passes with a note. Delisted housebuilders (e.g. ヒノキヤ, 三井ホーム, ウッドフレンズ)
@@ -18,6 +19,7 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import hashlib
 import io
 import re
 
@@ -35,6 +37,16 @@ CANDIDATES = {
     "2974": ("E34944", "大英産業", 9), "2983": ("E35144", "アールプランナー", 1), "1431": ("E31614", "Lib Work", 6),
     "3280": ("E26966", "エストラスト", 2), "3293": ("E30066", "アズマハウス", 3), "2999": ("E35234", "ホームポジション", 8),
     "1878": ("E00218", "大東建託", 3),
+    # v2.009 (A45): condominium developers, residential construction and renovation firms; the same ≥ 50% screen applies.
+    # Checked against EDINET's code list on 30 Oct 2026 (listed). Not available: シノケン, インテリックス (delisted).
+    "1808": ("E00090", "長谷工コーポレーション", 3), "8892": ("E03992", "エスコン", 3), "8897": ("E03997", "MIRARTHホールディングス", 3),
+    "8869": ("E03967", "明和地所", 3), "8928": ("E04025", "穴吹興産", 6), "1879": ("E00221", "新日本建設", 3),
+    "8844": ("E03938", "コスモスイニシア", 3), "3284": ("E27281", "フージャースホールディングス", 3), "8931": ("E04029", "和田興産", 2),
+    "8881": ("E03984", "日神グループホールディングス", 3), "1430": ("E31306", "ファーストコーポレーション", 5),
+    "1814": ("E00093", "大末建設", 3), "1766": ("E00281", "東建コーポレーション", 4), "3475": ("E30726", "グッドコムアセット", 10),
+    "2981": ("E35303", "ランディックス", 3), "2976": ("E34938", "日本グランデ", 3), "8995": ("E04049", "誠建設工業", 3),
+    "8891": ("E03991", "AMGホールディングス", 3), "8877": ("E03977", "エスリード", 3), "2975": ("E34707", "スター・マイカ・ホールディングス", 11),
+    "3231": ("E04060", "野村不動産ホールディングス", 3), "3457": ("E31284", "And Doホールディングス", 6), "8850": ("E03945", "スターツコーポレーション", 3),
 }
 RESIDENTIAL = re.compile(r"House|Housing|Home|Residential|Detached|Dwelling|Condominium|Remodel|Renovation|Reform|"
                          r"RealEstateSales|RealEstateBusiness(?!.*Leas)|Construction(?=.*Hous)", re.I)
@@ -95,6 +107,13 @@ def discover(st, max_days: int = 400) -> dict:
     u = _state(st)
     today = dt.date.fromisoformat(iso()[:10])
     by_code = {v[0]: t for t, v in CANDIDATES.items()}
+    # each scanned date remembers the candidate set it was scanned for, so added candidates rescan only their own dates
+    sets = u.setdefault("sets", {})
+    if "v1" not in sets:  # dates scanned before v2.009 (value True) were scanned for the first 22 candidates
+        sets["v1"] = sorted(CANDIDATES[t][0] for t in u["screen"] if t in CANDIDATES) or sorted(by_code)
+    cur = hashlib.sha1(",".join(sorted(by_code)).encode()).hexdigest()[:8]
+    sets[cur] = sorted(by_code)
+    seen_for = lambda date, code: date in u["scanned"] and code in sets.get(u["scanned"][date] if u["scanned"][date] is not True else "v1", [])
     targets = {}
     for t, (code, name, m) in CANDIDATES.items():
         last = latest_fy_end(today, m)
@@ -106,7 +125,7 @@ def discover(st, max_days: int = 400) -> dict:
         if u["docs"].get(t, {}).get(label):
             continue
         for date in edinet.candidate_dates(end):
-            if date in u["scanned"]:
+            if seen_for(date, CANDIDATES[t][0]):
                 continue
             if calls >= max_days:
                 return {"calls": calls, "remaining": sum(1 for k in targets if not u["docs"].get(k[0], {}).get(k[1]))}
@@ -116,7 +135,7 @@ def discover(st, max_days: int = 400) -> dict:
                 log(st, "universe", {"date": date}, f"paused: {e}")
                 return {"calls": calls, "paused": str(e)[:160]}
             calls += 1
-            u["scanned"][date] = True
+            u["scanned"][date] = cur
             for r in res:  # record every candidate's annual report seen that day
                 tk = by_code.get(r.get("edinetCode"))
                 if not tk or r.get("docTypeCode") != "120" or r.get("withdrawalStatus") not in (None, "0"):
