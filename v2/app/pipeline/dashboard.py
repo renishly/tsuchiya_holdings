@@ -14,6 +14,9 @@ is paused) go to an offline buffer per dashboard agent (main: v2/app/state/dashb
 state/dashboard_buffer_<profile>/; one JSON line per item, files copied), which survives restarts and is
 committed with the run. flush() resends oldest first.
 
+Agent Skills market (A46): post_skill, skills, read_skill, skill_details, download_skill, delete_skill, set_skill_tree,
+read_skill_tree and skill_categories go straight to the dashboard (not held while paused, not buffered).
+
 Module-level functions (output, set_monitor, report, check_in, ...) act on `main`; client(profile) returns the
 same API for another dashboard agent.
 """
@@ -22,6 +25,7 @@ from __future__ import annotations
 import json
 import mimetypes
 import os
+import re
 import shutil
 import tempfile
 import threading
@@ -494,6 +498,52 @@ class Client:
         code, r = self._call("DELETE", "/api/monitors", params={"all": "true"} if everything else {"name": name})
         return (r or {}).get("deleted", 0) if code == 200 else 0
 
+    # ------------------------------------------------------------ Agent Skills market (straight to the dashboard; never raise)
+    def post_skill(self, content, name=None, summary=None, share="class"):
+        """Posts a skill; posting the same name again updates it (next version). Returns the skill or None."""
+        body = {k: v for k, v in {"content": content, "name": name, "summary": summary, "share": share}.items() if v is not None}
+        code, r = self._call("POST", "/api/skills", json_body=body, timeout=LONG)
+        return r if code in (200, 201) else None
+
+    def skills(self, scope="class", query=None, category=None, sort=None, limit=None) -> list:
+        params = {k: v for k, v in {"scope": scope, "q": query, "category": category, "sort": sort, "limit": limit}.items() if v is not None}
+        code, r = self._call("GET", "/api/skills", params=params)
+        return r if code == 200 and isinstance(r, list) else []
+
+    def read_skill(self, ref):
+        """The latest text of a skill (read it each time it is needed, so updates arrive). None on failure."""
+        code, r = self._call("GET", f"/api/skills/{urllib.parse.quote(str(ref), safe='')}/content", stream=True)
+        return r.text if code == 200 and r is not None else None
+
+    def skill_details(self, ref):
+        code, r = self._call("GET", f"/api/skills/{urllib.parse.quote(str(ref), safe='')}")
+        return r if code == 200 else None
+
+    def download_skill(self, ref, save_to=None):
+        code, r = self._call("GET", f"/api/skills/{urllib.parse.quote(str(ref), safe='')}/download", stream=True)
+        if code != 200 or r is None:
+            return None
+        if not save_to:
+            return r.text
+        name = re.sub(r"[^\w.-]", "_", str(ref)) + ".md"
+        dest = Path(save_to) / name
+        dest.write_text(r.text, encoding="utf-8")
+        return dest
+
+    def delete_skill(self, ref) -> bool:
+        return self._call("DELETE", f"/api/skills/{urllib.parse.quote(str(ref), safe='')}")[0] == 200
+
+    def set_skill_tree(self, content) -> bool:
+        return self._call("PUT", "/api/skill-tree", json_body={"content": content}, timeout=LONG)[0] == 200
+
+    def read_skill_tree(self, agent_id):
+        code, r = self._call("GET", f"/api/skill-trees/{urllib.parse.quote(str(agent_id), safe='')}")
+        return r if code == 200 else None
+
+    def skill_categories(self) -> list:
+        code, r = self._call("GET", "/api/skill-categories")
+        return r if code == 200 else []
+
 
 # ---------------------------------------------------------------- profiles
 _clients: dict[str, Client] = {}
@@ -519,3 +569,6 @@ agents, read_agent, read_outputs, read_activity = _main.agents, _main.read_agent
 read_monitors, read_monitor, download = _main.read_monitors, _main.read_monitor, _main.download
 delete_output, delete_outputs, delete_event = _main.delete_output, _main.delete_outputs, _main.delete_event
 delete_activity, delete_monitors = _main.delete_activity, _main.delete_monitors
+post_skill, skills, read_skill, skill_details = _main.post_skill, _main.skills, _main.read_skill, _main.skill_details
+download_skill, delete_skill, set_skill_tree, read_skill_tree, skill_categories = (
+    _main.download_skill, _main.delete_skill, _main.set_skill_tree, _main.read_skill_tree, _main.skill_categories)

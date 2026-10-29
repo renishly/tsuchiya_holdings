@@ -21,8 +21,10 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import subprocess
 import sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -900,6 +902,51 @@ def _overview_values(st, base, cr, ver, pend) -> dict:
                          "approved": (prm.get("approved") or {}).get("version")},
             "pending": pend, "version": ver, "run_id": cr["run_id"]}
 
+SHARED_SKILLS = ["guardrails", "peer-multiples", "forecast-inputs", "forecast-discount", "own-history", "pb-method",
+                 "valuation-combine", "universe", "model-fit", "backtest", "evidence-board", "summary-report", "number-check",
+                 "news-scout", "debate-position", "debater-memory"]   # A46: the student's choice (30 Oct 2026)
+SKILL_SHARE = (os.environ.get("SKILL_SHARE") or "seminar").strip().lower()   # class | seminar
+SKILL_FOOTER = ("\n\n---\nShared by Tsuchibot, a research agent valuing Tsuchiya Holdings (1840) from public data for a seminar "
+                "thesis. Tool names in backticks are that agent's own. Benchmark from public data; not investment advice.\n")
+
+def _dashboard_skills(st) -> str:
+    """Post the shared skills (A46) when a SKILL.md changed since it was last posted, then the skill tree with their ids.
+    Posting the same name again updates the skill (next version). Returns a short note, or '' when nothing changed."""
+    import hashlib
+    import dashboard
+    sk_dir = Path(__file__).resolve().parent.parent / "skills"   # code directory (not the data root)
+    sent = st.setdefault("dashboard_sent", {}).setdefault("skills", {})
+    posted, failed = [], []
+    for name in SHARED_SKILLS:
+        f = sk_dir / name / "SKILL.md"
+        if not f.exists():
+            continue
+        text = f.read_text(encoding="utf-8").rstrip() + SKILL_FOOTER
+        h = hashlib.sha256((SKILL_SHARE + text).encode()).hexdigest()[:16]
+        if sent.get(name, {}).get("hash") == h:
+            continue
+        m = re.search(r"(?ms)^description:(.*?)^(?:---|\w+:)", text)
+        summary = " ".join(m.group(1).split())[:300] if m else None
+        r = dashboard.post_skill(text, name=name, summary=summary, share=SKILL_SHARE)
+        if r:
+            sent[name] = {"hash": h, "identifier": r.get("identifier"), "version": r.get("version"), "address": r.get("address")}
+            posted.append(name)
+        else:
+            failed.append(name)
+    tree = (sk_dir / "SKILL_TREE.md").read_text(encoding="utf-8").rstrip()
+    ids = "\n".join(f"- {n}: {v.get('identifier')} (v{v.get('version')})" for n, v in sent.items() if n in SHARED_SKILLS and isinstance(v, dict))
+    tree += ("\n\n## Shared skills on the market\n" + ids + "\n") if ids else "\n"
+    th = hashlib.sha256(tree.encode()).hexdigest()[:16]
+    tree_set = False
+    if st["dashboard_sent"].get("skill_tree") != th and dashboard.set_skill_tree(tree):
+        st["dashboard_sent"]["skill_tree"], tree_set = th, True
+    if posted or failed or tree_set:
+        save_state(st)
+    if not (posted or failed or tree_set):
+        return ""
+    return (f"skills: {len(posted)} posted ({SKILL_SHARE})" + (f", {len(failed)} failed ({', '.join(failed)})" if failed else "")
+            + ("; skill tree updated" if tree_set else ""))
+
 def _dashboard_finish(st, cr, S) -> str:
     """Send this run's chosen results: one 'run summary' output, NEEDS ATTENTION items, and a few monitors."""
     try:
@@ -1026,6 +1073,12 @@ def _dashboard_finish(st, cr, S) -> str:
         if ver_file and sent.get("changelog") != ver and dashboard.output(ver_file, "changelog"):
             sent["changelog"] = ver
             save_state(st)
+        try:  # A46: shared skills and the skill tree on the seminar's skill market (only when their text changed)
+            sk = _dashboard_skills(st)
+        except Exception as e:
+            sk = f"skills error: {type(e).__name__}"
+        if sk:
+            dashboard.report(sk[:300], "error" if "failed" in sk or "error" in sk else "log")
         others = _dashboard_debate(st, base, cr, show, ver)
         left = dashboard.flush()
         return (f"sent; {left} item(s) buffered" if left else "sent") + (f"; also {', '.join(others)}" if others else "")
