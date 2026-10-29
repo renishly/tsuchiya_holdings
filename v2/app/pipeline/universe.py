@@ -60,6 +60,19 @@ SEGMENT_OVERRIDES = {
     "1878": {"ConstructionReportableSegmentsMember": (True, "大東建託 建設事業: construction of rental apartment buildings for landowners")},
     "3280": {"RealEstateSaleInLotsBusinessReportableSegmentsMember": (True, "エストラスト 不動産分譲事業: detached houses and condominiums for sale")},
     "3293": {"RealEstateAndConstructionReportableSegmentsMember": (True, "アズマハウス 不動産事業・建設事業: built-for-sale and custom houses")},
+    # v2.009 (A45): from each company's 事業の内容 and セグメント情報 in its latest 有報
+    "1808": {"ConstructionRelatedBusinessReportableSegmentsMember": (True, "長谷工 建設関連事業: planning, design and construction of condominiums; detached houses through subsidiaries"),
+             "RealEstateRelatedBusinessReportableSegmentMember": (True, "長谷工 不動産関連事業: condominium sales, resale brokerage and renovation")},
+    "3284": {"ContinuingCareRetirementCommunityReportableSegmentMember": (True, "フージャース CCRC事業: condominiums for seniors, sold")},
+    "1430": {"ConstructionReportableSegmentMember": (True, "ファーストコーポレーション 建設事業: construction of condominiums for developers")},
+    "3475": {"WholesaleReportableSegmentsMember": (True, "グッドコムアセット: new investment condominiums (GENOVIA) sold in bulk"),
+             "RetailSalesReportableSegmentsMember": (True, "グッドコムアセット: new investment condominiums sold to individuals")},
+    "2981": {"SumuzuReportableSegmentMember": (True, "ランディックス sumuzu事業: residential land sales, brokerage and custom-house matching, income residences")},
+    "2976": {"RealEstateLotReportableSegmentMember": (True, "日本グランデ 不動産分譲事業: condominiums and detached houses for sale (Sapporo)")},
+    "3231": {"CommercialRealEstateBusinessReportableSegmentsMember": (False, "野村不動産 都市開発事業: offices, retail and logistics")},
+    "3457": {"RealEstateBusinessReportableSegmentsMember": (True, "And Do 不動産売買事業: buying, renovating and reselling mainly second-hand houses")},
+    "1766": {"ConstructionReportableSegmentsMember": (True, "東建コーポレーション 建設事業: rental apartments built for landowners (as 大東建託)")},
+    "8850": {"ConstructionBusinessReportableSegmentsMember": (True, "スターツ 建設事業: land-use apartment construction and detached houses")},
 }
 FUND_FILE = "data/universe_fundamentals.csv"
 FUND_COLS = ["ticker", "fy_end", "item", "value", "published", "doc_id", "basis"]
@@ -262,18 +275,25 @@ def rescreen(st) -> None:
 
 
 def _residential_share(facts: list[dict], ticker: str = "") -> dict:
-    seg = {}
+    named, other, total = {}, {}, None
     for x in facts:
         if x["element"].split(":")[-1] != "RevenuesFromExternalCustomers" or not x["context"].startswith("CurrentYearDuration_"):
             continue
         member = x["context"].split("_", 1)[1]
-        if not re.search(r"ReportableSegments?Member$", member) or member in ("ReportableSegmentsMember", "ReportableSegmentMember"):
-            continue
-        name = re.sub(r"^.*?-\d{3}", "", member)
         try:
-            seg[name] = float(x["value"])
+            v = float(x["value"])
         except ValueError:
             continue
+        if member in ("ReportableSegmentsMember", "ReportableSegmentMember"):
+            total = v
+        if not re.search(r"_E\d{5}-\d{3}", member):  # standard members (totals, reconciling items, others)
+            continue
+        name = re.sub(r"^.*?-\d{3}", "", member)
+        (named if re.search(r"ReportableSegments?Member$", member) else other)[name] = v
+    # some companies tag segments without "ReportableSegment" in the name (e.g. 明和地所): use all company members
+    # when they, and not the named ones, add up to the reportable-segment total (product or region tags do not)
+    near = lambda d: total and abs(sum(d.values()) - total) <= 0.01 * total
+    seg = {**named, **other} if other and not near(named) and near({**named, **other}) else named
     if not seg:
         return {"share": None, "segments": {}, "pass": True, "note": "single segment or no segment revenue tagged: passes"}
     total = sum(seg.values())

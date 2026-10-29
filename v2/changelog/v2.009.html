@@ -58,7 +58,7 @@ ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap
   <div class="eyebrow">Tsuchiya Holdings (1840) agent · changelog</div>
   <h1>v2.009: a wider M1 universe</h1>
   <div class="meta"><span>30 Oct 2026</span><span>Addendum A45</span><span>Takes effect at the next research run</span></div>
-  <p>M1 and the backtest compare Tsuchiya with more companies. The candidate list grows from 22 to 45 listed companies; the same residential-share screen decides which of them join.</p>
+  <p>M1 and the backtest compare Tsuchiya with more companies. The candidate list grows from 22 to 45 listed companies; the same residential-share screen decides which of them join, now with a fix for segments tagged without the usual name.</p>
 </header>
 <section>
   <h2>What changed</h2>
@@ -67,6 +67,7 @@ ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap
     <tbody>
       <tr><td>Candidates (<code>pipeline/universe.py</code>)</td><td>23 added: condominium developers (e.g. 長谷工, MIRARTH, 明和地所, 穴吹興産, フージャース, エスリード, 日本グランデ), residential construction (東建コーポレーション, 大末建設, ファーストコーポレーション) and renovation firms (スター・マイカ), plus mixed groups that the screen will test (野村不動産HD, スターツ, And Do). All checked as listed in EDINET's code list on 30 Oct 2026; シノケン and インテリックス are no longer listed.</td><td><span class="pill new">new</span></td></tr>
       <tr><td>Screen</td><td>Unchanged: residential share of segment revenue ≥ 50%. Results for every candidate appear in the backtest report.</td><td><span class="pill none">same</span></td></tr>
+      <tr><td>Screen fix</td><td>Segments tagged without "ReportableSegment" in their XBRL name (e.g. 明和地所's 分譲事業 and 流通事業, a misspelt hotel segment at コスモスイニシア) were ignored. Company segment tags are now used whenever they add up to the reportable-segment total. Segment judgments from each company's own 有報 description were added for 長谷工, フージャース (senior condominiums), ファーストコーポレーション, グッドコムアセット, ランディックス, 日本グランデ, And Do, 東建 and スターツ. 野村不動産's 都市開発事業 (offices, retail, logistics) no longer counts as residential.</td><td><span class="pill moved">fix</span></td></tr>
       <tr><td>Discovery</td><td>Each scanned date now remembers which candidate set it was scanned for, so new candidates rescan only the dates they need. This avoids rescanning old filings that were never found.</td><td><span class="pill moved">fix</span></td></tr>
     </tbody></table></div>
 </section>
@@ -82,6 +83,8 @@ ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap
   <h2>Checked</h2>
   <ul>
     <li>Test mode: no errors. Offline check: 151 filings to find; the dates scanned before keep counting for the first 22 companies.</li>
+    <li>First research run (30 Oct): discovery found nearly every filing; downloads stopped at the 150 limit with 8 companies left for the next run. The panel grew from 18 to 22 companies (193 rows). Annual backtest: M1 P/B rank correlation 0.12, t 1.91 (just under the bar of 2). Monthly reference: M1 P/B 0.11 (t 2.81).</li>
+    <li>Screen recomputed offline with the fix: 10 of the 23 added companies pass so far (8 more not yet downloaded); the first 22 keep their results.</li>
   </ul>
 </section>
 </main>
