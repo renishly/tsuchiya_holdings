@@ -1692,3 +1692,46 @@ Model calls: 7; tokens in/out: 12354/4581; models: nvidia/nemotron-3-ultra-550b-
 
 ### Next planned
 steady
+
+## R-20261029-095354 — scheduled
+
+- Start / end (JST): 2026-10-29T09:53:54+09:00 / 2026-10-29T09:58:01+09:00
+- Iterations: 21; web requests by domain: {"www.tsuchiya.co.jp": 8, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "www.stat-search.boj.or.jp": 1, "api.edinet-fsa.go.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: Average Valuated Price 131.394 -> 154.248 (+17.4%) since the review of 2026-10-28T23:05+09:00; Target P/E 3.446 -> 11.4782 (+233.1%) since the review of 2026-10-28T23:05+09:00; Target EV/EBITDA 4.3837 -> 11.5242 (+162.9%) since the review of 2026-10-28T23:05+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 54, "changed": 0, "conflicts": 0, "total": 823}, "filings": {"new": []}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review**
+
+The three watched values jumped because the target-multiple calculation switched from using **日本ハウスHD's multiples alone** (P/E 3.446, EV/EBITDA 4.384 at the 28 Oct review) to using the **peer averages** (current average forward P/E ≈ 12.48, average EV/EBITDA 11.524). Peer inputs moved modestly (タマホーム P/E 20.62→19.61, 日本ハウスHD P/E 3.45→3.35, グランディハウス unchanged); 1840's price fell 243→223. The Average Valuated Price rose 131→154 as a result of the higher target multiples. No new filings, no validation failures, P9 completed. Student should confirm which target-multiple method (single peer vs. average) is intended in `state/approvals.md`.
+Model calls: 3; tokens in/out: 12348/3072; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 823 rows total; 54 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261023-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+- AR-20261025-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
