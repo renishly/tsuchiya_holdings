@@ -1888,3 +1888,49 @@ Model calls: 2; tokens in/out: 6246/1213; models: nvidia/nemotron-3-ultra-550b-a
 
 ### Next planned
 steady
+
+## R-20261030-082139 — scheduled
+
+- Start / end (JST): 2026-10-30T08:21:39+09:00 / 2026-10-30T08:24:34+09:00
+- Iterations: 21; web requests by domain: {"www.tsuchiya.co.jp": 8, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "www.stat-search.boj.or.jp": 1, "api.edinet-fsa.go.jp": 2}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: Average Valuated Price 192.394 -> 205.203 (+6.7%) since the review of 2026-10-29T23:19+09:00; Target P/E 19.4579 -> 11.4575 (-41.1%) since the review of 2026-10-29T23:19+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 50, "changed": 2, "conflicts": 0, "total": 873}, "filings": {"new": []}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review — 2026-10-30 scheduled run**
+
+- **Target P/E −41.1% (19.4579 → 11.4575)**: peer forward P/Es now 19.4579 (タマホーム, unchanged), 3.4571 (日本ハウスHD, was 3.446), 14.4931 (グランディハウス, unchanged); the pipeline’s target P/E moved from matching タマホーム to 11.4575, a level not equal to the current median (14.4931) — the calculation appears to have shifted between 10-29 and 10-30.
+
+- **Average Valuated Price +6.7% (192.394 → 205.203)**: 1840 stock price flat at 223; peer prices moved modestly (日本ハウスHD 302→312, グランディハウス 537→531, タマホーム flat); Target EV/EBITDA barely changed (11.5554→11.5002). The rise comes from the M1 regression components (combined 61.6% weight) and/or the EV/EBITDA leg (225.354) offsetting the P/E leg (now ¥89.2 at the new 11.4575×).
+
+- Routine work (steady refresh + P9) completed with no errors or new filings. No delegation needed; the moves are explained by the input changes a
+Model calls: 2; tokens in/out: 8028/3300; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 873 rows total; 52 written this run
+- Alternative Data: 507 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
