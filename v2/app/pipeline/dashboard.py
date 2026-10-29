@@ -74,6 +74,7 @@ class Client:
         self._lock = threading.Lock()
         self._state = {"paused": False, "every": None, "accepts_messages": False, "accepts_inbox": False,
                        "on_message": None, "on_command": None, "on_file": None, "warned": set(), "thread": None}
+        self.monitors_set: set[str] = set()   # monitor names set during this run (for prune_monitors)
 
     # ------------------------------------------------------------ settings
     def _settings(self):
@@ -290,6 +291,8 @@ class Client:
     def set_monitor(self, content, name="Monitor") -> bool:
         """Replace the value of a named monitor (None removes it). Never raises."""
         try:
+            if content is not None:
+                self.monitors_set.add(name[:50])
             if content is not None and _is_file(content):
                 it = self._file_item("monitor_file", content, "name", name[:50])
                 return self._deliver(it) if it else False
@@ -497,6 +500,20 @@ class Client:
             return 0
         code, r = self._call("DELETE", "/api/monitors", params={"all": "true"} if everything else {"name": name})
         return (r or {}).get("deleted", 0) if code == 200 else 0
+
+    def prune_monitors(self, keep) -> list[str]:
+        """Delete this agent's monitors that are neither in `keep` nor set during this run. Does nothing if the list
+        cannot be read. Returns the names removed."""
+        keep = {k[:50] for k in keep} | self.monitors_set
+        code, ms = self._call("GET", "/api/agents/me/monitors")
+        if code != 200 or not isinstance(ms, list):
+            return []
+        gone = []
+        for m in ms:
+            name = (m or {}).get("name")
+            if name and name not in keep and self.delete_monitors(name):
+                gone.append(name)
+        return gone
 
     # ------------------------------------------------------------ Agent Skills market (straight to the dashboard; never raise)
     def post_skill(self, content, name=None, summary=None, share="class"):

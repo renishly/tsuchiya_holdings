@@ -947,6 +947,28 @@ def _dashboard_skills(st) -> str:
     return (f"skills: {len(posted)} posted ({SKILL_SHARE})" + (f", {len(failed)} failed ({', '.join(failed)})" if failed else "")
             + ("; skill tree updated" if tree_set else ""))
 
+MONITORS = {  # A47: the monitors each dashboard agent keeps; any other monitor is removed at the end of a run
+    "main": ["Overview (read me first)", "Status", "Version", "Build phases", "Rows per CSV", "Pending approvals",
+             "Data (CSV files)", "Google Sheet", "Data dictionary (report_list.html)", "Debug log (debug_runs.csv)",
+             "Current market price", "Average valuated price", "Valuation (agent baseline)", "Model weights",
+             "Md (forecast discount)", "Research (M1 and backtest)", "Backtest report (backtest_latest.html)"],
+    "ca": ["Overview (read me first)", "Version", "Md debate: Debate Signal", "Arbitration (decision models)"],
+    "debater_a": ["Overview (read me first)", "Version", "Role", "Latest position"],
+    "debater_b": ["Overview (read me first)", "Version", "Role", "Latest position"],
+}
+
+def _dashboard_prune():
+    """Remove monitors left over from earlier versions (A47). Monitors set during this run are always kept; each
+    removal is logged in that agent's activity log by the dashboard itself, plus one summary line here."""
+    import dashboard
+    for prof, keep in MONITORS.items():
+        c = dashboard.client(prof)
+        if not c.enabled() or c.is_paused():
+            continue
+        gone = c.prune_monitors(keep)
+        if gone:
+            c.report(("Removed old monitors: " + ", ".join(gone))[:300], "log")
+
 def _dashboard_finish(st, cr, S) -> str:
     """Send this run's chosen results: one 'run summary' output, NEEDS ATTENTION items, and a few monitors."""
     try:
@@ -1080,6 +1102,10 @@ def _dashboard_finish(st, cr, S) -> str:
         if sk:
             dashboard.report(sk[:300], "error" if "failed" in sk or "error" in sk else "log")
         others = _dashboard_debate(st, base, cr, show, ver)
+        try:
+            _dashboard_prune()
+        except Exception as e:
+            dashboard.report(f"monitor cleanup failed: {type(e).__name__}", "error")
         left = dashboard.flush()
         return (f"sent; {left} item(s) buffered" if left else "sent") + (f"; also {', '.join(others)}" if others else "")
     except Exception as e:
