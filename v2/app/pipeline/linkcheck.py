@@ -100,7 +100,9 @@ def check(st, ids: list[str]) -> dict:
         if not it:
             report.append({"id": i, "resolved": False, "error": "not on the evidence board"})
             continue
-        if not (it.get("link") or {}).get("resolved") and not test:
+        if it.get("context_only"):   # A48: GDELT headlines point to outside sites the agent does not fetch
+            it["link"] = {"resolved": False, "error": "context only (headline from GDELT): not citable", "checked": iso()}
+        elif not (it.get("link") or {}).get("resolved") and not test:
             it["link"] = _resolve(st, it)
             if it["link"]["resolved"]:
                 txt = (ROOT / f"raw/evidence/{i}.txt").read_text(encoding="utf-8")

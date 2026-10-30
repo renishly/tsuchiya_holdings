@@ -52,10 +52,10 @@ def _items(ids=None, topic="") -> list[dict]:
 # ---------------------------------------------------------------- scouts
 def scout(topic: str, items: list[dict]) -> list[dict]:
     flagged: list[dict] = []
-    ids = {i["id"] for i in items}
+    ids = {i["id"] for i in items if not i.get("context_only")}   # A48: headline-only items cannot be flagged
     def read_items() -> str:  # compact items; excerpts shortened so the JSON is never cut
         slim = [{k: i.get(k) for k in ("id", "date", "ticker", "source", "title")} | {"excerpt": (i.get("excerpt") or "")[:500]}
-                for i in items]
+                | {"citable": not i.get("context_only")} for i in items]
         return json.dumps({"topic": topic, "items": slim}, ensure_ascii=False)
     def flag_items(flags: list) -> str:
         for f in flags or []:

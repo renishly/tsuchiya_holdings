@@ -1,9 +1,9 @@
 """Evidence board, gate 0 and the debate record for Md's Debate Signal (Addenda A41-A42, v2.007).
 
 Evidence board (code): dated items the scouts and debaters may cite, each with a stable id (E-xxxxxxxx).
-  Sources today (already allowed): Tsuchiya's and the peers' IR notices (決算短信, 業績予想の修正 and other PDFs
-  linked from their IR pages) and Tsuchiya's new EDINET filings. Other news sources need the student's approval
-  (D18) and are added to SOURCES when approved.
+  Sources: Tsuchiya's and the peers' IR notices (決算短信, 業績予想の修正 and other PDFs linked from their IR
+  pages), Tsuchiya's new EDINET filings, and (A48, approved by the student) BOJ news, MLIT press releases,
+  フラット35 rates, universe members' EDINET filings and GDELT headlines (context only) from pipeline/sources.py.
   For a new Tsuchiya item, the first page of text is kept as an excerpt (at most 1,500 characters).
   Items older than 120 days drop off the board.
 Gate 0 (code): items first seen after the last debate check. None -> no model is called.
@@ -102,6 +102,35 @@ def collect(st, max_excerpts: int = 5) -> dict:
                 excerpts += 1
             b["items"][i] = item
             added.append(i)
+    # A48: public sources beyond the IR pages (BOJ, MLIT, フラット35, universe EDINET filings, GDELT headlines)
+    if not test:
+        import sources
+        import universe
+        codes = {universe.CANDIDATES[t][0]: t for t in universe.members(st) if t in universe.CANDIDATES}
+        status = b.setdefault("sources", {})
+        for key, run in (("boj", sources.boj), ("mlit", sources.mlit), ("jhf", sources.jhf),
+                         ("edinet", lambda s_: sources.edinet_events(s_, codes)), ("gdelt", sources.gdelt)):
+            try:
+                got = run(st)
+            except Exception as e:  # a source never stops the run
+                got = {"error": f"{type(e).__name__}: {str(e)[:120]}"}
+            if isinstance(got, dict):
+                status[key] = {**status.get(key, {}), "checked": iso(), "error": got["error"]}
+                log(st, "evidence", {"source": key}, f"unavailable: {got['error']}")
+                continue
+            n = 0
+            # a source's first collection is a backfill (except the last 3 days), so it does not flood gate 0
+            recent = (dt.date.fromisoformat(today) - dt.timedelta(days=3)).isoformat()
+            first_src = first_fill or key not in status
+            for d in got:
+                i = _id(d["url"])
+                if i in b["items"] or d["date"] < cutoff:
+                    continue
+                b["items"][i] = {"id": i, **d, "first_seen": "backfill" if first_src and d["date"] < recent else iso()}
+                added.append(i)
+                n += 1
+            status[key] = {"checked": iso(), "error": None, "seen": len(got), "added": n,
+                           "added_at": iso() if n else (status.get(key) or {}).get("added_at")}
     for d in st["documents"].get("seen_recent", []):  # Tsuchiya's new EDINET filings (found by the daily check)
         url = f"https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?{d.get('docID')}"
         i = _id(url)
@@ -112,6 +141,9 @@ def collect(st, max_excerpts: int = 5) -> dict:
             added.append(i)
     b["items"] = {k: v for k, v in b["items"].items() if v["date"] >= cutoff}
     new = [v for v in b["items"].values() if v["first_seen"] not in ("backfill",) and v["first_seen"] > (b.get("last_check") or "")]
+    # context-only items (GDELT headlines) go to the scouts with the citable ones but never open the gate alone
+    if not any(not v.get("context_only") for v in new):
+        new = []
     save_board(b)
     log(st, "evidence", {"added": len(added)}, f"{len(new)} item(s) for gate 0")
     return {"added": added, "gate0": sorted(new, key=lambda x: x["date"], reverse=True),

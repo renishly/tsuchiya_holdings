@@ -285,8 +285,50 @@ def overview_main(v: dict) -> str:
     return save("reports/pages/main.html", page("Tsuchiya Holdings (1840): overview", "Tsuchibot Main · read me first", body))
 
 
-def overview_ca(case: dict | None, board: dict, history: list[dict], ver: str) -> str:
-    intro = ('<div class="card"><h2>What this page is</h2><p>When new company notices or filings appear, the agent asks whether they should change '
+SOURCE_ROWS = [  # (status key, label, what it watches, citable)
+    ("ir", "Company IR pages", "決算短信 and forecast revisions of Tsuchiya, タマホーム, 日本ハウス, グランディハウス", True),
+    ("edinet", "EDINET", "Tsuchiya's filings; 臨時報告書, half-year and annual reports of the M1 universe companies", True),
+    ("boj", "Bank of Japan", "policy decisions, outlook report, Tankan, governor's statements", True),
+    ("mlit", "MLIT", "press releases on housing, land, real estate and construction", True),
+    ("jhf", "JHF フラット35", "the monthly long-term fixed mortgage rate", True),
+    ("gdelt", "GDELT", "English-language headlines on Japanese housing, property and rates", False),
+]
+SOURCE_OF = {"company IR page": "ir", "EDINET": "edinet", "EDINET (universe companies)": "edinet", "Bank of Japan (news feed)": "boj",
+             "MLIT press releases": "mlit", "JHF フラット35 rates": "jhf", "GDELT news (context only)": "gdelt"}
+
+
+def source_counts(board_full: dict) -> dict:
+    """Items on the board per source (last 120 days) and the newest item's date and title."""
+    out = {}
+    for it in (board_full.get("items") or {}).values():
+        k = SOURCE_OF.get(it.get("source"), "ir")
+        c = out.setdefault(k, {"items": 0, "newest": "", "newest_title": ""})
+        c["items"] += 1
+        if it.get("date", "") > c["newest"]:
+            c["newest"], c["newest_title"] = it["date"], it.get("title", "")
+    return out
+
+
+def _sources_block(board_full: dict) -> str:
+    st, cnt = board_full.get("sources") or {}, source_counts(board_full)
+    rows = []
+    for key, label, what, citable in SOURCE_ROWS:
+        s, c = st.get(key) or {}, cnt.get(key) or {}
+        health = ('<span class="tag no">' + esc(s["error"][:60]) + "</span>" if s.get("error")
+                  else '<span class="tag ok">ok</span>' if s or key == "ir" else '<span class="tag wa">not checked yet</span>')
+        rows.append(f'<tr><td><b>{esc(label)}</b><br><span class="mut">{esc(what)}</span></td><td class="num">{c.get("items", 0)}</td>'
+                    f'<td>{esc(c.get("newest", ""))}<br><span class="mut">{esc((c.get("newest_title") or "")[:70])}</span></td>'
+                    f'<td>{esc((s.get("checked") or board_full.get("last_check") or "")[:16].replace("T", " "))}</td><td>{health}</td>'
+                    f'<td>{"yes" if citable else "context only"}</td></tr>')
+    return ('<div class="card"><h2>What the agent is watching</h2><p>Every scheduled run, code collects new items from these sources onto the '
+            'evidence board (the last 120 days are kept). New citable items open the debate; GDELT headlines only give the scouts context, '
+            'because the articles sit on news sites the agent does not open. TDnet is not used: its robots.txt forbids automated access.</p>'
+            '<table><tr><th>Source</th><th class="num">Items</th><th>Newest</th><th>Last checked</th><th>Status</th><th>Citable</th></tr>'
+            + "".join(rows) + '</table></div>')
+
+
+def overview_ca(case: dict | None, board: dict, history: list[dict], ver: str, board_full: dict | None = None) -> str:
+    intro = ('<div class="card"><h2>What this page is</h2><p>When new company notices, filings or official releases appear, the agent asks whether they should change '
              'Tsuchiya\'s operating-profit forecast before it is valued. News scouts pick relevant items, two debater agents argue for and against an '
              'adjustment, and two decision models (C&amp;A) judge the evidence. A fixed rule in code turns their answers into the <b>Debate Signal</b>, '
              'which becomes part of Md.</p></div>')
@@ -299,7 +341,7 @@ def overview_ca(case: dict | None, board: dict, history: list[dict], ver: str) -
                 f'<p class="mut">{esc(case.get("note", ""))}</p></div>' + _decision_block(case))
     hist = "".join(f'<tr><td>{esc((c.get("recorded") or "")[:10])}</td><td>{esc(c.get("trigger"))}</td><td class="num">{len(c.get("items") or [])}</td>'
                    f'<td>{esc(c.get("stopped_at"))}</td><td class="num">{myen(c.get("signal"))}</td></tr>' for c in reversed(history[-10:]))
-    body = intro + last + (f'<div class="card"><h2>Recent debates</h2><table><tr><th>Date</th><th>Trigger</th><th class="num">Items</th><th>Stopped at</th>'
+    body = intro + last + (_sources_block(board_full) if board_full else "") + (f'<div class="card"><h2>Recent debates</h2><table><tr><th>Date</th><th>Trigger</th><th class="num">Items</th><th>Stopped at</th>'
                            f'<th class="num">Signal</th></tr>{hist}</table></div>' if hist else "") + f'<p class="mut">Version {esc(ver)}.</p>'
     return save("reports/pages/ca.html", page("Consensus and arbitration", "Tsuchibot C&A · read me first", body))
 

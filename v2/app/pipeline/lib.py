@@ -53,7 +53,7 @@ CONFIG = {
     ],
     "budgets": {"max_iterations": 150, "max_minutes": 60, "max_requests_per_domain": 25,
                 "max_same_url": 2, "lock_stale_hours": 3, "change_guard_ratio": 0.20},
-    "min_interval_s": {"api.edinet-fsa.go.jp": 1.0, "default": 3.0},
+    "min_interval_s": {"api.edinet-fsa.go.jp": 1.0, "api.gdeltproject.org": 6.0, "default": 3.0},
 }
 
 # Test-only budget overrides (evals shrink limits to exercise budget stops). Ignored outside test fixtures.
@@ -98,9 +98,11 @@ ALLOWLIST = {
     "www.retio.or.jp": "legal", "www.reinfolib.mlit.go.jp": "benchmark",
     # Md public data (Addendum A38): BOJ time-series API (CGPI lumber and wood products)
     "www.stat-search.boj.or.jp": "statistics:/api/",
+    # evidence-board sources (Addendum A48): BOJ news, フラット35 rates, GDELT headlines (MLIT is listed above)
+    "www.boj.or.jp": "news", "www.simulation.jhf.go.jp": "news:/flat35/kinri/", "api.gdeltproject.org": "news:/api/v2/doc/",
 }
 GROUP_DOMAINS = {d for d, k in ALLOWLIST.items() if k.startswith("company")}
-NEVER_FETCH = {"www.xj-storage.jp", "myhome.nifty.com", "www.fudousan.or.jp", "www.hatomarksite.com", "suumo.jp",
+NEVER_FETCH = {"release.tdnet.info", "www.release.tdnet.info", "www.xj-storage.jp", "myhome.nifty.com", "www.fudousan.or.jp", "www.hatomarksite.com", "suumo.jp",
                "www.homes.co.jp", "www.athome.co.jp", "kabutan.jp", "finance.yahoo.co.jp",
                "minkabu.jp", "www.release.tdnet.info", "quote.jpx.co.jp"}
 

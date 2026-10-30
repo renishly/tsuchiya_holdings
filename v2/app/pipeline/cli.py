@@ -726,6 +726,7 @@ def cmd_debate_record(a):
 def cmd_digest(a):
     """The reporter's input (A42): condensed record since the last report; tables are built from this by code."""
     import evidence
+    import htmlpages
     import modelfit
     st = load_state()
     base = CsvStore("Baseline Metrics")
@@ -752,6 +753,8 @@ def cmd_digest(a):
                         "Md: Land Price Ave (% since guidance)", "Md: Debate Signal (shadow)")},
                 "debates": [{"date": c["recorded"][:10], "items": c.get("items"), "signal": c.get("signal"),
                              "mode": c.get("mode"), "stopped_at": c.get("stopped_at"), "note": c.get("note")} for c in cases],
+                "evidence_sources": {k: {"items": v["items"], "newest": v["newest"]}
+                                     for k, v in htmlpages.source_counts(evidence.load_board()).items()},
                 "research": {"pending": (prm.get("pending") or {}).get("version"), "approved": (prm.get("approved") or {}).get("version"),
                              "accepted_methods": ((prm.get("pending") or prm.get("approved") or {}).get("weights") or {}).get("accepted")},
                 "attention": [x for r in st.get("history", [])[-14:] for x in ([] if not r.get("attention") else [r["run_id"]])]})
@@ -952,7 +955,7 @@ MONITORS = {  # A47: the monitors each dashboard agent keeps; any other monitor 
              "Data (CSV files)", "Google Sheet", "Data dictionary (report_list.html)", "Debug log (debug_runs.csv)",
              "Current market price", "Average valuated price", "Valuation (agent baseline)", "Model weights",
              "Md (forecast discount)", "Research (M1 and backtest)", "Backtest report (backtest_latest.html)"],
-    "ca": ["Overview (read me first)", "Version", "Md debate: Debate Signal", "Arbitration (decision models)"],
+    "ca": ["Overview (read me first)", "Version", "Md debate: Debate Signal", "Arbitration (decision models)", "Evidence sources"],
     "debater_a": ["Overview (read me first)", "Version", "Role", "Latest position"],
     "debater_b": ["Overview (read me first)", "Version", "Role", "Latest position"],
 }
@@ -1133,7 +1136,8 @@ def _dashboard_md_debate(st, case: dict | None, ver: str) -> list[str]:
     import dashboard
     import evidence
     import htmlpages
-    board = evidence.load_board().get("items", {})
+    board_full = evidence.load_board()
+    board = board_full.get("items", {})
     case = case or {"recorded": "", "stopped_at": "no Md debate yet (gate 0 has not opened at a daily check)", "items": [],
                     "signal": 0.0, "mode": "shadow", "note": "", "positions": {}}
     sent_before = st.setdefault("dashboard_sent", {})
@@ -1151,8 +1155,12 @@ def _dashboard_md_debate(st, case: dict | None, ver: str) -> list[str]:
         ca.set_monitor({"judge": dec.get("model"), "evidence score A": dec.get("evidence_a"), "evidence score B": dec.get("evidence_b"),
                         "better supported": dec.get("supported"), "bucket": dec.get("bucket"), "error": dec.get("error"),
                         "turn monitor (Span-01 Lite)": case.get("monitor")}, "Arbitration (decision models)")
-        ca.set_monitor(ROOT / htmlpages.overview_ca(case if case.get("recorded") else None, board, evidence.read_cases(), ver),
+        ca.set_monitor(ROOT / htmlpages.overview_ca(case if case.get("recorded") else None, board, evidence.read_cases(), ver, board_full),
                        "Overview (read me first)")
+        cnt, srcs = htmlpages.source_counts(board_full), board_full.get("sources") or {}
+        ca.set_monitor({label: f"{(cnt.get(k) or {}).get('items', 0)} items; newest {(cnt.get(k) or {}).get('newest') or '—'}"
+                        + (f"; ERROR {srcs[k]['error'][:60]}" if (srcs.get(k) or {}).get("error") else "")
+                        for k, label, _, _ in htmlpages.SOURCE_ROWS}, "Evidence sources")
         if new and case.get("recorded"):
             ca.output(ROOT / htmlpages.debate_record(case, board), "md debate record")
         ca.flush()
