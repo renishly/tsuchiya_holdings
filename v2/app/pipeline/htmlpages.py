@@ -292,9 +292,11 @@ SOURCE_ROWS = [  # (status key, label, what it watches, citable)
     ("mlit", "MLIT", "press releases on housing, land, real estate and construction", True),
     ("jhf", "JHF フラット35", "the monthly long-term fixed mortgage rate", True),
     ("gdelt", "GDELT", "English-language headlines on Japanese housing, property and rates", False),
+    ("inbox", "Your uploads", "documents you upload to Main's or C&A's Inbox (e.g. a TDnet notice)", True),
 ]
 SOURCE_OF = {"company IR page": "ir", "EDINET": "edinet", "EDINET (universe companies)": "edinet", "Bank of Japan (news feed)": "boj",
-             "MLIT press releases": "mlit", "JHF フラット35 rates": "jhf", "GDELT news (context only)": "gdelt"}
+             "MLIT press releases": "mlit", "JHF フラット35 rates": "jhf", "GDELT news (context only)": "gdelt",
+             "Student upload (Inbox)": "inbox"}
 
 
 def source_counts(board_full: dict) -> dict:
@@ -315,14 +317,16 @@ def _sources_block(board_full: dict) -> str:
     for key, label, what, citable in SOURCE_ROWS:
         s, c = st.get(key) or {}, cnt.get(key) or {}
         health = ('<span class="tag no">' + esc(s["error"][:60]) + "</span>" if s.get("error")
-                  else '<span class="tag ok">ok</span>' if s or key == "ir" else '<span class="tag wa">not checked yet</span>')
+                  else '<span class="tag ok">ok</span>' if s or key in ("ir", "inbox") else '<span class="tag wa">not checked yet</span>')
         rows.append(f'<tr><td><b>{esc(label)}</b><br><span class="mut">{esc(what)}</span></td><td class="num">{c.get("items", 0)}</td>'
                     f'<td>{esc(c.get("newest", ""))}<br><span class="mut">{esc((c.get("newest_title") or "")[:70])}</span></td>'
                     f'<td>{esc((s.get("checked") or board_full.get("last_check") or "")[:16].replace("T", " "))}</td><td>{health}</td>'
                     f'<td>{"yes" if citable else "context only"}</td></tr>')
     return ('<div class="card"><h2>What the agent is watching</h2><p>Every scheduled run, code collects new items from these sources onto the '
             'evidence board (the last 120 days are kept). New citable items open the debate; GDELT headlines only give the scouts context, '
-            'because the articles sit on news sites the agent does not open. TDnet is not used: its robots.txt forbids automated access.</p>'
+            'because the articles sit on news sites the agent does not open. TDnet is not used: its robots.txt forbids automated access, '
+            'but you can upload a notice you read there to the Inbox of Main or C&amp;A; it becomes citable evidence at the next run and opens '
+            'the debate at once.</p>'
             '<table><tr><th>Source</th><th class="num">Items</th><th>Newest</th><th>Last checked</th><th>Status</th><th>Citable</th></tr>'
             + "".join(rows) + '</table></div>')
 

@@ -390,9 +390,10 @@ class Client:
         self._state["on_command"] = handler
 
     # ------------------------------------------------------------ Inbox (opt-in)
-    def accept_inbox(self, on_file):
+    def accept_inbox(self, on_file, check=True):
         self._state["on_file"], self._state["accepts_inbox"] = on_file, True
-        self.check_in()
+        if check:
+            self.check_in()
 
     def inbox(self) -> list:
         code, items = self._call("GET", "/api/inbox", timeout=LONG)

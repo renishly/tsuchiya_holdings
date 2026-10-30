@@ -74,7 +74,7 @@ The combined value is a weighted average of the methods below. The weights come 
 - **debate-position** *(shared)*: one position per round: direction, size within a cap, claims with evidence ids, confidence. Concedes what the evidence does not support.
 - **debater-memory** *(shared)*: the debater's own past cases, used to avoid weak arguments; never cited as evidence.
 
-**Where the evidence comes from:** company IR notices; EDINET filings by Tsuchiya and the M1 universe companies; Bank of Japan news; MLIT press releases; the monthly フラット35 rate. GDELT headlines give context only and cannot be cited. TDnet is not used, because its robots.txt forbids automated access.
+**Where the evidence comes from:** company IR notices; EDINET filings by Tsuchiya and the M1 universe companies; Bank of Japan news; MLIT press releases; the monthly フラット35 rate. Documents the student uploads to the dashboard Inbox (such as a TDnet notice) are also citable. GDELT headlines give context only and cannot be cited. TDnet is not used, because its robots.txt forbids automated access.
 
 Around the debate, code (no skills) fetches and snapshots each cited source and checks every number in a claim against it. Decision models then answer typed questions, and a rule in code turns their answers into the Debate Signal (shadow mode until the student switches it on).
 

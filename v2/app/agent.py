@@ -363,7 +363,7 @@ class Run:
             self.orch_updates["last_daily_review"] = today.date().isoformat()
 
     def md_debate(self, paused: list[str]) -> None:
-        """Gate 0 every run; the debate itself at the daily check, or at once when a new Tsuchiya notice appears."""
+        """Gate 0 every run; the debate itself at the daily check, or at once when a new Tsuchiya notice or a student upload appears."""
         import mdebate
         gate = j(pipeline("evidence"))
         new = gate.get("gate0") or []
@@ -371,7 +371,7 @@ class Run:
             print("Md debate: gate 0 closed (no new evidence); no model call.", flush=True)
             return
         daily = any(e.startswith("daily check") for e in self.events)
-        if not (daily or gate.get("company_notice")):
+        if not (daily or gate.get("company_notice") or gate.get("student_upload")):
             print(f"Md debate: {len(new)} new item(s) wait for the daily check.", flush=True)
             return
         if paused:
@@ -379,7 +379,9 @@ class Run:
             return
         llm.check_settings()
         ctx = j(pipeline("md-context"))
-        res = mdebate.run(gate, ctx, "new company notice" if gate.get("company_notice") else "daily check")
+        trigger = ("student upload" if gate.get("student_upload") else
+                   "new company notice" if gate.get("company_notice") else "daily check")
+        res = mdebate.run(gate, ctx, trigger)
         root = data_root()
         (root / "tmp").mkdir(exist_ok=True)
         (root / "tmp" / "debate.json").write_text(json.dumps(res, ensure_ascii=False), encoding="utf-8")

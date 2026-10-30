@@ -139,7 +139,9 @@ def collect(st, max_excerpts: int = 5) -> dict:
                              "title": d.get("docDescription", "EDINET filing")[:200], "url": url, "source": "EDINET",
                              "topic": "company and peers", "first_seen": iso()}
             added.append(i)
-    b["items"] = {k: v for k, v in b["items"].items() if v["date"] >= cutoff}
+    # uploads are kept for 120 days from the upload, whatever the document's own date (A49)
+    b["items"] = {k: v for k, v in b["items"].items()
+                  if v["date"] >= cutoff or (v.get("source") == "Student upload (Inbox)" and v["first_seen"] >= cutoff)}
     new = [v for v in b["items"].values() if v["first_seen"] not in ("backfill",) and v["first_seen"] > (b.get("last_check") or "")]
     # context-only items (GDELT headlines) go to the scouts with the citable ones but never open the gate alone
     if not any(not v.get("context_only") for v in new):
@@ -147,7 +149,8 @@ def collect(st, max_excerpts: int = 5) -> dict:
     save_board(b)
     log(st, "evidence", {"added": len(added)}, f"{len(new)} item(s) for gate 0")
     return {"added": added, "gate0": sorted(new, key=lambda x: x["date"], reverse=True),
-            "board_size": len(b["items"]), "company_notice": any(v["ticker"] == CONFIG["company_code"] for v in new)}
+            "board_size": len(b["items"]), "company_notice": any(v["ticker"] == CONFIG["company_code"] for v in new),
+            "student_upload": any(v.get("source") == "Student upload (Inbox)" for v in new)}
 
 
 def close_gate(st):

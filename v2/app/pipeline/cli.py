@@ -90,6 +90,10 @@ def _dashboard_start(st, mode) -> dict:
         import dashboard
         if not dashboard.enabled():
             return {"enabled": False}
+        import inbox   # A49: files the student uploads to Main's or C&A's Inbox become citable evidence
+        for prof in ("main", "ca"):
+            c = dashboard.client(prof)
+            c.accept_inbox(lambda item, path, c=c: inbox.store(st, item, path, c.report), check=False)
         reply = dashboard.check_in(every=DASH_EVERY)
         if dashboard.is_paused():
             dashboard.report("Paused on the dashboard: run skipped", "status")
@@ -556,6 +560,37 @@ def current_version() -> tuple[str, Path | None]:
         if best is None or key > best[0]:
             best = (key, f)
     return (best[1].stem, best[1]) if best else ("unknown", None)
+
+def _vkey(name: str):
+    try:
+        return tuple(int(x) for x in name.lstrip("v").split("."))
+    except ValueError:
+        return None
+
+def changelog_since(last: str | None) -> Path | None:
+    """One page with every changelog newer than `last` (the one the dashboard last received), newest first (A50).
+    A single new version is posted as it is; without a record of `last`, only the newest is posted."""
+    files = sorted((k, f) for f in (CHANGELOG_DIR.glob("v*.html") if CHANGELOG_DIR.exists() else []) if (k := _vkey(f.stem)))
+    lk = _vkey(last) if last else None
+    newer = [f for k, f in files if k > lk] if lk else [f for _, f in files[-1:]]
+    if len(newer) <= 1:
+        return newer[0] if newer else None
+    newer.reverse()                                   # newest first
+    texts = [f.read_text(encoding="utf-8") for f in newer]
+    head = texts[0][:texts[0].find("<body>")]
+    head = re.sub(r"<title>.*?</title>", f"<title>Changelog {newer[-1].stem}–{newer[0].stem}</title>", head, count=1, flags=re.S)
+    parts = []
+    for f, t in zip(newer, texts):
+        m = re.search(r"<main>(.*)</main>", t, re.S)
+        parts.append(f'<section id="{f.stem}" style="display:flex;flex-direction:column;gap:2.2rem">{m.group(1) if m else ""}</section>')
+    toc = " · ".join(f'<a href="#{f.stem}">{f.stem}</a>' for f in newer)
+    intro = (f'<header style="display:flex;flex-direction:column;gap:.6rem"><div class="eyebrow">Tsuchiya Holdings (1840) agent · changelog</div>'
+             f'<h1>Changes in {newer[-1].stem}–{newer[0].stem}</h1><p>This page collects {len(newer)} versions: {toc}. '
+             f'Newest first.</p></header>')
+    page = head + "<body>\n<main>\n" + intro + '\n<hr style="border:0;border-top:1px solid var(--rule);width:100%">\n'.join([""] + parts) + "\n</main>\n</body>\n</html>\n"
+    rel = f"reports/changelog_{newer[-1].stem}_{newer[0].stem}.html"
+    write_text(rel, page)
+    return ROOT / rel
 
 def _latest(base, ticker, metric):
     rows = [r for r in base.rows.values() if r["ticker"] == ticker and r["metric"] == metric and r["value"] != ""]
@@ -1095,9 +1130,11 @@ def _dashboard_finish(st, cr, S) -> str:
             dashboard.report(f"overview page failed: {type(e).__name__}: {str(e)[:120]}", "error")
         dashboard.set_monitor(ver, "Version")
         sent = st.setdefault("dashboard_sent", {})
-        if ver_file and sent.get("changelog") != ver and dashboard.output(ver_file, "changelog"):
-            sent["changelog"] = ver
-            save_state(st)
+        if ver_file and sent.get("changelog") != ver:   # A50: every version since the last one posted, merged
+            cl = changelog_since(sent.get("changelog"))
+            if cl and dashboard.output(cl, "changelog"):
+                sent["changelog"] = ver
+                save_state(st)
         try:  # A46: shared skills and the skill tree on the seminar's skill market (only when their text changed)
             sk = _dashboard_skills(st)
         except Exception as e:
