@@ -4460,7 +4460,41 @@
         }
       },
       "last_peers": "2026-10-30"
-    }
+    },
+    "trends": {
+      "file": "inputs/google_trends/2026-10-30_6bafabb2_time_series_JP_20040101-0900_20261030-1157.csv",
+      "uploaded": "2026-10-30",
+      "last_date": "2026-10-01",
+      "first_date": "2004-01-01",
+      "terms": [
+        "タマホーム",
+        "日本ハウス",
+        "土屋ホーム",
+        "TSUCHIYA HOLDINGS CO.,LTD.",
+        "Nihon-House Corporation,Inc.",
+        "グランディハウス",
+        "Grandy House"
+      ],
+      "geo": ""
+    },
+    "trends_reference": [
+      {
+        "file": "inputs/google_trends/2026-10-30_044cfc69_searched_with_top-searches_queries_JP_20040101-0900_20261030-1157.csv",
+        "uploaded": "2026-10-30"
+      },
+      {
+        "file": "inputs/google_trends/2026-10-30_54317804_searched_with_rising-searches_queries_JP_20040101-0900_20261030-1157.csv",
+        "uploaded": "2026-10-30"
+      },
+      {
+        "file": "inputs/google_trends/2026-10-30_9fb93a5b_searched_with_rising-searches_queries_JP_20040101-0900_20261030-1157 copy.csv",
+        "uploaded": "2026-10-30"
+      },
+      {
+        "file": "inputs/google_trends/2026-10-30_e5a9a4f3_searched_with_top-searches_queries_JP_20040101-0900_20261030-1157 copy.csv",
+        "uploaded": "2026-10-30"
+      }
+    ]
   },
   "current_run": null,
   "last_price": {

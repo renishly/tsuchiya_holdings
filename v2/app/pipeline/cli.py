@@ -72,6 +72,7 @@ def cmd_start(a):
     save_state(st)
     log(st, "run", {"mode": mode}, "started")
     dash = _dashboard_start(st, mode)
+    save_state(st)   # the check-in may have stored Inbox uploads (A49, A51): keep what they recorded
     if dash.get("paused"):
         st["current_run"] = None
         save_state(st)
