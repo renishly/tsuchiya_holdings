@@ -41,6 +41,10 @@ def store(st, item: dict, path: str, report=print) -> bool:
     import trends   # A51: a Google Trends export is marketing data, not evidence
     if trends.looks_like_trends(name, body):
         r = trends.ingest(st, name, body, item.get("uploaded_at") or "")
+        if not r.get("ok") and "queries" in name.lower():
+            r = trends.store_reference(st, name, body, item.get("uploaded_at") or "")
+            report(f"Inbox: {name} (related queries) kept as a reference file", "log")
+            return True
         if r.get("ok"):
             report(f"Inbox: Google Trends export {name} stored ({len(r['terms'])} terms, data to {r['last_date']})", "log")
             return True

@@ -18,12 +18,23 @@ from lib import CsvStore, base_row, iso, log, record_id, run_ctx, sha256, write_
 
 STALE_DAYS = 35
 _DATE = re.compile(r"^(\d{4})-(\d{2})(?:-(\d{2}))?")
-_HEAD = re.compile(r"^(週|月|日|Week|Month|Day|Time|時間)$", re.I)
+_HEAD = re.compile(r"^(週|月|日|Week|Month|Day|Time|時間|Date|日付)$", re.I)
 
 
 def looks_like_trends(name: str, body: bytes) -> bool:
     head = body[:600].decode("utf-8-sig", errors="replace")
-    return name.lower().endswith(".csv") and bool(re.search(r"カテゴリ|Category|\(日本\)|\(Japan\)|週,|Week,|Time,|月,|Month,", head))
+    n = name.lower()
+    return n.endswith(".csv") and (n.startswith(("time_series", "searched_with", "multitimeline", "relatedqueries")) or
+                                   bool(re.search(r"カテゴリ|Category|\(日本\)|\(Japan\)|週,|Week,|Time,|月,|Month,", head)))
+
+
+def store_reference(st, name: str, body: bytes, uploaded_at: str = "") -> dict:
+    """Related-queries exports (top / rising searches) are not time series: kept as reference files only."""
+    rel = f"inputs/google_trends/{(uploaded_at or iso())[:10]}_{sha256(body)[:8]}_{Path(name).name}"
+    write_bytes(rel, body)
+    st.setdefault("documents", {}).setdefault("trends_reference", []).append({"file": rel, "uploaded": (uploaded_at or iso())[:10]})
+    log(st, "trends", {"file": rel}, "related-queries export kept as reference")
+    return {"ok": True, "reference": rel}
 
 
 def parse(body: bytes) -> dict:

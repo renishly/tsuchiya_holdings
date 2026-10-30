@@ -400,8 +400,29 @@ class Client:
         return items if code == 200 and isinstance(items, list) else []
 
     def download_inbox(self, item, save_to=None):
-        code, r = self._call("GET", f"/api/inbox/{item['id']}/file", timeout=LONG, stream=True)
-        if code != 200 or r is None:
+        """Stream an Inbox file to a temporary (or given) folder. A redirect to the dashboard's file storage is
+        followed once; the API key is sent only to the dashboard's own host. Sets item["_outcome"] on failure."""
+        import requests
+        url, key = self._settings()
+        if not url:
+            return None
+        fu = item.get("file_url") or f"/api/inbox/{item['id']}/file"
+        target = fu if fu.startswith("http") else url + fu
+        host = urllib.parse.urlsplit(url).netloc
+        try:
+            for _ in range(2):
+                same = urllib.parse.urlsplit(target).netloc == host
+                r = requests.get(target, headers={"X-API-Key": key} if same else {}, stream=True, timeout=LONG,
+                                 allow_redirects=False)
+                if r.status_code in (301, 302, 303, 307, 308) and r.headers.get("Location"):
+                    target = urllib.parse.urljoin(target, r.headers["Location"])
+                    continue
+                break
+        except requests.RequestException as e:
+            item["_outcome"] = f"download failed: {type(e).__name__}"
+            return None
+        if r.status_code != 200:
+            item["_outcome"] = f"download failed: HTTP {r.status_code}"
             return None
         name = Path(item.get("filename") or "upload.bin").name
         dest = Path(save_to) / name if save_to else Path(tempfile.mkdtemp()) / name
@@ -416,14 +437,17 @@ class Client:
     def _take_inbox(self):
         waiting = self.inbox()
         self._state["inbox_seen"] = [{"id": it.get("id"), "filename": it.get("filename")} for it in waiting]
-        for it in waiting:
+        for it, seen in zip(waiting, self._state["inbox_seen"]):
             path = self.download_inbox(it)
             if not path:
+                seen["outcome"] = it.get("_outcome", "download failed")
                 continue
             try:
-                if self._state["on_file"](it, str(path)) is not False:
-                    self.confirm_inbox(it)
+                kept = self._state["on_file"](it, str(path)) is False
+                seen["outcome"] = "kept in the Inbox (not usable)" if kept else \
+                    ("stored" if self.confirm_inbox(it) else "stored; confirmation failed (offered again next time)")
             except Exception as e:
+                seen["outcome"] = f"handler error: {type(e).__name__}: {str(e)[:100]}"
                 self.report(f"Inbox file {it.get('filename')} not stored: {type(e).__name__}", "error")
             finally:
                 shutil.rmtree(path.parent, ignore_errors=True)
@@ -556,6 +580,26 @@ class Client:
     def set_skill_tree(self, content) -> bool:
         return self._call("PUT", "/api/skill-tree", json_body={"content": content}, timeout=LONG)[0] == 200
 
+    def set_skill_tree_view(self, content, filename=None) -> bool:
+        """The user-friendly skill tree (PDF, HTML or image, up to 20 MB) people see first; needs the AI version."""
+        try:
+            if isinstance(content, (str, Path)) and Path(content).exists():
+                data, filename = Path(content).read_bytes(), filename or Path(content).name
+            else:
+                data = content if isinstance(content, bytes) else str(content).encode("utf-8")
+                filename = filename or "skill_tree.html"
+            if len(data) > 20 * 1024 * 1024:
+                print(f"[dashboard:{self.profile}] skill tree view over 20 MB; not sent")
+                return False
+            ctype = mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            return self._call("PUT", "/api/skill-tree/view", files={"file": (filename, data, ctype)}, timeout=LONG)[0] == 200
+        except Exception as e:
+            print(f"[dashboard:{self.profile}] skill tree view failed: {type(e).__name__}")
+            return False
+
+    def remove_skill_tree_view(self) -> bool:
+        return self._call("DELETE", "/api/skill-tree/view")[0] == 200
+
     def read_skill_tree(self, agent_id):
         code, r = self._call("GET", f"/api/skill-trees/{urllib.parse.quote(str(agent_id), safe='')}")
         return r if code == 200 else None
@@ -592,3 +636,4 @@ delete_activity, delete_monitors = _main.delete_activity, _main.delete_monitors
 post_skill, skills, read_skill, skill_details = _main.post_skill, _main.skills, _main.read_skill, _main.skill_details
 download_skill, delete_skill, set_skill_tree, read_skill_tree, skill_categories = (
     _main.download_skill, _main.delete_skill, _main.set_skill_tree, _main.read_skill_tree, _main.skill_categories)
+set_skill_tree_view, remove_skill_tree_view = _main.set_skill_tree_view, _main.remove_skill_tree_view

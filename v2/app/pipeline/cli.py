@@ -1017,6 +1017,17 @@ def _dashboard_skills(st) -> str:
     tree_set = False
     if st["dashboard_sent"].get("skill_tree") != th and dashboard.set_skill_tree(tree):
         st["dashboard_sent"]["skill_tree"], tree_set = th, True
+    # A54: the user-friendly version of the tree (HTML, no scripts), shown first on the dashboard
+    import htmlpages
+    ver, _ = current_version()
+    vpath = ROOT / htmlpages.skill_tree_view((sk_dir / "SKILL_TREE.md").read_text(encoding="utf-8"),
+                                             {k: v for k, v in sent.items() if isinstance(v, dict)}, ver)
+    vh = hashlib.sha256(vpath.read_bytes()).hexdigest()[:16]
+    if st["dashboard_sent"].get("skill_tree_view") != vh and st["dashboard_sent"].get("skill_tree"):
+        if dashboard.set_skill_tree_view(vpath, "tsuchibot_skill_tree.html"):
+            st["dashboard_sent"]["skill_tree_view"], tree_set = vh, True
+        else:
+            failed.append("skill tree view")
     if posted or failed or tree_set:
         save_state(st)
     if not (posted or failed or tree_set):

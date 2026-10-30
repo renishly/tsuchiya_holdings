@@ -11,6 +11,7 @@ The overview pages explain what each value means, in which direction, compared w
 from __future__ import annotations
 
 import html
+import re
 import json
 
 from lib import ROOT, iso, write_text
@@ -413,3 +414,72 @@ def debate_turns(prof: str, case: dict) -> str:
             + (body or '<p class="mut">No turns recorded.</p>'))
     rel = f"reports/debates/{(case.get('recorded') or iso())[:16].replace(':', '').replace('T', '_')}_{prof}.html"
     return save(rel, page(f"{name}: turns", f"Tsuchibot {name.split(' (')[0]} · debate turns", body))
+
+
+# ---------------------------------------------------------------- user-friendly skill tree (A54)
+TREE_GROUPS = {  # heading in SKILL_TREE.md -> (who, plain-language role)
+    "Running the system": ("Orchestrator", "Reads what happened in each run, decides whether anything needs doing, and hands follow-ups to the right helper."),
+    "Data": ("Baseline agent: data", "Reads Tsuchiya's filings and market prices, checks them, and never fills in a missing number."),
+    "Valuation methods": ("Baseline agent: valuation", "Values the company several ways and combines them. Every number comes from code."),
+    "Research": ("Research agent", "Every week, tests which valuation methods actually predicted returns across the listed housebuilders."),
+    "The Md debate": ("News scouts and Debaters A and B", "Look at new notices and argue whether the company's profit forecast should be adjusted. Decision models judge them."),
+    "Marketing data": ("Marketing data (code)", "Orders, showrooms, events and search interest: demand signals for Tsuchiya and its peers."),
+    "Reporting": ("Reporter", "Writes the weekly summary in plain words; code checks every number."),
+}
+
+
+def skill_tree_view(tree_md: str, shared: dict, ver: str) -> str:
+    """A script-free HTML page of the skill tree for people (the dashboard shows it before the AI version)."""
+    groups, cur = [], None
+    for line in tree_md.splitlines():
+        h = re.match(r"###\s+(.*)", line)
+        if h:
+            cur = {"title": h.group(1).strip(), "skills": [], "text": []}
+            groups.append(cur)
+            continue
+        if line.startswith("## ") and not line.startswith("### "):
+            cur = None
+            continue
+        if cur is None:
+            continue
+        m = re.match(r"-\s+\*\*([\w-]+)\*\*\s*(\*\(shared\)\*)?:?\s*(.*)", line) or re.match(r"-\s+\*\*([\w-]+):\*\*\s*(.*)", line)
+        if m:
+            if m.re.groups == 3:
+                cur["skills"].append((m.group(1), bool(m.group(2)), m.group(3).lstrip(": ")))
+            else:
+                cur["skills"].append((m.group(1), False, m.group(2)))
+        elif line.strip():
+            cur["text"].append(line.strip())
+    md = lambda t: re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", esc(t))
+    flow = ('<div class="card"><h2>How the agent works</h2><div class="kpis">'
+            + "".join(f'<div class="kpi"><div class="l">step {i}</div><div class="v" style="font-size:1rem">{esc(a)}</div><div class="s">{esc(b)}</div></div>'
+                      for i, (a, b) in enumerate([("Collect", "filings, prices, notices, marketing data"),
+                                                  ("Value", "several methods, weighted by the backtest"),
+                                                  ("Adjust", "Md: how much to trust the company's forecast"),
+                                                  ("Debate", "news that Md does not measure"),
+                                                  ("Report", "dashboard pages and a weekly summary")], 1))
+            + '</div><p class="mut">Agents (language models) only read, explain and argue. Code computes every number; the student approves '
+              'weights and decides the target price and the view.</p></div>')
+    cards = []
+    for g in groups:
+        key = next((k for k in TREE_GROUPS if g["title"].startswith(k)), None)
+        who, role = TREE_GROUPS.get(key, (g["title"], ""))
+        rows = "".join(
+            f'<tr><td><b>{esc(n)}</b></td><td>{md(t)}</td><td>'
+            + (f'<span class="tag ok">shared</span><br><span class="mut">{esc((shared.get(n) or {}).get("identifier") or "")}</span>' if sh else '<span class="tag in">internal</span>')
+            + '</td></tr>' for n, sh, t in g["skills"])
+        extra = "".join(f"<p>{md(t)}</p>" for t in g["text"] if not t.startswith("```"))
+        cards.append(f'<div class="card"><div class="eyebrow">{esc(g["title"])}</div><h2>{esc(who)}</h2><p>{esc(role)}</p>'
+                     + (f'<table><tr><th>Skill</th><th>What it lets the agent do</th><th>Market</th></tr>{rows}</table>' if rows else "")
+                     + (f'<div class="mut" style="margin-top:8px">{extra}</div>' if extra and not rows else "") + '</div>')
+    n_sh = sum(1 for g in groups for _, sh, _ in g["skills"] if sh)
+    n_all = sum(len(g["skills"]) for g in groups)
+    body = (f'<div class="note">{n_all} skills in {len(groups)} areas; {n_sh} are shared on the seminar\'s skill market. A skill is a short '
+            'instruction an agent reads when it needs it: how to read and explain what code produced. No skill lets an agent compute, '
+            'change or approve a number.</div>' + flow + "".join(cards)
+            + '<div class="card"><h2>Words used here</h2><dl><dt>Md</dt><dd>the forecast discount: an adjustment to the company\'s profit forecast</dd>'
+              '<dt>M1</dt><dd>statistical comparables: what similar listed housebuilders trade at</dd><dt>Backtest</dt><dd>did a method\'s '
+              '"cheap/expensive" verdict predict the next year\'s return?</dd><dt>Shared</dt><dd>posted on the seminar\'s skill market</dd>'
+              '<dt>Internal</dt><dd>names this agent\'s own tools or files; kept private</dd></dl></div>'
+            + f'<p class="mut">Version {esc(ver)}. The AI version of this tree (Markdown) is shown next to it on the dashboard.</p>')
+    return save("reports/pages/skill_tree.html", page("Tsuchibot skill tree", "Tsuchibot Main · skill tree", body))
