@@ -2022,3 +2022,52 @@ Model calls: 2; tokens in/out: 8418/1998; models: nvidia/nemotron-3-ultra-550b-a
 
 ### Next planned
 steady
+
+## R-20261030-121138 — scheduled
+
+- Start / end (JST): 2026-10-30T12:11:38+09:00 / 2026-10-30T12:15:25+09:00
+- Iterations: 20; web requests by domain: {"www.tsuchiya.co.jp": 3, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.edinet-fsa.go.jp": 2, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: [].
+Review events: Average Valuated Price 198.413 -> 205.203 (+3.4%) since the review of 2026-10-30T12:03+09:00; Target P/E 3.446 -> 11.4575 (+232.5%) since the review of 2026-10-30T12:03+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 0, "changed": 29, "conflicts": 0, "total": 877}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review — 2026-10-30 (scheduled)**
+
+**What moved**  
+- **Average Valuated Price**: 198.413 → 205.203 (+3.4%).  
+- **Target P/E**: 3.446 → 11.4575 (+232.5%).  
+- **Target EV/EBITDA**: 11.5186 → 11.5002 (−0.2%, negligible).  
+- **1840 stock price**: 224 → 223 (−0.4%).  
+
+**Why**  
+The Target P/E at the last review (3.446) matched 日本ハウスHD’s forward P/E (3.446). Yesterday (2026-10-29) it matched タマホーム’s forward P/E (19.4579). Today it sits at 11.4575, which does not equal any single peer’s current forward P/E (1419: 19.4579; 1873: 3.4571; 8999: 14.4931). The Average Valuated Price blends six methods (P/E, EV/EBITDA, P/B, two M1 regressions); the P/E component swung because the “representative” peer multiple shifted, while the EV/EBITDA component stayed near タマホーム’s 11.55 level. Peer prices and forecasts barely moved (max |Δ| 1.5% on グランディハウス price). The routine steady-state run and P9 compl
+Model calls: 2; tokens in/out: 8006/3908; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 877 rows total; 29 written this run
+- Alternative Data: 641 rows total; 0 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady

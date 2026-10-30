@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T12:03:53+09:00",
+      "last_success": "2026-10-30T12:15:17+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T12:04:00+09:00",
+      "last_success": "2026-10-30T12:15:25+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T12:01:55+09:00",
+      "last_success": "2026-10-30T12:12:58+09:00",
       "fail_streak": 0
     }
   },
@@ -4444,8 +4444,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 224.0,
-      "quote_time": "2026-10-30T15:30:00+09:00"
+      "price": 223.0,
+      "quote_time": "2026-10-29T15:30:00+09:00"
     }
   },
   "history": [
@@ -4736,10 +4736,16 @@
       "ended": "2026-10-30T12:04:00+09:00",
       "iterations": 33,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261030-121138",
+      "ended": "2026-10-30T12:15:25+09:00",
+      "iterations": 20,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
-    "changelog": "v2.014",
+    "changelog": "v2.015",
     "research_summary": "2026-10-30-n284",
     "factor_monitor_removed": true,
     "summary_report": "reports/summary_2026-10-23.html",
