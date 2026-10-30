@@ -332,7 +332,7 @@ class Client:
             return {}
         self._set_paused(bool(st.get("paused")))
         self._handle_commands()
-        if st.get("inbox_waiting") and self._state["on_file"]:
+        if self._state["on_file"] and (st.get("inbox_waiting") or "inbox_waiting" not in st):
             self._take_inbox()
         if not self._state["paused"]:
             self.flush()
@@ -414,7 +414,9 @@ class Client:
         return self._call("POST", f"/api/inbox/{item['id']}/received")[0] == 200
 
     def _take_inbox(self):
-        for it in self.inbox():
+        waiting = self.inbox()
+        self._state["inbox_seen"] = [{"id": it.get("id"), "filename": it.get("filename")} for it in waiting]
+        for it in waiting:
             path = self.download_inbox(it)
             if not path:
                 continue

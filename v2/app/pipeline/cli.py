@@ -82,6 +82,15 @@ def cmd_start(a):
 
 DASH_EVERY = 14 * 3600  # scheduled twice a day (06:17 and 16:17 JST); the longest gap is 14 hours
 
+def _register_inbox(st):
+    """A49: Main and C&A accept Inbox files. Every pipeline process that checks in must declare it, or that check-in
+    would tell the dashboard the agent no longer accepts files and close the Inbox."""
+    import dashboard
+    import inbox
+    for prof in ("main", "ca"):
+        c = dashboard.client(prof)
+        c.accept_inbox(lambda item, path, c=c: inbox.store(st, item, path, c.report), check=False)
+
 def _dashboard_start(st, mode) -> dict:
     """Check in with the seminar dashboard (not in test mode). Paused -> the run does no work."""
     if mode == "test":
@@ -90,11 +99,11 @@ def _dashboard_start(st, mode) -> dict:
         import dashboard
         if not dashboard.enabled():
             return {"enabled": False}
-        import inbox   # A49: files the student uploads to Main's or C&A's Inbox become citable evidence
-        for prof in ("main", "ca"):
-            c = dashboard.client(prof)
-            c.accept_inbox(lambda item, path, c=c: inbox.store(st, item, path, c.report), check=False)
+        _register_inbox(st)
         reply = dashboard.check_in(every=DASH_EVERY)
+        log(st, "dashboard", {"profile": "main"}, {"reachable": bool(reply), "inbox_waiting": (reply or {}).get("inbox_waiting"),
+                                                    "accepts_inbox": (reply or {}).get("accepts_inbox"),
+                                                    "inbox_seen": dashboard.client("main")._state.get("inbox_seen")})
         if dashboard.is_paused():
             dashboard.report("Paused on the dashboard: run skipped", "status")
             dashboard.flush()
@@ -107,7 +116,9 @@ def _dashboard_start(st, mode) -> dict:
             if prof == "main":
                 continue
             c = dashboard.client(prof)
-            c.check_in(every=DASH_EVERY)
+            r_ = c.check_in(every=DASH_EVERY)
+            log(st, "dashboard", {"profile": prof}, {"reachable": bool(r_), "inbox_waiting": (r_ or {}).get("inbox_waiting"),
+                                                     "accepts_inbox": (r_ or {}).get("accepts_inbox"), "inbox_seen": c._state.get("inbox_seen")})
             others.append(prof)
             if c.is_paused():
                 paused.append(prof)
@@ -957,6 +968,7 @@ SHARED_SKILLS = ["guardrails", "peer-multiples", "forecast-inputs", "forecast-di
                  "valuation-combine", "universe", "model-fit", "backtest", "evidence-board", "summary-report", "number-check",
                  "news-scout", "debate-position", "debater-memory"]   # A46: the student's choice (30 Oct 2026)
 SKILL_SHARE = (os.environ.get("SKILL_SHARE") or "seminar").strip().lower()   # class | seminar
+REF_SKILLS = ["skill-connector"]   # A54: read from the market and saved for the builder (reference only)
 SKILL_FOOTER = ("\n\n---\nShared by Tsuchibot, a research agent valuing Tsuchiya Holdings (1840) from public data for a seminar "
                 "thesis. Tool names in backticks are that agent's own. Benchmark from public data; not investment advice.\n")
 
@@ -984,6 +996,20 @@ def _dashboard_skills(st) -> str:
             posted.append(name)
         else:
             failed.append(name)
+    # A54: market skills the student asked the builder to use are saved as reference text (inputs/skills_market/);
+    # the agent never follows them (another author's text is data, not instructions)
+    for ref in REF_SKILLS:
+        txt = dashboard.read_skill(ref)
+        if txt is None:   # a name rather than an identifier: look it up in the market
+            hit = next((x for sc in ("seminar", "class") for x in dashboard.skills(scope=sc, query=ref)
+                        if str(x.get("name", "")).lower() == ref.lower() or x.get("identifier") == ref), None)
+            txt = dashboard.read_skill(hit["identifier"]) if hit else None
+        if txt and txt != ((ROOT / f"inputs/skills_market/{ref}.md").read_text(encoding="utf-8")
+                           if (ROOT / f"inputs/skills_market/{ref}.md").exists() else None):
+            write_text(f"inputs/skills_market/{ref}.md", txt)
+            posted.append(f"read {ref}")
+        elif txt is None:
+            failed.append(f"read {ref}")
     tree = (sk_dir / "SKILL_TREE.md").read_text(encoding="utf-8").rstrip()
     ids = "\n".join(f"- {n}: {v.get('identifier')} (v{v.get('version')})" for n, v in sent.items() if n in SHARED_SKILLS and isinstance(v, dict))
     tree += ("\n\n## Shared skills on the market\n" + ids + "\n") if ids else "\n"
@@ -1026,6 +1052,7 @@ def _dashboard_finish(st, cr, S) -> str:
         import dashboard
         if not dashboard.enabled():
             return "not configured"
+        _register_inbox(st)
         dashboard.check_in(every=DASH_EVERY)
         phases = {p: ("parked (v2)" if p in PARKED else st["phases"][p]["status"]) for p in PHASES}
         rows = {n: len(s.rows) for n, s in S.items()}
