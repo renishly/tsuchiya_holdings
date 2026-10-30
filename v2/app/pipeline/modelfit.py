@@ -416,6 +416,10 @@ def live_params(st) -> dict | None:
 
 def research(st) -> dict:
     """Fit M1 on the full panel, run the backtest, propose weights; store as pending and queue an approval."""
+    import mdfit   # A53: Md's measured variables are fitted every research run; accepted ones apply at once (standing approval)
+    p0 = load_params()
+    p0["md"] = mdfit.fit(st)
+    write_text(PARAMS, json.dumps(p0, ensure_ascii=False, indent=1))
     rows = panel(universe.members(st))
     model = fit(rows)
     model_ev = fit(rows, "log_ev_ebitda", EV_REGRESSORS)

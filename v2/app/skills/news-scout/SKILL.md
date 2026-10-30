@@ -8,5 +8,5 @@ description: Scan one topic's new evidence-board items and flag those that could
    headlines.
 2. Items with `citable: false` (GDELT headlines) are context only: use them to understand the background, never flag them.
 3. Ask of each citable item: could it change this fiscal year's operating profit? Is it about something Md does not
-   measure (not land prices, building costs or the guidance record)?
+   measure (not land prices, building costs, Tsuchiya's order intake or the guidance record)?
 4. Call `flag_items` once with the qualifying ids and one-line reasons, or with an empty list.

@@ -88,6 +88,21 @@ def _tokens(s: str, n: int) -> list:
     return out
 
 
+def _growth(tok) -> float | None:
+    """'97.4%' (ratio to last year) → −0.026; '+3.4' / '△13.9' (change) → 0.034 / −0.139. Unsigned values below 40
+    are ambiguous (ratio or change) and are not used."""
+    if not tok:
+        return None
+    t = tok.replace("%", "").replace(" ", "").replace("＋", "+").replace("▲", "△")
+    try:
+        if t[0] in "+-△":
+            return (-1 if t[0] in "-△" else 1) * float(t[1:]) / 100
+        v = float(t)
+    except ValueError:
+        return None
+    return v / 100 - 1 if v >= 40 else None
+
+
 def _yen(tok, unit) -> float | None:
     if tok is None:
         return None
@@ -103,12 +118,38 @@ def _kanji_yen(s: str) -> float | None:
     return int(m.group(3)) * 1e8 if m.group(3) else int(m.group(4)) * 1e6
 
 
+GENERIC_ROWS = ["合計", "住宅事業", "戸建住宅", "分譲住宅", "不動産販売", "住宅", "建設事業"]
+
+
+def orders_generic(text: str) -> dict:
+    """For universe members without a configured layout: the total (or housing) row of a 4-column 受注実績 table."""
+    i = text.find("受注実績")
+    if i < 0:
+        return {}
+    sec = re.sub(r"（[^）]*）|\([^)]*%\)", "", text[i:text.find("販売実績", i) if text.find("販売実績", i) > 0 else i + 3000])
+    if "件数" in sec[:400]:          # count + amount layouts are ambiguous in flattened text: skipped
+        return {}
+    unit = "百万円" if "百万円" in sec[:400] else "千円"
+    for seg in GENERIC_ROWS:
+        j = sec.find(seg, 30)
+        if j < 0:
+            continue
+        t = _tokens(sec[j + len(seg):].lstrip(" 　"), 4)
+        if len(t) == 4 and t[0] and t[2]:
+            return {seg: {"orders": _yen(t[0], unit), "backlog": _yen(t[2], unit)}}
+    return {}
+
+
 def orders_from_text(ticker: str, text: str) -> dict:
     """{segment: {"orders": yen, "backlog": yen, "count": n}} from the MD&A 受注実績 table (or sentence)."""
     i = text.find("受注実績")
     if ticker == "1873" or i < 0:
-        m = re.search(r"受注高につきましては、([0-9０-９億百万円]+)", text)
-        return {"住宅事業": {"orders": _kanji_yen(m.group(1))}} if m and _kanji_yen(m.group(1)) else {}
+        m = re.search(r"受注高につきましては、([0-9０-９億百万円]+)（前年同期比([\d.]+)％(増|減)）", text) or \
+            re.search(r"受注高につきましては、([0-9０-９億百万円]+)", text)
+        if not (m and _kanji_yen(m.group(1))):
+            return {}
+        g = (1 if m.group(3) == "増" else -1) * float(m.group(2)) / 100 if m.lastindex and m.lastindex >= 3 else None
+        return {"住宅事業": {"orders": _kanji_yen(m.group(1)), "growth": g}}
     sec = re.sub(r"（[^）]*）|\([^)]*%\)", "", text[i:text.find("販売実績", i) if text.find("販売実績", i) > 0 else i + 3000])
     unit = "百万円" if "百万円" in sec[:400] else "千円"
     out = {}
@@ -123,11 +164,12 @@ def orders_from_text(ticker: str, text: str) -> dict:
             if m:
                 num = lambda g: None if g in ("－", "―") else g
                 # counts are not kept: a short count runs into its percentage ("50135.1" = 50 / 135.1 or 501 / 35.1)
-                out[seg] = {"orders": _yen(num(m.group(3)), unit), "backlog": _yen(num(m.group(7)), unit)}
+                out[seg] = {"orders": _yen(num(m.group(3)), unit), "backlog": _yen(num(m.group(7)), unit),
+                            "growth": _growth(num(m.group(4)))}
         else:                  # 受注高, %, 受注残高, %
             t = _tokens(rest, 4)
             if len(t) == 4:
-                out[seg] = {"orders": _yen(t[0], unit), "backlog": _yen(t[2], unit)}
+                out[seg] = {"orders": _yen(t[0], unit), "backlog": _yen(t[2], unit), "growth": _growth(t[1])}
     return out
 
 
@@ -318,6 +360,51 @@ def peers_site(st, store: CsvStore) -> dict:
     return out
 
 
+def weekly_digest(st, out: dict) -> str | None:
+    """A citable evidence-board item when the marketing picture changed since the last digest (A53): model houses
+    opened or closed, events and completion tours, competitors' shops and openings in Tsuchiya's areas. Code writes
+    it; the first digest only records the starting point."""
+    import evidence
+    import linkcheck
+    mk = _state(st)
+    tsu, peers = out.get("tsuchiya") or {}, out.get("peers") or {}
+    now_ = {"mh": (tsu.get("modelhouses") or {}).get("total"), "ev": (tsu.get("events") or {}).get("total"),
+            "comp": (tsu.get("events") or {}).get("completion"), "tama_hk": (peers.get("tama_shops") or {}).get("hokkaido"),
+            "tama_th": (peers.get("tama_shops") or {}).get("tohoku"), "nh_new": (peers.get("nh_modelhouses") or {}).get("new")}
+    prev = mk.get("digest_last")
+    mk["digest_last"] = {**now_, "date": iso()[:10]}
+    if not prev:
+        return None
+    snaps = mk.get("snapshots", {})
+    lines = []
+    def delta(label, k, unit):
+        a, b = prev.get(k), now_.get(k)
+        if a is not None and b is not None and a != b:
+            lines.append(f"{label}: {a} → {b} {unit} ({b - a:+d})")
+    delta("土屋ホーム model houses", "mh", "")
+    delta("土屋ホーム events listed", "ev", "")
+    delta("土屋ホーム completion tours and roof-raisings listed", "comp", "")
+    delta("タマホーム shops in Hokkaido", "tama_hk", "")
+    delta("タマホーム shops in Tohoku", "tama_th", "")
+    delta("日本ハウス model-house opening notices", "nh_new", "")
+    if not lines:
+        return None
+    text = (f"Marketing digest {iso()[:10]} (written by code from the agent's weekly marketing data; previous digest "
+            f"{prev.get('date')}).\n" + "\n".join(lines) + "\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, "
+            "tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.")
+    from lib import sha256, write_text
+    i = "E-" + sha256(f"digest:{iso()[:10]}".encode())[:8]
+    write_text(f"raw/evidence/{i}.txt", text)
+    b = evidence.load_board()
+    b["items"][i] = {"id": i, "date": iso()[:10], "ticker": "1840", "title": f"Marketing digest {iso()[:10]}: " + "; ".join(lines)[:150],
+                     "url": f"digest:{i}", "source": "Marketing digest (code)", "topic": "company and peers", "first_seen": iso(),
+                     "excerpt": text[:1500], "excerpt_long": linkcheck.focused_excerpt(text),
+                     "link": {"resolved": True, "type": "txt", "pages": 1, "chars": len(text), "sha256": sha256(text.encode()),
+                              "checked": iso(), "written_by": "code"}}
+    evidence.save_board(b)
+    return i
+
+
 def refresh(st, store: CsvStore, weekly: bool) -> dict:
     """One steady-state step: filings and Tsuchiya's site daily; peers' sites when `weekly`."""
     res = {}
@@ -330,5 +417,9 @@ def refresh(st, store: CsvStore, weekly: bool) -> dict:
             res[key] = {"error": str(e)[:150]}
     if weekly:
         _state(st)["last_peers"] = iso()[:10]
+        try:
+            res["digest"] = weekly_digest(st, res)
+        except Exception as e:
+            res["digest"] = {"error": str(e)[:150]}
     log(st, "marketing", {"weekly": weekly}, {k: (v if isinstance(v, dict) and "error" in v else "ok") for k, v in res.items()})
     return res

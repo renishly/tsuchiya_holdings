@@ -943,8 +943,13 @@ def _overview_values(st, base, cr, ver, pend) -> dict:
                          "guidance_date": mc.get("guidance_date"), "months_left": mc.get("months_left"),
                          "baseline": v("Md: Discount Baseline"), "supply": v("Md: Supply Costs (% since guidance)"),
                          "land": v("Md: Land Price Ave (% since guidance)"),
-                         "debate": v("Md: Debate Signal") or v("Md: Debate Signal (shadow)"), "debate_mode": ds.get("mode")},
+                         "debate": v("Md: Debate Signal") or v("Md: Debate Signal (shadow)"), "debate_mode": ds.get("mode"),
+                         "orders": v("Md: Order Momentum (% YTD orders vs last year)"),
+                         "orders_note": ((_latest(base, "1840", "Md: Order Momentum (% YTD orders vs last year)") or {}).get("correction_note") or "")[:220],
+                         "term": {k: v(f"Md term: {lab}") for k, lab in (("orders", "Order Momentum"), ("supply", "Supply Costs"), ("land", "Land Price Ave"))},
+                         "fit": (prm.get("md") or {}).get("terms") or {}, "trends": st["documents"].get("trends")},
             "research": {"version": cur.get("version"), "status": cur.get("status"), "methods": ms, "sentence": sentence,
+                         "companies": (cur.get("panel") or {}).get("companies"),
                          "approved": (prm.get("approved") or {}).get("version")},
             "pending": pend, "version": ver, "run_id": cr["run_id"]}
 

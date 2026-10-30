@@ -39,7 +39,8 @@ BOJ_API = "https://www.stat-search.boj.or.jp/api/v1/getDataCode"
 BOJ_LUMBER = "PRCG20_2200320001"   # CGPI (2020 base), Producer Price Index, Group: Lumber and wood products
 REINFOLIB = "https://www.reinfolib.mlit.go.jp/ex-api/external/XIT001"
 LAND_AREA = "01"            # Hokkaido (prefecture code); Tsuchiya's core market (D15: other regions to confirm)
-COEF = {"land": 0.0, "supply": 0.0}   # Md coefficients (yen of operating profit per 1% change); fitted later (A37)
+COEF = {"land": 0.0, "supply": 0.0, "orders": 0.0}   # default Md coefficients: yen added to Md per 1% change (A37, A53)
+QPARSER = 2                 # quarterly 決算短信 parser version (2: + 受注状況, A53); older cached parses are re-read
 DOC = "https://www.tsuchiya.co.jp/ir/news/"
 _ZEN = str.maketrans("０１２３４５６７８９，．△", "0123456789,.-")
 
@@ -87,7 +88,7 @@ def _doc_cache(st) -> dict:
 def _parsed_doc(st, d: dict, kind: str) -> dict:
     """Fetch and parse one Tsuchiya document once; later runs read the cached result from state."""
     cache = _doc_cache(st)
-    if d["url"] in cache:
+    if d["url"] in cache and not (kind == "quarterly" and cache[d["url"]].get("parser", 1) < QPARSER):
         return cache[d["url"]]
     if run_ctx(st).get("mode") == "test":
         return {}
@@ -137,6 +138,12 @@ def _parse_quarterly(text: str, title: str) -> dict:
     b = re.search(r"20\d\d年\d{1,2}月期第?\s*[123]?\s*(?:四半期|中間期)\s+([\d,]+)\s+([\d,]+)\s+([\d.]+)\s+([\d,.]+)", t)
     if b:
         out["bps"] = _num(b.group(4))
+    # ②受注状況 (千円): 住宅事業 prior YTD orders, prior backlog, current YTD orders, current backlog, prior FY orders, backlog
+    o = re.search(r"受注状況.{0,600}?住宅事業\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)", t, re.S)
+    if o:
+        out["orders_prior_ytd"], out["backlog_prior"] = _num(o.group(1)) * 1000, _num(o.group(2)) * 1000
+        out["orders_ytd"], out["backlog"] = _num(o.group(3)) * 1000, _num(o.group(4)) * 1000
+    out["parser"] = QPARSER
     return out
 
 
@@ -169,7 +176,7 @@ def boj_lumber(st) -> dict:
         return c
     try:
         body, meta = fetch(st, BOJ_API, params={"format": "json", "lang": "en", "db": "PR01", "code": BOJ_LUMBER,
-                                                "startDate": "202001"}, purpose="Md: BOJ lumber price index")
+                                                "startDate": "201501"}, purpose="Md: BOJ lumber price index")
         rs = json.loads(body)["RESULTSET"][0]["VALUES"]
         c.update(series=dict(zip((str(d) for d in rs["SURVEY_DATES"]), rs["VALUES"])), fetched=today,
                  source=f"{BOJ_API}?db=PR01&code={BOJ_LUMBER}")
@@ -312,23 +319,58 @@ def run(st, w, *, L, last_pe, price, price_id, fc, fids, peers, debt, cash, shar
                                                 for m in track) + f"; months left {months_left:.1f}; n = {n}"
                   if track else "No completed fiscal year with a known initial forecast yet (needs earlier 決算短信 / revision notices)."))
     guidance_date = _guidance_date(docs, fc)
+    # A53: fitted coefficients (weekly research run; applied under the student's standing approval when accepted)
+    import modelfit
+    md_fit = modelfit.load_params().get("md") or {}
+    coef = {**COEF, **{k: v for k, v in (md_fit.get("coef") or {}).items() if k in COEF}}
+    terms = md_fit.get("terms") or {}
+    def cstat(k):
+        tm = terms.get(k) or {}
+        return (f"Coefficient {coef[k]:,.0f} yen per 1% ({tm.get('reason', 'not fitted yet')})" if tm else
+                f"Coefficient {coef[k]:,.0f}: not fitted yet (weekly research run)")
+    horizon = min(1.0, (months_left or 0) / 12)
+    cap_now = (cap * horizon) if cap else None
+    def term(k, x):   # yen added to Md: coefficient × change (%) × months left / 12, capped at the largest past miss
+        if x is None or not coef.get(k):
+            return 0.0
+        v = coef[k] * x * horizon
+        return max(-cap_now, min(cap_now, v)) if cap_now else v
     lum = boj_lumber(st)
     sup, sup_note = _change_since(lum.get("series", {}), guidance_date, monthly=True) if guidance_date else (None, "guidance date unknown")
     put("Md: Supply Costs (% since guidance)", "public data", "", sup, "%", "BOJ CGPI lumber and wood products: latest ÷ last month before the guidance date − 1",
         [], url=lum.get("source", BOJ_API), title="日本銀行 企業物価指数", source_type="government statistics",
-        note=f"{sup_note}. Coefficient {COEF['supply']} until fitted on the panel (A37): logged, not yet in Md.")
+        note=f"{sup_note}. {cstat('supply')}.")
     land = land_prices(st)
     lnd, lnd_note = _change_since(land.get("series", {}), guidance_date, monthly=False) if guidance_date else (None, "guidance date unknown")
     put("Md: Land Price Ave (% since guidance)", "public data", "", lnd, "%", "MLIT XIT001 Hokkaido 宅地(土地) median ¥/㎡: latest quarter ÷ last quarter before the guidance date − 1",
         [], url=REINFOLIB, title="国土交通省 不動産情報ライブラリ", source_type="government API",
-        note=(f"{lnd_note}. Coefficient {COEF['land']} until fitted on the panel (A37): logged, not yet in Md."
-              if land.get("series") or os.environ.get("REINFOLIB_API_KEY") else "REINFOLIB_API_KEY not set."))
+        note=(f"{lnd_note}. {cstat('land')}." if land.get("series") or os.environ.get("REINFOLIB_API_KEY")
+              else "REINFOLIB_API_KEY not set: no land-price series, so the coefficient cannot be fitted."))
+    # Order Momentum (A53): Tsuchiya's year-to-date housing orders vs the same months last year, from a quarterly
+    # 決算短信 published after the guidance date (an earlier one is already reflected in the forecast)
+    qo = next((d for d in docs["quarterly"] if fc and d.get("fy") == fc.get("fiscal_year") and d.get("orders_ytd")
+               and d.get("orders_prior_ytd")), None)
+    after = bool(qo and guidance_date and qo.get("date", "") > guidance_date.isoformat())
+    ordm = ((qo["orders_ytd"] / qo["orders_prior_ytd"] - 1) * 100) if qo and after else None
+    put("Md: Order Momentum (% YTD orders vs last year)", "public data", "", ordm, "%",
+        "= year-to-date housing orders (受注高, 住宅事業) ÷ same months last year − 1, from the latest quarterly 決算短信 after the guidance date",
+        [], url=(qo or {}).get("url", DOC), title=(qo or {}).get("title", "決算短信"), source_type="決算短信",
+        note=((f"{qo['months']} months: ¥{qo['orders_ytd'] / 1e6:,.0f}m vs ¥{qo['orders_prior_ytd'] / 1e6:,.0f}m; backlog ¥{qo['backlog'] / 1e6:,.0f}m "
+               f"vs ¥{qo['backlog_prior'] / 1e6:,.0f}m. {cstat('orders')}.") if ordm is not None else
+              (f"The latest quarterly orders ({qo['date']}) were published by the guidance date {guidance_date}, so they are already in the "
+               f"forecast: 0. {cstat('orders')}." if qo else "No quarterly orders for this fiscal year yet.")))
+    # Search share (A53): logged only (coefficient 0); from the student's Google Trends exports
+    tr = st["documents"].get("trends") or {}
+    put("Md: Search Share (pp since guidance)", "public data", "", None, "pp", "Tsuchiya's share of search: latest month − month before the guidance date",
+        [], url="https://trends.google.com/", title="Google Trends (student export)", source_type="Google Trends",
+        note=("Logged only: coefficient 0 (A53). " + (f"Export to {tr.get('last_date')}; computed in the marketing data." if tr else
+                                                      "No Google Trends export uploaded yet.")))
     # context for the Md debate (A41): what the measured parts already cover, and the cap for the Debate Signal
     st["documents"]["md_context"] = {
         "forecast_fy": (fc or {}).get("fiscal_year"), "forecast_operating_profit": fop,
         "guidance_date": guidance_date.isoformat() if guidance_date else None,
         "months_left": round(months_left, 2) if months_left is not None else None,
-        "discount_baseline": base, "supply_costs_pct": sup, "land_price_pct": lnd,
+        "discount_baseline": base, "supply_costs_pct": sup, "land_price_pct": lnd, "order_momentum_pct": ordm,
         "cap": (cap * min(1.0, (months_left or 0) / 12)) if cap else None,
         "cap_rule": "largest past guidance miss × months left / 12 (shrinks as the fiscal year ends)"}
     # Debate Signal (A41-A42): from the latest Md debate, while it has not expired; applied only in live mode
@@ -340,11 +382,17 @@ def run(st, w, *, L, last_pe, price, price_id, fc, fids, peers, debt, cash, shar
         note=(f"Debate of {ds['date']} ({ds.get('mode')} mode; expires {ds.get('expires')}); items {', '.join(ds.get('items') or []) or 'none'}. "
               + (ds.get("note") or "") + ("" if ds_live else " Shadow mode: logged, not applied to Md."))
         if ds_val is not None else "No Md debate yet (or the last one expired).")
-    md_op = (base or 0.0) + COEF["land"] * (lnd or 0.0) + COEF["supply"] * (sup or 0.0) + (ds_val if ds_live else 0.0)
-    md_op = md_op if base is not None or lnd is not None or sup is not None or ds_live else None
+    t_land, t_sup, t_ord = term("land", lnd), term("supply", sup), term("orders", ordm)
+    for label, val, k, x in (("Md term: Order Momentum", t_ord, "orders", ordm), ("Md term: Supply Costs", t_sup, "supply", sup),
+                             ("Md term: Land Price Ave", t_land, "land", lnd)):
+        put(label, "derived-current", "", val, "JPY", f"= coefficient × change (%) × months left / 12, capped at the largest past miss × months left / 12",
+            [], note=f"change {x if x is None else round(x, 2)}%; coefficient {coef.get(k, 0):,.0f} yen per 1%; months left {months_left or 0:.1f}")
+    md_op = (base or 0.0) + t_land + t_sup + t_ord + (ds_val if ds_live else 0.0)
+    md_op = md_op if base is not None or lnd is not None or sup is not None or ordm is not None or ds_live else None
     md_id = put("Md (operating profit)", "derived-current", "", md_op, "JPY",
-                "= Discount Baseline + coef_land × Land Price Ave + coef_supply × Supply Costs + Debate Signal (live mode only)",
-                [], note="Positive lowers the company's forecast. Subtracted from forecast 営業利益 before valuation.")
+                "= Discount Baseline + Order Momentum term + Supply Costs term + Land Price term + Debate Signal (live mode only)",
+                [], note="Positive lowers the company's forecast. Subtracted from forecast 営業利益 before valuation. Terms use coefficients fitted "
+                         "on the M1 universe and applied under the student's standing approval of 30 Oct 2026 when they pass the test (A53).")
     md_eps = md_op * (1 - TAX_RATE) / shares if md_op is not None and shares else None
     md_eps_id = put("Md (EPS)", "derived-current", "", md_eps, "JPY/share", f"= Md (operating profit) × (1 − {TAX_RATE:.1%}) ÷ shares", [md_id])
     res["md_op"] = md_op

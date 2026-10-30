@@ -7,4 +7,4 @@ description: State a position on the Debate Signal (an adjustment to the company
 2. Decide the direction: down (forecast looks too high), up (too low) or none. Size in yen, within the cap.
 3. Each claim cites evidence ids; confidence low / medium / high; a one-line summary.
 4. Round 2: answer the other side's validated position; concede what the evidence does not support.
-5. Never argue from land prices, building costs or the guidance record: they are measured already.
+5. Never argue from land prices, building costs, Tsuchiya's order intake or the guidance record: they are measured already.

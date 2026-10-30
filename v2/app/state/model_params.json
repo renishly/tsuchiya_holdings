@@ -891,5 +891,66 @@
   "summary": "Research run v2026-10-30-n284 (pending approval AR-20261030-03)\n\n- Panel: 284 firm-years across 32 listed housebuilders screened for residential revenue ≥50% (1840 土屋ホールディングス passes at 100%).\n- M1 P/B equation (n=284, scale 0.358): log P/B = 6.40×3yr ROE −0.30×growth +0.023×log revenue. M1 EV/EBITDA (n=241, scale 0.464): EV/EBITDA = −3.80×3yr margin +0.46×growth −0.059×log revenue.\n- Tsuchiya fitted multiples (2026 year effect): P/B 0.48 (0.31–0.77); EV/EBITDA 13.6 (7.5–24.7). Features: ROE 0.97%, growth −3.2%, margin 0.4%.\n- Annual backtest (9 non-overlapping years, 2016–2025): three methods clear the acceptance rule (mean IC>0, t≥2) — M1 EV/EBITDA (t=3.85), M1 P/B (t=2.48), P/E peers trailing (t=2.64). Four methods fail: P/B own history (t=0.71), P/B peers (t=0.67), EV/EBITDA own history (t=−0.23), EV/EBITDA peers (t=1.77).\n- Proposed weights blend equal share and accepted-method IC share: M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each other method 7.1%.\n- Weaknesses: only 32 companies; missing prices create survivorship bias; 4 of 7 methods not accepted by the backtest; live P/E and EV/EBITDA use forward estimates while their backtest uses trailing figures (no point-in-time forecast history).\n\n(Code check: 2 number(s) not found in the results and not verified: 20261030, 1840)",
   "approval": "AR-20261030-03",
   "approved_at": "2026-10-30T08:22:58+09:00"
+ },
+ "md": {
+  "fitted": "2026-10-30T12:49:23+09:00",
+  "tsuchiya_revenue": 31456837000.0,
+  "standing_approval": {
+   "date": "2026-10-30",
+   "by": "student",
+   "scope": [
+    "orders",
+    "supply",
+    "land"
+   ],
+   "rule": "applied automatically when accepted (expected sign, |t| ≥ 2, n ≥ 15); otherwise 0"
+  },
+  "coef": {
+   "orders": -34638159,
+   "supply": 0.0,
+   "land": 0.0,
+   "trends": 0.0
+  },
+  "terms": {
+   "orders": {
+    "b": 0.11011,
+    "a": 0.00337,
+    "t": 3.30806,
+    "n": 28,
+    "companies": 10,
+    "x": "order intake growth in year t",
+    "y": "operating-profit change in year t ÷ revenue in t−1",
+    "expected_sign": "+",
+    "accepted": true,
+    "coef_yen_per_pct": -34638159,
+    "reason": "accepted: expected sign, |t| ≥ 2, n ≥ 15; applied under the standing approval of 30 Oct 2026"
+   },
+   "supply": {
+    "b": 0.01782,
+    "t": 1.05605,
+    "n": 272,
+    "year_points": 90,
+    "pooled_t": 3.21691,
+    "x": "BOJ lumber index change over fiscal year t",
+    "y": "operating-profit change in year t ÷ revenue in t−1",
+    "expected_sign": "−",
+    "series_from": "201501",
+    "accepted": false,
+    "coef_yen_per_pct": 0.0,
+    "reason": "rejected: unexpected sign, |t| = 1.06 < 2"
+   },
+   "land": {
+    "note": "not fitted: no land-price series (set the REINFOLIB_API_KEY secret to collect it)",
+    "accepted": false,
+    "coef_yen_per_pct": 0.0,
+    "reason": "not fitted: no land-price series (set the REINFOLIB_API_KEY secret to collect it)"
+   },
+   "trends": {
+    "note": "logged with coefficient 0: Trends has too few years and Tsuchiya's values are near zero",
+    "accepted": false,
+    "coef_yen_per_pct": 0.0,
+    "reason": "logged with coefficient 0: Trends has too few years and Tsuchiya's values are near zero"
+   }
+  }
  }
 }

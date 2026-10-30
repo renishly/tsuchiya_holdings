@@ -221,7 +221,7 @@ METHOD_TEXT = {
     "P/B (own history)": "The price-to-book ratio the market has usually given Tsuchiya itself at past year-ends × its current book value per share.",
     "EV/EBITDA (own history)": "Tsuchiya's own past EV/EBITDA, applied to its adjusted forecast EBITDA.",
     "P/B (peers)": "The peers' median price-to-book × Tsuchiya's book value. Ignores differences in profitability, so it is for reference.",
-    "M1 (P/B regression)": "The price-to-book a listed housebuilder with Tsuchiya's profitability, growth and size usually trades at (a regression on about 18 companies over ten years) × book value.",
+    "M1 (P/B regression)": "The price-to-book a listed housebuilder with Tsuchiya's profitability, growth and size usually trades at (a regression on the listed housebuilders in the research universe over ten years) × book value.",
     "M1 (EV/EBITDA regression)": "The EV/EBITDA a housebuilder with Tsuchiya's margin, growth and size usually trades at, applied to its adjusted forecast EBITDA.",
 }
 METHOD_ROW = {"P/E": "Target Price (P/E, v2.005)", "EV/EBITDA": "Target Price (EV/EBITDA, forward, F1)",
@@ -255,17 +255,45 @@ def overview_main(v: dict) -> str:
                f'Weight 0 means the method is shown for reference only (pending approval, or not comparable).</p>'
                f'<table><tr><th>Method</th><th class="num">Price</th><th class="num">vs market</th><th class="num">Weight</th><th></th><th>Basis</th></tr>{rows}</table></div>')
     md = v.get("md_parts", {})
-    mdb = (f'<div class="card"><h2>Md: the forecast discount</h2><p>Before valuing earnings, the agent adjusts the company\'s own forecast by Md. '
-           f'A positive Md lowers the forecast (the company has tended to over-promise); a negative one raises it.</p><dl>'
-           f'<dt>Company forecast, operating profit</dt><dd>{myen(md.get("forecast_op"))} for {esc(md.get("forecast_fy"))} (set {esc(md.get("guidance_date"))}; {esc(md.get("months_left"))} months left)</dd>'
-           f'<dt>Discount Baseline</dt><dd>{myen(md.get("baseline"))} — from Tsuchiya\'s past forecast misses, scaled by the months left in the year</dd>'
-           f'<dt>Supply costs</dt><dd>{pct((num(md.get("supply")) or 0) / 100 if md.get("supply") is not None else None)} since the forecast — timber price index (BOJ); recorded, not yet used in Md</dd>'
-           f'<dt>Land prices</dt><dd>{pct((num(md.get("land")) or 0) / 100 if md.get("land") is not None else None)} since the forecast — Hokkaido land transactions (MLIT); recorded, not yet used in Md</dd>'
-           f'<dt>Debate Signal</dt><dd>{myen(md.get("debate"))} — from the latest news debate ({esc(md.get("debate_mode") or "shadow")} mode: '
-           f'{"added to Md" if md.get("debate_mode") == "live" else "shown only, not added to Md"})</dd>'
-           f'<dt>Md in total</dt><dd><b>{myen(v.get("md"))}</b></dd></dl></div>')
+    fit = md.get("fit") or {}
+    def fitcell(k):
+        f = fit.get(k) or {}
+        if not f:
+            return '<span class="tag wa">not fitted yet</span>'
+        tag = '<span class="tag ok">accepted</span>' if f.get("accepted") else '<span class="tag no">not accepted: 0</span>'
+        t_ = f.get("t")
+        stat = f' t = {t_:.2f}, n = {f.get("n")}' if isinstance(t_, (int, float)) and t_ == t_ else ""
+        size = f"¥{abs(f['coef_yen_per_pct']) / 1e6:,.1f}m per 1%;" if f.get("coef_yen_per_pct") else ""
+        return f'{tag}<br><span class="mut">{esc(size)}{esc(stat)}</span>'
+    chg = lambda x: pct((num(x) or 0) / 100) if x is not None and num(x) is not None else "—"
+    term = md.get("term") or {}
+    tr = md.get("trends") or {}
+    rows_md = [
+        ("Discount Baseline", "Tsuchiya's past forecast misses, scaled by the months left", "—", '<span class="tag in">rule</span>', md.get("baseline")),
+        ("Order Momentum", "year-to-date housing orders vs the same months last year, from a quarterly 決算短信 published after the forecast "
+         "(an earlier one is already in the forecast, so it counts 0)", chg(md.get("orders")), fitcell("orders"), term.get("orders")),
+        ("Supply costs", "BOJ lumber and wood products price index since the forecast", chg(md.get("supply")), fitcell("supply"), term.get("supply")),
+        ("Land prices", "Hokkaido land transaction prices since the forecast (MLIT); needs the REINFOLIB_API_KEY secret",
+         chg(md.get("land")), fitcell("land"), term.get("land")),
+        ("Search share", "Tsuchiya's share of Google searches vs its peers (your Trends uploads)",
+         "uploaded" if tr else "no upload yet", '<span class="tag in">logged, 0</span>', None),
+        ("Debate Signal", f"the latest news debate ({md.get('debate_mode') or 'shadow'} mode: "
+         + ("added to Md)" if md.get("debate_mode") == "live" else "shown only, not added to Md)"), "—",
+         '<span class="tag in">debate</span>', md.get("debate") if md.get("debate_mode") == "live" else None),
+    ]
+    mdb = (f'<div class="card"><h2>Md: the forecast discount</h2><p>Before valuing earnings, the agent adjusts the company\'s own forecast '
+           f'({myen(md.get("forecast_op"))} for {esc(md.get("forecast_fy"))}, set {esc(md.get("guidance_date"))}, {esc(md.get("months_left"))} months left) by Md. '
+           f'A positive Md lowers the forecast; a negative one raises it.</p>'
+           f'<table><tr><th>Part</th><th>What it measures</th><th class="num">Change since the forecast</th><th>Coefficient</th><th class="num">Effect on Md</th></tr>'
+           + "".join(f'<tr><td><b>{esc(a)}</b></td><td class="mut">{esc(b)}</td><td class="num">{esc(c)}</td><td>{d}</td><td class="num">{myen(e)}</td></tr>'
+                     for a, b, c, d, e in rows_md)
+           + f'<tr><td><b>Md in total</b></td><td></td><td></td><td></td><td class="num"><b>{myen(v.get("md"))}</b></td></tr></table>'
+           f'<p class="mut">A measured part becomes yen as coefficient × change × months left ÷ 12, capped at the largest past forecast miss. '
+           f'Each week the research run fits the coefficients on the listed housebuilders: how much did operating profit move with order growth '
+           f'or timber prices? A coefficient that passes the test fixed in advance (the expected sign, t ≥ 2, at least 15 observations) is applied '
+           f'automatically: you approved this in advance on 30 Oct 2026. One that fails stays 0. {esc(md.get("orders_note"))}</p></div>')
     r = v.get("research") or {}
-    res = (f'<div class="card"><h2>Weekly research: is each method any good?</h2><p>Every week the agent tests the methods on about 18 listed housebuilders over ten years: '
+    res = (f'<div class="card"><h2>Weekly research: is each method any good?</h2><p>Every week the agent tests the methods on {esc(r.get("companies") or "the")} listed housebuilders over ten years: '
            f'did a method\'s "cheap" or "expensive" verdict predict the next year\'s return? {esc(r.get("sentence"))}</p>'
            f'<table><tr><th>Method</th><th class="num">Rank correlation with later returns</th><th class="num">t</th><th>Passed?</th></tr>'
            + "".join(f'<tr><td>{esc(k)}</td><td class="num">{esc(m.get("mean_ic"))}</td><td class="num">{esc(m.get("t"))}</td>'
@@ -293,10 +321,11 @@ SOURCE_ROWS = [  # (status key, label, what it watches, citable)
     ("jhf", "JHF フラット35", "the monthly long-term fixed mortgage rate", True),
     ("gdelt", "GDELT", "English-language headlines on Japanese housing, property and rates", False),
     ("inbox", "Your uploads", "documents you upload to Main's or C&A's Inbox (e.g. a TDnet notice)", True),
+    ("digest", "Marketing digest", "weekly changes in model houses, events and competitors' showrooms (written by code)", True),
 ]
 SOURCE_OF = {"company IR page": "ir", "EDINET": "edinet", "EDINET (universe companies)": "edinet", "Bank of Japan (news feed)": "boj",
              "MLIT press releases": "mlit", "JHF フラット35 rates": "jhf", "GDELT news (context only)": "gdelt",
-             "Student upload (Inbox)": "inbox"}
+             "Student upload (Inbox)": "inbox", "Marketing digest (code)": "digest"}
 
 
 def source_counts(board_full: dict) -> dict:
@@ -317,7 +346,7 @@ def _sources_block(board_full: dict) -> str:
     for key, label, what, citable in SOURCE_ROWS:
         s, c = st.get(key) or {}, cnt.get(key) or {}
         health = ('<span class="tag no">' + esc(s["error"][:60]) + "</span>" if s.get("error")
-                  else '<span class="tag ok">ok</span>' if s or key in ("ir", "inbox") else '<span class="tag wa">not checked yet</span>')
+                  else '<span class="tag ok">ok</span>' if s or key in ("ir", "inbox", "digest") else '<span class="tag wa">not checked yet</span>')
         rows.append(f'<tr><td><b>{esc(label)}</b><br><span class="mut">{esc(what)}</span></td><td class="num">{c.get("items", 0)}</td>'
                     f'<td>{esc(c.get("newest", ""))}<br><span class="mut">{esc((c.get("newest_title") or "")[:70])}</span></td>'
                     f'<td>{esc((s.get("checked") or board_full.get("last_check") or "")[:16].replace("T", " "))}</td><td>{health}</td>'

@@ -65,7 +65,7 @@ def scout(topic: str, items: list[dict]) -> list[dict]:
     tools = [Tool("read_items", "Read the new evidence-board items in your topic.", {"type": "object", "properties": {}}, read_items,
                   max_chars=9000),
              Tool("flag_items", "Flag items that could move Tsuchiya's operating profit this fiscal year and are not covered "
-                  "by the measured Md variables (land prices, building-material costs, Tsuchiya's guidance record). "
+                  "by the measured Md variables (land prices, building-material costs, Tsuchiya's order intake, its guidance record). "
                   "Flag none if nothing qualifies.",
                   {"type": "object", "properties": {"flags": {"type": "array", "items": {"type": "object", "properties": {
                       "id": {"type": "string"}, "reason": {"type": "string"}}, "required": ["id", "reason"]}}},
