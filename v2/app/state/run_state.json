@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T14:11:04+09:00",
+      "last_success": "2026-10-30T23:20:51+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T14:11:16+09:00",
+      "last_success": "2026-10-30T23:20:59+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T14:10:11+09:00",
+      "last_success": "2026-10-30T23:17:36+09:00",
       "fail_streak": 0
     }
   },
@@ -4499,8 +4499,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 223.0,
-      "quote_time": "2026-10-29T15:30:00+09:00"
+      "price": 220.0,
+      "quote_time": "2026-10-30T15:30:00+09:00"
     }
   },
   "history": [
@@ -4821,6 +4821,12 @@
       "ended": "2026-10-30T14:11:16+09:00",
       "iterations": 20,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261030-231616",
+      "ended": "2026-10-30T23:21:00+09:00",
+      "iterations": 22,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -4929,7 +4935,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "01bcbfa4fd99454d"
+    "skill_tree_view": "3902ce79cf84fc91"
   },
   "reports": {
     "last_summary": "2026-10-23T21:40:40+09:00",
