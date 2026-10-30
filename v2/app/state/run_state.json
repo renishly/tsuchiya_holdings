@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T09:59:36+09:00",
+      "last_success": "2026-10-30T12:03:53+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T09:59:43+09:00",
+      "last_success": "2026-10-30T12:04:00+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T09:59:04+09:00",
+      "last_success": "2026-10-30T12:01:55+09:00",
       "fail_streak": 0
     }
   },
@@ -103,7 +103,8 @@
     "news_searched": "2026-10-09",
     "filings": "2026-10-30",
     "price_store": "2026-10-30",
-    "rf_store": "2026-10-22"
+    "rf_store": "2026-10-22",
+    "marketing": "2026-10-30"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -127,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-30",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -139,7 +140,7 @@
       "txt": ""
     },
     "www.mlit.go.jp": {
-      "date": "2026-10-09",
+      "date": "2026-10-30",
       "txt": ""
     },
     "laws.e-gov.go.jp": {
@@ -173,6 +174,14 @@
     "www.mof.go.jp": {
       "date": "2026-10-22",
       "txt": ""
+    },
+    "www.boj.or.jp": {
+      "date": "2026-10-30",
+      "txt": ""
+    },
+    "www.simulation.jhf.go.jp": {
+      "date": "2026-10-30",
+      "txt": "User-agent: *\r\nDisallow: /incomecalculationtool/\r\nDisallow: /incomecalculationtool-previous/"
     }
   },
   "blocked_by_policy": {},
@@ -3964,6 +3973,472 @@
       "expires": "2026-11-22",
       "items": [],
       "note": ""
+    },
+    "marketing": {
+      "sources": {
+        "filings": {
+          "checked": "2026-10-30T12:00:53+09:00",
+          "ok": true,
+          "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
+          "gaps": [
+            "土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31",
+            "土屋ホールディングス FY ending 2017-10-31: order table not found",
+            "日本ハウスホールディングス FY ending 2024-04-30: order table not found"
+          ]
+        },
+        "tsuchiya_modelhouses": {
+          "checked": "2026-10-30T12:00:54+09:00",
+          "ok": true,
+          "detail": "40 model houses"
+        },
+        "tsuchiya_events": {
+          "checked": "2026-10-30T12:00:57+09:00",
+          "ok": true,
+          "detail": "50 events (10 completion/roof-raising)"
+        },
+        "tama_shops": {
+          "checked": "2026-10-30T12:01:16+09:00",
+          "ok": true,
+          "detail": "30 shops in 7 prefectures"
+        },
+        "tama_events": {
+          "checked": "2026-10-30T12:01:19+09:00",
+          "ok": true,
+          "detail": "1 promotional notices in 30 days"
+        },
+        "nh_modelhouses": {
+          "checked": "2026-10-30T12:01:20+09:00",
+          "ok": true,
+          "detail": "3 opening notice(s); model houses per prefecture are on separate pages, not counted"
+        },
+        "nh_events": {
+          "checked": "2026-10-30T12:01:23+09:00",
+          "ok": true,
+          "detail": "282 events"
+        },
+        "grandy": {
+          "checked": "2026-10-30T12:01:55+09:00",
+          "ok": false,
+          "detail": "503: server busy or error"
+        }
+      },
+      "snapshots": {
+        "tsu_modelhouses": {
+          "/modelhouse/12288": {
+            "name": "札幌豊平モデルハウス【 comorinoki 】",
+            "pref": "北海道"
+          },
+          "/modelhouse/3045": {
+            "name": "函館モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1461": {
+            "name": "岩見沢モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1520": {
+            "name": "AND LABO.",
+            "pref": "北海道"
+          },
+          "/modelhouse/1441": {
+            "name": "札幌西モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1409": {
+            "name": "札幌北モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1304": {
+            "name": "札幌北24条モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1258": {
+            "name": "旭川モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/952": {
+            "name": "札幌北円山モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/1235": {
+            "name": "帯広モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/951": {
+            "name": "苫小牧モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/11216": {
+            "name": "東川モデルハウス",
+            "pref": "北海道"
+          },
+          "/modelhouse/10877": {
+            "name": "帯広市 CH24MODEL",
+            "pref": "北海道"
+          },
+          "/modelhouse/10871": {
+            "name": "帯広市 LIZ大空MODEL",
+            "pref": "北海道"
+          },
+          "/modelhouse/2331": {
+            "name": "札幌市 BES-T菊水モデル",
+            "pref": "北海道"
+          },
+          "/modelhouse/2086": {
+            "name": "札幌市東区 NS東苗穂モダンR04-03モデル",
+            "pref": "北海道"
+          },
+          "/modelhouse/2048": {
+            "name": "札幌市東区 NS東苗穂ナチュラルR04-04モデル",
+            "pref": "北海道"
+          },
+          "/modelhouse/2003": {
+            "name": "石狩市 TY花川南R04-05モデル",
+            "pref": "北海道"
+          },
+          "/modelhouse/9085": {
+            "name": "青森緑モデルハウス",
+            "pref": "青森県"
+          },
+          "/modelhouse/12316": {
+            "name": "五所川原市 姥萢Ⅱモデル",
+            "pref": "青森県"
+          },
+          "/modelhouse/1311": {
+            "name": "北上モデルハウス",
+            "pref": "岩手県"
+          },
+          "/modelhouse/12313": {
+            "name": "北上市 しらゆりⅡモデル",
+            "pref": "岩手県"
+          },
+          "/modelhouse/10746": {
+            "name": "紫波郡矢巾町 矢巾モデル",
+            "pref": "岩手県"
+          },
+          "/modelhouse/5108": {
+            "name": "盛岡市 厨川モデル",
+            "pref": "岩手県"
+          },
+          "/modelhouse/6600": {
+            "name": "名取ジアスモデルハウス",
+            "pref": "宮城県"
+          },
+          "/modelhouse/1269": {
+            "name": "仙台モデルハウス",
+            "pref": "宮城県"
+          },
+          "/modelhouse/11329": {
+            "name": "仙台市太白区 西多賀モデル",
+            "pref": "宮城県"
+          },
+          "/modelhouse/9583": {
+            "name": "仙台市泉区 本田町Ⅱモデル",
+            "pref": "宮城県"
+          },
+          "/modelhouse/1371": {
+            "name": "秋田モデルハウス",
+            "pref": "秋田県"
+          },
+          "/modelhouse/10910": {
+            "name": "秋田市 東通モデル",
+            "pref": "秋田県"
+          },
+          "/modelhouse/3749": {
+            "name": "秋田市 御所野モデル",
+            "pref": "秋田県"
+          },
+          "/modelhouse/11330": {
+            "name": "山形市 浜崎モデル",
+            "pref": "山形県"
+          },
+          "/modelhouse/9089": {
+            "name": "郡山鳴神モデルハウス",
+            "pref": "福島県"
+          },
+          "/modelhouse/10786": {
+            "name": "郡山市 町東モデル",
+            "pref": "福島県"
+          },
+          "/modelhouse/1098": {
+            "name": "宇都宮西川田モデルハウス",
+            "pref": "栃木県"
+          },
+          "/modelhouse/1099": {
+            "name": "宇都宮西モデルハウス",
+            "pref": "栃木県"
+          },
+          "/modelhouse/11915": {
+            "name": "高崎市成田町 アクシア高崎成田町モデル",
+            "pref": "群馬県"
+          },
+          "/modelhouse/5114": {
+            "name": "北群馬郡吉岡町 LIZNAS TOWN 吉岡Ⅱモデル",
+            "pref": "群馬県"
+          },
+          "/modelhouse/6814": {
+            "name": "佐久平モデルハウス",
+            "pref": "長野県"
+          },
+          "/modelhouse/1103": {
+            "name": "土屋グループ 銀座ショールーム",
+            "pref": "東京都"
+          }
+        },
+        "tsu_events": {
+          "/event/13141": {
+            "type": "見学会",
+            "title": "【宇都宮市駒生町】駒生町モデル GRAND OPEN！",
+            "pref": "栃木県"
+          },
+          "/event/13149": {
+            "type": "見学会",
+            "title": "【さくら市草川】上棟祭＆構造現場見学会開催！",
+            "pref": "栃木県"
+          },
+          "/event/12851": {
+            "type": "イベント",
+            "title": "【北上モデルハウス】TSUCHIYA Cafe Vol.47",
+            "pref": "岩手県"
+          },
+          "/event/12899": {
+            "type": "見学会",
+            "title": "北上市しらゆりⅡ 分譲住宅「選べる体験・見学会」開催！",
+            "pref": "岩手県"
+          },
+          "/event/12975": {
+            "type": "見学会",
+            "title": "【盛岡市厨川】見学会・無料宿泊体験のご案内",
+            "pref": "岩手県"
+          },
+          "/event/12924": {
+            "type": "イベント",
+            "title": "【矢巾町】矢巾モデル OPEN HOUSE",
+            "pref": "岩手県"
+          },
+          "/event/13107": {
+            "type": "見学会",
+            "title": "【弘前】平屋 お客様邸完成見学会を開催！",
+            "pref": "青森県"
+          },
+          "/event/13089": {
+            "type": "見学会",
+            "title": "【青森市大野】2棟同時 お客様邸完成見学会を開催！",
+            "pref": "青森県"
+          },
+          "/event/12673": {
+            "type": "見学会",
+            "title": "【遠野市松崎町】上棟祭＆構造現場見学会開催！",
+            "pref": "岩手県"
+          },
+          "/event/12939": {
+            "type": "見学会",
+            "title": "【十和田市】平屋 お客様邸完成見学会を開催！",
+            "pref": "青森県"
+          },
+          "/event/12856": {
+            "type": "見学会",
+            "title": "【青森市岡造道】お客様邸完成見学会を開催！",
+            "pref": "青森県"
+          },
+          "/event/12988": {
+            "type": "見学会",
+            "title": "【花巻市】オーナー様邸完成見学会を開催！",
+            "pref": "岩手県"
+          },
+          "/event/13139": {
+            "type": "宿泊体験",
+            "title": "【秋田市御所野】違いが分かる 宿泊体験＆選べる見学会",
+            "pref": "秋田県"
+          },
+          "/event/13043": {
+            "type": "相談会・セミナー",
+            "title": "大きな窓も、大空間も。性能で叶える自由設計相談会",
+            "pref": "unknown"
+          },
+          "/event/13088": {
+            "type": "イベント",
+            "title": "【北海道エリア】来場キャンペーン「NORD PRIME」ツアー",
+            "pref": "北海道"
+          },
+          "/event/12860": {
+            "type": "見学会",
+            "title": "【宮城県大崎市古川旭】お客様邸完成見学会を開催！",
+            "pref": "宮城県"
+          },
+          "/event/12866": {
+            "type": "見学会",
+            "title": "【利府町新中道】お客様邸完成見学会を開催！",
+            "pref": "unknown"
+          },
+          "/event/12734": {
+            "type": "イベント",
+            "title": "【苫小牧市】苫小牧モデルハウス来場キャンペーン",
+            "pref": "北海道"
+          },
+          "/event/12732": {
+            "type": "イベント",
+            "title": "【1日5組限定】「軽井沢に、自分たちだけの一邸を。」軽井沢 別荘・セカンドハウス 建築個別相談会",
+            "pref": "東京都"
+          },
+          "/event/12430": {
+            "type": "見学会",
+            "title": "北上市しらゆりⅡ 分譲住宅「選べる体験・見学会」開催！",
+            "pref": "岩手県"
+          },
+          "/event/12272": {
+            "type": "見学会",
+            "title": "【花巻市】オーナー様邸完成見学会を開催！",
+            "pref": "岩手県"
+          },
+          "/event/12310": {
+            "type": "イベント",
+            "title": "【矢巾町】矢巾モデル OPEN HOUSE",
+            "pref": "岩手県"
+          },
+          "/event/12302": {
+            "type": "見学会",
+            "title": "【盛岡市厨川】見学会・無料宿泊体験のご案内",
+            "pref": "岩手県"
+          },
+          "/event/12393": {
+            "type": "宿泊体験",
+            "title": "【北上市しらゆり】無料 宿泊体験棟（分譲住宅）のご案内",
+            "pref": "岩手県"
+          },
+          "/event/12470": {
+            "type": "見学会",
+            "title": "【帯広市】2棟同時オープンハウス 開催！",
+            "pref": "北海道"
+          },
+          "/event/12093": {
+            "type": "宿泊体験",
+            "title": "【山形市浜崎】無料 宿泊体験棟（分譲住宅）のご案内",
+            "pref": "山形県"
+          },
+          "/event/12700": {
+            "type": "イベント",
+            "title": "【グループ会社・分譲地紹介】千歳市富士2丁目",
+            "pref": "北海道"
+          },
+          "/event/12004": {
+            "type": "宿泊体験",
+            "title": "【北群馬郡吉岡町】無料 宿泊体験棟（分譲住宅）のご案内",
+            "pref": "群馬県"
+          },
+          "/event/11854": {
+            "type": "宿泊体験",
+            "title": "【秋田県秋田市】違いが分かる 宿泊体験＆選べる見学会",
+            "pref": "秋田県"
+          },
+          "/event/10933": {
+            "type": "相談会・セミナー",
+            "title": "【群馬県】住んでからの暮らしがわかる オーナー様邸見学会",
+            "pref": "unknown"
+          },
+          "/event/9936": {
+            "type": "宿泊体験",
+            "title": "【郡山市鳴神】無料 宿泊体験棟（モデルハウス）のご案内",
+            "pref": "福島県"
+          },
+          "/event/9963": {
+            "type": "イベント",
+            "title": "【札幌市東区】リアル戸建て生活体験",
+            "pref": "北海道"
+          },
+          "/event/7809": {
+            "type": "見学会",
+            "title": "【北群馬郡吉岡町】LIZNAS TOWN 吉岡ⅡモデルOPENHOUSE！",
+            "pref": "群馬県"
+          },
+          "/event/9785": {
+            "type": "相談会・セミナー",
+            "title": "【土屋ホーム×積水ハウスのコラボ住宅】SI–COLLABORATION ワイドリビング間取り相談会！｜土屋ホーム仙台本店",
+            "pref": "宮城県"
+          },
+          "/event/9744": {
+            "type": "相談会・セミナー",
+            "title": "【土地をお探しの方、土地をお持ちの方】土地と間取りの相談会",
+            "pref": "unknown"
+          },
+          "/event/9575": {
+            "type": "宿泊体験",
+            "title": "【仙台市泉区】無料 宿泊体験棟（分譲住宅）のご案内",
+            "pref": "宮城県"
+          },
+          "/event/9671": {
+            "type": "相談会・セミナー",
+            "title": "土地と間取りの相談会【土地をお探しの方、土地をお持ちの方】",
+            "pref": "群馬県"
+          },
+          "/event/9389": {
+            "type": "相談会・セミナー",
+            "title": "【長野県】長野県で施工した事例集をプレゼント！",
+            "pref": "長野県"
+          },
+          "/event/7370": {
+            "type": "相談会・セミナー",
+            "title": "【佐久市】住まいの相談会 ～理想の暮らし、ここから始まる～",
+            "pref": "unknown"
+          },
+          "/event/7221": {
+            "type": "相談会・セミナー",
+            "title": "【移住×マイホーム】佐久市で叶える、理想の暮らし",
+            "pref": "長野県"
+          },
+          "/event/3025": {
+            "type": "相談会・セミナー",
+            "title": "【東京・オーナー様向け】補助金を活用した太陽光・蓄電池相談会",
+            "pref": "東京都"
+          },
+          "/event/8515": {
+            "type": "イベント",
+            "title": "【帯広市】モデルハウス予約＆来場で5,000円分ギフトプレゼント！",
+            "pref": "北海道"
+          },
+          "/event/7805": {
+            "type": "見学会",
+            "title": "【盛岡市】厨川モデルOPENHOUSE！",
+            "pref": "岩手県"
+          },
+          "/event/6619": {
+            "type": "イベント",
+            "title": "【札幌市・近郊】土地探しツール「ティモーラ」登録キャンペーン",
+            "pref": "北海道"
+          },
+          "/event/6622": {
+            "type": "イベント",
+            "title": "【旭川市】土地探しツール「ティモーラ」登録キャンペーン",
+            "pref": "北海道"
+          },
+          "/event/5842": {
+            "type": "宿泊体験",
+            "title": "【盛岡市】無料 宿泊体験棟（建売住宅）のご案内",
+            "pref": "岩手県"
+          },
+          "/event/5532": {
+            "type": "相談会・セミナー",
+            "title": "【無料】ライフプランニング相談受付中",
+            "pref": "青森県"
+          },
+          "/event/2487": {
+            "type": "相談会・セミナー",
+            "title": "【郡山市鳴神】カーディナルシティ鳴神 現地相談会開催中",
+            "pref": "福島県"
+          },
+          "/event/2191": {
+            "type": "相談会・セミナー",
+            "title": "【伊達市保原】アップデートシティふくしまソラチエ 現地相談会実施中",
+            "pref": "福島県"
+          },
+          "/event/2081": {
+            "type": "イベント",
+            "title": "【五所川原市姥萢】 カーディナルシティ姥萢 現地相談会開催中",
+            "pref": "青森県"
+          }
+        }
+      },
+      "last_peers": "2026-10-30"
     }
   },
   "current_run": null,
@@ -4255,10 +4730,16 @@
       "ended": "2026-10-30T09:59:43+09:00",
       "iterations": 13,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261030-115932",
+      "ended": "2026-10-30T12:04:00+09:00",
+      "iterations": 33,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
-    "changelog": "v2.006",
+    "changelog": "v2.014",
     "research_summary": "2026-10-30-n284",
     "factor_monitor_removed": true,
     "summary_report": "reports/summary_2026-10-23.html",
@@ -4344,9 +4825,9 @@
         "address": "https://fukuhara-seminar.onrender.com/api/skills/13/content"
       },
       "news-scout": {
-        "hash": "6313fbfad28b7e7a",
+        "hash": "b9e83fd7f77cc3e4",
         "identifier": "skill-14",
-        "version": 1,
+        "version": 2,
         "address": "https://fukuhara-seminar.onrender.com/api/skills/14/content"
       },
       "debate-position": {
@@ -4362,7 +4843,7 @@
         "address": "https://fukuhara-seminar.onrender.com/api/skills/16/content"
       }
     },
-    "skill_tree": "d628f6718d6f8cc5"
+    "skill_tree": "807f054bfbb8daac"
   },
   "reports": {
     "last_summary": "2026-10-23T21:40:40+09:00",

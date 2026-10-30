@@ -1973,3 +1973,52 @@ Model calls: 0; tokens in/out: 0/0; models: (none)
 
 ### Next planned
 steady
+
+## R-20261030-115932 — scheduled
+
+- Start / end (JST): 2026-10-30T11:59:32+09:00 / 2026-10-30T12:04:00+09:00
+- Iterations: 33; web requests by domain: {"www.tsuchiya.co.jp": 3, "irbank.net": 3, "www.tamahome.jp": 10, "www.nihonhouse-hd.co.jp": 5, "www.grandy.co.jp": 3, "www.tsuchiyahome.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.edinet-fsa.go.jp": 2, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: [].
+Review events: Average Valuated Price 205.203 -> 198.413 (-3.3%) since the review of 2026-10-30T08:24+09:00; Target P/E 11.4575 -> 3.446 (-69.9%) since the review of 2026-10-30T08:24+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 0, "changed": 19, "conflicts": 0, "total": 877}, "marketing": {"filings": {"values": 83, "gaps": ["土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31", "土屋ホールディングス FY ending 2017-10-31: order table not found", "日
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review — 2026-10-30 scheduled run (valuation moves)**
+
+**What changed**
+- **Target P/E: 11.4575 → 3.446 (−69.9%)**. The target P/E now equals 日本ハウスHD’s forward P/E of 3.446 (down from 3.4571). At the last review the target P/E (11.4575) lay between the three peers; today the calculation has switched to the lowest peer multiple.
+- **Average Valuated Price: 205.203 → 198.413 (−3.3%)**. Driven by the lower Target P/E; the EV/EBITDA leg is almost flat (11.5186 vs 11.5002).
+- **1840 stock price**: 223 → 224 JPY (negligible).
+- **Peer inputs**: タマホーム and グランディハウス unchanged; 日本ハウスHD price 312 → 311, forward P/E 3.4571 → 3.446, EV/EBITDA 4.394 → 4.3837.
+
+**Why it matters**
+The baseline valuation now uses a Target P/E of 3.446× (日本ハウスHD), pulling the P/E-based price down to ¥26.8 (see `method_weights`). The combined Average Valuated Price (¥198.4) is 11.5% below the current price (¥224). The st
+Model calls: 2; tokens in/out: 8418/1998; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 877 rows total; 19 written this run
+- Alternative Data: 641 rows total; 134 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- none
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady

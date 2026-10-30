@@ -59,7 +59,505 @@
    "source": "company IR page",
    "topic": "company and peers",
    "first_seen": "backfill"
+  },
+  "E-55de579b": {
+   "id": "E-55de579b",
+   "date": "2026-10-30",
+   "ticker": "",
+   "title": "（参考）経済・物価情勢の展望と基調的な物価上昇率に関連する各種指標",
+   "url": "https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k261030b.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-10-30T12:02:28+09:00"
+  },
+  "E-ae447f60": {
+   "id": "E-ae447f60",
+   "date": "2026-10-30",
+   "ticker": "",
+   "title": "当面の金融政策運営について",
+   "url": "https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/k261030a.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-10-30T12:02:28+09:00"
+  },
+  "E-dace005c": {
+   "id": "E-dace005c",
+   "date": "2026-10-30",
+   "ticker": "",
+   "title": "経済・物価情勢の展望（10月、基本的見解）",
+   "url": "https://www.boj.or.jp/mopo/outlook/gor2610a.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-10-30T12:02:28+09:00"
+  },
+  "E-e595ac0c": {
+   "id": "E-e595ac0c",
+   "date": "2026-10-08",
+   "ticker": "",
+   "title": "地域経済報告（さくらレポート、2026年10月）",
+   "url": "https://www.boj.or.jp/research/brp/rer/rer261008.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-1f84af76": {
+   "id": "E-1f84af76",
+   "date": "2026-10-02",
+   "ticker": "",
+   "title": "貸出約定平均金利（8月）",
+   "url": "https://www.boj.or.jp/statistics/dl/loan/yaku/yaku2608.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-8f379f49": {
+   "id": "E-8f379f49",
+   "date": "2026-10-02",
+   "ticker": "",
+   "title": "短観（9月）＜調査全容＞",
+   "url": "https://www.boj.or.jp/statistics/tk/tankan09b.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-6e7da2c3": {
+   "id": "E-6e7da2c3",
+   "date": "2026-10-01",
+   "ticker": "",
+   "title": "金融政策決定会合における主な意見（9月17、18日開催分）",
+   "url": "https://www.boj.or.jp/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-62011e4c": {
+   "id": "E-62011e4c",
+   "date": "2026-10-01",
+   "ticker": "",
+   "title": "短観（9月）＜概要、要旨＞",
+   "url": "https://www.boj.or.jp/statistics/tk/tankan09a.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-1bd2195c": {
+   "id": "E-1bd2195c",
+   "date": "2026-09-30",
+   "ticker": "",
+   "title": "長期国債買入れ（利回り・価格入札方式）の四半期予定（2026年10～12月）",
+   "url": "https://www.boj.or.jp/mopo/mpmdeci/mpr_2026/mpr260930a.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-9af5dbaa": {
+   "id": "E-9af5dbaa",
+   "date": "2026-10-26",
+   "ticker": "",
+   "title": "10月の主要建設資材の需給動向は全ての調査対象資材において均衡 ～主要建設資材需給・価格動向調査（令和８年10月１～５日現在）の結果～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00386.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-a52f654b": {
+   "id": "E-a52f654b",
+   "date": "2026-10-23",
+   "ticker": "",
+   "title": "令和８年熊本地震による被害を踏まえた煙突に関する調査結果を公表します",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001163.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-60587686": {
+   "id": "E-60587686",
+   "date": "2026-10-16",
+   "ticker": "",
+   "title": "「建築物の省エネ改修工事」の採択プロジェクトを決定しました！ ～令和８年度既存建築物省エネ化推進事業～",
+   "url": "https://www.mlit.go.jp/report/press/house04_hh_001364.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-bb0793a5": {
+   "id": "E-bb0793a5",
+   "date": "2026-10-16",
+   "ticker": "",
+   "title": "CO2削減の未来へ！「省CO2先導プロジェクト2026」を決定しました！ ～令和8年度サステナブル建築物等先導事業（LCCO₂評価先導型）提案の採択～",
+   "url": "https://www.mlit.go.jp/report/press/house04_hh_001363.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-ca20809c": {
+   "id": "E-ca20809c",
+   "date": "2026-10-09",
+   "ticker": "",
+   "title": "本年度の主要建設資材需要見通しはセメント、生コンクリート、普通鋼鋼材にて増加 ～令和８年度主要建設資材需要見通しを算出～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00378.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-dcc43db1": {
+   "id": "E-dcc43db1",
+   "date": "2026-10-06",
+   "ticker": "",
+   "title": "改正建築士法の施行に伴う関係政令を閣議決定 ～建築士が行う全ての設計受託契約等の書面契約義務化や見積書作成の努力義務化などが施行されます！～",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001153.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-9fcbd7e5": {
+   "id": "E-9fcbd7e5",
+   "date": "2026-10-06",
+   "ticker": "",
+   "title": "更なる内航海運の省エネルギー・非化石化に向けて１件の実証事業を採択しました",
+   "url": "https://www.mlit.go.jp/report/press/kaiji07_hh_000405.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-31be2563": {
+   "id": "E-31be2563",
+   "date": "2026-10-02",
+   "ticker": "",
+   "title": "令和７年度宅地建物取引業法の施行状況調査結果について ～宅地建物取引業者数は12年連続で増加、監督処分件数・行政指導件数も共に増加～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo16_hh_000001_00128.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-c21a3eeb": {
+   "id": "E-c21a3eeb",
+   "date": "2026-10-02",
+   "ticker": "",
+   "title": "誰もが安心して暮らせる住まいの確保に向けて、居住支援法人等の関係団体が連携した取組を支援します！ ～令和８年度「みんなが安心して住まいを提供できる環境整備モデル事業」提案の採択～",
+   "url": "https://www.mlit.go.jp/report/press/house03_hh_000282.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-9d331f97": {
+   "id": "E-9d331f97",
+   "date": "2026-09-30",
+   "ticker": "",
+   "title": "建築着工統計調査報告（令和８年８月分）",
+   "url": "https://www.mlit.go.jp/report/press/joho04_hh_001395.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-9d61f1d3": {
+   "id": "E-9d61f1d3",
+   "date": "2026-09-30",
+   "ticker": "",
+   "title": "既存住宅販売量指数 令和８年６月分を公表（試験運用） ～全国において、前月比4.4％増加～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo05_hh_000001_00278.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-c6e7c4b8": {
+   "id": "E-c6e7c4b8",
+   "date": "2026-09-29",
+   "ticker": "",
+   "title": "令和８年熊本地震の公営住宅建設の負担を軽減 ～罹災者公営住宅の建設等に係る国庫補助率の引上げの対象３市町を告示～",
+   "url": "https://www.mlit.go.jp/report/press/house03_hh_000278.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-f74b4069": {
+   "id": "E-f74b4069",
+   "date": "2026-09-29",
+   "ticker": "",
+   "title": "10月は「木材利用促進月間」です ～ウッド・チェンジ！ 木づかいが 森をよくする 暮らしを変える～",
+   "url": "https://www.mlit.go.jp/report/press/eizen09_hh_000030.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-531f6e77": {
+   "id": "E-531f6e77",
+   "date": "2026-09-28",
+   "ticker": "",
+   "title": "マンション大規模修繕工事の発注等に関する相談窓口の周知等について ～マンション管理組合等に対し相談窓口の周知等を行いました～",
+   "url": "https://www.mlit.go.jp/report/press/house03_hh_000279.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-1d3c22ed": {
+   "id": "E-1d3c22ed",
+   "date": "2026-09-25",
+   "ticker": "",
+   "title": "９月の主要建設資材の需給動向は全ての調査対象資材において均衡 ～主要建設資材需給・価格動向調査（ 令和８年９月１～５日現在）の結果～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00380.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-d75b2753": {
+   "id": "E-d75b2753",
+   "date": "2026-09-25",
+   "ticker": "",
+   "title": "「土地区画整理法施行令の一部を改正する政令」を閣議決定",
+   "url": "https://www.mlit.go.jp/report/press/toshi08_hh_000083.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-a63ca42d": {
+   "id": "E-a63ca42d",
+   "date": "2026-09-24",
+   "ticker": "",
+   "title": "豪州における都市開発事業への日本企業の参入を支援します ～豪州の住宅不足解消に貢献～",
+   "url": "https://www.mlit.go.jp/report/press/sogo07_hh_000823.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-390e75ad": {
+   "id": "E-390e75ad",
+   "date": "2026-09-18",
+   "ticker": "",
+   "title": "１０月は「土地月間」、１０月１日は「土地の日」です。 ～土地月間作品コンテストの受賞作品が決定しました！～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo02_hh_000001_00123.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-24e2d7d3": {
+   "id": "E-24e2d7d3",
+   "date": "2026-09-18",
+   "ticker": "",
+   "title": "建築BIMデータを用いた審査開始に向け基本構想をとりまとめました ～「建築確認・検査におけるBIMデータ審査の導入に関する基本構想」を策定～",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001151.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-a15a2fa6": {
+   "id": "E-a15a2fa6",
+   "date": "2026-09-16",
+   "ticker": "",
+   "title": "令和８年都道府県地価調査データ更新！ ～「不動産情報ライブラリ」、「国土数値情報ダウンロードサイト」にてデータを公開しました～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00089.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-2068f22c": {
+   "id": "E-2068f22c",
+   "date": "2026-09-15",
+   "ticker": "",
+   "title": "不動産登記情報を活用した新築マンションの取引の調査結果を公表 ～三大都市圏及び地方四市の短期売買や国外居住者による取得状況～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo05_hh_000001_00276.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-e0b05eaa": {
+   "id": "E-e0b05eaa",
+   "date": "2026-09-15",
+   "ticker": "",
+   "title": "外国人・外国法人による大規模な土地取得の状況について ～国土利用計画法の届出に基づく集計結果（令和７年７月～12月分）～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo02_hh_000001_00122.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-bd98ad10": {
+   "id": "E-bd98ad10",
+   "date": "2026-09-15",
+   "ticker": "",
+   "title": "全国の地価動向は全用途平均で５年連続上昇 ～令和８年都道府県地価調査～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo04_hh_000001_00084.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-4b3f8601": {
+   "id": "E-4b3f8601",
+   "date": "2026-09-14",
+   "ticker": "",
+   "title": "「マンションストック長寿命化等モデル事業」の令和８年度第２回採択プロジェクトを決定しました！ ～老朽化マンションの長寿命化等に向けた先導的な取組を行う事業を採択～",
+   "url": "https://www.mlit.go.jp/report/press/house03_hh_000276.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-a1bb5d47": {
+   "id": "E-a1bb5d47",
+   "date": "2026-09-11",
+   "ticker": "",
+   "title": "令和７年度の証券化対象不動産の資産総額は約73.4 兆円 ～令和７年度「不動産証券化の実態調査」の結果の公表～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo05_hh_000001_00275.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-46a0b22b": {
+   "id": "E-46a0b22b",
+   "date": "2026-09-11",
+   "ticker": "",
+   "title": "改正建築物省エネ法の施行に伴う関係政令を閣議決定 ～令和９年４月１日より、上位住宅トップランナー制度・ 先導的な省エネ技術を評価する大臣認定制度が始まります！～",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001150.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-8436fb7b": {
+   "id": "E-8436fb7b",
+   "date": "2026-09-11",
+   "ticker": "",
+   "title": "「建築基準法施行令の一部を改正する政令」を閣議決定 ～住宅の円滑な供給を図るための型式適合認定制度の拡充と 採光規制・防火規制・用途地域における危険物の総量規制の合理化を行います～",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001149.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-d2b9fd4e": {
+   "id": "E-d2b9fd4e",
+   "date": "2026-09-11",
+   "ticker": "",
+   "title": "誰もが安心して健康に暮らせるための先導的な取組を選定しました！ ～人生100年時代を支える住まい環境整備モデル事業選定結果（令和８年度第１回）～",
+   "url": "https://www.mlit.go.jp/report/press/house07_hh_000319.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-768515e3": {
+   "id": "E-768515e3",
+   "date": "2026-09-10",
+   "ticker": "",
+   "title": "建築物リフォーム・リニューアル調査報告（令和８年度第１四半期受注分）",
+   "url": "https://www.mlit.go.jp/report/press/joho04_hh_001392.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-c0e6cca6": {
+   "id": "E-c0e6cca6",
+   "date": "2026-09-08",
+   "ticker": "",
+   "title": "「不動産のインパクト改修投資促進に向けたモデル調査事業」採択モデルの決定！ ～改修による不動産のインパクトを評価し、ステークホルダーに効果的に訴求するスキームを採択～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo05_hh_000001_00274.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-62619836": {
+   "id": "E-62619836",
+   "date": "2026-09-04",
+   "ticker": "",
+   "title": "九州地方整備局に「熊本復興まちづくり・住まいづくり・土地対策支援チーム」を設置し、復興まちづくり・住まいづくりを支援します！",
+   "url": "https://www.mlit.go.jp/report/press/toshi06_hh_000092.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-144e60b3": {
+   "id": "E-144e60b3",
+   "date": "2026-09-04",
+   "ticker": "",
+   "title": "「次世代住宅プロジェクト2026（第１回）」の決定 ～令和８年度サステナブル建築物等先導事業（次世代住宅型）の採択結果を公表～",
+   "url": "https://www.mlit.go.jp/report/press/house04_hh_001356.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-a3fc6bb5": {
+   "id": "E-a3fc6bb5",
+   "date": "2026-09-04",
+   "ticker": "",
+   "title": "１０月は「住生活月間」です ～次世代へつなぐ、すまいるリレー～",
+   "url": "https://www.mlit.go.jp/report/press/house02_hh_000250.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-3506165d": {
+   "id": "E-3506165d",
+   "date": "2026-09-02",
+   "ticker": "",
+   "title": "一級建築士の懲戒処分について",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001147.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-40e8d3a7": {
+   "id": "E-40e8d3a7",
+   "date": "2026-09-02",
+   "ticker": "",
+   "title": "令和8年一級建築士試験「学科の試験」合格者を決定 ～7,619 人の合格者、26.2％の合格率～",
+   "url": "https://www.mlit.go.jp/report/press/house05_hh_001146.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-c33e10ac": {
+   "id": "E-c33e10ac",
+   "date": "2026-09-02",
+   "ticker": "",
+   "title": "米国における都市開発事業への日本企業の参入を支援します ～米国の住宅不足解消に貢献～",
+   "url": "https://www.mlit.go.jp/report/press/sogo07_hh_000820.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "backfill"
+  },
+  "E-580ba48e": {
+   "id": "E-580ba48e",
+   "date": "2026-10-01",
+   "ticker": "",
+   "title": "【フラット35】借入金利 2026年10月: 最も多い金利 年3.830%（範囲 年3.830%〜年5.840%、融資率9割以下・21〜35年）",
+   "url": "https://www.simulation.jhf.go.jp/flat35/kinri/index.php/rates/top#202610",
+   "source": "JHF フラット35 rates",
+   "topic": "housing policy and finance",
+   "excerpt": "【フラット35】借入金利 2026年10月: 最も多い金利 年3.830%（範囲 年3.830%〜年5.840%、融資率9割以下・21〜35年）",
+   "first_seen": "backfill"
   }
  },
- "last_check": "2026-10-23T21:39:53+09:00"
+ "last_check": "2026-10-23T21:39:53+09:00",
+ "sources": {
+  "boj": {
+   "checked": "2026-10-30T12:02:28+09:00",
+   "error": null,
+   "seen": 9,
+   "added": 9,
+   "added_at": "2026-10-30T12:02:28+09:00"
+  },
+  "mlit": {
+   "checked": "2026-10-30T12:02:32+09:00",
+   "error": null,
+   "seen": 36,
+   "added": 36,
+   "added_at": "2026-10-30T12:02:32+09:00"
+  },
+  "jhf": {
+   "checked": "2026-10-30T12:02:33+09:00",
+   "error": null,
+   "seen": 1,
+   "added": 1,
+   "added_at": "2026-10-30T12:02:33+09:00"
+  },
+  "edinet": {
+   "checked": "2026-10-30T12:02:35+09:00",
+   "error": null,
+   "seen": 0,
+   "added": 0,
+   "added_at": null
+  },
+  "gdelt": {
+   "checked": "2026-10-30T12:03:34+09:00",
+   "error": null,
+   "seen": 0,
+   "added": 0,
+   "added_at": null
+  }
+ }
 }
