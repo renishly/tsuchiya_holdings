@@ -23,7 +23,7 @@ from lib import ROOT, iso
 SEV = {"high": 0, "medium": 1, "low": 2, "info": 3}
 SEV_TAG = {"high": "no", "medium": "wa", "low": "in", "info": "ok"}
 SITE_ROLE = {  # domain -> (area, severity when it fails, why)
-    "irbank.net": ("Market price", "high", "the market price feeds every method, the expected return and the gap to the estimate"),
+    "irbank.net": ("Market data cross-check", "low", "irbank only cross-checks the price and EPS; the price itself comes from the daily price store"),
     "api.edinet-fsa.go.jp": ("Filings (EDINET)", "medium", "new filings are not read: forecasts, actuals and the universe may be out of date"),
     "disclosure2dl.edinet-fsa.go.jp": ("Filings (EDINET)", "medium", "filing downloads failed; figures stay at the last version read"),
     "www.tsuchiya.co.jp": ("Tsuchiya IR", "medium", "the company forecast (決算短信) may be out of date, which moves every forward method"),
@@ -105,6 +105,21 @@ def collect(st, cr: dict, base) -> list[dict]:
         if d and (today - dt.date.fromisoformat(d)).days > 4:
             _issue(out, "Market price", f"latest price is from {d} ({(today - dt.date.fromisoformat(d)).days} days old)", "high",
                    "the gap between the estimate and the market is measured against an old price")
+    try:   # the daily price store (Yahoo Finance): Tsuchiya and the peers feed every method and the peer multiples
+        import pricestore
+        store = pricestore.load_store()
+        for t in ("1840", "1419", "1873", "8999"):
+            sym = pricestore.STORE_SYMBOLS[t]
+            last = store.get(sym, [[None]])[-1][0] if store.get(sym) else None
+            name = "Tsuchiya" if t == "1840" else f"peer {t}"
+            if not last:
+                _issue(out, "Market price", f"no price history for {name} ({sym}) in the price store", "high",
+                       "Tsuchiya's price feeds every method; a peer's price feeds the peer multiples (P/E, EV/EBITDA)")
+            elif (today - dt.date.fromisoformat(last)).days > 5:
+                _issue(out, "Market price", f"price history for {name} ends {last}", "high" if t == "1840" else "medium",
+                       "the estimate or the peer multiples use an old price")
+    except Exception as e:
+        _issue(out, "Market price", f"price store could not be read ({type(e).__name__})", "high", "prices unknown")
     for m in KEY_METHODS:
         r = _latest(base, "1840", m)
         if r and (r.get("agent_status") == "unresolved" or not r.get("value") or r["value"] == "not meaningful"):

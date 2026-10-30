@@ -130,10 +130,14 @@ def update_prices(st) -> dict:
         except (KeyError, TypeError):
             continue
         new = []
+        t = now()
+        last_closed = t.date().isoformat() if (t.hour, t.minute) >= UPDATE_AFTER else (t.date() - dt.timedelta(days=1)).isoformat()
         for idx, c in closes.items():
             if c is None or (isinstance(c, float) and math.isnan(c)) or float(c) <= 0:
                 continue
             d = idx.strftime("%Y-%m-%d")
+            if d > last_closed:   # today's bar before 15:30 JST is an intraday price, not a close: never stored
+                continue
             dv = float(divs.get(idx, 0) or 0) if divs is not None else 0.0
             new.append((d, round(float(c), 4), 0.0 if math.isnan(dv) else dv))
         old = {d: (c, v) for d, c, v in store.get(sym, [])}
