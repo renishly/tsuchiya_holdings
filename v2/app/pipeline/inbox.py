@@ -5,7 +5,8 @@ The student can upload a document to the Inbox of Tsuchibot Main or Tsuchibot C&
 file is stored like a link-checked item: the file and its text under raw/evidence/ with the SHA-256, a focused
 excerpt, and an evidence-board item that the debaters may cite. A new upload opens the debate in that same run.
 
-Accepted: PDF with a text layer, HTML, plain text (.txt, .md). Anything else stays in the Inbox (reported once).
+Accepted: PDF with a text layer, HTML, plain text (.txt, .md), and Google Trends CSV exports (stored as marketing
+data by trends.py, not as evidence). Anything else stays in the Inbox (reported once).
 The optional note may give the document's date (2026-10-29) and a ticker (1419); otherwise the date is read from
 the document's first page, else the upload date, and the title is the note or the file name.
 """
@@ -37,6 +38,16 @@ def store(st, item: dict, path: str, report=print) -> bool:
     name = Path(item.get("filename") or "upload").name
     body = Path(path).read_bytes()
     seen = st.setdefault("documents", {}).setdefault("inbox_rejected", [])
+    import trends   # A51: a Google Trends export is marketing data, not evidence
+    if trends.looks_like_trends(name, body):
+        r = trends.ingest(st, name, body, item.get("uploaded_at") or "")
+        if r.get("ok"):
+            report(f"Inbox: Google Trends export {name} stored ({len(r['terms'])} terms, data to {r['last_date']})", "log")
+            return True
+        if item.get("id") not in seen:
+            seen.append(item.get("id"))
+            report(f"Inbox: {name} looks like a Google Trends export but could not be read ({r['error']}); it stays in the Inbox", "error")
+        return False
     if body[:4] == b"%PDF":
         kind, (text, pages) = "pdf", linkcheck._pdf_text(body)
     elif b"<html" in body[:4000].lower() or b"<!doctype" in body[:300].lower():

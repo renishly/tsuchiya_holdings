@@ -78,6 +78,9 @@ The combined value is a weighted average of the methods below. The weights come 
 
 Around the debate, code (no skills) fetches and snapshots each cited source and checks every number in a claim against it. Decision models then answer typed questions, and a rule in code turns their answers into the Debate Signal (shadow mode until the student switches it on).
 
+### Marketing data (code, no skills)
+Order intake and backlog, ad spend and ad spend ÷ orders from the annual reports. Tsuchiya's model houses and events (completion tours follow actual builds). Competitors' showrooms and promotions in Tsuchiya's areas. Google Trends exports uploaded by the student. Descriptive only: not used in the valuation.
+
 ### Reporting (reporter, weekly)
 - **log-digest:** reads the condensed weekly record first; every number it may use is there.
 - **summary-report** *(shared)*: at most 500 words that describe, never decide; no view on the share price.

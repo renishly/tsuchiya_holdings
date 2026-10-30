@@ -410,6 +410,14 @@ def cmd_steady(a):
             res["filings"] = {"error": str(e)}
         st["daily"]["filings"] = now().date().isoformat()
         save_state(st)
+    if _due_daily(st, "marketing"):   # A51: marketing data daily; the peers' sites once a week
+        import marketing
+        last = (st["documents"].get("marketing") or {}).get("last_peers", "")
+        weekly = last <= (now().date() - dt.timedelta(days=7)).isoformat()
+        res["marketing"] = marketing.refresh(st, S["Alternative Data"], weekly)
+        S["Alternative Data"].save(st)
+        st["daily"]["marketing"] = now().date().isoformat()
+        save_state(st)
     save_state(st)
     res["headline"] = headline(S["Baseline Metrics"])
     return out(res)
@@ -986,7 +994,7 @@ def _dashboard_skills(st) -> str:
             + ("; skill tree updated" if tree_set else ""))
 
 MONITORS = {  # A47: the monitors each dashboard agent keeps; any other monitor is removed at the end of a run
-    "main": ["Overview (read me first)", "Status", "Version", "Build phases", "Rows per CSV", "Pending approvals",
+    "main": ["Overview (read me first)", "Data gaps and errors", "Status", "Version", "Build phases", "Rows per CSV", "Pending approvals",
              "Data (CSV files)", "Google Sheet", "Data dictionary (report_list.html)", "Debug log (debug_runs.csv)",
              "Current market price", "Average valuated price", "Valuation (agent baseline)", "Model weights",
              "Md (forecast discount)", "Research (M1 and backtest)", "Backtest report (backtest_latest.html)"],
@@ -1128,6 +1136,11 @@ def _dashboard_finish(st, cr, S) -> str:
             dashboard.set_monitor(ROOT / htmlpages.overview_main(_overview_values(st, base, cr, ver, pend)), "Overview (read me first)")
         except Exception as e:
             dashboard.report(f"overview page failed: {type(e).__name__}: {str(e)[:120]}", "error")
+        try:  # A52: what could not be retrieved, is outdated or was cut short, and how much it matters
+            import errorreport
+            dashboard.set_monitor(ROOT / errorreport.page(st, cr, base, ver), "Data gaps and errors")
+        except Exception as e:
+            dashboard.report(f"error report failed: {type(e).__name__}: {str(e)[:120]}", "error")
         dashboard.set_monitor(ver, "Version")
         sent = st.setdefault("dashboard_sent", {})
         if ver_file and sent.get("changelog") != ver:   # A50: every version since the last one posted, merged
