@@ -115,7 +115,7 @@ W00113,2026-10-28T09:32:00+09:00,unresolved,REINFOLIB_API_KEY not set.,Baseline 
 W00114,2026-10-29T23:16:32+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,79f2cb55a9e7a698e979,https://www.nihonhouse-hd.co.jp/company/irlist/?y={year},open
 W00115,2026-10-29T23:17:04+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,84967b416ec05cdec631,https://www.grandy.co.jp/ir/library,open
 W00116,2026-10-29T09:55:10+09:00,unresolved,REINFOLIB_API_KEY not set.,Baseline Metrics,9e76ce8b1df4163d3077,https://www.reinfolib.mlit.go.jp/ex-api/external/XIT001,open
-W00117,2026-10-30T08:22:57+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,55a0ff5e4672134b0b95,https://www.grandy.co.jp/ir/library,open
+W00117,2026-10-30T09:59:04+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,55a0ff5e4672134b0b95,https://www.grandy.co.jp/ir/library,open
 W00118,2026-10-30T08:22:58+09:00,unresolved,REINFOLIB_API_KEY not set.,Baseline Metrics,0862f92a23c671905105,https://www.reinfolib.mlit.go.jp/ex-api/external/XIT001,open
 W00119,2026-10-09T08:10:52+09:00,unresolved,Wayback Machine has no 200 snapshot of this page in 2021.,Alternative Data,da56b8a50369c6bc2027,https://web.archive.org/web/2021*/https://www.tsuchiyahome.jp/realestate/,open
 W00120,2026-10-09T08:13:11+09:00,unresolved,Not verified this run: pending: primary-source URL not yet confirmed (builder could not pin an allowlisted page); counted as 0,Alternative Data,10eaa1e0f978f74c17b6,https://laws.e-gov.go.jp/,open
