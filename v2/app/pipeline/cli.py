@@ -918,6 +918,13 @@ def cmd_consensus_record(a):
 def cmd_headline(a):
     return out(review_view(CsvStore("Baseline Metrics")))
 
+def _trends_share(st):
+    import trends
+    try:
+        return trends.share_summary(st)
+    except Exception:
+        return None
+
 def _overview_values(st, base, cr, ver, pend) -> dict:
     """Values for the Main overview page (A44), read from Baseline Metrics, state and the research parameters."""
     import htmlpages
@@ -959,7 +966,8 @@ def _overview_values(st, base, cr, ver, pend) -> dict:
                          "orders": v("Md: Order Momentum (% YTD orders vs last year)"),
                          "orders_note": ((_latest(base, "1840", "Md: Order Momentum (% YTD orders vs last year)") or {}).get("correction_note") or "")[:220],
                          "term": {k: v(f"Md term: {lab}") for k, lab in (("orders", "Order Momentum"), ("supply", "Supply Costs"), ("land", "Land Price Ave"))},
-                         "fit": (prm.get("md") or {}).get("terms") or {}, "trends": st["documents"].get("trends")},
+                         "fit": (prm.get("md") or {}).get("terms") or {}, "trends": st["documents"].get("trends"),
+                         "trends_share": _trends_share(st)},
             "research": {"version": cur.get("version"), "status": cur.get("status"), "methods": ms, "sentence": sentence,
                          "companies": (cur.get("panel") or {}).get("companies"),
                          "approved": (prm.get("approved") or {}).get("version")},

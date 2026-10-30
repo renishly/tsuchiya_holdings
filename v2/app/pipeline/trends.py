@@ -98,3 +98,26 @@ def ingest(st, name: str, body: bytes, uploaded_at: str = "") -> dict:
                                                 "first_date": p["rows"][0][0], "terms": p["terms"], "geo": p["geo"]}
     log(st, "trends", {"file": rel}, f"{len(p['rows'])} points, {len(p['terms'])} terms, last {last}")
     return {"ok": True, "terms": p["terms"], "points": len(p["rows"]), "last_date": last}
+
+
+BRANDS = ["土屋ホーム", "タマホーム", "日本ハウス", "グランディハウス"]   # same-language brand names, compared with each other
+
+
+def share_summary(st) -> dict | None:
+    """Tsuchiya's share of searches among the brand names: last 12 months vs the 12 before (for the overview)."""
+    tr = (st.get("documents") or {}).get("trends") or {}
+    from lib import ROOT
+    f = ROOT / tr.get("file", "")
+    if not tr or not f.is_file():
+        return None
+    p = parse(f.read_bytes())
+    if "error" in p:
+        return None
+    terms = [t for t in BRANDS if t in p["terms"]] or p["terms"]
+    def share(rows):
+        avg = {t: sum((v.get(t) or 0) for _, v in rows) / max(1, len(rows)) for t in terms}
+        tot = sum(avg.values())
+        return {t: (avg[t] / tot if tot else None) for t in terms}
+    last, before = share(p["rows"][-12:]), share(p["rows"][-24:-12])
+    return {"terms": terms, "last12": last, "before12": before, "to": tr.get("last_date"), "geo": p.get("geo") or "Japan",
+            "tsuchiya": "土屋ホーム" if "土屋ホーム" in terms else terms[0]}

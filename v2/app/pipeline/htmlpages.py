@@ -276,8 +276,12 @@ def overview_main(v: dict) -> str:
         ("Supply costs", "BOJ lumber and wood products price index since the forecast", chg(md.get("supply")), fitcell("supply"), term.get("supply")),
         ("Land prices", "Hokkaido land transaction prices since the forecast (MLIT); needs the REINFOLIB_API_KEY secret",
          chg(md.get("land")), fitcell("land"), term.get("land")),
-        ("Search share", "Tsuchiya's share of Google searches vs its peers (your Trends uploads)",
-         "uploaded" if tr else "no upload yet", '<span class="tag in">logged, 0</span>', None),
+        ("Search share", "土屋ホーム's share of Google searches among the four brand names (your Trends uploads"
+         + (f", {(md.get('trends_share') or {}).get('geo') or 'Japan'}, data to {(md.get('trends_share') or {}).get('to')})" if md.get("trends_share") else ")"),
+         (lambda ts: (f"{ts['last12'][ts['tsuchiya']]:.0%} last 12 months ({ts['before12'][ts['tsuchiya']]:.0%} the 12 before)"
+                      if ts and ts["last12"].get(ts["tsuchiya"]) is not None and ts["before12"].get(ts["tsuchiya"]) is not None
+                      else ("uploaded" if tr else "no upload yet")))(md.get("trends_share")),
+         '<span class="tag in">logged, 0</span>', None),
         ("Debate Signal", f"the latest news debate ({md.get('debate_mode') or 'shadow'} mode: "
          + ("added to Md)" if md.get("debate_mode") == "live" else "shown only, not added to Md)"), "—",
          '<span class="tag in">debate</span>', md.get("debate") if md.get("debate_mode") == "live" else None),
