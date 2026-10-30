@@ -525,35 +525,35 @@
  "last_check": "2026-10-23T21:39:53+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-10-30T13:21:35+09:00",
+   "checked": "2026-10-30T13:39:43+09:00",
    "error": null,
    "seen": 9,
    "added": 0,
    "added_at": "2026-10-30T12:02:28+09:00"
   },
   "mlit": {
-   "checked": "2026-10-30T13:21:39+09:00",
+   "checked": "2026-10-30T13:39:46+09:00",
    "error": null,
    "seen": 36,
    "added": 0,
    "added_at": "2026-10-30T12:02:32+09:00"
   },
   "jhf": {
-   "checked": "2026-10-30T13:21:40+09:00",
+   "checked": "2026-10-30T13:39:47+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-10-30T12:02:33+09:00"
   },
   "edinet": {
-   "checked": "2026-10-30T13:21:41+09:00",
+   "checked": "2026-10-30T13:39:49+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": null
   },
   "gdelt": {
-   "checked": "2026-10-30T13:22:32+09:00",
+   "checked": "2026-10-30T13:40:43+09:00",
    "error": "429: server busy or error",
    "seen": 0,
    "added": 0,
