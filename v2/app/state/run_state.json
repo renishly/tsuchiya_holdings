@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T23:20:51+09:00",
+      "last_success": "2026-10-31T09:49:13+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T23:20:59+09:00",
+      "last_success": "2026-10-31T09:49:23+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-10-30T23:17:36+09:00",
+      "last_success": "2026-10-31T09:48:18+09:00",
       "fail_streak": 0
     }
   },
@@ -101,18 +101,18 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-10-30",
-    "price_store": "2026-10-30",
+    "filings": "2026-10-31",
+    "price_store": "2026-10-31",
     "rf_store": "2026-10-22",
-    "marketing": "2026-10-30"
+    "marketing": "2026-10-31"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.tsuchiya.co.jp/wp-sitemap.xml\n"
     },
     "irbank.net": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": ""
     },
     "iestdot.com": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -140,7 +140,7 @@
       "txt": ""
     },
     "www.mlit.go.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": ""
     },
     "laws.e-gov.go.jp": {
@@ -156,15 +156,15 @@
       "txt": "User-agent: *\r\nDisallow: /wp/wp-admin/\r\nAllow: /wp/wp-admin/admin-ajax.php\r\n\r\nSitemap: https://logos-holdings.jp/sitemap.xml\r\nSitemap: https://logos-holdings.jp/sitemap.rss\n"
     },
     "www.nihonhouse-hd.co.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.nihonhouse-hd.co.jp/wp-sitemap.xml\n\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.xml\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.html\n"
     },
     "www.tamahome.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": "User-agent: *\nDisallow: /qkeioebqx4/wp-admin/\nAllow: /qkeioebqx4/wp-admin/admin-ajax.php\n\nSitemap: https://www.tamahome.jp/wp-sitemap.xml\n"
     },
     "www.grandy.co.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": ""
     },
     "www.sekisuihouse.co.jp": {
@@ -176,11 +176,11 @@
       "txt": ""
     },
     "www.boj.or.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": ""
     },
     "www.simulation.jhf.go.jp": {
-      "date": "2026-10-30",
+      "date": "2026-10-31",
       "txt": "User-agent: *\r\nDisallow: /incomecalculationtool/\r\nDisallow: /incomecalculationtool-previous/"
     }
   },
@@ -3881,6 +3881,66 @@
     "md_series": {
       "lumber": {
         "series": {
+          "201501": 97.6,
+          "201502": 97.5,
+          "201503": 96.5,
+          "201504": 95.9,
+          "201505": 95.1,
+          "201506": 94.6,
+          "201507": 95.2,
+          "201508": 95.7,
+          "201509": 95.9,
+          "201510": 95.9,
+          "201511": 95.9,
+          "201512": 96.4,
+          "201601": 96.5,
+          "201602": 96.7,
+          "201603": 96.6,
+          "201604": 96.6,
+          "201605": 96.6,
+          "201606": 96.7,
+          "201607": 96.6,
+          "201608": 96.8,
+          "201609": 96.6,
+          "201610": 96.7,
+          "201611": 96.8,
+          "201612": 96.9,
+          "201701": 97.3,
+          "201702": 97.7,
+          "201703": 97.6,
+          "201704": 98.3,
+          "201705": 98.3,
+          "201706": 98.4,
+          "201707": 98.6,
+          "201708": 98.7,
+          "201709": 99.2,
+          "201710": 99.7,
+          "201711": 99.9,
+          "201712": 100.1,
+          "201801": 100.5,
+          "201802": 100.9,
+          "201803": 101.3,
+          "201804": 101.5,
+          "201805": 101.4,
+          "201806": 101.6,
+          "201807": 101.3,
+          "201808": 101.1,
+          "201809": 101,
+          "201810": 101.1,
+          "201811": 101.1,
+          "201812": 101.1,
+          "201901": 101.4,
+          "201902": 101.4,
+          "201903": 101.1,
+          "201904": 100.8,
+          "201905": 100.6,
+          "201906": 100.7,
+          "201907": 100.1,
+          "201908": 100,
+          "201909": 99.9,
+          "201910": 101.3,
+          "201911": 101.1,
+          "201912": 101.1,
           "202001": 101.3,
           "202002": 101.1,
           "202003": 101.1,
@@ -3963,7 +4023,7 @@
           "202608": 148.7,
           "202609": 148.9
         },
-        "fetched": "2026-10-30",
+        "fetched": "2026-10-31",
         "source": "https://www.stat-search.boj.or.jp/api/v1/getDataCode?db=PR01&code=PRCG20_2200320001"
       },
       "land": {
@@ -3974,12 +4034,12 @@
       "forecast_fy": "FY ending 2026-10",
       "forecast_operating_profit": 0.0,
       "guidance_date": "2026-09-14",
-      "months_left": 0.03,
-      "discount_baseline": 731972.9166666666,
+      "months_left": 0.0,
+      "discount_baseline": 0.0,
       "supply_costs_pct": 0.13449899125757003,
       "land_price_pct": null,
       "order_momentum_pct": null,
-      "cap": 1923713.3158125274,
+      "cap": 0.0,
       "cap_rule": "largest past guidance miss × months left / 12 (shrinks as the fiscal year ends)"
     },
     "peer_bps": {
@@ -3998,7 +4058,7 @@
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-10-30T12:00:53+09:00",
+          "checked": "2026-10-31T09:48:14+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4008,14 +4068,14 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-10-30T12:00:54+09:00",
+          "checked": "2026-10-31T09:48:15+09:00",
           "ok": true,
           "detail": "40 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-10-30T12:00:57+09:00",
+          "checked": "2026-10-31T09:48:18+09:00",
           "ok": true,
-          "detail": "50 events (10 completion/roof-raising)"
+          "detail": "46 events (10 completion/roof-raising)"
         },
         "tama_shops": {
           "checked": "2026-10-30T12:01:16+09:00",
@@ -4207,6 +4267,11 @@
           }
         },
         "tsu_events": {
+          "/event/13134": {
+            "type": "見学会",
+            "title": "【秋田市桜】平屋 お客様邸完成見学会を開催！",
+            "pref": "秋田県"
+          },
           "/event/13141": {
             "type": "見学会",
             "title": "【宇都宮市駒生町】駒生町モデル GRAND OPEN！",
@@ -4302,26 +4367,6 @@
             "title": "【1日5組限定】「軽井沢に、自分たちだけの一邸を。」軽井沢 別荘・セカンドハウス 建築個別相談会",
             "pref": "東京都"
           },
-          "/event/12430": {
-            "type": "見学会",
-            "title": "北上市しらゆりⅡ 分譲住宅「選べる体験・見学会」開催！",
-            "pref": "岩手県"
-          },
-          "/event/12272": {
-            "type": "見学会",
-            "title": "【花巻市】オーナー様邸完成見学会を開催！",
-            "pref": "岩手県"
-          },
-          "/event/12310": {
-            "type": "イベント",
-            "title": "【矢巾町】矢巾モデル OPEN HOUSE",
-            "pref": "岩手県"
-          },
-          "/event/12302": {
-            "type": "見学会",
-            "title": "【盛岡市厨川】見学会・無料宿泊体験のご案内",
-            "pref": "岩手県"
-          },
           "/event/12393": {
             "type": "宿泊体験",
             "title": "【北上市しらゆり】無料 宿泊体験棟（分譲住宅）のご案内",
@@ -4346,11 +4391,6 @@
             "type": "宿泊体験",
             "title": "【北群馬郡吉岡町】無料 宿泊体験棟（分譲住宅）のご案内",
             "pref": "群馬県"
-          },
-          "/event/11854": {
-            "type": "宿泊体験",
-            "title": "【秋田県秋田市】違いが分かる 宿泊体験＆選べる見学会",
-            "pref": "秋田県"
           },
           "/event/10933": {
             "type": "相談会・セミナー",
@@ -4827,6 +4867,12 @@
       "ended": "2026-10-30T23:21:00+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261031-094648",
+      "ended": "2026-10-31T09:49:23+09:00",
+      "iterations": 23,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -4935,7 +4981,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "3902ce79cf84fc91"
+    "skill_tree_view": "e55290aaaf662dad"
   },
   "reports": {
     "last_summary": "2026-10-23T21:40:40+09:00",
