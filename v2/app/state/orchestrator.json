@@ -1,7 +1,7 @@
 {
  "closeout": {
-  "p4_hash": "00d7b628b4c870374a61979eb942fbbd8deb44e4664462fd70ef7f73bc5bf418",
-  "p5_hash": "00d7b628b4c870374a61979eb942fbbd8deb44e4664462fd70ef7f73bc5bf418",
+  "p4_hash": "a9eda2b78224febfc6bc9a5ffa9450650ebdd004017c0b7cc11e86159f964bb3",
+  "p5_hash": "a9eda2b78224febfc6bc9a5ffa9450650ebdd004017c0b7cc11e86159f964bb3",
   "p5_date": "2026-11-01"
  },
  "delegation_history": [
@@ -50,13 +50,46 @@
      ]
     }
    }
+  },
+  {
+   "run_id": "R-20261101-090656",
+   "date": "2026-11-01",
+   "mode": "scheduled",
+   "subagents": {
+    "baseline": {
+     "delegations": 2,
+     "step_limit_stops": 2,
+     "loop_stops": 0,
+     "steps": 16,
+     "tool_calls": 16,
+     "repeated_work": [
+      "steady"
+     ],
+     "attempts": [
+      {
+       "steps": 8,
+       "stopped": "step limit",
+       "work_done": [
+        "steady"
+       ],
+       "final_report": false
+      },
+      {
+       "steps": 8,
+       "stopped": "step limit",
+       "work_done": [],
+       "final_report": false
+      }
+     ]
+    }
+   }
   }
  ],
  "review_snapshot": {
-  "date": "2026-10-31T22:43+09:00",
-  "run_id": "R-20261031-223824",
+  "date": "2026-11-01T09:13+09:00",
+  "run_id": "R-20261101-090656",
   "values": {
-   "average_valuated_price": 205.065,
+   "average_valuated_price": 180.395,
    "target_pe": 11.3307,
    "target_ev_ebitda": 11.4884,
    "stock_price_jpy": 220.0
