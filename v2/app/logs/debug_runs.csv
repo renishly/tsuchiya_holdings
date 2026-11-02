@@ -5,3 +5,5 @@ R-20261101-090656,2026-11-01T09:14:10+09:00,scheduled,yes,Average Valuated Price
 R-20261101-090656,2026-11-01T09:14:10+09:00,scheduled,yes,Average Valuated Price 205.065 -> 180.395 (-12.0%) since the review of 2026-10-31T22:43+09:00,,22,118076,9907,nvidia/nemotron-3-ultra-550b-a55b:free,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261101-231550,2026-11-01T23:18:59+09:00,scheduled,yes,daily check (first run after the TSE close today),,2,7702,516,nvidia/nemotron-3-ultra-550b-a55b:free,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,skipped (unchanged),"skipped (unchanged, synced today)"
 R-20261101-231550,2026-11-01T23:18:59+09:00,scheduled,yes,daily check (first run after the TSE close today),,2,7702,516,nvidia/nemotron-3-ultra-550b-a55b:free,research,no,no,0,0,,,0,0,0,0,,,,skipped (unchanged),"skipped (unchanged, synced today)"
+R-20261102-094226,2026-11-02T09:45:46+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261102-094226,2026-11-02T09:45:46+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
