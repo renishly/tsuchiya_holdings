@@ -601,44 +601,55 @@
    "topic": "housing policy and finance",
    "excerpt": "【フラット35】借入金利 2026年11月: 最も多い金利 年3.810%（範囲 年3.810%〜年5.730%、融資率9割以下・21〜35年）",
    "first_seen": "2026-11-03T02:04:40+09:00"
+  },
+  "E-5a86d62f": {
+   "id": "E-5a86d62f",
+   "date": "2026-11-03",
+   "ticker": "",
+   "title": "S - REITs record higher renewal rents despite uneven payouts (sbr.com.sg)",
+   "url": "https://sbr.com.sg/commercial-property/news/s-reits-record-higher-renewal-rents-despite-uneven-payouts",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-04T00:07:14+09:00"
   }
  },
  "last_check": "2026-10-31T22:42:00+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-03T11:56:13+09:00",
+   "checked": "2026-11-04T00:06:53+09:00",
    "error": null,
    "seen": 7,
    "added": 0,
    "added_at": "2026-11-03T02:04:35+09:00"
   },
   "mlit": {
-   "checked": "2026-11-03T11:56:16+09:00",
+   "checked": "2026-11-04T00:06:58+09:00",
    "error": null,
    "seen": 11,
    "added": 0,
    "added_at": "2026-10-30T23:18:12+09:00"
   },
   "jhf": {
-   "checked": "2026-11-03T11:56:17+09:00",
+   "checked": "2026-11-04T00:06:58+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-03T11:56:17+09:00",
-   "error": null,
+   "checked": "2026-11-04T00:06:59+09:00",
+   "error": "404: Not Found",
    "seen": 0,
    "added": 0,
    "added_at": null
   },
   "gdelt": {
-   "checked": "2026-11-03T11:57:05+09:00",
-   "error": "429: server busy or error",
-   "seen": 0,
-   "added": 0,
-   "added_at": null
+   "checked": "2026-11-04T00:07:14+09:00",
+   "error": null,
+   "seen": 1,
+   "added": 1,
+   "added_at": "2026-11-04T00:07:14+09:00"
   }
  }
 }
