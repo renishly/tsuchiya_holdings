@@ -622,41 +622,51 @@
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-05T10:29:25+09:00"
+  },
+  "E-61f65758": {
+   "id": "E-61f65758",
+   "date": "2026-11-05",
+   "ticker": "1814",
+   "title": "大末建設株式会社: 半期報告書－第81期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZB80",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-06T00:28:45+09:00"
   }
  },
  "last_check": "2026-10-31T22:42:00+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-05T10:29:25+09:00",
+   "checked": "2026-11-06T00:28:39+09:00",
    "error": null,
    "seen": 8,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-05T10:29:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-05T10:29:28+09:00",
+   "checked": "2026-11-06T00:28:43+09:00",
    "error": null,
    "seen": 11,
    "added": 0,
    "added_at": "2026-10-30T23:18:12+09:00"
   },
   "jhf": {
-   "checked": "2026-11-05T10:29:28+09:00",
+   "checked": "2026-11-06T00:28:44+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-05T10:29:28+09:00",
+   "checked": "2026-11-06T00:28:45+09:00",
    "error": null,
-   "seen": 0,
-   "added": 0,
-   "added_at": null
+   "seen": 1,
+   "added": 1,
+   "added_at": "2026-11-06T00:28:45+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-05T10:29:40+09:00",
-   "error": null,
+   "checked": "2026-11-06T00:29:35+09:00",
+   "error": "429: server busy or error",
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-04T00:07:14+09:00"
