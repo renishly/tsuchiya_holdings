@@ -632,44 +632,86 @@
    "source": "EDINET (universe companies)",
    "topic": "company and peers",
    "first_seen": "2026-11-06T00:28:45+09:00"
+  },
+  "E-3a4b1763": {
+   "id": "E-3a4b1763",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "所得税法改正を踏まえ、公営住宅の入居者の収入計算（ひとり親控除）を改正します ～「公営住宅法施行令の一部を改正する政令」を閣議決定～",
+   "url": "https://www.mlit.go.jp/report/press/house03_hh_000285.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-06T10:34:58+09:00"
+  },
+  "E-180961f9": {
+   "id": "E-180961f9",
+   "date": "2026-11-06",
+   "ticker": "8877",
+   "title": "エスリード株式会社: 半期報告書－第35期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZC6C",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-06T10:34:58+09:00"
+  },
+  "E-0d0e0463": {
+   "id": "E-0d0e0463",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "Yen Rises on Haven Demand as CIBC , Nomura See Room for More Gain (livemint.com)",
+   "url": "https://www.livemint.com/market/yen-rises-on-haven-demand-as-cibc-nomura-see-room-for-more-gain-11793918153390.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-06T10:35:55+09:00"
+  },
+  "E-748c8ae3": {
+   "id": "E-748c8ae3",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "A tale of 2 Chinas (freemalaysiatoday.com)",
+   "url": "https://www.freemalaysiatoday.com/category/opinion/2026/11/06/a-tale-of-2-chinas",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-06T10:35:55+09:00"
   }
  },
  "last_check": "2026-10-31T22:42:00+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-06T00:28:39+09:00",
+   "checked": "2026-11-06T10:34:54+09:00",
    "error": null,
    "seen": 8,
    "added": 0,
    "added_at": "2026-11-05T10:29:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-06T00:28:43+09:00",
+   "checked": "2026-11-06T10:34:58+09:00",
    "error": null,
-   "seen": 11,
-   "added": 0,
-   "added_at": "2026-10-30T23:18:12+09:00"
+   "seen": 12,
+   "added": 1,
+   "added_at": "2026-11-06T10:34:58+09:00"
   },
   "jhf": {
-   "checked": "2026-11-06T00:28:44+09:00",
+   "checked": "2026-11-06T10:34:58+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-06T00:28:45+09:00",
+   "checked": "2026-11-06T10:34:58+09:00",
    "error": null,
-   "seen": 1,
+   "seen": 2,
    "added": 1,
-   "added_at": "2026-11-06T00:28:45+09:00"
+   "added_at": "2026-11-06T10:34:58+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-06T00:29:35+09:00",
-   "error": "429: server busy or error",
-   "seen": 1,
-   "added": 0,
-   "added_at": "2026-11-04T00:07:14+09:00"
+   "checked": "2026-11-06T10:35:55+09:00",
+   "error": null,
+   "seen": 2,
+   "added": 2,
+   "added_at": "2026-11-06T10:35:55+09:00"
   }
  }
 }

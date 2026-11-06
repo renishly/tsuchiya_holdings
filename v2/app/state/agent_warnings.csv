@@ -188,12 +188,12 @@ W00186,2026-11-05T00:26:00+09:00,unresolved,"REINFOLIB_API_KEY not set: no land-
 W00187,2026-11-05T00:26:00+09:00,unresolved,No quarterly orders for this fiscal year yet.,Baseline Metrics,a164d546fee31dc7147b,https://www.tsuchiya.co.jp/ir/news/,open
 W00188,2026-11-05T00:26:00+09:00,unresolved,Logged only: coefficient 0 (A53). Export to 2026-10-01; computed in the marketing data.,Baseline Metrics,ec4cf29a55c6f1cf3467,https://trends.google.com/,open
 W00189,2026-11-05T00:26:00+09:00,unresolved,Inputs missing.,Baseline Metrics,cb1f6e8a0f0099f8628b,https://www.tsuchiya.co.jp/ir/news/,open
-W00190,2026-11-06T00:27:15+09:00,unresolved,Forecast EPS missing.,Baseline Metrics,0a26924d09c1c324f0d4,https://www.tsuchiya.co.jp/ir/news/,open
-W00191,2026-11-06T00:27:15+09:00,unresolved,Forecast DPS or price missing.,Baseline Metrics,9289e6583cf1454c3b1c,https://www.tsuchiya.co.jp/ir/news/,open
+W00190,2026-11-06T10:32:36+09:00,unresolved,Forecast EPS missing.,Baseline Metrics,0a26924d09c1c324f0d4,https://www.tsuchiya.co.jp/ir/news/,open
+W00191,2026-11-06T10:32:36+09:00,unresolved,Forecast DPS or price missing.,Baseline Metrics,9289e6583cf1454c3b1c,https://www.tsuchiya.co.jp/ir/news/,open
 W00192,2026-11-06T00:27:15+09:00,unresolved,Forecast OP or D&A missing.,Baseline Metrics,85e8a1ea58b9d8caa245,https://www.tsuchiya.co.jp/ir/news/,open
-W00193,2026-11-06T00:28:04+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,213e660982d6d21e4709,https://www.grandy.co.jp/ir/library,open
+W00193,2026-11-06T10:33:19+09:00,unresolved,Price or forecast EPS missing.,Baseline Metrics,213e660982d6d21e4709,https://www.grandy.co.jp/ir/library,open
 W00194,2026-11-06T00:28:04+09:00,unresolved,Target P/E or forecast EPS missing.,Baseline Metrics,f8bda9810b6e47b60736,https://www.tsuchiya.co.jp/ir/news/,open
-W00195,2026-11-06T00:28:04+09:00,unresolved,Target price by P/E not available.,Baseline Metrics,a6478bde40ad15014535,https://www.tsuchiya.co.jp/ir/news/,open
+W00195,2026-11-06T10:33:19+09:00,unresolved,Target price by P/E not available.,Baseline Metrics,a6478bde40ad15014535,https://www.tsuchiya.co.jp/ir/news/,open
 W00196,2026-11-06T00:28:04+09:00,unresolved,"Inputs missing (target multiple, forward EBITDA, net debt or shares).",Baseline Metrics,32d36886df458930333e,https://disclosure2.edinet-fsa.go.jp/,open
 W00197,2026-11-06T00:28:04+09:00,unresolved,Forecast operating profit or depreciation missing.,Baseline Metrics,fe3f6f2f29a9b22ef86a,https://www.tsuchiya.co.jp/ir/news/,open
 W00198,2026-11-06T00:28:06+09:00,unresolved,"guidance date unknown. Coefficient 0 yen per 1% (rejected: unexpected sign, |t| = 1.06 < 2).",Baseline Metrics,5ea8216b06dea39d5793,https://www.stat-search.boj.or.jp/api/v1/getDataCode?db=PR01&code=PRCG20_2200320001,open
@@ -214,4 +214,4 @@ W00212,2026-10-09T12:57:09+09:00,unresolved,Wayback Machine has no 200 snapshot 
 W00213,2026-10-09T12:58:08+09:00,unresolved,Wayback Machine has no 200 snapshot of this page in 2022.,Alternative Data,3f689113a201a3456529,https://web.archive.org/web/2022*/https://tsuchiyafudosan.jp/service,open
 W00214,2026-10-09T13:00:45+09:00,unresolved,Wayback Machine has no 200 snapshot of this page in 2021.,Alternative Data,902ba184c87fa57350d2,https://web.archive.org/web/2021*/https://tsuchiyafudosan.jp/store,open
 W00215,2026-10-09T13:01:38+09:00,unresolved,Wayback Machine has no 200 snapshot of this page in 2022.,Alternative Data,3268b08a41d21bdea054,https://web.archive.org/web/2022*/https://tsuchiyafudosan.jp/store,open
-W00216,2026-11-06T00:29:36+09:00,pending approval,AR-20261101-01: model_params,,,,open
+W00216,2026-11-06T10:35:55+09:00,pending approval,AR-20261101-01: model_params,,,,open

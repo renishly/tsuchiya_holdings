@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-06T00:29:35+09:00",
+      "last_success": "2026-11-06T10:35:55+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-06T00:29:47+09:00",
+      "last_success": "2026-11-06T10:36:09+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-06T00:28:06+09:00",
+      "last_success": "2026-11-06T10:34:22+09:00",
       "fail_streak": 0
     }
   },
@@ -101,10 +101,10 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-11-05",
+    "filings": "2026-11-06",
     "price_store": "2026-11-06",
     "rf_store": "2026-10-22",
-    "marketing": "2026-11-05"
+    "marketing": "2026-11-06"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-11-05",
+      "date": "2026-11-06",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -4058,7 +4058,7 @@
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-11-05T10:28:48+09:00",
+          "checked": "2026-11-06T10:33:21+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4068,37 +4068,37 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-11-05T10:28:49+09:00",
+          "checked": "2026-11-06T10:33:22+09:00",
           "ok": true,
           "detail": "40 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-11-05T10:28:52+09:00",
+          "checked": "2026-11-06T10:33:25+09:00",
           "ok": true,
           "detail": "45 events (10 completion/roof-raising)"
         },
         "tama_shops": {
-          "checked": "2026-10-30T12:01:16+09:00",
+          "checked": "2026-11-06T10:33:43+09:00",
           "ok": true,
           "detail": "30 shops in 7 prefectures"
         },
         "tama_events": {
-          "checked": "2026-10-30T12:01:19+09:00",
+          "checked": "2026-11-06T10:33:46+09:00",
           "ok": true,
           "detail": "1 promotional notices in 30 days"
         },
         "nh_modelhouses": {
-          "checked": "2026-10-30T12:01:20+09:00",
+          "checked": "2026-11-06T10:33:48+09:00",
           "ok": true,
           "detail": "3 opening notice(s); model houses per prefecture are on separate pages, not counted"
         },
         "nh_events": {
-          "checked": "2026-10-30T12:01:23+09:00",
+          "checked": "2026-11-06T10:33:51+09:00",
           "ok": true,
-          "detail": "282 events"
+          "detail": "370 events"
         },
         "grandy": {
-          "checked": "2026-10-30T12:01:55+09:00",
+          "checked": "2026-11-06T10:34:22+09:00",
           "ok": false,
           "detail": "503: server busy or error"
         }
@@ -4494,7 +4494,16 @@
           }
         }
       },
-      "last_peers": "2026-10-30"
+      "last_peers": "2026-11-06",
+      "digest_last": {
+        "mh": 40,
+        "ev": 45,
+        "comp": 10,
+        "tama_hk": 6,
+        "tama_th": 24,
+        "nh_new": 3,
+        "date": "2026-11-06"
+      }
     },
     "trends": {
       "file": "inputs/google_trends/2026-10-30_6bafabb2_time_series_JP_20040101-0900_20261030-1157.csv",
@@ -4534,8 +4543,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 205.0,
-      "quote_time": "2026-11-04T15:30:00+09:00"
+      "price": 206.0,
+      "quote_time": "2026-11-05T15:30:00+09:00"
     }
   },
   "history": [
@@ -4940,6 +4949,12 @@
       "ended": "2026-11-06T00:29:47+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261106-103201",
+      "ended": "2026-11-06T10:36:10+09:00",
+      "iterations": 34,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5048,7 +5063,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "cb3f2d2e0716746a"
+    "skill_tree_view": "5f532d85f49dcf77"
   },
   "reports": {
     "last_summary": "2026-10-31T22:42:24+09:00",
