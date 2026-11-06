@@ -674,44 +674,120 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-06T10:35:55+09:00"
+  },
+  "E-e5c14865": {
+   "id": "E-e5c14865",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "誰もが安心して健康に暮らせるための先導的な取組を選定しました！ ～人生100年時代を支える住まい環境整備モデル事業選定結果（令和８年度第２回）～",
+   "url": "https://www.mlit.go.jp/report/press/house07_hh_000321.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-07T00:02:22+09:00"
+  },
+  "E-f8d4f0f1": {
+   "id": "E-f8d4f0f1",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "Japan Stocks Plunge Nearly 6 % on Friday as Nikkei Loses 3 , 643 Points (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151274.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-ff91c6ea": {
+   "id": "E-ff91c6ea",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "Your origin does not define your destiny : In search of a father he barely remembers (sbs.com.au)",
+   "url": "https://www.sbs.com.au/language/japanese/en/podcast-episode/your-origin-does-not-define-your-destiny-in-search-of-a-father-he-barely-remembers/byqmeuntk",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-88635b93": {
+   "id": "E-88635b93",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "WisdomTree Japan Hedged Equity Fund ( DXJ ) Stock Price , News & Analysis (247wallst.com)",
+   "url": "https://247wallst.com/companies/dxj/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-c3dd3923": {
+   "id": "E-c3dd3923",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "iShares MSCI Japan Index Fund ( EWJ ) Stock Price , News & Analysis (247wallst.com)",
+   "url": "https://247wallst.com/companies/ewj/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-d0f3f318": {
+   "id": "E-d0f3f318",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "Japanese savers move money out of banks as bonds prove more attractive (businesstimes.com.sg)",
+   "url": "https://www.businesstimes.com.sg/international/global/japanese-savers-move-money-out-banks-bonds-prove-more-attractive",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-5a48a77e": {
+   "id": "E-5a48a77e",
+   "date": "2026-11-06",
+   "ticker": "",
+   "title": "Why are people so angry at Japan train photographers ? (japantoday.com)",
+   "url": "https://japantoday.com/category/features/lifestyle/why-are-people-so-angry-at-japan%E2%80%99s-train-photographers",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-07T00:02:39+09:00"
   }
  },
  "last_check": "2026-10-31T22:42:00+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-06T10:34:54+09:00",
+   "checked": "2026-11-07T00:02:18+09:00",
    "error": null,
    "seen": 8,
    "added": 0,
    "added_at": "2026-11-05T10:29:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-06T10:34:58+09:00",
+   "checked": "2026-11-07T00:02:22+09:00",
    "error": null,
-   "seen": 12,
+   "seen": 13,
    "added": 1,
-   "added_at": "2026-11-06T10:34:58+09:00"
+   "added_at": "2026-11-07T00:02:22+09:00"
   },
   "jhf": {
-   "checked": "2026-11-06T10:34:58+09:00",
+   "checked": "2026-11-07T00:02:23+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-06T10:34:58+09:00",
-   "error": null,
+   "checked": "2026-11-07T00:02:24+09:00",
+   "error": "404: Not Found",
    "seen": 2,
    "added": 1,
    "added_at": "2026-11-06T10:34:58+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-06T10:35:55+09:00",
+   "checked": "2026-11-07T00:02:39+09:00",
    "error": null,
-   "seen": 2,
-   "added": 2,
-   "added_at": "2026-11-06T10:35:55+09:00"
+   "seen": 8,
+   "added": 6,
+   "added_at": "2026-11-07T00:02:39+09:00"
   }
  }
 }
