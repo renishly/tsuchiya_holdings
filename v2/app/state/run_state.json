@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-07T09:56:33+09:00",
+      "last_success": "2026-11-07T23:00:05+09:00",
       "fail_streak": 0
     }
   },
@@ -4049,9 +4049,9 @@
     },
     "debate_signal": {
       "value": 0.0,
-      "date": "2026-10-31",
+      "date": "2026-11-07",
       "mode": "shadow",
-      "expires": "2026-11-30",
+      "expires": "2026-12-07",
       "items": [],
       "note": ""
     },
@@ -4987,15 +4987,21 @@
       "ended": "2026-11-07T09:57:41+09:00",
       "iterations": 23,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261107-225849",
+      "ended": "2026-11-07T23:03:11+09:00",
+      "iterations": 21,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
     "changelog": "v2.017",
     "research_summary": "2026-11-01-n284",
     "factor_monitor_removed": true,
-    "summary_report": "reports/summary_2026-10-31.html",
+    "summary_report": "reports/summary_2026-11-07.html",
     "old_debate_monitors_removed": true,
-    "md_case": "2026-10-31T22:42:00+09:00",
+    "md_case": "2026-11-07T23:02:26+09:00",
     "skills": {
       "guardrails": {
         "hash": "463108b927b6927e",
@@ -5095,10 +5101,10 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "1e9f174e4de41b35"
+    "skill_tree_view": "f9449c6a4271b133"
   },
   "reports": {
-    "last_summary": "2026-10-31T22:42:24+09:00",
-    "latest_file": "reports/summary_2026-10-31.html"
+    "last_summary": "2026-11-07T23:02:56+09:00",
+    "latest_file": "reports/summary_2026-11-07.html"
   }
 }
