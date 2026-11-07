@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-07T00:02:39+09:00",
+      "last_success": "2026-11-07T09:57:29+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-07T00:02:50+09:00",
+      "last_success": "2026-11-07T09:57:40+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-07T00:01:46+09:00",
+      "last_success": "2026-11-07T09:56:33+09:00",
       "fail_streak": 0
     }
   },
@@ -101,10 +101,10 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-11-06",
+    "filings": "2026-11-07",
     "price_store": "2026-11-07",
     "rf_store": "2026-10-22",
-    "marketing": "2026-11-06"
+    "marketing": "2026-11-07"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-11-06",
+      "date": "2026-11-07",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -4058,7 +4058,7 @@
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-11-06T10:33:21+09:00",
+          "checked": "2026-11-07T09:56:29+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4068,14 +4068,14 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-11-06T10:33:22+09:00",
+          "checked": "2026-11-07T09:56:30+09:00",
           "ok": true,
           "detail": "40 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-11-06T10:33:25+09:00",
+          "checked": "2026-11-07T09:56:33+09:00",
           "ok": true,
-          "detail": "45 events (10 completion/roof-raising)"
+          "detail": "49 events (10 completion/roof-raising)"
         },
         "tama_shops": {
           "checked": "2026-11-06T10:33:43+09:00",
@@ -4272,6 +4272,11 @@
             "title": "【秋田市桜】平屋 お客様邸完成見学会を開催！",
             "pref": "秋田県"
           },
+          "/event/13301": {
+            "type": "見学会",
+            "title": "【帯広市】2棟同時オープンハウス 開催！",
+            "pref": "北海道"
+          },
           "/event/13141": {
             "type": "見学会",
             "title": "【宇都宮市駒生町】駒生町モデル GRAND OPEN！",
@@ -4447,6 +4452,21 @@
             "title": "【東京・オーナー様向け】補助金を活用した太陽光・蓄電池相談会",
             "pref": "東京都"
           },
+          "/event/13343": {
+            "type": "見学会",
+            "title": "【盛岡市厨川】見学会・相談会｜無料宿泊体験",
+            "pref": "岩手県"
+          },
+          "/event/13281": {
+            "type": "イベント",
+            "title": "【矢巾町】矢巾モデル 暖かさの理由体験会",
+            "pref": "岩手県"
+          },
+          "/event/13266": {
+            "type": "見学会",
+            "title": "北上市しらゆりⅡ 分譲住宅「選べる 住宅あったか体験会」開催！",
+            "pref": "岩手県"
+          },
           "/event/8515": {
             "type": "イベント",
             "title": "【帯広市】モデルハウス予約＆来場で5,000円分ギフトプレゼント！",
@@ -4543,8 +4563,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 206.0,
-      "quote_time": "2026-11-05T15:30:00+09:00"
+      "price": 200.0,
+      "quote_time": "2026-11-06T15:30:00+09:00"
     }
   },
   "history": [
@@ -4961,6 +4981,12 @@
       "ended": "2026-11-07T00:02:50+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261107-095509",
+      "ended": "2026-11-07T09:57:41+09:00",
+      "iterations": 23,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5069,7 +5095,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "3f6155a361da2576"
+    "skill_tree_view": "1e9f174e4de41b35"
   },
   "reports": {
     "last_summary": "2026-10-31T22:42:24+09:00",
