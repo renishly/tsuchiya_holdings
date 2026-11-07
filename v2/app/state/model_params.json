@@ -893,7 +893,7 @@
   "approved_at": "2026-10-30T08:22:58+09:00"
  },
  "md": {
-  "fitted": "2026-11-01T06:51:00+09:00",
+  "fitted": "2026-11-08T07:16:05+09:00",
   "tsuchiya_revenue": 31456837000.0,
   "standing_approval": {
    "date": "2026-10-30",
@@ -954,7 +954,7 @@
   }
  },
  "pending": {
-  "version": "2026-11-01-n284",
+  "version": "2026-11-08-n284",
   "status": "pending approval",
   "m1": {
    "year_effects": {
@@ -1061,7 +1061,7 @@
    "months": 9,
    "period": [
     "2016-10",
-    "2025-10"
+    "2025-11"
    ],
    "methods": {
     "M1 (P/B regression)": {
@@ -1123,60 +1123,60 @@
    },
    "monthly_reference": {
     "M1 (P/B regression)": {
-     "months": 90,
-     "mean_ic": 0.1489,
-     "t": 5.53,
-     "top_minus_bottom": 0.1159,
-     "hit_rate": 0.514,
-     "median_abs_error": 0.267
+     "months": 91,
+     "mean_ic": 0.1466,
+     "t": 5.3,
+     "top_minus_bottom": 0.1146,
+     "hit_rate": 0.513,
+     "median_abs_error": 0.268
     },
     "P/B (own history)": {
-     "months": 75,
-     "mean_ic": 0.0351,
-     "t": 0.66,
+     "months": 76,
+     "mean_ic": 0.0335,
+     "t": 0.64,
      "top_minus_bottom": -0.0039,
-     "hit_rate": 0.483,
-     "median_abs_error": 0.196
+     "hit_rate": 0.484,
+     "median_abs_error": 0.195
     },
     "P/B (peers)": {
-     "months": 108,
-     "mean_ic": 0.0084,
-     "t": 0.26,
-     "top_minus_bottom": -0.0483,
+     "months": 109,
+     "mean_ic": 0.0086,
+     "t": 0.27,
+     "top_minus_bottom": -0.0465,
      "hit_rate": 0.463,
-     "median_abs_error": 0.368
+     "median_abs_error": 0.37
     },
     "P/E (peers, trailing)": {
-     "months": 108,
-     "mean_ic": 0.1513,
-     "t": 5.12,
-     "top_minus_bottom": 0.1201,
-     "hit_rate": 0.532,
+     "months": 109,
+     "mean_ic": 0.1493,
+     "t": 5.0,
+     "top_minus_bottom": 0.1181,
+     "hit_rate": 0.53,
      "median_abs_error": 0.34
     },
     "M1 (EV/EBITDA regression)": {
-     "months": 75,
-     "mean_ic": 0.1902,
-     "t": 5.29,
-     "top_minus_bottom": 0.1998,
-     "hit_rate": 0.541,
-     "median_abs_error": 0.5
+     "months": 76,
+     "mean_ic": 0.1874,
+     "t": 5.21,
+     "top_minus_bottom": 0.1989,
+     "hit_rate": 0.539,
+     "median_abs_error": 0.499
     },
     "EV/EBITDA (own history)": {
-     "months": 75,
-     "mean_ic": -0.0297,
-     "t": -0.54,
-     "top_minus_bottom": -0.0591,
+     "months": 76,
+     "mean_ic": -0.0303,
+     "t": -0.56,
+     "top_minus_bottom": -0.0592,
      "hit_rate": 0.461,
-     "median_abs_error": 0.352
+     "median_abs_error": 0.353
     },
     "EV/EBITDA (peers)": {
-     "months": 99,
-     "mean_ic": 0.1369,
-     "t": 3.76,
-     "top_minus_bottom": 0.1258,
-     "hit_rate": 0.544,
-     "median_abs_error": 0.51
+     "months": 100,
+     "mean_ic": 0.1347,
+     "t": 3.69,
+     "top_minus_bottom": 0.1243,
+     "hit_rate": 0.543,
+     "median_abs_error": 0.508
     }
    }
   },
@@ -1226,7 +1226,7 @@
     "year_effect": "2026"
    }
   },
-  "created": "2026-11-01T06:51:05+09:00",
+  "created": "2026-11-08T07:16:09+09:00",
   "screen": {
    "1419": {
     "share": 0.706,
@@ -1842,6 +1842,6 @@
    "rows": 284,
    "companies": 32
   },
-  "summary": "**Universe:** 32 companies pass the ≥50% residential revenue screen (Tsuchiya at 100%). Excluded: 大東建託 (28.5%, rental apartments), 東建コーポレーション (42.7%, same), 野村不動産 (45.8%, commercial), スターツ (37.4%, land-use apartments), コスモスイニシア (32.3%), エスコン (47.1%), 新日本建設 and 日神グループ (0%). Three single-segment names pass by default.\n\n**M1 fit (284 panel rows):** log P/B = 6.40×ROE_norm − 0.30×growth + 0.023×log revenue (scale 0.36). log EV/EBITDA = −3.80×margin + 0.46×growth − 0.059×log revenue (241 rows, scale 0.46). Higher clean ROE raises P/B; higher margin lowers EV/EBITDA in this sample.\n\n**Tsuchiya fitted multiples (2026 year effect):** P/B 0.48 [0.31–0.77]; EV/EBITDA 13.6 [7.5–24.7].\n\n**Annual backtest (9 non-overlapping years, 2016–2025):** Accepted (mean IC>0, t≥2): M1 EV/EBITDA (IC 0.18, t 3.85), M1 P/B (IC 0.14, t 2.48), P/E peers trailing (IC 0.14, t 2.64). Rejected: P/B own history, P/B peers, EV/EBITDA own history, EV/EBITDA peers (t<2). Only 9 yearly cross-sections—results are noisy.\n\n**Proposed weights (rule: ½ equal + ½ by accepted IC):** M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each rejected method 7.1%. **Live vs backtest gap:** the live P/E and EV/EBITDA methods use forward figures; their backtests use trailing figures (no point-in-time forecast history).\n\n**Status:** pending approval (AR-20261101-01). Nothing changes until the student writes APPROVE AR-20261101-01 in state/approvals.md; a newer run replaces this request.\n\n(Code check: 2 number(s) not found in the results and not verified: 20261101, 20261101)"
+  "summary": "**Panel & universe** — 284 annual rows across 32 companies (2016–2025). Screen keeps residential share ≥ 50%: 土屋ホールディングス (1840) passes at 100%; 大東建託, 東建コーポレーション, 野村不動産, コスモスイニシア, スターツ, エスコン excluded for low residential share; several single-segment names pass by default.\n\n**M1 fits** — P/B equation (n=284, scale 0.36): ROE 6.40, growth −0.30, log revenue 0.02. EV/EBITDA equation (n=241, scale 0.46): margin −3.80, growth 0.46, log revenue −0.06. Tsuchiya's 2026 fitted multiples: P/B 0.48 (0.31–0.77); EV/EBITDA 13.6 (7.5–24.7).\n\n**Backtest (annual, 9-month lag, 2016–2025)** — Accepted (mean IC > 0, t ≥ 2): M1 EV/EBITDA (IC 0.18, t 3.85), M1 P/B (IC 0.14, t 2.48), P/E peers trailing (IC 0.14, t 2.64). Rejected: P/B own history, P/B peers, EV/EBITDA own history, EV/EBITDA peers (t < 2 or IC ≤ 0). Monthly reference shows stronger t-stats but uses overlapping months.\n\n**Proposed weights** — ½ equal + ½ by accepted IC: M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each rejected method 7.1%. Rule: accept if annual backtest mean IC > 0 and t ≥ 2; weight = ½ equal share + ½ share by accepted IC.\n\n**Weaknesses** — Only 32 companies; survivorship bias (no delisted prices). Four of seven methods rejected by the backtest. Live P/E and EV/EBITDA use forward figures; their backtest used trailing figures (no point-in-time forecast history).\n\n(Code check: 1 number(s) not found in the results and not verified: 1840)"
  }
 }
