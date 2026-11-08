@@ -86,8 +86,8 @@
   }
  ],
  "review_snapshot": {
-  "date": "2026-11-07T23:03+09:00",
-  "run_id": "R-20261107-225849",
+  "date": "2026-11-08T23:20+09:00",
+  "run_id": "R-20261108-231711",
   "values": {
    "average_valuated_price": 180.07,
    "target_pe": 11.1947,
@@ -118,7 +118,7 @@
    }
   }
  },
- "last_daily_review": "2026-11-07",
+ "last_daily_review": "2026-11-08",
  "consensus_snapshot": {
   "date": "2026-10-23T09:03+09:00",
   "run_id": "R-20261023-085922",

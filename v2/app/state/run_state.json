@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-08T09:34:29+09:00",
+      "last_success": "2026-11-08T23:18:31+09:00",
       "fail_streak": 0
     }
   },
@@ -5029,6 +5029,12 @@
       "ended": "2026-11-08T09:35:36+09:00",
       "iterations": 24,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261108-231711",
+      "ended": "2026-11-08T23:20:13+09:00",
+      "iterations": 21,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5137,7 +5143,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "208d1891f9308cd2"
+    "skill_tree_view": "5244c5ce7e6b22d8"
   },
   "reports": {
     "last_summary": "2026-11-07T23:02:56+09:00",
