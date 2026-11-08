@@ -750,44 +750,55 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-07T00:02:39+09:00"
+  },
+  "E-b3f8b3a0": {
+   "id": "E-b3f8b3a0",
+   "date": "2026-11-07",
+   "ticker": "",
+   "title": "Dollar jumps after strong US payrolls report (economictimes.indiatimes.com)",
+   "url": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-jumps-after-strong-us-payrolls-report/articleshow/135626197.cms",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-08T09:35:21+09:00"
   }
  },
  "last_check": "2026-11-07T23:02:26+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-07T23:00:38+09:00",
+   "checked": "2026-11-08T09:35:02+09:00",
    "error": null,
    "seen": 8,
    "added": 0,
    "added_at": "2026-11-05T10:29:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-07T23:00:41+09:00",
+   "checked": "2026-11-08T09:35:06+09:00",
    "error": null,
    "seen": 13,
    "added": 0,
    "added_at": "2026-11-07T00:02:22+09:00"
   },
   "jhf": {
-   "checked": "2026-11-07T23:00:43+09:00",
+   "checked": "2026-11-08T09:35:06+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-07T23:00:44+09:00",
+   "checked": "2026-11-08T09:35:06+09:00",
    "error": null,
-   "seen": 1,
+   "seen": 0,
    "added": 0,
    "added_at": "2026-11-06T10:34:58+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-07T23:01:45+09:00",
-   "error": "429: server busy or error",
-   "seen": 8,
-   "added": 0,
-   "added_at": "2026-11-07T00:02:39+09:00"
+   "checked": "2026-11-08T09:35:21+09:00",
+   "error": null,
+   "seen": 7,
+   "added": 1,
+   "added_at": "2026-11-08T09:35:21+09:00"
   }
  }
 }
