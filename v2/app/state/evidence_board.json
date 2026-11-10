@@ -781,44 +781,185 @@
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-10T12:35:25+09:00"
+  },
+  "E-2bdba172": {
+   "id": "E-2bdba172",
+   "date": "2026-11-10",
+   "ticker": "8897",
+   "title": "ＭＩＲＡＲＴＨホールディングス株式会社: 半期報告書－第55期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZDW0",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-11T00:36:34+09:00"
+  },
+  "E-1632d163": {
+   "id": "E-1632d163",
+   "date": "2026-11-10",
+   "ticker": "3291",
+   "title": "飯田グループホールディングス株式会社: 半期報告書－第14期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZDYC",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-11T00:36:34+09:00"
+  },
+  "E-9bfd9ba4": {
+   "id": "E-9bfd9ba4",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "Analysis - Market rout tests BOJ upbeat view of financial conditions (aol.com)",
+   "url": "https://www.aol.com/articles/analysis-market-rout-tests-bojs-043226000.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-7b4c4234": {
+   "id": "E-7b4c4234",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "NTT DOCOMO BUSINESS , Mitsubishi Electric & NTT Explore Mega - Constellation Development (thefastmode.com)",
+   "url": "https://www.thefastmode.com/technology-solutions/51357-ntt-docomo-business-mitsubishi-electric-ntt-explore-mega-constellation-development",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-825ab00f": {
+   "id": "E-825ab00f",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "BOJ Opinion Summary Shows Board Remains in Favor of More Tightening (morningstar.com)",
+   "url": "https://www.morningstar.com/news/dow-jones/2026110914427/boj-opinion-summary-shows-board-remains-in-favor-of-more-tightening",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-912e3e36": {
+   "id": "E-912e3e36",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "Bangkok Post - Banyan Tree Bangkok hosts Peru Mucho Gusto dining events (bangkokpost.com)",
+   "url": "https://www.bangkokpost.com/life/arts-and-entertainment/3351989/banyan-tree-bangkok-hosts-peru-mucho-gusto-dining-events",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-16b8c460": {
+   "id": "E-16b8c460",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "BOJ Opinions Show Split Over Pace of Further Rate Increases (econotimes.com)",
+   "url": "https://econotimes.com/BOJ-Opinions-Show-Split-Over-Pace-of-Further-Rate-Increases-1774140",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-1fffbaab": {
+   "id": "E-1fffbaab",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "Japan LDP , JIP , DPFP Compile Draft Lower House Seat Cut Bill (nippon.com)",
+   "url": "https://www.nippon.com/en/articles/-/57154",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-50f14304": {
+   "id": "E-50f14304",
+   "date": "2026-11-09",
+   "ticker": "",
+   "title": "US dollar holds onto payrolls gains , NZ dollar rises after election (dunyanews.tv)",
+   "url": "https://dunyanews.tv/en/Business/981940-us-dollar-holds-onto-payrolls-gains-nz-dollar-rises-after-election",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-029086b5": {
+   "id": "E-029086b5",
+   "date": "2026-11-09",
+   "ticker": "",
+   "title": "( Update ) Japan Bought Record 7 . 9 T . Yen in Forex Intervention July 30 (nippon.com)",
+   "url": "https://www.nippon.com/en/articles/-/57110",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-76a5065c": {
+   "id": "E-76a5065c",
+   "date": "2026-11-09",
+   "ticker": "",
+   "title": "Gold edges up as softer crude tempers inflation concerns (economictimes.indiatimes.com)",
+   "url": "https://economictimes.indiatimes.com/markets/commodities/news/gold-edges-up-as-softer-crude-tempers-inflation-concerns/articleshow/135667365.cms",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-89e0d275": {
+   "id": "E-89e0d275",
+   "date": "2026-11-09",
+   "ticker": "",
+   "title": "Bank of Japan Monetary Base Rises ¥1 . 8 Trillion in October (econotimes.com)",
+   "url": "https://econotimes.com/Bank-of-Japan-Monetary-Base-Rises-1-8-Trillion-in-October-1773416",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
+  },
+  "E-16941d22": {
+   "id": "E-16941d22",
+   "date": "2026-11-09",
+   "ticker": "",
+   "title": "BOJ Sets Planned Monthly JGB Offers at ¥2 . 3 Trillion for October - December (econotimes.com)",
+   "url": "https://econotimes.com/BOJ-Sets-Planned-Monthly-JGB-Offers-at-2-3-Trillion-for-October-December-1773409",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-11T00:36:49+09:00"
   }
  },
  "last_check": "2026-11-07T23:02:26+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-10T12:35:25+09:00",
+   "checked": "2026-11-11T00:36:28+09:00",
    "error": null,
    "seen": 8,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-10T12:35:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-10T12:35:29+09:00",
+   "checked": "2026-11-11T00:36:32+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-10T12:35:29+09:00",
+   "checked": "2026-11-11T00:36:33+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-10T12:35:29+09:00",
+   "checked": "2026-11-11T00:36:34+09:00",
    "error": null,
-   "seen": 0,
-   "added": 0,
-   "added_at": "2026-11-06T10:34:58+09:00"
+   "seen": 2,
+   "added": 2,
+   "added_at": "2026-11-11T00:36:34+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-10T12:36:22+09:00",
-   "error": "429: server busy or error",
-   "seen": 7,
-   "added": 1,
-   "added_at": "2026-11-08T09:35:21+09:00"
+   "checked": "2026-11-11T00:36:49+09:00",
+   "error": null,
+   "seen": 11,
+   "added": 11,
+   "added_at": "2026-11-11T00:36:49+09:00"
   }
  }
 }
