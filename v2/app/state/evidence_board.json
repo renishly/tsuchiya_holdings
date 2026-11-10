@@ -771,40 +771,50 @@
    "source": "MLIT press releases",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-10T02:29:39+09:00"
+  },
+  "E-e8cd456f": {
+   "id": "E-e8cd456f",
+   "date": "2026-11-10",
+   "ticker": "",
+   "title": "金融政策決定会合における主な意見（10月29、30日開催分）",
+   "url": "https://www.boj.or.jp/mopo/mpmsche_minu/opinion_2026/opi261030.pdf",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-10T12:35:25+09:00"
   }
  },
  "last_check": "2026-11-07T23:02:26+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-10T02:29:36+09:00",
+   "checked": "2026-11-10T12:35:25+09:00",
    "error": null,
-   "seen": 7,
-   "added": 0,
-   "added_at": "2026-11-05T10:29:25+09:00"
+   "seen": 8,
+   "added": 1,
+   "added_at": "2026-11-10T12:35:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-10T02:29:39+09:00",
+   "checked": "2026-11-10T12:35:29+09:00",
    "error": null,
    "seen": 14,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-10T02:29:40+09:00",
+   "checked": "2026-11-10T12:35:29+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-10T02:29:41+09:00",
+   "checked": "2026-11-10T12:35:29+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-06T10:34:58+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-10T02:30:36+09:00",
+   "checked": "2026-11-10T12:36:22+09:00",
    "error": "429: server busy or error",
    "seen": 7,
    "added": 1,
