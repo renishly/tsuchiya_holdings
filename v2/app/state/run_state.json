@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-11T10:17:05+09:00",
+      "last_success": "2026-11-12T00:12:47+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-11T10:17:19+09:00",
+      "last_success": "2026-11-12T00:12:59+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-11T10:15:33+09:00",
+      "last_success": "2026-11-12T00:11:14+09:00",
       "fail_streak": 0
     }
   },
@@ -102,17 +102,17 @@
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
     "filings": "2026-11-11",
-    "price_store": "2026-11-11",
+    "price_store": "2026-11-12",
     "rf_store": "2026-10-22",
     "marketing": "2026-11-11"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.tsuchiya.co.jp/wp-sitemap.xml\n"
     },
     "irbank.net": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": ""
     },
     "iestdot.com": {
@@ -140,7 +140,7 @@
       "txt": ""
     },
     "www.mlit.go.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": ""
     },
     "laws.e-gov.go.jp": {
@@ -156,15 +156,15 @@
       "txt": "User-agent: *\r\nDisallow: /wp/wp-admin/\r\nAllow: /wp/wp-admin/admin-ajax.php\r\n\r\nSitemap: https://logos-holdings.jp/sitemap.xml\r\nSitemap: https://logos-holdings.jp/sitemap.rss\n"
     },
     "www.nihonhouse-hd.co.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": "User-agent: *\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://www.nihonhouse-hd.co.jp/wp-sitemap.xml\n\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.xml\nSitemap: https://www.nihonhouse-hd.co.jp/sitemap.html\n"
     },
     "www.tamahome.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": "User-agent: *\nDisallow: /qkeioebqx4/wp-admin/\nAllow: /qkeioebqx4/wp-admin/admin-ajax.php\n\nSitemap: https://www.tamahome.jp/wp-sitemap.xml\n"
     },
     "www.grandy.co.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": ""
     },
     "www.sekisuihouse.co.jp": {
@@ -176,11 +176,11 @@
       "txt": ""
     },
     "www.boj.or.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": ""
     },
     "www.simulation.jhf.go.jp": {
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "txt": "User-agent: *\r\nDisallow: /incomecalculationtool/\r\nDisallow: /incomecalculationtool-previous/"
     }
   },
@@ -4024,7 +4024,7 @@
           "202608": 148.7,
           "202609": 148.9
         },
-        "fetched": "2026-11-11",
+        "fetched": "2026-11-12",
         "source": "https://www.stat-search.boj.or.jp/api/v1/getDataCode?db=PR01&code=PRCG20_2200320001"
       },
       "land": {
@@ -5055,6 +5055,12 @@
       "ended": "2026-11-11T10:17:19+09:00",
       "iterations": 23,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261112-000946",
+      "ended": "2026-11-12T00:12:59+09:00",
+      "iterations": 22,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5163,7 +5169,7 @@
       }
     },
     "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "122a78870246a5be"
+    "skill_tree_view": "09626870c0486696"
   },
   "reports": {
     "last_summary": "2026-11-07T23:02:56+09:00",

@@ -30,16 +30,6 @@
    "topic": "company and peers",
    "first_seen": "2026-10-23T21:38:34+09:00"
   },
-  "E-cb2df70f": {
-   "id": "E-cb2df70f",
-   "date": "2026-07-14",
-   "ticker": "1419",
-   "title": "2026年07月14日 2026年５月期 決算短信〔日本基準〕(連結) (648KB)",
-   "url": "https://www.tamahome.jp/company/ir/upload_file/m005-m005_02/tannshinn.pdf?e=8451",
-   "source": "company IR page",
-   "topic": "company and peers",
-   "first_seen": "backfill"
-  },
   "E-a1ca9cf5": {
    "id": "E-a1ca9cf5",
    "date": "2026-09-04",
@@ -927,35 +917,35 @@
  "last_check": "2026-11-07T23:02:26+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-11T10:16:05+09:00",
+   "checked": "2026-11-12T00:11:50+09:00",
    "error": null,
    "seen": 8,
    "added": 0,
    "added_at": "2026-11-10T12:35:25+09:00"
   },
   "mlit": {
-   "checked": "2026-11-11T10:16:09+09:00",
+   "checked": "2026-11-12T00:11:54+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-11T10:16:09+09:00",
+   "checked": "2026-11-12T00:11:55+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-11T10:16:09+09:00",
-   "error": null,
+   "checked": "2026-11-12T00:11:56+09:00",
+   "error": "404: Not Found",
    "seen": 2,
    "added": 0,
    "added_at": "2026-11-11T00:36:34+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-11T10:17:05+09:00",
+   "checked": "2026-11-12T00:12:47+09:00",
    "error": "429: server busy or error",
    "seen": 11,
    "added": 11,
