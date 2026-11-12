@@ -977,6 +977,28 @@ SHARED_SKILLS = ["guardrails", "peer-multiples", "forecast-inputs", "forecast-di
                  "valuation-combine", "universe", "model-fit", "backtest", "evidence-board", "summary-report", "number-check",
                  "news-scout", "debate-position", "debater-memory"]   # A46: the student's choice (30 Oct 2026)
 SKILL_SHARE = (os.environ.get("SKILL_SHARE") or "seminar").strip().lower()   # class | seminar
+# A55: the market's category (resolved against GET /api/skill-categories; omitted if no category matches) and scope
+SKILL_CATEGORY = {"guardrails": ["safety", "guardrail", "ethic", "governance", "risk"],
+                  "peer-multiples": ["valuation"], "forecast-inputs": ["forecast", "valuation"],
+                  "forecast-discount": ["forecast", "valuation"], "own-history": ["valuation"], "pb-method": ["valuation"],
+                  "valuation-combine": ["valuation"], "universe": ["data", "collect", "screen"],
+                  "model-fit": ["model", "statist", "research", "backtest"], "backtest": ["backtest", "model", "statist", "research"],
+                  "evidence-board": ["evidence", "news", "debate", "data"], "summary-report": ["report", "writ", "communic"],
+                  "number-check": ["verif", "check", "quality", "valid", "safety"], "news-scout": ["news", "evidence", "alternative", "data"],
+                  "debate-position": ["debate", "argument"], "debater-memory": ["debate", "memory", "argument"]}
+SKILL_PERSONAL = {"forecast-inputs", "forecast-discount", "universe", "debater-memory"}   # tied to Tsuchiya's data or this agent's debaters
+
+def _skill_category(cats: list, wants: list[str]):
+    """The first market category whose key or name contains one of the wanted words (its number if given)."""
+    for w in wants:
+        for c in cats or []:
+            if not isinstance(c, dict):
+                continue
+            if any(w in str(c.get(k) or "").lower() for k in ("key", "name", "slug", "title")):
+                for k in ("number", "key", "name"):
+                    if c.get(k) not in (None, ""):
+                        return c[k]
+    return None
 REF_SKILLS = ["skill-connector"]   # A54: read from the market and saved for the builder (reference only)
 SKILL_FOOTER = ("\n\n---\nShared by Tsuchibot, a research agent valuing Tsuchiya Holdings (1840) from public data for a seminar "
                 "thesis. Tool names in backticks are that agent's own. Benchmark from public data; not investment advice.\n")
@@ -989,19 +1011,23 @@ def _dashboard_skills(st) -> str:
     sk_dir = Path(__file__).resolve().parent.parent / "skills"   # code directory (not the data root)
     sent = st.setdefault("dashboard_sent", {}).setdefault("skills", {})
     posted, failed = [], []
+    cats = dashboard.skill_categories()
     for name in SHARED_SKILLS:
         f = sk_dir / name / "SKILL.md"
         if not f.exists():
             continue
         text = f.read_text(encoding="utf-8").rstrip() + SKILL_FOOTER
-        h = hashlib.sha256((SKILL_SHARE + text).encode()).hexdigest()[:16]
+        cat = _skill_category(cats, SKILL_CATEGORY.get(name, []))
+        scope = "personal" if name in SKILL_PERSONAL else "common"
+        h = hashlib.sha256((SKILL_SHARE + f"|{cat}|{scope}|" + text).encode()).hexdigest()[:16]
         if sent.get(name, {}).get("hash") == h:
             continue
         m = re.search(r"(?ms)^description:(.*?)^(?:---|\w+:)", text)
         summary = " ".join(m.group(1).split())[:300] if m else None
-        r = dashboard.post_skill(text, name=name, summary=summary, share=SKILL_SHARE)
+        r = dashboard.post_skill(text, name=name, summary=summary, share=SKILL_SHARE, category=cat, scope=scope)
         if r:
-            sent[name] = {"hash": h, "identifier": r.get("identifier"), "version": r.get("version"), "address": r.get("address")}
+            sent[name] = {"hash": h, "identifier": r.get("identifier"), "version": r.get("version"), "address": r.get("address"),
+                          "category": r.get("category_number", cat), "scope": r.get("scope", scope)}
             posted.append(name)
         else:
             failed.append(name)
@@ -1048,10 +1074,11 @@ MONITORS = {  # A47: the monitors each dashboard agent keeps; any other monitor 
     "main": ["Overview (read me first)", "Data gaps and errors", "Status", "Version", "Build phases", "Rows per CSV", "Pending approvals",
              "Data (CSV files)", "Google Sheet", "Data dictionary (report_list.html)", "Debug log (debug_runs.csv)",
              "Current market price", "Average valuated price", "Valuation (agent baseline)", "Model weights",
-             "Md (forecast discount)", "Research (M1 and backtest)", "Backtest report (backtest_latest.html)"],
-    "ca": ["Overview (read me first)", "Version", "Md debate: Debate Signal", "Arbitration (decision models)", "Evidence sources"],
-    "debater_a": ["Overview (read me first)", "Version", "Role", "Latest position"],
-    "debater_b": ["Overview (read me first)", "Version", "Role", "Latest position"],
+             "Md (forecast discount)", "Research (M1 and backtest)", "Backtest report (backtest_latest.html)", "Run status"],
+    "ca": ["Overview (read me first)", "Version", "Md debate: Debate Signal", "Arbitration (decision models)", "Evidence sources",
+           "Run status"],
+    "debater_a": ["Overview (read me first)", "Version", "Role", "Latest position", "Run status"],
+    "debater_b": ["Overview (read me first)", "Version", "Role", "Latest position", "Run status"],
 }
 
 def _dashboard_prune():
@@ -1131,7 +1158,8 @@ def _dashboard_finish(st, cr, S) -> str:
             "reference: P/B vs peers (JPY, weight 0)": show("Target Price (P/B, peers)"),
             "reference: EV/EBITDA trailing pair (JPY)": show("Target Price (EV/EBITDA, trailing pair, F1)"),
             "inputs: forward depreciation / normalised EPS": f"{show('Depreciation (forward, F7)')} / {show('EPS (normalised, ordinary profit, F3)')}",
-            "note": "Agent baseline calculated from public data (v2.005); the target and view are the student's (syllabus 2.5).",
+            "note": "Agent baseline calculated from public data (v2.005). The weekly Forecast's view is a fixed code rule on "
+                    f"the combined expected return (±{VIEW_BAND:.0%}, A55), not a model's opinion; not investment advice.",
         }
         dashboard.set_monitor(val, "Valuation (agent baseline)")
         wr = _latest(base, "1840", "Method weights")
@@ -1194,6 +1222,16 @@ def _dashboard_finish(st, cr, S) -> str:
         except Exception as e:
             dashboard.report(f"error report failed: {type(e).__name__}: {str(e)[:120]}", "error")
         dashboard.set_monitor(ver, "Version")
+        try:  # A55: the seminar's weekly Forecast output and the Run status monitor
+            fc = _dashboard_forecast(st, base)
+            if fc:
+                log(st, "dashboard", {"profile": "main"}, fc)
+        except Exception as e:
+            dashboard.report(f"forecast failed: {type(e).__name__}: {str(e)[:120]}", "error")
+        try:
+            _run_status_main(st, cr, base, S)
+        except Exception as e:
+            dashboard.report(f"run status failed: {type(e).__name__}: {str(e)[:120]}", "error")
         sent = st.setdefault("dashboard_sent", {})
         if ver_file and sent.get("changelog") != ver:   # A50: every version since the last one posted, merged
             cl = changelog_since(sent.get("changelog"))
@@ -1212,7 +1250,11 @@ def _dashboard_finish(st, cr, S) -> str:
         except Exception as e:
             dashboard.report(f"monitor cleanup failed: {type(e).__name__}", "error")
         left = dashboard.flush()
-        return (f"sent; {left} item(s) buffered" if left else "sent") + (f"; also {', '.join(others)}" if others else "")
+        ms = dashboard.my_state()   # A55: how the dashboard shows Main now (state, why, rhythm), for the run log
+        if ms:
+            log(st, "dashboard", {"profile": "main", "my_state": ms}, "state read")
+        return (f"sent; {left} item(s) buffered" if left else "sent") + (f"; also {', '.join(others)}" if others else "") \
+            + (f"; dashboard shows {ms.get('state')}" + (f" ({ms['why']})" if ms.get("why") else "") if ms else "")
     except Exception as e:
         return f"dashboard error: {type(e).__name__}"
 
@@ -1265,6 +1307,23 @@ def _dashboard_md_debate(st, case: dict | None, ver: str) -> list[str]:
                         for k, label, _, _ in htmlpages.SOURCE_ROWS}, "Evidence sources")
         if new and case.get("recorded"):
             ca.output(ROOT / htmlpages.debate_record(case, board), "md debate record")
+        try:  # A55: one step per citable evidence source, plus the arbitration
+            steps = []
+            for k, label, _, citable in htmlpages.SOURCE_ROWS:
+                s_ = srcs.get(k) or {}
+                if k in ("inbox", "digest") and not s_:
+                    continue
+                err = (s_.get("error") or "").strip()
+                steps.append(dashboard.step(label, "failing" if err and citable else "ok", (s_.get("checked") or None),
+                                            (cnt.get(k) or {}).get("newest"),
+                                            (f"error: {err[:100]}" + ("" if citable else " (context only; not cited)")) if err else None))
+            steps.append(dashboard.step("Arbitration", "failing" if dec.get("error") else "ok", case.get("recorded") or None,
+                                        case.get("recorded") if dec else None,
+                                        f"error: {str(dec.get('error'))[:100]}" if dec.get("error") else
+                                        (f"debate stopped at {case.get('stopped_at')}" if not dec else None)))
+            ca.set_run_status("failed" if dec.get("error") else ("new_data" if new and case.get("recorded") else "no_new_data"), steps)
+        except Exception as e:
+            ca.report(f"run status failed: {type(e).__name__}", "error")
         ca.flush()
         sent.append("C&A")
     for prof in ("debater_a", "debater_b"):
@@ -1283,12 +1342,175 @@ def _dashboard_md_debate(st, case: dict | None, ver: str) -> list[str]:
                       "Overview (read me first)")
         if new and pos:
             c.output(ROOT / htmlpages.debate_turns(prof, case), "debate turns")
+        perr = (pos or {}).get("error")   # A55: one step, this debater's position in the latest case
+        c.set_run_status("failed" if perr else ("new_data" if new and pos else "no_new_data"),
+                         [dashboard.step("Position", "failing" if perr else "ok", case.get("recorded") or None,
+                                         case.get("recorded") if pos else None,
+                                         f"error: {str(perr)[:100]}" if perr else
+                                         (None if pos else f"no position needed: debate stopped at {case.get('stopped_at')}"))])
         c.flush()
         sent.append(dashboard.LABELS[prof].replace("Tsuchibot ", ""))
     if new and sent:
         sent_before["md_case"] = case.get("recorded")
         save_state(st)
     return sent
+
+VIEW_BAND = 0.10   # A55: Overweight above +10% combined expected return, Underweight below -10%, otherwise Neutral
+
+def _view(er) -> str | None:
+    if er is None:
+        return None
+    return "Overweight" if er > VIEW_BAND else "Underweight" if er < -VIEW_BAND else "Neutral"
+
+def _num(r):
+    try:
+        return float(r["value"]) if r and r.get("value") not in (None, "") else None
+    except ValueError:
+        return None
+
+def _dashboard_forecast(st, base) -> str:
+    """A55: once per ISO week, the seminar's 'Forecast' output: value = Average Valuated Price (agent baseline),
+    market = latest price, view = fixed code rule on the combined expected return. Returns a log note or ''."""
+    import dashboard
+    y, w, _ = now().isocalendar()
+    week = f"{y}-W{w:02d}"
+    sent = st.setdefault("dashboard_sent", {})
+    last = sent.get("forecast") or {}
+    if last.get("week") == week:
+        return ""
+    avg, px, er = (_latest(base, "1840", m) for m in ("Average Valuated Price", "Stock Price", "Expected Return (combined)"))
+    value, market, ret = _num(avg), _num(px), _num(er)
+    if value is None:
+        return "forecast not sent: no Average Valuated Price this week"
+    methods = {m: _num(_latest(base, "1840", m)) for m in KEY_METHODS_FORECAST}
+    methods = {m: v for m, v in methods.items() if v is not None}
+    view = _view(ret)
+    why = []
+    if last.get("value"):
+        ch = value / last["value"] - 1
+        why.append(f"Baseline value {value:,.0f} JPY vs {last['value']:,.0f} last week ({ch:+.1%})"
+                   + (f"; market {market:,.0f} vs {last['market']:,.0f}" if market and last.get("market") else "") + ".")
+        moves = sorted(((m, v, (last.get("methods") or {}).get(m)) for m, v in methods.items()), key=lambda t: -abs((t[1] - t[2]) if t[2] else 0))
+        if moves and moves[0][2] and abs(moves[0][1] - moves[0][2]) >= 0.5:
+            m, v, old = moves[0]
+            why.append(f"Largest method move: {m.replace('Target Price ', '')} {v:,.0f} (was {old:,.0f}).")
+        dropped = [m for m in (last.get("methods") or {}) if m not in methods]
+        if dropped:
+            why.append("Not computed this week: " + ", ".join(m.replace("Target Price ", "") for m in dropped) + ".")
+        if view != last.get("view"):
+            why.append(f"View changed from {last.get('view') or 'none'} to {view or 'none'}.")
+    else:
+        why.append(f"First weekly forecast: agent baseline {value:,.0f} JPY from {len(methods)} valuation method(s).")
+    if view:
+        why.append(f"View rule: combined expected return {ret:+.1%} (incl. dividend yield) vs ±{VIEW_BAND:.0%}.")
+    ev, seen = [], set()
+    for r, title in ([(px, "Market price")] + [(_latest(base, "1840", m), "Valuation inputs") for m in methods] + [(avg, "Average Valuated Price")]):
+        u = (r or {}).get("source_url") or ""
+        if u.startswith("http") and u not in seen:
+            seen.add(u)
+            stl = (r.get("source_title") or "").strip()
+            ev.append({"title": title + (f": {stl[:80]}" if stl and stl != "derived" else
+                                         ": company IR disclosures (決算短信, forecasts)" if "tsuchiya.co.jp" in u else ""), "url": u})
+    ev.append({"title": "Agent data: Baseline Metrics.csv (all rows, sources and formulas)", "url": REPO_DATA})
+    ok = dashboard.send_forecast("Tsuchiya Holdings (1840)", round(value, 1), "JPY", round(market, 1) if market else None,
+                                 view, " ".join(why)[:1500], ev[:6], week)
+    sent["forecast"] = {"week": week, "value": value, "market": market, "view": view, "methods": methods}
+    save_state(st)
+    return f"forecast {week}: {value:,.0f} JPY, view {view} ({'sent' if ok else 'buffered'})"
+
+KEY_METHODS_FORECAST = ["Target Price (P/E, v2.005)", "Target Price (EV/EBITDA, forward, F1)", "Target Price (own history, P/B, M2)",
+                        "Target Price (own history, EV/EBITDA, M2)", "Target Price (M1, P/B regression)",
+                        "Target Price (M1, EV/EBITDA regression)"]
+
+RUN_STEPS = [  # A55: (step, error-report areas, days without new data before the step counts as silent)
+    ("Run", ["Run", "Other source"], None),
+    ("Filings and IR", ["Filings (EDINET)", "Tsuchiya IR", "Build phase"], None),
+    ("Market price", ["Market price"], 5),
+    ("Peers", ["Peers"], None),
+    ("Valuation", ["Valuation method", "Md"], 5),
+    ("Research (M1, backtest)", ["Research"], None),
+    ("Debate evidence", ["Debate evidence"], None),
+    ("Marketing data", ["Marketing data"], None),
+    ("Dashboard", ["Dashboard"], None),
+]
+
+STRUCTURAL_AREAS = {"Valuation method", "Md", "Research"}   # medium here = a lasting gap (a note), not a failing step
+
+def _fails(i) -> bool:
+    """A55: does an error-report item make its Run status step fail? High always; medium only for this run's
+    failures in a core source (not a lasting gap, not a supporting-only site such as the irbank cross-check)."""
+    import errorreport
+    if i["severity"] == "high":
+        return True
+    if i["severity"] != "medium" or i["area"] in STRUCTURAL_AREAS:
+        return False
+    host = i["what"].split(":")[0].split(" ")[0]
+    return errorreport.SITE_ROLE.get(host, ("", "medium"))[1] != "low"
+
+def _strip_checked(x):
+    if isinstance(x, dict):
+        return {k: _strip_checked(v) for k, v in x.items() if "checked" not in k and k != "detail"}
+    if isinstance(x, list):
+        return [_strip_checked(v) for v in x]
+    return x
+
+def _run_status_main(st, cr, base, S) -> None:
+    """A55: the 'Run status' monitor on Main. A step fails when the error report has an item in its areas that _fails()
+    counts; it is silent when it has had no new data for longer than its window."""
+    import dashboard
+    import errorreport
+    import evidence
+    import hashlib
+    import htmlpages
+    issues = errorreport.collect(st, cr, base)
+    rid, t = cr["run_id"], iso()
+    def fp(x):
+        return hashlib.sha256(json.dumps(x, sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:12]
+    px = _latest(base, "1840", "Stock Price")
+    avg = _latest(base, "1840", "Average Valuated Price")
+    try:
+        import modelfit
+        prm = modelfit.load_params()
+        research = ((prm.get("pending") or prm.get("approved")) or {}).get("version")
+    except Exception:
+        research = None
+    new = {   # True / False: written this run; str: a fingerprint compared with the last run's
+        "Filings and IR": any(r["run_id"] == rid for n in ("Securities Reports", "Integrated Reports") for r in S[n].rows.values()),
+        "Market price": fp((px or {}).get("quote_time_jst")),
+        "Peers": any(r["run_id"] == rid and r["ticker"] != "1840" for r in base.rows.values()),
+        "Valuation": bool(avg and avg["run_id"] == rid),
+        "Research (M1, backtest)": fp(research),
+        "Debate evidence": fp({k: v.get("newest") for k, v in htmlpages.source_counts(evidence.load_board()).items()}),
+        "Marketing data": fp([_strip_checked(st["documents"].get("marketing")), (st["documents"].get("trends") or {}).get("last_date")]),
+    }
+    mem = st.setdefault("dashboard_sent", {}).setdefault("run_status", {})
+    steps, any_new = [], False
+    today = dt.date.fromisoformat(t[:10])
+    for name, areas, quiet in RUN_STEPS:
+        m = mem.setdefault(name, {})
+        v = new.get(name)
+        got = v is True or (isinstance(v, str) and m.get("fp") not in (None, v))
+        if isinstance(v, str):
+            if m.get("fp") is None:
+                m["last_new_data"] = m.get("last_new_data") or t   # first record: count the current data as seen now
+            m["fp"] = v
+        if got:
+            m["last_new_data"] = t
+            any_new = True
+        bad = [i for i in issues if i["area"] in areas and _fails(i)]
+        low = [i for i in issues if i["area"] in areas and not _fails(i) and i["severity"] != "info"]
+        lnd = m.get("last_new_data")
+        state = "failing" if bad else "ok"
+        if state == "ok" and quiet and lnd and (today - dt.date.fromisoformat(lnd[:10])).days > quiet:
+            state = "silent"
+        note = (bad or low or [None])[0]
+        note = f"{note['severity']}: {note['what']}" if note else (f"no new data for over {quiet} days" if state == "silent" else None)
+        if note and len(bad) + len(low) > 1:
+            note += f" (+{len(bad) + len(low) - 1} more; see Data gaps and errors)"
+        steps.append(dashboard.step(name, state, t, lnd if new.get(name) is not None else None, note))
+    failed = any(i["severity"] == "high" for i in issues) or any(i["area"] == "Run" and "cut short" in i["what"] for i in issues)
+    dashboard.set_run_status("failed" if failed else ("new_data" if any_new else "no_new_data"), steps, t)
+    save_state(st)
 
 def _git_commit(cr) -> str:
     """Cloud routine (Addenda A1, A11): commit outputs; plain push of the current branch; never force."""

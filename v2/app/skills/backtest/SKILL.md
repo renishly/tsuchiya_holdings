@@ -2,6 +2,7 @@
 name: backtest
 description: The panel backtest: rank IC, top-minus-bottom quintile, hit rate and value error per method, using only data
   published by each date. Acceptance uses one cross-section per year. Use to explain which methods predicted later returns.
+depends_on: [model-fit]
 ---
 1. Read the measures per method from `read_research`. `backtest.methods` is the annual test (July month-ends,
    non-overlapping one-year returns, plain t); `backtest.monthly_reference` is the monthly test (overlapping returns,

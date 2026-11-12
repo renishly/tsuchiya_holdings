@@ -2,6 +2,7 @@
 name: forecast-discount
 description: Md, the forecast discount model: the signed yen adjustment subtracted from the company's operating-profit
   forecast before valuation, and the EPS discount derived from it. Use to explain Md or its parts.
+depends_on: [forecast-inputs]
 ---
 1. Read with `peek`: Md (operating profit), Md (EPS), Md: Discount Baseline, Md: Order Momentum, Md: Supply Costs,
    Md: Land Price Ave, the matching "Md term" rows, and Md: Debate Signal.

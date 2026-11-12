@@ -79,7 +79,7 @@ def page(title: str, eyebrow: str, body: str) -> str:
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<title>{esc(title)}</title><style>{CSS}</style></head><body><main>'
             f'<div><div class="eyebrow">{esc(eyebrow)}</div><h1>{esc(title)}</h1><p class="mut">Generated {esc(iso()[:16].replace("T", " "))} JST by the agent\'s code. '
-            f'Agent baseline from public data; the target price and the view are the student\'s (syllabus 2.5). Not investment advice.</p></div>'
+            f'Agent baseline from public data. The weekly Forecast\'s view is a fixed code rule on the combined expected return (±10%); no model chooses it. Not investment advice.</p></div>'
             f'{body}</main></body></html>')
 
 

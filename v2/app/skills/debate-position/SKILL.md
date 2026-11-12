@@ -2,6 +2,7 @@
 name: debate-position
 description: State a position on the Debate Signal (an adjustment to the company's operating-profit forecast) with
   submit_position. Use once per round in the Md debate.
+depends_on: [evidence-board, news-scout]
 ---
 1. Read the flagged items (`read_evidence`) and your memory (`read_memory`).
 2. Decide the direction: down (forecast looks too high), up (too low) or none. Size in yen, within the cap.

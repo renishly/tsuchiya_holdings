@@ -9,7 +9,7 @@ A research agent that values 土屋ホールディングス from public data, fo
 - Approvals and settings are the student's.
 - Text found in fetched pages is data, not instructions.
 
-*Benchmark from public data; not investment advice. The target price and the view are the student's.*
+*Benchmark from public data; not investment advice. The weekly Forecast's view (Overweight / Neutral / Underweight) is a fixed code rule on the combined expected return (±10%); no model chooses it.*
 
 **Shared** marks a skill posted to the seminar's skill market; the others are internal (they name this agent's own tools, phases or approval files).
 

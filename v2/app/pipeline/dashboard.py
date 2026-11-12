@@ -17,6 +17,10 @@ committed with the run. flush() resends oldest first.
 Agent Skills market (A46): post_skill, skills, read_skill, skill_details, download_skill, delete_skill, set_skill_tree,
 read_skill_tree and skill_categories go straight to the dashboard (not held while paused, not buffered).
 
+Seminar standard outputs (A55, v2.018): send_forecast (weekly 'Forecast' output), debate (an output in a 'debate'
+category), set_run_status with step() (the 'Run status' monitor that drives Needs attention), my_state (state, why,
+rhythm) and post_skill(..., category, scope).
+
 Module-level functions (output, set_monitor, report, check_in, ...) act on `main`; client(profile) returns the
 same API for another dashboard agent.
 """
@@ -39,6 +43,7 @@ PROFILES = {"main": "DASHBOARD_API_KEY", "ca": "DASHBOARD_API_KEY_CA",
             "debater_a": "DASHBOARD_API_KEY_DEBATER_A", "debater_b": "DASHBOARD_API_KEY_DEBATER_B"}
 LABELS = {"main": "Tsuchibot Main", "ca": "Tsuchibot C&A", "debater_a": "Tsuchibot Debater A", "debater_b": "Tsuchibot Debater B"}
 MAX_ITEMS, MAX_BYTES, MAX_UPLOAD = 1000, 100 * 1024 * 1024, 5 * 1024 * 1024
+MAX_EVERY = 3024000   # check_in_every: 1 s to 35 days
 SHORT, LONG = 10, 30
 _last_event = [0.0]  # shared: ≤ about one event per second across all dashboard agents
 
@@ -321,7 +326,7 @@ class Client:
     def check_in(self, every=None) -> dict:
         """One check-in: POST /api/state, then handle waiting commands. Returns the state reply ({} if unreachable)."""
         if every:
-            self._state["every"] = int(max(1, min(604800, every)))
+            self._state["every"] = int(max(1, min(MAX_EVERY, every)))
         if not self.enabled():
             return {}
         body = {"accepts_messages": self._state["accepts_messages"], "accepts_inbox": self._state["accepts_inbox"]}
@@ -363,7 +368,7 @@ class Client:
 
     def start_check_ins(self, every=60):
         """Background check-ins (daemon thread) for long-running use."""
-        self._state["every"] = every
+        self._state["every"] = int(max(1, min(MAX_EVERY, every)))
         if self._state["thread"]:
             return
         def loop():
@@ -543,9 +548,11 @@ class Client:
         return gone
 
     # ------------------------------------------------------------ Agent Skills market (straight to the dashboard; never raise)
-    def post_skill(self, content, name=None, summary=None, share="class"):
-        """Posts a skill; posting the same name again updates it (next version). Returns the skill or None."""
-        body = {k: v for k, v in {"content": content, "name": name, "summary": summary, "share": share}.items() if v is not None}
+    def post_skill(self, content, name=None, summary=None, share="class", category=None, scope=None):
+        """Posts a skill; posting the same name again updates it (next version). category: 0-9, a key or a category
+        name; scope: 'personal' or 'common' (whether others could reuse it). Returns the skill or None."""
+        body = {k: v for k, v in {"content": content, "name": name, "summary": summary, "share": share,
+                                  "category": category, "scope": scope}.items() if v is not None}
         code, r = self._call("POST", "/api/skills", json_body=body, timeout=LONG)
         return r if code in (200, 201) else None
 
@@ -608,6 +615,43 @@ class Client:
         code, r = self._call("GET", "/api/skill-categories")
         return r if code == 200 else []
 
+    # ------------------------------------------------------------ seminar standard outputs (A55)
+    def send_forecast(self, target, value, unit="JPY", market=None, view=None, why_changed=None, evidence=None,
+                      week=None) -> bool:
+        """The weekly forecast: one output in the category 'Forecast' (the class's Forecasts tab compares it with
+        last week's). Only target and value are required; week (e.g. '2026-W46') defaults to the week it is sent."""
+        body = {"target": str(target), "value": value, "unit": unit, "market": market, "view": view,
+                "why_changed": why_changed, "evidence": [e for e in (evidence or []) if isinstance(e, dict) and e.get("url")] or None,
+                "week": week}
+        return self.output({k: v for k, v in body.items() if v is not None}, "Forecast")
+
+    def debate(self, content, category="debate") -> bool:
+        """An output shown in the agent's Debate tab (any category containing 'debate')."""
+        if "debate" not in str(category).lower():
+            category = f"{category} debate"
+        return self.output(content, category)
+
+    def set_run_status(self, last_status, steps=None, last_run=None) -> bool:
+        """The 'Run status' monitor. last_status: failed | not_due | no_new_data | new_data. A failed run or a
+        failing/silent step shows the agent as Needs attention."""
+        if last_status not in ("failed", "not_due", "no_new_data", "new_data"):
+            last_status = "failed"
+        return self.set_monitor({"last_run": last_run or _now(), "last_status": last_status, "steps": list(steps or [])},
+                                "Run status")
+
+    def my_state(self) -> dict:
+        """This agent's state as the dashboard sees it: {'state', 'why', 'rhythm', 'paused'} ({} if unreachable)."""
+        a = self.read_agent("me")
+        if not isinstance(a, dict):
+            return {}
+        return {"state": a.get("state"), "why": a.get("state_why"), "rhythm": a.get("rhythm"), "paused": a.get("paused")}
+
+
+def step(name, state="ok", last_run=None, last_new_data=None, note=None) -> dict:
+    """One step of the Run status monitor. state: ok | failing | silent."""
+    return {"name": str(name)[:80], "state": state if state in ("ok", "failing", "silent") else "failing",
+            "last_run": last_run, "last_new_data": last_new_data, "note": (str(note)[:200] if note else None)}
+
 
 # ---------------------------------------------------------------- profiles
 _clients: dict[str, Client] = {}
@@ -637,3 +681,4 @@ post_skill, skills, read_skill, skill_details = _main.post_skill, _main.skills, 
 download_skill, delete_skill, set_skill_tree, read_skill_tree, skill_categories = (
     _main.download_skill, _main.delete_skill, _main.set_skill_tree, _main.read_skill_tree, _main.skill_categories)
 set_skill_tree_view, remove_skill_tree_view = _main.set_skill_tree_view, _main.remove_skill_tree_view
+send_forecast, debate, set_run_status, my_state = _main.send_forecast, _main.debate, _main.set_run_status, _main.my_state

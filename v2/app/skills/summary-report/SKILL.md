@@ -1,6 +1,7 @@
 ---
 name: summary-report
 description: Write the narrative of the weekly 1–2 page summary. Use after reading the digest.
+depends_on: [number-check]
 ---
 1. Short paragraphs separated by blank lines, at most 500 words.
 2. Cover: what changed; why the combined value moved; the Md debate (shadow or live) and what it decided; the

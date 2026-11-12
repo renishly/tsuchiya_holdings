@@ -2,6 +2,7 @@
 name: news-scout
 description: Scan one topic's new evidence-board items and flag those that could move Tsuchiya's operating profit and are
   not covered by Md's measured variables. Use once per topic per run, when code has found new items.
+depends_on: [evidence-board]
 ---
 1. Call `read_items`. Each item has an id, date, source, title, `citable` and, for some, an excerpt. Sources: company IR
    notices, EDINET filings (Tsuchiya and the M1 universe), BOJ news, MLIT press releases, フラット35 rates, and GDELT
