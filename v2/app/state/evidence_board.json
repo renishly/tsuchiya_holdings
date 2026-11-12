@@ -922,40 +922,90 @@
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-12T11:16:59+09:00"
+  },
+  "E-aec6b409": {
+   "id": "E-aec6b409",
+   "date": "2026-11-12",
+   "ticker": "2976",
+   "title": "日本グランデ株式会社: 半期報告書－第24期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZFIY",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T00:59:43+09:00"
+  },
+  "E-6bbcd33f": {
+   "id": "E-6bbcd33f",
+   "date": "2026-11-12",
+   "ticker": "1925",
+   "title": "大和ハウス工業株式会社: 半期報告書－第88期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZD5N",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T00:59:43+09:00"
+  },
+  "E-accba76a": {
+   "id": "E-accba76a",
+   "date": "2026-11-12",
+   "ticker": "1808",
+   "title": "株式会社 長谷工コーポレーション: 半期報告書－第110期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZFBE",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T00:59:43+09:00"
+  },
+  "E-94fa229f": {
+   "id": "E-94fa229f",
+   "date": "2026-11-12",
+   "ticker": "2981",
+   "title": "株式会社ランディックス: 半期報告書－第27期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZGOK",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T00:59:43+09:00"
+  },
+  "E-9cba0294": {
+   "id": "E-9cba0294",
+   "date": "2026-11-12",
+   "ticker": "8999",
+   "title": "グランディハウス株式会社: 半期報告書－第36期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZFJG",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T00:59:43+09:00"
   }
  },
  "last_check": "2026-11-07T23:02:26+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-12T11:16:59+09:00",
+   "checked": "2026-11-13T00:59:37+09:00",
    "error": null,
    "seen": 9,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-12T11:16:59+09:00"
   },
   "mlit": {
-   "checked": "2026-11-12T11:17:02+09:00",
+   "checked": "2026-11-13T00:59:41+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-12T11:17:03+09:00",
+   "checked": "2026-11-13T00:59:42+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-12T11:17:03+09:00",
+   "checked": "2026-11-13T00:59:43+09:00",
    "error": null,
-   "seen": 0,
-   "added": 0,
-   "added_at": "2026-11-11T00:36:34+09:00"
+   "seen": 5,
+   "added": 5,
+   "added_at": "2026-11-13T00:59:43+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-12T11:17:57+09:00",
+   "checked": "2026-11-13T01:00:37+09:00",
    "error": "429: server busy or error",
    "seen": 11,
    "added": 11,
