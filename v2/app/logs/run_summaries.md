@@ -946,3 +946,43 @@ Model calls: 0; tokens in/out: 0/0; models: (none)
 
 ### Next planned
 steady
+
+## R-20261112-111500 — scheduled
+
+- Start / end (JST): 2026-11-12T11:15:00+09:00 / 2026-11-12T11:19:18+09:00
+- Iterations: 23; web requests by domain: {"www.tsuchiya.co.jp": 4, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "api.edinet-fsa.go.jp": 2, "www.tsuchiyahome.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: Target P/E 11.1947 -> 10.824 (-3.3%) since the review of 2026-11-08T23:20+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 4, "changed": 26, "conflicts": 0, "total": 1577}, "filings": {"new": []}, "marketing": {"filings": {"values": 83, "gaps": ["土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31", "土屋ホールディングス FY ending 2017-10-31: o
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: Target P/E fell 3.3% (11.1947 → 10.824) since the 2026-11-08 review. The driver is タマホーム (1419): its forward P/E dropped from 18.94 to 18.12 (-4.3%) as its price fell from ¥2,614 to ¥2,501 while its EPS forecast stayed at ¥137.99. The other two peers were nearly unchanged (日本ハウスHD P/E +2.2%, グランディハウス flat). Target EV/EBITDA moved only -1.1% (11.39 → 11.26). Routine work (steady refresh + P9) completed cleanly with no new filings, no validation failures, and no unfinished steps. No follow-up needed.
+Model calls: 2; tokens in/out: 8094/3307; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 1577 rows total; 30 written this run
+- Alternative Data: 4911 rows total; 129 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261108-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
