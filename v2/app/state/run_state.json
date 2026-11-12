@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-13T00:59:04+09:00",
+      "last_success": "2026-11-13T03:35:01+09:00",
       "fail_streak": 0
     }
   },
@@ -5074,10 +5074,16 @@
       "ended": "2026-11-13T01:00:52+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261113-033339",
+      "ended": "2026-11-13T03:36:33+09:00",
+      "iterations": 21,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
-    "changelog": "v2.017",
+    "changelog": "v2.018",
     "research_summary": "2026-11-08-n284",
     "factor_monitor_removed": true,
     "summary_report": "reports/summary_2026-11-07.html",
@@ -5085,104 +5091,173 @@
     "md_case": "2026-11-07T23:02:26+09:00",
     "skills": {
       "guardrails": {
-        "hash": "463108b927b6927e",
+        "hash": "f87a90679fdc386f",
         "identifier": "skill-1",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/1/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/1/content",
+        "category": 8,
+        "scope": "common"
       },
       "peer-multiples": {
-        "hash": "a9083d693a48138c",
+        "hash": "69169731247acdec",
         "identifier": "skill-2",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/2/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/2/content",
+        "category": 6,
+        "scope": "common"
       },
       "forecast-inputs": {
-        "hash": "b71cfee83dc57ab2",
+        "hash": "9048152cdaf0f582",
         "identifier": "skill-3",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/3/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/3/content",
+        "category": 5,
+        "scope": "personal"
       },
       "forecast-discount": {
-        "hash": "b706f0e9012f9f04",
+        "hash": "e4a707809093df3d",
         "identifier": "skill-4",
-        "version": 2,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/4/content"
+        "version": 3,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/4/content",
+        "category": 5,
+        "scope": "personal"
       },
       "own-history": {
-        "hash": "4d694611c6281f75",
+        "hash": "a78d55853312ba1d",
         "identifier": "skill-5",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/5/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/5/content",
+        "category": 6,
+        "scope": "common"
       },
       "pb-method": {
-        "hash": "63689ebbf046b59d",
+        "hash": "094f62b749e680d6",
         "identifier": "skill-6",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/6/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/6/content",
+        "category": 6,
+        "scope": "common"
       },
       "valuation-combine": {
-        "hash": "1cfbe4c5285c627a",
+        "hash": "a02d060aa97790e1",
         "identifier": "skill-7",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/7/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/7/content",
+        "category": 6,
+        "scope": "common"
       },
       "universe": {
-        "hash": "11286eba41efaed0",
+        "hash": "87ec4897c72fdddd",
         "identifier": "skill-8",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/8/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/8/content",
+        "category": 1,
+        "scope": "personal"
       },
       "model-fit": {
-        "hash": "0f8d7dedf819f945",
+        "hash": "402aa63ff529e6f4",
         "identifier": "skill-9",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/9/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/9/content",
+        "category": 3,
+        "scope": "common"
       },
       "backtest": {
-        "hash": "83ae97249203b515",
+        "hash": "429d9168e0c5a2a4",
         "identifier": "skill-10",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/10/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/10/content",
+        "category": 3,
+        "scope": "common"
       },
       "evidence-board": {
-        "hash": "232f4a4c89597856",
+        "hash": "23ae92da88f24534",
         "identifier": "skill-11",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/11/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/11/content",
+        "category": 7,
+        "scope": "common"
       },
       "summary-report": {
-        "hash": "142cad61c87af440",
+        "hash": "8dc13ecc6e2b1e29",
         "identifier": "skill-12",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/12/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/12/content",
+        "category": 9,
+        "scope": "common"
       },
       "number-check": {
-        "hash": "612d5ed8e84defe8",
+        "hash": "2601a912b0ccf983",
         "identifier": "skill-13",
         "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/13/content"
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/13/content",
+        "category": 3,
+        "scope": "common"
       },
       "news-scout": {
-        "hash": "d78813e3cc6a7f2f",
+        "hash": "d3869736570d2663",
         "identifier": "skill-14",
-        "version": 3,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/14/content"
+        "version": 4,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/14/content",
+        "category": 2,
+        "scope": "common"
       },
       "debate-position": {
-        "hash": "cf939b8376e8f791",
+        "hash": "5eca0e59f3e75784",
         "identifier": "skill-15",
-        "version": 2,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/15/content"
+        "version": 3,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/15/content",
+        "category": 7,
+        "scope": "common"
       },
       "debater-memory": {
-        "hash": "87bb904e0d72393d",
+        "hash": "e21a40f99e6d1da3",
         "identifier": "skill-16",
-        "version": 1,
-        "address": "https://fukuhara-seminar.onrender.com/api/skills/16/content"
+        "version": 2,
+        "address": "https://fukuhara-seminar.onrender.com/api/skills/16/content",
+        "category": 7,
+        "scope": "personal"
       }
     },
-    "skill_tree": "28ec6e164c3a545f",
-    "skill_tree_view": "7928e0c212078377"
+    "skill_tree": "767746ea7e8bbe31",
+    "skill_tree_view": "dd2f91a10a57040c",
+    "forecast": {
+      "week": "2026-W46",
+      "value": 179.184,
+      "market": 208.0,
+      "view": "Underweight",
+      "methods": {
+        "Target Price (P/E, v2.005)": 84.2278,
+        "Target Price (EV/EBITDA, forward, F1)": 167.958,
+        "Target Price (own history, P/B, M2)": 192.098,
+        "Target Price (own history, EV/EBITDA, M2)": 167.914,
+        "Target Price (M1, P/B regression)": 225.938,
+        "Target Price (M1, EV/EBITDA regression)": 293.885
+      }
+    },
+    "run_status": {
+      "Run": {},
+      "Filings and IR": {},
+      "Market price": {
+        "last_new_data": "2026-11-13T03:37:13+09:00",
+        "fp": "6aab3b53d44f"
+      },
+      "Peers": {},
+      "Valuation": {},
+      "Research (M1, backtest)": {
+        "last_new_data": "2026-11-13T03:37:13+09:00",
+        "fp": "97e9d016a2ad"
+      },
+      "Debate evidence": {
+        "last_new_data": "2026-11-13T03:37:13+09:00",
+        "fp": "139bdbf99fff"
+      },
+      "Marketing data": {
+        "last_new_data": "2026-11-13T03:37:13+09:00",
+        "fp": "7676efc316d3"
+      },
+      "Dashboard": {}
+    }
   },
   "reports": {
     "last_summary": "2026-11-07T23:02:56+09:00",
