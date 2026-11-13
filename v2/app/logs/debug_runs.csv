@@ -59,3 +59,5 @@ R-20261113-122537,2026-11-13T12:28:40+09:00,scheduled,no,,,0,0,0,,baseline,"stea
 R-20261113-122537,2026-11-13T12:28:40+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261113-150537,2026-11-13T15:08:35+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,skipped (unchanged),"skipped (unchanged, synced today)"
 R-20261113-150537,2026-11-13T15:08:35+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,skipped (unchanged),"skipped (unchanged, synced today)"
+R-20261114-002241,2026-11-14T00:25:59+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261114-002241,2026-11-14T00:25:59+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete

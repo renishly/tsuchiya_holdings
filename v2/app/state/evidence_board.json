@@ -1099,40 +1099,70 @@
    "source": "EDINET (universe companies)",
    "topic": "company and peers",
    "first_seen": "2026-11-13T15:07:42+09:00"
+  },
+  "E-f3d214ad": {
+   "id": "E-f3d214ad",
+   "date": "2026-11-13",
+   "ticker": "1420",
+   "title": "サンヨーホームズ株式会社: 半期報告書－第31期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZFRP",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-14T00:24:56+09:00"
+  },
+  "E-1d554f37": {
+   "id": "E-1d554f37",
+   "date": "2026-11-13",
+   "ticker": "8995",
+   "title": "株式会社誠建設工業: 半期報告書－第36期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZGOO",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-14T00:24:56+09:00"
+  },
+  "E-3565c1a6": {
+   "id": "E-3565c1a6",
+   "date": "2026-11-13",
+   "ticker": "3284",
+   "title": "株式会社フージャースホールディングス: 半期報告書－第14期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZGGY",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-14T00:24:56+09:00"
   }
  },
  "last_check": "2026-11-13T10:53:01+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-13T15:07:35+09:00",
+   "checked": "2026-11-14T00:24:49+09:00",
    "error": null,
    "seen": 9,
    "added": 0,
    "added_at": "2026-11-12T11:16:59+09:00"
   },
   "mlit": {
-   "checked": "2026-11-13T15:07:39+09:00",
+   "checked": "2026-11-14T00:24:53+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-13T15:07:39+09:00",
+   "checked": "2026-11-14T00:24:53+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-13T15:07:42+09:00",
+   "checked": "2026-11-14T00:24:56+09:00",
    "error": null,
-   "seen": 9,
-   "added": 1,
-   "added_at": "2026-11-13T15:07:42+09:00"
+   "seen": 7,
+   "added": 3,
+   "added_at": "2026-11-14T00:24:56+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-13T15:08:34+09:00",
+   "checked": "2026-11-14T00:25:47+09:00",
    "error": "429: server busy or error",
    "seen": 6,
    "added": 6,
