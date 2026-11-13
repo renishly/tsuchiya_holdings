@@ -19,7 +19,7 @@ read_skill_tree and skill_categories go straight to the dashboard (not held whil
 
 Seminar standard outputs (A55, v2.018): send_forecast (weekly 'Forecast' output), debate (an output in a 'debate'
 category), set_run_status with step() (the 'Run status' monitor that drives Needs attention), my_state (state, why,
-rhythm) and post_skill(..., category, scope). set_data_points (A57, v2.021): the 'Data points' monitor, re-sent only
+rhythm) and post_skill(..., category, scope). set_data_points (A57, v2.021; A58 Trends shown as not used): the 'Data points' monitor, re-sent only
 when the forecast's setup changes.
 
 Module-level functions (output, set_monitor, report, check_in, ...) act on `main`; client(profile) returns the

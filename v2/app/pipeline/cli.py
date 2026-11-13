@@ -1564,6 +1564,10 @@ def _data_points_main(st) -> dict:
         if v and k in MD_TERMS:
             typ, name = MD_TERMS[k]
             dp.setdefault(typ, []).append(name)
+    # A58: Google Trends is shown even at coefficient 0 once an export is stored, marked as not used (student's choice)
+    tr_file = ((st.get("documents") or {}).get("trends") or {}).get("file")
+    if not coef.get("trends") and tr_file and (ROOT / tr_file).is_file():
+        dp.setdefault("Alternative data", []).append(MD_TERMS["trends"][1] + " — collected, not used (Md coefficient 0)")
     live_debate = evidence.MODE == "live"
     if live_debate:   # the Debate Signal enters Md only in live mode; in shadow mode the debate does not feed the forecast
         dp.setdefault("News & text", []).append("Md debate evidence board (BOJ, MLIT, JHF, EDINET, IR, marketing digest)")
