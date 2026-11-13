@@ -64,15 +64,20 @@ def collect(st, cr: dict, base) -> list[dict]:
     today = dt.date.fromisoformat(iso()[:10])
     # ---- this run: cut short, fetch failures, skipped sites
     logs = _run_log(cr.get("run_id", ""))
+    known = st.get("known_outages") or {}   # A56: the site itself says it is down (maintenance page / Retry-After)
     fails: dict[str, list] = {}
     for r in logs:
         o = str(r.get("outcome", ""))
         if r.get("tool") == "fetch" and o.startswith("error"):
             url = (r.get("inputs") or {}).get("url", "")
             host = url.split("/")[2] if "//" in url else "?"
+            if host in known:
+                continue   # listed once below as a known outage
             if host in PEER_SITES and not any(k in url.lower() for k in ("/ir", ".pdf")):
                 continue   # a peer's marketing page: listed under "Marketing data" from the collector's status
             fails.setdefault(host, []).append(o[:80])
+        elif "domain skipped" in o and (r.get("inputs") or {}).get("domain") in known:
+            continue
         elif "domain skipped" in o:
             _issue(out, "Run", f"{(r.get('inputs') or {}).get('domain')} skipped for the rest of the run after 3 failures", "medium",
                    "later steps that needed this site used the last stored values", r["ts"][:16].replace("T", " "))
@@ -82,6 +87,22 @@ def collect(st, cr: dict, base) -> list[dict]:
     for host, errs in fails.items():
         area, sev, why = SITE_ROLE.get(host, ("Other source", "low", "supporting data only"))
         _issue(out, area, f"{host}: {len(errs)} request(s) failed (e.g. {errs[0]})", sev, why)
+    def _days(ts):
+        return (today - dt.date.fromisoformat(ts[:10])).days if ts else None
+    for host, o in known.items():
+        area, _sev, why = SITE_ROLE.get(host, ("Other source", "low", "supporting data only"))
+        down, age = _days(o.get("since")), _days(o.get("last_ok"))
+        what = (f"{host}: known outage ({o.get('code')}, {o.get('evidence') or 'site reports downtime'}), failing since "
+                f"{(o.get('since') or '?')[:10]} ({down} days)"
+                + (f"; newest data is from {o['last_ok'][:10]} ({age} days old)" if o.get("last_ok") else "; no earlier copy stored"))
+        _issue(out, area, what, "low", f"{why}. Low because the site itself reports the outage; the agent keeps trying "
+               "each run, and the item clears on the first successful fetch", (o.get("last_seen") or "")[:16].replace("T", " "))
+    for h in st.get("outage_history") or []:
+        if h.get("ended") and _days(h["ended"]) is not None and _days(h["ended"]) <= 3:
+            _issue(out, SITE_ROLE.get(h["host"], ("Other source",))[0],
+                   f"{h['host']}: back after a known outage ({h['since'][:10]} to {h['ended'][:10]}, "
+                   f"{(dt.date.fromisoformat(h['ended'][:10]) - dt.date.fromisoformat(h['since'][:10])).days} days)",
+                   "info", "data from this site is current again", h["ended"][:16].replace("T", " "))
     for n in cr.get("notes", []):
         if any(k in str(n).lower() for k in ("budget", "timed out", "timeout", "skipped", "stopped", "failed")):
             _issue(out, "Run", str(n)[:160], "medium", "a step did not finish; its results are from an earlier run")
@@ -210,7 +231,8 @@ def page(st, cr: dict, base, ver: str) -> str:
             + '<div class="card"><h2>What the severities mean</h2><dl>'
               '<dt><span class="tag no">high</span></dt><dd>the valuation itself is missing or wrong this run</dd>'
               '<dt><span class="tag wa">medium</span></dt><dd>the valuation is computed but rests on less than it should</dd>'
-              '<dt><span class="tag in">low</span></dt><dd>only supporting data is affected (debate sources in shadow mode, marketing data, the dashboard)</dd>'
+              '<dt><span class="tag in">low</span></dt><dd>only supporting data is affected (debate sources in shadow mode, marketing data, the dashboard), '
+              'or a known outage: the site itself says it is down, and the item says how long its data has been missing</dd>'
               '<dt><span class="tag ok">info</span></dt><dd>a known, permanent gap; nothing is estimated in its place</dd></dl></div>'
             + f'<p class="mut">Version {esc(ver)}. Missing values are never filled in: a gap stays a gap and is listed here.</p>')
     return htmlpages.save("reports/pages/errors.html", htmlpages.page("Data gaps and errors", "Tsuchibot Main · error report", body))

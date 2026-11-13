@@ -390,6 +390,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
         if entry.get("status", 200) != 200:
             code = entry["status"]
             if code == 429 or (isinstance(code, int) and code >= 500):
+                _note_outage(st, host, full, code, entry.get("retry_after"), b"maintenance" if entry.get("maintenance") else b"")
                 log(st, "fetch", {"url": full}, f"retry after 30s ({code}) [test mode: no wait]")
             _fail(st, host, full, code, entry.get("detail", "fixture error"))
         body = (fixture_dir() / entry["file"]).read_bytes()
@@ -399,6 +400,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
             raise GuardrailError(f"robots.txt disallows {full}")
         meta = {"url": full, "status": 200, "fetched": iso(), "sha256": sha256(body), "fixture": entry["file"]}
         cr.setdefault("consecutive_fail", {})[host] = 0
+        _clear_outage(st, host)
         log(st, "fetch", {"url": full, "purpose": purpose}, "ok (fixture)", sha256=meta["sha256"])
         text = None if binary else body.decode(entry.get("encoding", "utf-8"), errors="replace")
         if text is not None:
@@ -427,6 +429,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
             else:
                 r = s.get(real, timeout=60, headers=headers or {})
             if r.status_code == 429 or r.status_code >= 500:
+                _note_outage(st, host, full, r.status_code, r.headers.get("Retry-After"), r.content)
                 raise FetchError(r.status_code, "server busy or error")
             if r.status_code != 200:
                 _fail(st, host, full, r.status_code, r.reason)
@@ -450,6 +453,7 @@ def fetch(st: dict, url: str, *, params: dict | None = None, data: dict | None =
             time.sleep(30)
     meta = {"url": full, "status": 200, "fetched": iso(), "sha256": sha256(body)}
     cr.setdefault("consecutive_fail", {})[host] = 0
+    _clear_outage(st, host)
     if os.environ.get("TSUCHIYA_RECORD"):  # builder only: freeze live responses as test fixtures
         _record_fixture(full, body, data, r)
     if snapshot and not binary:
@@ -481,6 +485,67 @@ def _record_fixture(full, body, data, resp):
     key = full if data is None else full + "#POST:" + urllib.parse.urlencode(data)
     idx[key] = {"file": name, "encoding": enc, "recorded": iso()}
     write_text(fdir.relative_to(ROOT) / "index.json", json.dumps(idx, ensure_ascii=False, indent=1))
+
+# ---------------------------------------------------------------- known outages (A56, v2.019)
+# A site that answers 429/5xx *and says why* (a Retry-After header or a maintenance page) is a known outage: the
+# error report lists it once, as low, with how long the data has been missing, instead of a medium error every run.
+# It clears by itself on the first successful fetch from that site. A bare 5xx stays an unknown (medium) failure.
+MAINT_MARKERS = (b"maintenance", "メンテナンス".encode("utf-8"), "メンテナンス".encode("shift_jis"), "メンテナンス".encode("euc_jp"))
+
+def _outage_history(host: str) -> tuple[str | None, str | None]:
+    """(first failure after the last good fetch, last good fetch) for a host, from the run log and saved snapshots."""
+    last_ok, first_fail = None, None
+    p = ROOT / "logs" / "run_log.jsonl"
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            if host not in line or '"fetch"' not in line:
+                continue
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            url = (r.get("inputs") or {}).get("url", "")
+            if r.get("tool") != "fetch" or "//" not in url or url.split("/")[2] != host:
+                continue
+            o = str(r.get("outcome", ""))
+            if o.startswith("ok"):
+                last_ok, first_fail = r["ts"], None
+            elif o.startswith(("error", "retry")) and first_fail is None:
+                first_fail = r["ts"]
+    snaps = ROOT / "raw" / "web" / host
+    if snaps.is_dir():
+        for m in snaps.glob("*.json"):
+            try:
+                f = json.loads(m.read_text(encoding="utf-8")).get("fetched")
+            except (ValueError, OSError):
+                continue
+            if f and (not last_ok or f > last_ok):
+                last_ok = f
+    if first_fail and last_ok and first_fail < last_ok:
+        first_fail = None
+    return first_fail, last_ok
+
+def _note_outage(st, host, url, code, retry_after=None, body: bytes = b""):
+    head = (body or b"")[:20000].lower()
+    maint = any(m in head for m in MAINT_MARKERS)
+    if not (retry_after or maint):
+        return
+    ko = st.setdefault("known_outages", {})
+    t = iso()
+    evidence = ", ".join(x for x in ("maintenance page" if maint else "", f"Retry-After {retry_after}" if retry_after else "") if x)
+    if host not in ko:
+        since, last_ok = _outage_history(host)
+        ko[host] = {"since": since or t, "last_ok": last_ok, "noted": t}
+        log(st, "fetch", {"domain": host}, f"known outage recorded: {code} ({evidence}); failing since {(since or t)[:10]}")
+    ko[host].update(last_seen=t, code=code, evidence=evidence, url=url)
+
+def _clear_outage(st, host):
+    o = (st.get("known_outages") or {}).pop(host, None)
+    if o:
+        o["ended"] = iso()
+        st.setdefault("outage_history", []).append({"host": host, **o})
+        st["outage_history"] = st["outage_history"][-50:]
+        log(st, "fetch", {"domain": host}, f"known outage over: failing since {o['since'][:10]}, back {o['ended'][:10]}")
 
 def _fail(st, host, url, code, detail):
     cr = run_ctx(st)
