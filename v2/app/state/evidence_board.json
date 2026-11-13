@@ -1069,41 +1069,61 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-9626f152": {
+   "id": "E-9626f152",
+   "date": "2026-11-13",
+   "ticker": "3465",
+   "title": "ケイアイスター不動産株式会社: 半期報告書－第37期(2026/04/01－2026/09/30)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZH0W",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T12:27:39+09:00"
+  },
+  "E-708e029f": {
+   "id": "E-708e029f",
+   "date": "2026-11-13",
+   "ticker": "8869",
+   "title": "明和地所株式会社: 半期報告書－第41期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZGS0",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T12:27:39+09:00"
   }
  },
  "last_check": "2026-11-13T10:53:01+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-13T10:51:06+09:00",
+   "checked": "2026-11-13T12:27:33+09:00",
    "error": null,
    "seen": 9,
    "added": 0,
    "added_at": "2026-11-12T11:16:59+09:00"
   },
   "mlit": {
-   "checked": "2026-11-13T10:51:09+09:00",
+   "checked": "2026-11-13T12:27:36+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-13T10:51:10+09:00",
+   "checked": "2026-11-13T12:27:37+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-13T10:51:10+09:00",
+   "checked": "2026-11-13T12:27:39+09:00",
    "error": null,
-   "seen": 6,
-   "added": 1,
-   "added_at": "2026-11-13T10:51:10+09:00"
+   "seen": 8,
+   "added": 2,
+   "added_at": "2026-11-13T12:27:39+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-13T10:52:04+09:00",
-   "error": null,
+   "checked": "2026-11-13T12:28:29+09:00",
+   "error": "429: server busy or error",
    "seen": 6,
    "added": 6,
    "added_at": "2026-11-13T10:52:04+09:00"
