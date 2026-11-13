@@ -972,44 +972,141 @@
    "source": "EDINET (universe companies)",
    "topic": "company and peers",
    "first_seen": "2026-11-13T00:59:43+09:00"
+  },
+  "E-eb6d0f33": {
+   "id": "E-eb6d0f33",
+   "date": "2026-11-13",
+   "ticker": "1840",
+   "title": "Marketing digest 2026-11-13: 土屋ホーム model houses: 40 → 42  (+2); 土屋ホーム events listed: 45 → 51  (+6); 土屋ホーム completion tours and roof-raisings listed: 10 → 6  (-4)",
+   "url": "digest:E-eb6d0f33",
+   "source": "Marketing digest (code)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T10:50:32+09:00",
+   "excerpt": "Marketing digest 2026-11-13 (written by code from the agent's weekly marketing data; previous digest 2026-11-06).\n土屋ホーム model houses: 40 → 42  (+2)\n土屋ホーム events listed: 45 → 51  (+6)\n土屋ホーム completion tours and roof-raisings listed: 10 → 6  (-4)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "excerpt_long": "Marketing digest 2026-11-13 (written by code from the agent's weekly marketing data; previous digest 2026-11-06).\n土屋ホーム model houses: 40 → 42 (+2)\n土屋ホーム events listed: 45 → 51 (+6)\n土屋ホーム completion tours and roof-raisings listed: 10 → 6 (-4)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "link": {
+    "resolved": true,
+    "type": "txt",
+    "pages": 1,
+    "chars": 364,
+    "sha256": "81f68a8b2764f28992d2e3b1712b8d00f8a1998a94439c3b76beb26e17e242a8",
+    "checked": "2026-11-13T10:50:32+09:00",
+    "written_by": "code"
+   }
+  },
+  "E-c3a538ff": {
+   "id": "E-c3a538ff",
+   "date": "2026-11-13",
+   "ticker": "8860",
+   "title": "フジ住宅株式会社: 半期報告書－第54期(2026/04/01－2027/03/31)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZFJY",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-13T10:51:10+09:00"
+  },
+  "E-c764fd5d": {
+   "id": "E-c764fd5d",
+   "date": "2026-11-12",
+   "ticker": "",
+   "title": "Ex - couple in Sapporo arrested after skipping out on ¥110 , 000 love hotel bill (tokyoreporter.com)",
+   "url": "https://www.tokyoreporter.com/japan-news/ex-couple-in-sapporo-arrested-after-skipping-out-on-%C2%A5110000-love-hotel-bill/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-2dfbf133": {
+   "id": "E-2dfbf133",
+   "date": "2026-11-12",
+   "ticker": "",
+   "title": "ANZ says RBA hike bets have cooled , but 3 . 7 % core inflation will keep it cautious (investinglive.com)",
+   "url": "https://investinglive.com/central-banks/anz-says-rba-hike-bets-have-cooled-but-3-7-core-inflation-will-keep-it-cautious/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-a8fdde7c": {
+   "id": "E-a8fdde7c",
+   "date": "2026-11-12",
+   "ticker": "",
+   "title": "Dovish BOJ Member Urges Caution in Raising Rates Further (morningstar.com)",
+   "url": "https://www.morningstar.com/news/dow-jones/202611119702/dovish-boj-member-urges-caution-in-raising-rates-further",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-27627bee": {
+   "id": "E-27627bee",
+   "date": "2026-11-12",
+   "ticker": "",
+   "title": "This restaurant quirky menu is a foodie dream - I couldnt stop ordering (dailystar.co.uk)",
+   "url": "https://www.dailystar.co.uk/life-style/this-restaurants-quirky-menu-foodies-37868208",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-20c8cba9": {
+   "id": "E-20c8cba9",
+   "date": "2026-11-12",
+   "ticker": "",
+   "title": "Dollar near one - month high as yen edges toward 160 (economictimes.indiatimes.com)",
+   "url": "https://economictimes.indiatimes.com/markets/forex/forex-news/dollar-near-one-month-high-as-yen-edges-toward-160/articleshow/135751707.cms",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
+  },
+  "E-3f897253": {
+   "id": "E-3f897253",
+   "date": "2026-11-11",
+   "ticker": "",
+   "title": "ING : Our latest views on the major central banks | Hellenic Shipping News Worldwide (hellenicshippingnews.com)",
+   "url": "https://www.hellenicshippingnews.com/ing-our-latest-views-on-the-major-central-banks-9/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-13T10:52:04+09:00"
   }
  },
- "last_check": "2026-11-07T23:02:26+09:00",
+ "last_check": "2026-11-13T10:53:01+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-13T03:35:33+09:00",
+   "checked": "2026-11-13T10:51:06+09:00",
    "error": null,
    "seen": 9,
    "added": 0,
    "added_at": "2026-11-12T11:16:59+09:00"
   },
   "mlit": {
-   "checked": "2026-11-13T03:35:37+09:00",
+   "checked": "2026-11-13T10:51:09+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-13T03:35:38+09:00",
+   "checked": "2026-11-13T10:51:10+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-13T03:35:39+09:00",
+   "checked": "2026-11-13T10:51:10+09:00",
    "error": null,
-   "seen": 5,
-   "added": 0,
-   "added_at": "2026-11-13T00:59:43+09:00"
+   "seen": 6,
+   "added": 1,
+   "added_at": "2026-11-13T10:51:10+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-13T03:36:33+09:00",
-   "error": "429: server busy or error",
-   "seen": 11,
-   "added": 11,
-   "added_at": "2026-11-11T00:36:49+09:00"
+   "checked": "2026-11-13T10:52:04+09:00",
+   "error": null,
+   "seen": 6,
+   "added": 6,
+   "added_at": "2026-11-13T10:52:04+09:00"
   }
  }
 }

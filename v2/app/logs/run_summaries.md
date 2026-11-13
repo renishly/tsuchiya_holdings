@@ -1064,3 +1064,53 @@ checks not run this run
 
 ### Next planned
 steady
+
+## R-20261113-104807 — scheduled
+
+- Start / end (JST): 2026-11-13T10:48:07+09:00 / 2026-11-13T10:53:40+09:00
+- Iterations: 34; web requests by domain: {"www.tsuchiya.co.jp": 4, "irbank.net": 3, "www.tamahome.jp": 10, "www.nihonhouse-hd.co.jp": 5, "www.grandy.co.jp": 3, "api.edinet-fsa.go.jp": 2, "www.tsuchiyahome.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: md debate: 30 new item(s), 0 flagged, stopped gate 1 (scouts flagged nothing); Debate Signal ¥0 (shadow mode)
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 4, "changed": 25, "conflicts": 0, "total": 1632}, "filings": {"new": []}, "marketing": {"filings": {"values": 83, "gaps": ["土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31", "土屋ホールディングス FY ending 2017-10-31: o
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: **Review — 2026-11-13 scheduled run**
+
+No watched value moved ≥ 3 % since the last review (2026-11-12 11:19 JST):
+- average_valuated_price: 179.18 → 178.64 (−0.3 %)
+- target_pe: 10.82 → 10.60 (−2.1 %)
+- target_ev_ebitda: 11.26 → 11.20 (−0.5 %)
+- stock_price_jpy: 208 → 208 (0 %)
+
+Peer input **タマホーム EV/EBITDA fell 3.1 %** (10.70 → 10.36), but the blended target_ev_ebitda moved only −0.5 % because 日本ハウス (+1.4 %) and グランディハウス (+0.5 %) partly offset it. 1840's own Md EPS and Md operating profit remain 0.0.
+
+The "md debate" event collected 30 new items; gate-1 scouts flagged nothing and the Debate Signal is ¥0 (shadow mode). Baseline steady run and P9 both completed. No follow-up needed.
+Model calls: 11; tokens in/out: 19717/3965; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 1632 rows total; 29 written this run
+- Alternative Data: 4949 rows total; 134 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261108-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
