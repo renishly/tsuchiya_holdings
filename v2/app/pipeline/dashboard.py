@@ -19,7 +19,8 @@ read_skill_tree and skill_categories go straight to the dashboard (not held whil
 
 Seminar standard outputs (A55, v2.018): send_forecast (weekly 'Forecast' output), debate (an output in a 'debate'
 category), set_run_status with step() (the 'Run status' monitor that drives Needs attention), my_state (state, why,
-rhythm) and post_skill(..., category, scope).
+rhythm) and post_skill(..., category, scope). set_data_points (A57, v2.021): the 'Data points' monitor, re-sent only
+when the forecast's setup changes.
 
 Module-level functions (output, set_monitor, report, check_in, ...) act on `main`; client(profile) returns the
 same API for another dashboard agent.
@@ -44,6 +45,8 @@ PROFILES = {"main": "DASHBOARD_API_KEY", "ca": "DASHBOARD_API_KEY_CA",
 LABELS = {"main": "Tsuchibot Main", "ca": "Tsuchibot C&A", "debater_a": "Tsuchibot Debater A", "debater_b": "Tsuchibot Debater B"}
 MAX_ITEMS, MAX_BYTES, MAX_UPLOAD = 1000, 100 * 1024 * 1024, 5 * 1024 * 1024
 MAX_EVERY = 3024000   # check_in_every: 1 s to 35 days
+DATA_POINT_TYPES = ("Internal values", "Market prices", "Company data", "Economic indicators", "Analyst & consensus",
+                    "News & text", "Alternative data", "Other")   # the 'Data points' monitor's fixed types (A57)
 SHORT, LONG = 10, 30
 _last_event = [0.0]  # shared: ≤ about one event per second across all dashboard agents
 
@@ -639,6 +642,33 @@ class Client:
         return self.set_monitor({"last_run": last_run or _now(), "last_status": last_status, "steps": list(steps or [])},
                                 "Run status")
 
+    def set_data_points(self, data_points, debates=0, uses=None) -> bool:
+        """The 'Data points' monitor (A57): how many data points of each type the forecast rests on, as it is built
+        now. Send it again when the setup changes, not every run. data_points: {type: [names] or count}; types
+        outside DATA_POINT_TYPES are counted under 'Other'; empty types are left out. uses: names of this student's
+        other agents that feed this one."""
+        dp = {}
+        for k, v in (data_points or {}).items():
+            k = k if k in DATA_POINT_TYPES else "Other"
+            if isinstance(v, (list, tuple, set)):
+                v = sorted({str(x)[:120] for x in v})
+                if not v:
+                    continue
+                if isinstance(dp.get(k), list):
+                    v = sorted(set(dp[k]) | set(v))
+                elif isinstance(dp.get(k), int):
+                    v = dp[k] + len(v)
+            else:
+                try:
+                    v = int(v) + (len(dp[k]) if isinstance(dp.get(k), list) else int(dp.get(k) or 0))
+                except (TypeError, ValueError):
+                    continue
+                if v <= 0:
+                    continue
+            dp[k] = v
+        return self.set_monitor({"data_points": dp, "debates": max(0, int(debates or 0)),
+                                 "uses": [str(u) for u in (uses or [])]}, "Data points")
+
     def my_state(self) -> dict:
         """This agent's state as the dashboard sees it: {'state', 'why', 'rhythm', 'paused'} ({} if unreachable)."""
         a = self.read_agent("me")
@@ -682,3 +712,4 @@ download_skill, delete_skill, set_skill_tree, read_skill_tree, skill_categories 
     _main.download_skill, _main.delete_skill, _main.set_skill_tree, _main.read_skill_tree, _main.skill_categories)
 set_skill_tree_view, remove_skill_tree_view = _main.set_skill_tree_view, _main.remove_skill_tree_view
 send_forecast, debate, set_run_status, my_state = _main.send_forecast, _main.debate, _main.set_run_status, _main.my_state
+set_data_points = _main.set_data_points

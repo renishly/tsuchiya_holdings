@@ -1232,6 +1232,12 @@ def _dashboard_finish(st, cr, S) -> str:
             _run_status_main(st, cr, base, S)
         except Exception as e:
             dashboard.report(f"run status failed: {type(e).__name__}: {str(e)[:120]}", "error")
+        try:  # A57: the 'Data points' monitor, only when the forecast's setup changed
+            dpn = _data_points_send(st)
+            if dpn:
+                log(st, "dashboard", {"profile": "main"}, dpn)
+        except Exception as e:
+            dashboard.report(f"data points failed: {type(e).__name__}: {str(e)[:120]}", "error")
         sent = st.setdefault("dashboard_sent", {})
         if ver_file and sent.get("changelog") != ver:   # A50: every version since the last one posted, merged
             cl = changelog_since(sent.get("changelog"))
@@ -1511,6 +1517,73 @@ def _run_status_main(st, cr, base, S) -> None:
     failed = any(i["severity"] == "high" for i in issues) or any(i["area"] == "Run" and "cut short" in i["what"] for i in issues)
     dashboard.set_run_status("failed" if failed else ("new_data" if any_new else "no_new_data"), steps, t)
     save_state(st)
+
+V2005_METHODS = ["P/E", "EV/EBITDA", "P/B (peers)", "P/B (own history)", "EV/EBITDA (own history)"]
+MD_TERMS = {"orders": ("Company data", "1840 housing orders year to date (quarterly 決算短信 受注状況)"),
+            "supply": ("Economic indicators", "BOJ CGPI lumber and wood products index"),
+            "land": ("Economic indicators", "MLIT land prices, Hokkaido (REINFOLIB)"),
+            "trends": ("Alternative data", "Google Trends share of search (student export)")}
+
+def _data_points_main(st) -> dict:
+    """A57: what the weekly Forecast (Average Valuated Price) rests on, as the agent is built now. Built from the
+    setup only (peers, approved method weights, accepted Md coefficients, M1 universe, debate mode), never from
+    this run's fetches, so a failed fetch does not change it."""
+    import dashboard
+    import evidence
+    import modelfit
+    import universe
+    prm = modelfit.load_params()
+    live = prm.get("approved") or {}
+    methods = sorted(((live.get("weights") or {}).get("weights") or {}).keys()) if live else list(V2005_METHODS)
+    coef = (prm.get("md") or {}).get("coef") or {}
+    peers = [p["ticker"] for p in CONFIG["peers"]]
+    m1 = any(m.startswith("M1") for m in methods)
+    uni = [t for t in universe.members(st) if t != "1840"] if m1 else []
+    internal = [f"Method price: {m}" for m in methods] + ["Method weights", "Md (operating profit)", "Md discount baseline (track record)"]
+    internal += ["M1 fitted P/B model"] * any("M1 (P/B" in m for m in methods) + ["M1 fitted EV/EBITDA model"] * any("M1 (EV/EBITDA" in m for m in methods)
+    internal += [f"Md coefficient: {k}" for k, v in coef.items() if v]
+    market = ["1840 share price"]
+    company = ["1840 company forecast: operating profit", "1840 company forecast: EPS", "1840 dividend forecast", "1840 EPS (actual)",
+               "1840 BPS", "1840 depreciation", "1840 cash and debt", "1840 shares outstanding",
+               "1840 past initial forecasts vs actuals"]
+    if any("own history" in m for m in methods):
+        company.append("1840 five-year financial history (有報)")
+    peer_methods = [m for m in methods if m in ("P/E", "EV/EBITDA", "P/B (peers)")]
+    if peer_methods:
+        market += [f"{t} share price" for t in peers]
+        for t in peers:
+            company += [f"{t} company forecast: EPS"] * ("P/E" in peer_methods)
+            company += [f"{t} company forecast: operating profit", f"{t} depreciation", f"{t} cash and debt",
+                        f"{t} shares outstanding"] * ("EV/EBITDA" in peer_methods)
+            company += [f"{t} BPS"] * ("P/B (peers)" in peer_methods)
+    if uni:
+        market += [f"{t} share price" for t in uni]
+        company += [f"{t} financial statements (有報, M1 universe)" for t in uni]
+    dp = {"Internal values": internal, "Market prices": market, "Company data": company}
+    for k, v in coef.items():
+        if v and k in MD_TERMS:
+            typ, name = MD_TERMS[k]
+            dp.setdefault(typ, []).append(name)
+    live_debate = evidence.MODE == "live"
+    if live_debate:   # the Debate Signal enters Md only in live mode; in shadow mode the debate does not feed the forecast
+        dp.setdefault("News & text", []).append("Md debate evidence board (BOJ, MLIT, JHF, EDINET, IR, marketing digest)")
+    return {"data_points": dp, "debates": 1 if live_debate else 0,
+            "uses": [dashboard.LABELS[p] for p in ("ca", "debater_a", "debater_b")] if live_debate else []}
+
+def _data_points_send(st) -> str:
+    """A57: re-send the 'Data points' monitor only when the setup changed (fingerprint in dashboard_sent)."""
+    import dashboard
+    import hashlib
+    d = _data_points_main(st)
+    fp = hashlib.sha256(json.dumps(d, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
+    sent = st.setdefault("dashboard_sent", {})
+    if sent.get("data_points") == fp:
+        return ""
+    ok = dashboard.set_data_points(d["data_points"], d["debates"], d["uses"])
+    sent["data_points"] = fp
+    save_state(st)
+    n = {k: len(v) for k, v in d["data_points"].items()}
+    return f"data points ({'sent' if ok else 'buffered'}): " + ", ".join(f"{k} {v}" for k, v in n.items()) + f"; debates {d['debates']}"
 
 def _git_commit(cr) -> str:
     """Cloud routine (Addenda A1, A11): commit outputs; plain push of the current branch; never force."""
