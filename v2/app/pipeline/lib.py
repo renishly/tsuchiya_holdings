@@ -494,10 +494,17 @@ MAINT_MARKERS = (b"maintenance", "メンテナンス".encode("utf-8"), "メン�
 
 def _outage_history(host: str) -> tuple[str | None, str | None]:
     """(first failure after the last good fetch, last good fetch) for a host, from the run log and saved snapshots."""
+    import gzip
     last_ok, first_fail = None, None
-    p = ROOT / "logs" / "run_log.jsonl"
-    if p.exists():
-        for line in p.read_text(encoding="utf-8").splitlines():
+    logs = ROOT / "logs"
+    def _read(p):
+        try:
+            return gzip.decompress(p.read_bytes()).decode("utf-8") if p.suffix == ".gz" else p.read_text(encoding="utf-8")
+        except (OSError, EOFError, UnicodeDecodeError):
+            return ""
+    files = sorted(logs.glob("archive/*/run_log.jsonl.gz")) + [logs / "run_log.jsonl"]   # oldest first
+    for p in files:
+        for line in (_read(p) if p.exists() else "").splitlines():
             if host not in line or '"fetch"' not in line:
                 continue
             try:
@@ -525,14 +532,26 @@ def _outage_history(host: str) -> tuple[str | None, str | None]:
         first_fail = None
     return first_fail, last_ok
 
-def _note_outage(st, host, url, code, retry_after=None, body: bytes = b""):
+BLOCK_KNOWN_DAYS = 3   # a 403 on every request for this many days is a known block (A56)
+
+def _note_block(st, host, url, code):
+    """A 403 that has lasted BLOCK_KNOWN_DAYS with no success in between: the site refuses the agent (e.g. irbank
+    refuses GitHub Actions' cloud IPs). Recorded as a known outage; the agent never tries to get around it."""
+    if host in (st.get("known_outages") or {}):
+        _note_outage(st, host, url, code, reason="refused on every request")
+        return
+    since, _ = _outage_history(host)
+    if since and (now().date() - dt.date.fromisoformat(since[:10])).days >= BLOCK_KNOWN_DAYS:
+        _note_outage(st, host, url, code, reason="refused on every request")
+
+def _note_outage(st, host, url, code, retry_after=None, body: bytes = b"", reason: str | None = None):
     head = (body or b"")[:20000].lower()
     maint = any(m in head for m in MAINT_MARKERS)
-    if not (retry_after or maint):
+    if not (retry_after or maint or reason):
         return
     ko = st.setdefault("known_outages", {})
     t = iso()
-    evidence = ", ".join(x for x in ("maintenance page" if maint else "", f"Retry-After {retry_after}" if retry_after else "") if x)
+    evidence = reason or ", ".join(x for x in ("maintenance page" if maint else "", f"Retry-After {retry_after}" if retry_after else "") if x)
     if host not in ko:
         since, last_ok = _outage_history(host)
         ko[host] = {"since": since or t, "last_ok": last_ok, "noted": t}
@@ -552,6 +571,8 @@ def _fail(st, host, url, code, detail):
     cf = cr.setdefault("consecutive_fail", {})
     cf[host] = cf.get(host, 0) + 1
     log(st, "fetch", {"url": url}, f"error {code}: {detail}")
+    if code == 403:
+        _note_block(st, host, url, code)
     if cf[host] >= 3 and host not in cr.setdefault("skipped_domains", []):
         cr["skipped_domains"].append(host)
         log(st, "fetch", {"domain": host}, "domain skipped for rest of run (3 consecutive failures)")
