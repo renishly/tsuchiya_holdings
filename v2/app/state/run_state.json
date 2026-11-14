@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-14T10:27:47+09:00",
+      "last_success": "2026-11-14T23:09:08+09:00",
       "fail_streak": 0
     }
   },
@@ -4051,9 +4051,9 @@
     },
     "debate_signal": {
       "value": 0.0,
-      "date": "2026-11-13",
-      "mode": "shadow",
-      "expires": "2026-12-13",
+      "date": "2026-11-14",
+      "mode": "live",
+      "expires": "2026-12-14",
       "items": [],
       "note": ""
     },
@@ -5120,15 +5120,21 @@
       "ended": "2026-11-14T10:29:25+09:00",
       "iterations": 23,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261114-230747",
+      "ended": "2026-11-14T23:11:38+09:00",
+      "iterations": 21,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
     "changelog": "v2.022",
     "research_summary": "2026-11-08-n284",
     "factor_monitor_removed": true,
-    "summary_report": "reports/summary_2026-11-07.html",
+    "summary_report": "reports/summary_2026-11-14.html",
     "old_debate_monitors_removed": true,
-    "md_case": "2026-11-13T10:53:01+09:00",
+    "md_case": "2026-11-14T23:10:59+09:00",
     "skills": {
       "guardrails": {
         "hash": "f87a90679fdc386f",
@@ -5260,7 +5266,7 @@
       }
     },
     "skill_tree": "767746ea7e8bbe31",
-    "skill_tree_view": "8d9513af051079aa",
+    "skill_tree_view": "0d9c92ec7a4136c6",
     "forecast": {
       "week": "2026-W46",
       "value": 179.184,
@@ -5305,15 +5311,15 @@
     "data_points": "3806867218c2"
   },
   "reports": {
-    "last_summary": "2026-11-07T23:02:56+09:00",
-    "latest_file": "reports/summary_2026-11-07.html"
+    "last_summary": "2026-11-14T23:11:20+09:00",
+    "latest_file": "reports/summary_2026-11-14.html"
   },
   "known_outages": {
     "irbank.net": {
       "since": "2026-10-15T22:15:52+09:00",
       "last_ok": "2026-10-09T13:14:06+09:00",
       "noted": "2026-11-13T12:26:16+09:00",
-      "last_seen": "2026-11-14T10:27:09+09:00",
+      "last_seen": "2026-11-14T23:08:36+09:00",
       "code": 403,
       "evidence": "refused on every request",
       "url": "https://irbank.net/1873"
@@ -5322,7 +5328,7 @@
       "since": "2026-10-22T21:58:31+09:00",
       "last_ok": "2026-10-22T09:00:54+09:00",
       "noted": "2026-11-13T12:26:29+09:00",
-      "last_seen": "2026-11-14T10:28:19+09:00",
+      "last_seen": "2026-11-14T23:09:40+09:00",
       "code": 503,
       "evidence": "maintenance page, Retry-After 3600",
       "url": "https://www.grandy.co.jp/ir/library"

@@ -1270,3 +1270,43 @@ Model calls: 0; tokens in/out: 0/0; models: (none)
 
 ### Next planned
 steady
+
+## R-20261114-230747 — scheduled
+
+- Start / end (JST): 2026-11-14T23:07:47+09:00 / 2026-11-14T23:11:38+09:00
+- Iterations: 21; web requests by domain: {"www.tsuchiya.co.jp": 4, "irbank.net": 3, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.edinet-fsa.go.jp": 2, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: [].
+Review events: daily check (first run after the TSE close today); md debate: 6 new item(s), 0 flagged, stopped gate 1 (scouts flagged nothing); Debate Signal ¥0 (live mode)
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 0, "changed": 0, "conflicts": 0, "total": 1687}}
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Review: Daily check:1840 stock price rose from ¥208 to ¥215 (+3.4%, above 3% threshold). Peer multiples were stable (タマホーム P/E 17.60→17.91, 日本ハウスHD 3.59→3.61, グランディハウス 14.49 unchanged). Target P/E moved +1.5% (10.60→10.76), Target EV/EBITDA +0.8% (11.20→11.29), Average Valuated Price +0.2% (178.64→179.03) — all under 3%. Valuation metrics barely changed because they derive from peer multiples and 1840 fundamentals (EPS=0, EBITDA), not 1840's price. MD debate: 6 new items, none flagged. No action needed.
+P4 skipped: no CSV or approval-queue change since the last validation.
+P5 skipped: nothing changed since today's Sheet sync.
+Model calls: 8; tokens in/out: 17289/3283; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 1687 rows total; 0 written this run
+- Alternative Data: 4982 rows total; 0 written this run
+
+### Validation
+checks not run this run
+
+### Pending approvals
+- AR-20261108-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- none
+
+### Next planned
+steady
