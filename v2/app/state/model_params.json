@@ -893,7 +893,7 @@
   "approved_at": "2026-10-30T08:22:58+09:00"
  },
  "md": {
-  "fitted": "2026-11-08T07:16:05+09:00",
+  "fitted": "2026-11-15T07:43:43+09:00",
   "tsuchiya_revenue": 31456837000.0,
   "standing_approval": {
    "date": "2026-10-30",
@@ -954,21 +954,21 @@
   }
  },
  "pending": {
-  "version": "2026-11-08-n284",
+  "version": "2026-11-15-n284",
   "status": "pending approval",
   "m1": {
    "year_effects": {
-    "2016": -1.3460962712631392,
-    "2017": -1.4337493571649154,
-    "2018": -1.5145936102494204,
-    "2019": -1.7577991827803277,
-    "2020": -1.8786480093655593,
-    "2021": -1.7015014607401573,
-    "2022": -1.7076405614646097,
-    "2023": -1.5229913967398347,
-    "2024": -1.5323001082475174,
-    "2025": -1.4525777981858194,
-    "2026": -1.4435590518846952
+    "2016": -1.346096271263124,
+    "2017": -1.433749357164898,
+    "2018": -1.514593610249401,
+    "2019": -1.7577991827803103,
+    "2020": -1.8786480093655393,
+    "2021": -1.7015014607401449,
+    "2022": -1.7076405614645944,
+    "2023": -1.5229913967398134,
+    "2024": -1.5323001082475027,
+    "2025": -1.452577798185802,
+    "2026": -1.443559051884672
    },
    "year_counts": {
     "2016": 3,
@@ -984,9 +984,9 @@
     "2026": 30
    },
    "coef": {
-    "roe_norm": 6.396269877817419,
-    "growth": -0.29659885000241887,
-    "log_revenue": 0.022617295898125223
+    "roe_norm": 6.396269877817416,
+    "growth": -0.296598850002419,
+    "log_revenue": 0.02261729589812409
    },
    "y": "log_pb",
    "winsor": {
@@ -1003,22 +1003,22 @@
      28.574015665826366
     ]
    },
-   "scale": 0.35784887677776045,
+   "scale": 0.3578488767777601,
    "n": 284,
-   "r2_weighted": 0.5549148583413873
+   "r2_weighted": 0.5549148583413837
   },
   "m1_ev": {
    "year_effects": {
-    "2017": 3.6382231798098066,
-    "2018": 3.650385226352009,
-    "2019": 3.6908386161647098,
-    "2020": 3.580048909890544,
-    "2021": 3.8247707296729865,
-    "2022": 3.8149263310689787,
-    "2023": 4.032715776173031,
-    "2024": 4.0461248521029125,
-    "2025": 4.119162862610804,
-    "2026": 4.157658014940378
+    "2017": 3.6382231798098084,
+    "2018": 3.650385226352021,
+    "2019": 3.690838616164712,
+    "2020": 3.5800489098905395,
+    "2021": 3.824770729672992,
+    "2022": 3.814926331068982,
+    "2023": 4.032715776173024,
+    "2024": 4.046124852102911,
+    "2025": 4.119162862610808,
+    "2026": 4.157658014940373
    },
    "year_counts": {
     "2017": 2,
@@ -1033,9 +1033,9 @@
     "2026": 29
    },
    "coef": {
-    "margin": -3.8004650044025245,
-    "growth": 0.4550666555337324,
-    "log_revenue": -0.0593413144594912
+    "margin": -3.800465004402553,
+    "growth": 0.4550666555337351,
+    "log_revenue": -0.05934131445949063
    },
    "y": "log_ev_ebitda",
    "winsor": {
@@ -1052,9 +1052,9 @@
      28.70562584896784
     ]
    },
-   "scale": 0.4636705421360368,
+   "scale": 0.4636705421360355,
    "n": 241,
-   "r2_weighted": 0.22437095855736144
+   "r2_weighted": 0.224370958557362
   },
   "backtest": {
    "freq": "annual",
@@ -1124,15 +1124,15 @@
    "monthly_reference": {
     "M1 (P/B regression)": {
      "months": 91,
-     "mean_ic": 0.1466,
-     "t": 5.3,
+     "mean_ic": 0.1465,
+     "t": 5.28,
      "top_minus_bottom": 0.1146,
      "hit_rate": 0.513,
      "median_abs_error": 0.268
     },
     "P/B (own history)": {
      "months": 76,
-     "mean_ic": 0.0335,
+     "mean_ic": 0.0336,
      "t": 0.64,
      "top_minus_bottom": -0.0039,
      "hit_rate": 0.484,
@@ -1148,23 +1148,23 @@
     },
     "P/E (peers, trailing)": {
      "months": 109,
-     "mean_ic": 0.1493,
-     "t": 5.0,
-     "top_minus_bottom": 0.1181,
+     "mean_ic": 0.1492,
+     "t": 4.99,
+     "top_minus_bottom": 0.118,
      "hit_rate": 0.53,
      "median_abs_error": 0.34
     },
     "M1 (EV/EBITDA regression)": {
      "months": 76,
-     "mean_ic": 0.1874,
-     "t": 5.21,
+     "mean_ic": 0.1872,
+     "t": 5.2,
      "top_minus_bottom": 0.1989,
      "hit_rate": 0.539,
      "median_abs_error": 0.499
     },
     "EV/EBITDA (own history)": {
      "months": 76,
-     "mean_ic": -0.0303,
+     "mean_ic": -0.0302,
      "t": -0.56,
      "top_minus_bottom": -0.0592,
      "hit_rate": 0.461,
@@ -1172,9 +1172,9 @@
     },
     "EV/EBITDA (peers)": {
      "months": 100,
-     "mean_ic": 0.1347,
+     "mean_ic": 0.1345,
      "t": 3.69,
-     "top_minus_bottom": 0.1243,
+     "top_minus_bottom": 0.1242,
      "hit_rate": 0.543,
      "median_abs_error": 0.508
     }
@@ -1214,19 +1214,19 @@
     "ebitda3": 495290666.6666667
    },
    "fitted_pb": {
-    "pb": 0.4837757825141518,
-    "low": 0.3058217511463099,
-    "high": 0.7652791433896801,
+    "pb": 0.4837757825141499,
+    "low": 0.30582175114630883,
+    "high": 0.7652791433896766,
     "year_effect": "2026"
    },
    "fitted_ev": {
-    "multiple": 13.639605261078772,
-    "low": 7.52881414534074,
-    "high": 24.710243616941877,
+    "multiple": 13.639605261078875,
+    "low": 7.528814145340809,
+    "high": 24.710243616942023,
     "year_effect": "2026"
    }
   },
-  "created": "2026-11-08T07:16:09+09:00",
+  "created": "2026-11-15T07:43:46+09:00",
   "screen": {
    "1419": {
     "share": 0.706,
@@ -1842,6 +1842,6 @@
    "rows": 284,
    "companies": 32
   },
-  "summary": "**Panel & universe** — 284 annual rows across 32 companies (2016–2025). Screen keeps residential share ≥ 50%: 土屋ホールディングス (1840) passes at 100%; 大東建託, 東建コーポレーション, 野村不動産, コスモスイニシア, スターツ, エスコン excluded for low residential share; several single-segment names pass by default.\n\n**M1 fits** — P/B equation (n=284, scale 0.36): ROE 6.40, growth −0.30, log revenue 0.02. EV/EBITDA equation (n=241, scale 0.46): margin −3.80, growth 0.46, log revenue −0.06. Tsuchiya's 2026 fitted multiples: P/B 0.48 (0.31–0.77); EV/EBITDA 13.6 (7.5–24.7).\n\n**Backtest (annual, 9-month lag, 2016–2025)** — Accepted (mean IC > 0, t ≥ 2): M1 EV/EBITDA (IC 0.18, t 3.85), M1 P/B (IC 0.14, t 2.48), P/E peers trailing (IC 0.14, t 2.64). Rejected: P/B own history, P/B peers, EV/EBITDA own history, EV/EBITDA peers (t < 2 or IC ≤ 0). Monthly reference shows stronger t-stats but uses overlapping months.\n\n**Proposed weights** — ½ equal + ½ by accepted IC: M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each rejected method 7.1%. Rule: accept if annual backtest mean IC > 0 and t ≥ 2; weight = ½ equal share + ½ share by accepted IC.\n\n**Weaknesses** — Only 32 companies; survivorship bias (no delisted prices). Four of seven methods rejected by the backtest. Live P/E and EV/EBITDA use forward figures; their backtest used trailing figures (no point-in-time forecast history).\n\n(Code check: 1 number(s) not found in the results and not verified: 1840)"
+  "summary": "**Research run 2026-11-15-n284 (pending approval AR-20261115-01)**\n\n**Universe & panel** — 32 housebuilders pass the ≥50% residential revenue screen (大東建託, 東建, 野村不動産, コスモスイニシア, スターツ, エスコン, 日神 excluded). Panel: 284 company-years.\n\n**M1 fits** — P/B equation: log(P/B) = 6.40·ROE − 0.30·growth + 0.02·log revenue (σ=0.36, n=284). EV/EBITDA equation: log(EV/3yr EBITDA) = −3.80·margin + 0.46·growth − 0.06·log revenue (σ=0.46, n=241). Tsuchiya (1840): ROE 0.97%, growth −3.2%, margin 0.4% → fitted P/B 0.48 (0.31–0.77), fitted EV/EBITDA 13.6 (7.5–24.7), year effect 2026.\n\n**Backtest (annual, 9-mo hold, 2016–2025)** — Only three methods meet acceptance (mean IC>0, t≥2): M1 EV/EBITDA (IC 0.18, t=3.85, top−bottom 19.0%), M1 P/B (IC 0.14, t=2.48, 7.9%), P/E peers trailing (IC 0.14, t=2.64, 8.8%). Rejected: P/B own history (t=0.71), P/B peers (t=0.67), EV/EBITDA own history (IC −0.02), EV/EBITDA peers (t=1.77). Monthly reference confirms same three strongest.\n\n**Proposed weights** — ½ equal + ½ by accepted IC: M1 EV/EBITDA 26.6%, P/E 22.7%, M1 P/B 22.2%, each rejected method 7.1%.\n\n**Weaknesses** — Small universe (32 names); survivorship bias (delisted prices missing); only 3/7 methods accepted; live P/E and EV/EBITDA use forward multiples but backtest uses trailing (no point-in-time forecast history); two accepted methods are regression-based with only 284/241 observations.\n\n(Code check: 2 number(s) not found in the results and not verified: 20261115, 1840)"
  }
 }
