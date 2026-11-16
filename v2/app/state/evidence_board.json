@@ -1129,44 +1129,96 @@
    "source": "EDINET (universe companies)",
    "topic": "company and peers",
    "first_seen": "2026-11-14T00:24:56+09:00"
+  },
+  "E-f50fbbc5": {
+   "id": "E-f50fbbc5",
+   "date": "2026-11-16",
+   "ticker": "",
+   "title": "展望レポートのハイライト （2026年10月）",
+   "url": "https://www.boj.or.jp/mopo/outlook/highlight/ten202610.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-17T02:01:05+09:00"
+  },
+  "E-ae1d8092": {
+   "id": "E-ae1d8092",
+   "date": "2026-11-16",
+   "ticker": "",
+   "title": "【講演】高田審議委員「わが国の経済・物価情勢と金融政策：日本のマネー・資本市場転換、山は動くか」（徳島経済同友会）",
+   "url": "https://www.boj.or.jp/about/press/koen_2026/ko261116a.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-17T02:01:05+09:00"
+  },
+  "E-ff166c35": {
+   "id": "E-ff166c35",
+   "date": "2026-11-16",
+   "ticker": "8891",
+   "title": "ＡＭＧホールディングス株式会社: 半期報告書－第42期(2026/04/01－2026/09/30)",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZI58",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-17T02:01:12+09:00"
+  },
+  "E-0393770a": {
+   "id": "E-0393770a",
+   "date": "2026-11-16",
+   "ticker": "",
+   "title": "BOJ Takata calls for early rate hikes to curb inflation risks (economictimes.indiatimes.com)",
+   "url": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/bojs-takata-calls-for-early-rate-hikes-to-curb-inflation-risks/articleshow/135876217.cms",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-17T02:01:49+09:00"
+  },
+  "E-3673c685": {
+   "id": "E-3673c685",
+   "date": "2026-11-16",
+   "ticker": "",
+   "title": "Nikkei 225 Tumbles 2 . 4 % Below 60 , 000 Mark as Japanese Stocks Lose Nearly 1 , 500 Points in Sharp Monday Selloff (ibtimes.com.au)",
+   "url": "https://www.ibtimes.com.au/nikkei-225-falls-below-60000-asian-markets-slide-1878666",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-17T02:01:49+09:00"
   }
  },
  "last_check": "2026-11-14T23:10:59+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-16T10:02:28+09:00",
+   "checked": "2026-11-17T02:01:05+09:00",
    "error": null,
-   "seen": 9,
-   "added": 0,
-   "added_at": "2026-11-12T11:16:59+09:00"
+   "seen": 11,
+   "added": 2,
+   "added_at": "2026-11-17T02:01:05+09:00"
   },
   "mlit": {
-   "checked": "2026-11-16T10:02:32+09:00",
+   "checked": "2026-11-17T02:01:10+09:00",
    "error": null,
    "seen": 14,
    "added": 0,
    "added_at": "2026-11-10T02:29:39+09:00"
   },
   "jhf": {
-   "checked": "2026-11-16T10:02:33+09:00",
+   "checked": "2026-11-17T02:01:11+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-16T10:02:33+09:00",
+   "checked": "2026-11-17T02:01:12+09:00",
    "error": null,
-   "seen": 0,
-   "added": 0,
-   "added_at": "2026-11-14T00:24:56+09:00"
+   "seen": 1,
+   "added": 1,
+   "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-16T10:02:46+09:00",
+   "checked": "2026-11-17T02:01:49+09:00",
    "error": null,
-   "seen": 0,
-   "added": 0,
-   "added_at": "2026-11-13T10:52:04+09:00"
+   "seen": 2,
+   "added": 2,
+   "added_at": "2026-11-17T02:01:49+09:00"
   }
  }
 }
