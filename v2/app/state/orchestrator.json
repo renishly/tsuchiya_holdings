@@ -1,7 +1,7 @@
 {
  "closeout": {
-  "p4_hash": "0d30bb9db9b05fe2fed40ecec2d60ecfdd005afc4ae3e875371a34cbf9dc60ff",
-  "p5_hash": "0d30bb9db9b05fe2fed40ecec2d60ecfdd005afc4ae3e875371a34cbf9dc60ff",
+  "p4_hash": "08baabe73c9508e0464692ac4a45d09f72fe38339a468213663a80631e4cb126",
+  "p5_hash": "08baabe73c9508e0464692ac4a45d09f72fe38339a468213663a80631e4cb126",
   "p5_date": "2026-11-17"
  },
  "delegation_history": [
@@ -86,28 +86,28 @@
   }
  ],
  "review_snapshot": {
-  "date": "2026-11-15T23:47+09:00",
-  "run_id": "R-20261115-234432",
+  "date": "2026-11-17T12:53+09:00",
+  "run_id": "R-20261117-125000",
   "values": {
-   "average_valuated_price": 179.03,
-   "target_pe": 10.7596,
-   "target_ev_ebitda": 11.2919,
-   "stock_price_jpy": 215.0
+   "average_valuated_price": 178.139,
+   "target_pe": 10.3866,
+   "target_ev_ebitda": 11.1338,
+   "stock_price_jpy": 210.0
   },
   "peers": {
    "1419": {
     "name": "タマホーム",
-    "price": 2471.0,
+    "price": 2365.0,
     "eps_forecast": 137.99,
-    "pe_forward": 17.9071,
-    "ev_ebitda": 10.5565
+    "pe_forward": 17.1389,
+    "ev_ebitda": 10.0617
    },
    "1873": {
     "name": "日本ハウスホールディングス",
-    "price": 326.0,
+    "price": 328.0,
     "eps_forecast": 90.25,
-    "pe_forward": 3.61219,
-    "ev_ebitda": 4.53772
+    "pe_forward": 3.63435,
+    "ev_ebitda": 4.55826
    },
    "8999": {
     "name": "グランディハウス",
