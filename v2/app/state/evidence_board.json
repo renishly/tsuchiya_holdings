@@ -1191,44 +1191,55 @@
    "source": "MLIT press releases",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-18T01:54:51+09:00"
+  },
+  "E-74bc93de": {
+   "id": "E-74bc93de",
+   "date": "2026-11-18",
+   "ticker": "",
+   "title": "Octopus Stocks Recover Five Years After Red Tide Disaster (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151424.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-18T11:55:22+09:00"
   }
  },
  "last_check": "2026-11-14T23:10:59+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-18T01:54:47+09:00",
+   "checked": "2026-11-18T11:55:02+09:00",
    "error": null,
    "seen": 11,
    "added": 0,
    "added_at": "2026-11-17T02:01:05+09:00"
   },
   "mlit": {
-   "checked": "2026-11-18T01:54:51+09:00",
+   "checked": "2026-11-18T11:55:05+09:00",
    "error": null,
    "seen": 15,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-18T01:54:51+09:00"
   },
   "jhf": {
-   "checked": "2026-11-18T01:54:52+09:00",
+   "checked": "2026-11-18T11:55:06+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-18T01:54:53+09:00",
+   "checked": "2026-11-18T11:55:06+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-18T01:55:45+09:00",
-   "error": "429: server busy or error",
-   "seen": 2,
-   "added": 2,
-   "added_at": "2026-11-17T02:01:49+09:00"
+   "checked": "2026-11-18T11:55:22+09:00",
+   "error": null,
+   "seen": 3,
+   "added": 1,
+   "added_at": "2026-11-18T11:55:22+09:00"
   }
  }
 }
