@@ -1138,7 +1138,17 @@
    "url": "https://www.boj.or.jp/mopo/outlook/highlight/ten202610.htm",
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
-   "first_seen": "2026-11-17T02:01:05+09:00"
+   "first_seen": "2026-11-17T02:01:05+09:00",
+   "link": {
+    "resolved": true,
+    "type": "html",
+    "pages": 1,
+    "chars": 3876,
+    "sha256": "ea975261eab851dc1bb7a9a837fd608f681ce95d3d5916a344db5c5b7e7dcf0a",
+    "checked": "2026-11-20T11:22:30+09:00",
+    "injection_flagged": false
+   },
+   "excerpt_long": "展望レポートのハイライト （2026年10月） : 日本銀行 Bank of Japan\nこのページの本文へ移動\n日本語\nEnglish\nホーム\n日本銀行について\n日本銀行について\n日本銀行の概要\n日本銀行の概要\n沿革\n日本銀行百年史\n歴代総裁\n所在地（本店案内図）・入館案内\n本店・支店・国内事務所\n海外事務所\nアーカイブ\n日本銀行の組織\n日本銀行の組織\n日本銀行組織規程\n政策委員会\n総裁・副総裁・理事の担当\n本店・支店・事務所の組織\nコンプライアンス\n関係法令等\n会計・決算\n業務の運営\n業務の運営\n日本銀行の行動原則\n中期経営計画\n業務概況書\n財務省の政策評価結果（日本銀行に関する部分）\n法令に基づく情報提供資料（閲覧資料一覧）\n日本銀行が法令に基づき扱う手続のオンライン化状況\n災害対策・業務継続体制\nダイバーシティへの取組み\n講演・記者会見・談話\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文等の一覧\n日本銀行に関連する講演・挨拶等\n日本銀行に関連する談話\nその他公表資料\n見学・イベント等\n日本銀行の紹介\n各種窓口・手続き\n各種窓口・手続き\n損傷したお金の引換え窓口\n外為法に関する手続き\n各種取引に関する金融機関向け窓口\n国庫金・国債の窓口\n出資証券に関する手続き\n情報公開の窓口・手続き／公文書管理\n個人情報保護の窓口・手続き\n本店見学\n採用・人事交流等\n採用・人事交流等\n新規採用\nキャリア採用\nアルムナイネットワーク\n調達関連情報\n気候変動\nリンク集\n金融政策\n金融政策\n金融政策の概要\n金融政策の概要\n2％の「物価安定の目標」\n金融政策の多角的レビュー\n金融政策決定会合の運営\n金融政策決定会合の運営\n金融政策決定会合における主な意見\n金融政策決定会合議事要旨\n金融政策決定会合議事録\nその他\n金融政策に関する決定事項等\n金融政策手段\n金融政策手段\nオペレーション等の一覧\nオペレーション等に関する基本要領\nオペレーション等の対象先公募・選定\nオペレーション等の受託者公募・選定\n経済・物価情勢の展望\n国会に対す\n… ていき、再来年度にかけて2％程度に向かいます。この間、一時的な変動を取り除いた消費者物価の基調的な上昇率は、2％の「物価安定の目標」と概ね整合的な水準となっており、先行きも同程度で推移します。\n中東情勢、AI関連需要、為替相場の変動などの影響に注意\n経済・物価の見通しに対するリスク要因としては、中東情勢、AI関連需要の動向、為替相場の変動などに注意が必要です。企業の賃金・価格設定行動の積極化や様々な物価上振れ要因を踏まえると、中長期的な予想物価上昇率が上昇し、基調的な物価上昇率が2％の「物価安定の目標」を超えて上振れていくリスクがあります。\n2％目標のもとで金融政策を運営していく\n金融政策運営については、経済・物価・金融情勢に応じて、引き続き政策金利を引き上げ、金融緩和の度合いを調整していくことになると考えています。調整のタイミングやペースは、経済・物価の見通しが実現する確度やリスクを点検しながら、検討していく方針です。とくに、基調的な物価上昇率を2％程度の水準で安定させていくという観点が重要になると考えています。\n政策委員の経済・物価見通し\n展望レポート\n「経済・物価情勢の展望」（展望レ …"
   },
   "E-ae1d8092": {
    "id": "E-ae1d8092",
@@ -1148,7 +1158,17 @@
    "url": "https://www.boj.or.jp/about/press/koen_2026/ko261116a.htm",
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
-   "first_seen": "2026-11-17T02:01:05+09:00"
+   "first_seen": "2026-11-17T02:01:05+09:00",
+   "link": {
+    "resolved": true,
+    "type": "html",
+    "pages": 1,
+    "chars": 3162,
+    "sha256": "60de68dc7ad8d9fcb9520d502c803cf083e7a18a9cc15c6ab48e269fee4eef97",
+    "checked": "2026-11-20T11:22:33+09:00",
+    "injection_flagged": false
+   },
+   "excerpt_long": "【講演】高田審議委員「わが国の経済・物価情勢と金融政策：日本のマネー・資本市場転換、山は動くか」（徳島経済同友会） : 日本銀行 Bank of Japan\nこのページの本文へ移動\n日本語\nEnglish\nホーム\n日本銀行について\n日本銀行について\n日本銀行の概要\n日本銀行の概要\n沿革\n日本銀行百年史\n歴代総裁\n所在地（本店案内図）・入館案内\n本店・支店・国内事務所\n海外事務所\nアーカイブ\n日本銀行の組織\n日本銀行の組織\n日本銀行組織規程\n政策委員会\n総裁・副総裁・理事の担当\n本店・支店・事務所の組織\nコンプライアンス\n関係法令等\n会計・決算\n業務の運営\n業務の運営\n日本銀行の行動原則\n中期経営計画\n業務概況書\n財務省の政策評価結果（日本銀行に関する部分）\n法令に基づく情報提供資料（閲覧資料一覧）\n日本銀行が法令に基づき扱う手続のオンライン化状況\n災害対策・業務継続体制\nダイバーシティへの取組み\n講演・記者会見・談話\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文等の一覧\n日本銀行に関連する講演・挨拶等\n日本銀行に関連する談話\nその他公表資料\n見学・イベント等\n日本銀行の紹介\n各種窓口・手続き\n各種窓口・手続き\n損傷したお金の引換え窓口\n外為法に関する手続き\n各種取引に関する金融機関向け窓口\n国庫金・国債の窓口\n出資証券に関する手続き\n情報公開の窓口・手続き／公文書管理\n個人情報保護の窓口・手続き\n本店見学\n採用・人事交流等\n採用・人事交流等\n新規採用\nキャリア採用\nアルムナイネットワーク\n調達関連情報\n気候変動\nリンク集\n金融政策\n金融政策\n金融政策の概要\n金融政策の概要\n2％の「物価安定の目標」\n金融政策の多角的レビュー\n金融政策決定会合の運営\n金融政策決定会合の運営\n金融政策決定会合における主な意見\n金融政策決定会合議事要旨\n金融政策決定会合議事録\nその他\n金融政策に関する決定事項等\n金融政策手段\n金融政策手段\nオペレーション等の一覧\nオペレーション等に関する基本要領\nオペレーション等の対象先公募・選定\n"
   },
   "E-ff166c35": {
    "id": "E-ff166c35",
@@ -1211,45 +1231,109 @@
    "url": "https://www.boj.or.jp/intl_finance/meeting/group/gro261118a.htm",
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
-   "first_seen": "2026-11-19T01:27:50+09:00"
+   "first_seen": "2026-11-19T01:27:50+09:00",
+   "link": {
+    "resolved": true,
+    "type": "html",
+    "pages": 1,
+    "chars": 3153,
+    "sha256": "ac2f94e7fa712092da39aa6e055bf76c185e28a705e90c4f91ad0baa331fc976",
+    "checked": "2026-11-20T11:22:27+09:00",
+    "injection_flagged": false
+   },
+   "excerpt_long": "金融安定理事会による本会合議事要旨の公表について : 日本銀行 Bank of Japan\nこのページの本文へ移動\n日本語\nEnglish\nホーム\n日本銀行について\n日本銀行について\n日本銀行の概要\n日本銀行の概要\n沿革\n日本銀行百年史\n歴代総裁\n所在地（本店案内図）・入館案内\n本店・支店・国内事務所\n海外事務所\nアーカイブ\n日本銀行の組織\n日本銀行の組織\n日本銀行組織規程\n政策委員会\n総裁・副総裁・理事の担当\n本店・支店・事務所の組織\nコンプライアンス\n関係法令等\n会計・決算\n業務の運営\n業務の運営\n日本銀行の行動原則\n中期経営計画\n業務概況書\n財務省の政策評価結果（日本銀行に関する部分）\n法令に基づく情報提供資料（閲覧資料一覧）\n日本銀行が法令に基づき扱う手続のオンライン化状況\n災害対策・業務継続体制\nダイバーシティへの取組み\n講演・記者会見・談話\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文等の一覧\n日本銀行に関連する講演・挨拶等\n日本銀行に関連する談話\nその他公表資料\n見学・イベント等\n日本銀行の紹介\n各種窓口・手続き\n各種窓口・手続き\n損傷したお金の引換え窓口\n外為法に関する手続き\n各種取引に関する金融機関向け窓口\n国庫金・国債の窓口\n出資証券に関する手続き\n情報公開の窓口・手続き／公文書管理\n個人情報保護の窓口・手続き\n本店見学\n採用・人事交流等\n採用・人事交流等\n新規採用\nキャリア採用\nアルムナイネットワーク\n調達関連情報\n気候変動\nリンク集\n金融政策\n金融政策\n金融政策の概要\n金融政策の概要\n2％の「物価安定の目標」\n金融政策の多角的レビュー\n金融政策決定会合の運営\n金融政策決定会合の運営\n金融政策決定会合における主な意見\n金融政策決定会合議事要旨\n金融政策決定会合議事録\nその他\n金融政策に関する決定事項等\n金融政策手段\n金融政策手段\nオペレーション等の一覧\nオペレーション等に関する基本要領\nオペレーション等の対象先公募・選定\nオペレーション等の受託者公募・選定\n経済・物価情勢の展望\n国会に対"
+  },
+  "E-f8bd3802": {
+   "id": "E-f8bd3802",
+   "date": "2026-11-20",
+   "ticker": "1840",
+   "title": "Marketing digest 2026-11-20: 土屋ホーム events listed: 51 → 54  (+3); 土屋ホーム completion tours and roof-raisings listed: 6 → 3  (-3)",
+   "url": "digest:E-f8bd3802",
+   "source": "Marketing digest (code)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-20T11:20:32+09:00",
+   "excerpt": "Marketing digest 2026-11-20 (written by code from the agent's weekly marketing data; previous digest 2026-11-13).\n土屋ホーム events listed: 51 → 54  (+3)\n土屋ホーム completion tours and roof-raisings listed: 6 → 3  (-3)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "excerpt_long": "Marketing digest 2026-11-20 (written by code from the agent's weekly marketing data; previous digest 2026-11-13).\n土屋ホーム events listed: 51 → 54 (+3)\n土屋ホーム completion tours and roof-raisings listed: 6 → 3 (-3)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "link": {
+    "resolved": true,
+    "type": "txt",
+    "pages": 1,
+    "chars": 329,
+    "sha256": "fcf18c1a7ae4ee10c4e736d6c8248e136b15d8cd1369e2f424c4e02cfbdb5f34",
+    "checked": "2026-11-20T11:20:32+09:00",
+    "written_by": "code"
+   }
+  },
+  "E-2b2f33ac": {
+   "id": "E-2b2f33ac",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Heroes bring back 3 foreign players from 2026 season , acquire new Japanese pitcher (koreaherald.com)",
+   "url": "https://www.koreaherald.com/article/10943543",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-20T11:21:31+09:00"
+  },
+  "E-73967de8": {
+   "id": "E-73967de8",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices (cnbc.com)",
+   "url": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-20T11:21:31+09:00"
+  },
+  "E-998219c8": {
+   "id": "E-998219c8",
+   "date": "2026-11-19",
+   "ticker": "",
+   "title": "Takaichi meets with Putin after frosty welcome at Apec summit in China (independent.co.uk)",
+   "url": "https://www.independent.co.uk/asia/japan/takaichi-putin-meeting-apec-summit-china-b3087675.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-20T11:21:31+09:00"
   }
  },
- "last_check": "2026-11-14T23:10:59+09:00",
+ "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-20T01:34:21+09:00",
+   "checked": "2026-11-20T11:21:05+09:00",
    "error": null,
    "seen": 12,
    "added": 0,
    "added_at": "2026-11-19T01:27:50+09:00"
   },
   "mlit": {
-   "checked": "2026-11-20T01:34:25+09:00",
+   "checked": "2026-11-20T11:21:08+09:00",
    "error": null,
    "seen": 15,
    "added": 0,
    "added_at": "2026-11-18T01:54:51+09:00"
   },
   "jhf": {
-   "checked": "2026-11-20T01:34:26+09:00",
+   "checked": "2026-11-20T11:21:09+09:00",
    "error": "403: Forbidden",
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-20T01:34:27+09:00",
+   "checked": "2026-11-20T11:21:09+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-20T01:35:25+09:00",
+   "checked": "2026-11-20T11:21:31+09:00",
    "error": null,
-   "seen": 1,
-   "added": 0,
-   "added_at": "2026-11-18T11:55:22+09:00"
+   "seen": 3,
+   "added": 3,
+   "added_at": "2026-11-20T11:21:31+09:00"
   }
  }
 }
