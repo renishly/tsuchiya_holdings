@@ -65,3 +65,10 @@ Approve by writing `APPROVE <id>` (or `REJECT <id>`) on its own line in state/ap
 - reason: Research run: see reports/backtest_latest.html for the backtest, the M1 fit and the proposed weights.
 - requested: 2026-11-15T07:43:46+09:00 (run R-20261115-074312)
 
+## AR-20261122-01 — Use the new M1 coefficients and method weights in the daily valuation
+- kind: model_params
+- target: state/model_params.json
+- params: {"version": "2026-11-22-n284"}
+- reason: Research run: see reports/backtest_latest.html for the backtest, the M1 fit and the proposed weights.
+- requested: 2026-11-22T08:34:46+09:00 (run R-20261122-083410)
+
