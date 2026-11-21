@@ -91,3 +91,5 @@ R-20261120-111809,2026-11-20T11:23:27+09:00,scheduled,yes,"md debate: 12 new ite
 R-20261120-111809,2026-11-20T11:23:27+09:00,scheduled,yes,"md debate: 12 new item(s), 3 flagged, stopped cap is 0 (no guidance record yet, or the fiscal year has ended); Debate Signal ¥0 (live mode)",,11,18532,4533,nvidia/nemotron-3-ultra-550b-a55b:free,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261121-010737,2026-11-21T01:10:55+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
 R-20261121-010737,2026-11-21T01:10:55+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261121-111147,2026-11-21T11:14:14+09:00,scheduled,no,,,0,0,0,,baseline,"steady, run P9",no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete
+R-20261121-111147,2026-11-21T11:14:14+09:00,scheduled,no,,,0,0,0,,research,no,no,0,0,,,0,0,0,0,,,,ran: complete,ran: complete

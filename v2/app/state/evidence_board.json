@@ -1296,44 +1296,154 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-20T11:21:31+09:00"
+  },
+  "E-ed34cd10": {
+   "id": "E-ed34cd10",
+   "date": "2026-11-21",
+   "ticker": "",
+   "title": "CP Hot List : Here where to go if youre looking for something new (charlestoncitypaper.com)",
+   "url": "https://charlestoncitypaper.com/2026/11/20/cp-hot-list-additions-to-the-local-food-scene-that-are-worth-taking-note-of/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-bf5be39d": {
+   "id": "E-bf5be39d",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Michael Turtle | Grand Theft Auto VI fuels rise in game - inspired world travel | The Irrigator (irrigator.com.au)",
+   "url": "https://www.irrigator.com.au/story/9394393/michael-turtle-grand-theft-auto-vi-fuels-rise-in-game-inspired-world-travel/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-d4578d5c": {
+   "id": "E-d4578d5c",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Michael Turtle | Grand Theft Auto VI fuels rise in game - inspired world travel | The North West Star (northweststar.com.au)",
+   "url": "https://www.northweststar.com.au/story/9394393/michael-turtle-grand-theft-auto-vi-fuels-rise-in-game-inspired-world-travel/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-3cf62982": {
+   "id": "E-3cf62982",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "EUR / JPY Falls Below 175 as BoJ Hike Bets and Intervention Signals Lift Yen (econotimes.com)",
+   "url": "https://econotimes.com/EUR-JPY-Falls-Below-175-as-BoJ-Hike-Bets-and-Intervention-Signals-Lift-Yen-1780045",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-d1ec6f01": {
+   "id": "E-d1ec6f01",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Japan core consumer prices in October rise 2 . 2 pct year on year - Xinhua (english.news.cn)",
+   "url": "https://english.news.cn/20261120/8339f7ba31c24aa9877c3b782e6ed807/c.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-98c9ef1f": {
+   "id": "E-98c9ef1f",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Japan core inflation accelerates in October , cementing rate hike expectations (aol.com)",
+   "url": "https://www.aol.com/articles/japans-core-inflation-accelerates-october-234336000.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-0c985531": {
+   "id": "E-0c985531",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Dollar near 19 - month peak as AI jitters sap risk appetite (aol.com)",
+   "url": "https://www.aol.com/articles/dollar-near-19-month-peak-014722000.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-9da992aa": {
+   "id": "E-9da992aa",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Japan core October inflation accelerates to 2 . 2 % (freemalaysiatoday.com)",
+   "url": "https://www.freemalaysiatoday.com/category/business/2026/11/20/japan-s-core-october-inflation-accelerates-to-2-2",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-fc5c2fa7": {
+   "id": "E-fc5c2fa7",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "Dollar near 19 - month peak as AI jitters sap risk appetite (freemalaysiatoday.com)",
+   "url": "https://www.freemalaysiatoday.com/category/business/2026/11/20/dollar-near-19-month-peak-as-ai-jitters-sap-risk-appetite",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-3de18a7f": {
+   "id": "E-3de18a7f",
+   "date": "2026-11-20",
+   "ticker": "",
+   "title": "BOJ Open - Ended Rate Path Risks Giving Yen Bears Room to Sell (econotimes.com)",
+   "url": "https://econotimes.com/BOJ-s-Open-Ended-Rate-Path-Risks-Giving-Yen-Bears-Room-to-Sell-1779998",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-21T11:14:05+09:00"
   }
  },
  "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-21T01:09:42+09:00",
+   "checked": "2026-11-21T11:13:48+09:00",
    "error": null,
    "seen": 12,
    "added": 0,
    "added_at": "2026-11-19T01:27:50+09:00"
   },
   "mlit": {
-   "checked": "2026-11-21T01:09:47+09:00",
+   "checked": "2026-11-21T11:13:51+09:00",
    "error": null,
    "seen": 15,
    "added": 0,
    "added_at": "2026-11-18T01:54:51+09:00"
   },
   "jhf": {
-   "checked": "2026-11-21T01:09:48+09:00",
+   "checked": "2026-11-21T11:13:52+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-21T01:09:49+09:00",
+   "checked": "2026-11-21T11:13:52+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-21T01:10:45+09:00",
-   "error": "429: server busy or error",
-   "seen": 3,
-   "added": 3,
-   "added_at": "2026-11-20T11:21:31+09:00"
+   "checked": "2026-11-21T11:14:05+09:00",
+   "error": null,
+   "seen": 13,
+   "added": 10,
+   "added_at": "2026-11-21T11:14:05+09:00"
   }
  }
 }
