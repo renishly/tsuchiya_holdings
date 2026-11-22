@@ -1406,44 +1406,55 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-21T11:14:05+09:00"
+  },
+  "E-744cd465": {
+   "id": "E-744cd465",
+   "date": "2026-11-21",
+   "ticker": "",
+   "title": "Rapidus reportedly struggles to produce working SRAM on its 2nm node , putting 2027 mass production at risk company faces significant challenges using EUV to develop GAA transistors (tomshardware.com)",
+   "url": "https://www.tomshardware.com/tech-industry/semiconductors/rapidus-reportedly-struggles-to-produce-working-sram-on-its-2nm-node-putting-2027-mass-production-at-risk-company-faces-significant-challenges-using-euv-to-develop-gaa-transistors",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-22T10:18:05+09:00"
   }
  },
  "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-22T00:22:36+09:00",
+   "checked": "2026-11-22T10:17:47+09:00",
    "error": null,
    "seen": 12,
    "added": 0,
    "added_at": "2026-11-19T01:27:50+09:00"
   },
   "mlit": {
-   "checked": "2026-11-22T00:22:40+09:00",
+   "checked": "2026-11-22T10:17:51+09:00",
    "error": null,
    "seen": 15,
    "added": 0,
    "added_at": "2026-11-18T01:54:51+09:00"
   },
   "jhf": {
-   "checked": "2026-11-22T00:22:41+09:00",
+   "checked": "2026-11-22T10:17:51+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-22T00:22:43+09:00",
+   "checked": "2026-11-22T10:17:51+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-22T00:22:56+09:00",
+   "checked": "2026-11-22T10:18:05+09:00",
    "error": null,
-   "seen": 13,
-   "added": 0,
-   "added_at": "2026-11-21T11:14:05+09:00"
+   "seen": 12,
+   "added": 1,
+   "added_at": "2026-11-22T10:18:05+09:00"
   }
  }
 }
