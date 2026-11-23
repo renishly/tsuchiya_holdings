@@ -1417,44 +1417,121 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-22T10:18:05+09:00"
+  },
+  "E-c3ed7853": {
+   "id": "E-c3ed7853",
+   "date": "2026-11-23",
+   "ticker": "",
+   "title": "Heavy Snow Sweeps Across Japan as Winter Arrives Early (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151483.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-d6ca94a4": {
+   "id": "E-d6ca94a4",
+   "date": "2026-11-23",
+   "ticker": "",
+   "title": "Heavy Snow Disrupts Travel Across Japan as Trains Suspended (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151489.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-e8ed6b75": {
+   "id": "E-e8ed6b75",
+   "date": "2026-11-23",
+   "ticker": "",
+   "title": "Death Row Inmate Linked to Japan 1970s Corporate Bombings Dies at 78 (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151484.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-7c2b7147": {
+   "id": "E-7c2b7147",
+   "date": "2026-11-23",
+   "ticker": "",
+   "title": "Japan Ski Resorts Open Ahead of Schedule (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151490.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-995b76be": {
+   "id": "E-995b76be",
+   "date": "2026-11-22",
+   "ticker": "",
+   "title": "Michael Turtle | Grand Theft Auto VI fuels rise in game - inspired world travel | South Coast Register (southcoastregister.com.au)",
+   "url": "https://www.southcoastregister.com.au/story/9394393/michael-turtle-grand-theft-auto-vi-fuels-rise-in-game-inspired-world-travel/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-1dac54f1": {
+   "id": "E-1dac54f1",
+   "date": "2026-11-22",
+   "ticker": "",
+   "title": "Breakfast briefing : Waiting for the herd (interest.co.nz)",
+   "url": "https://www.interest.co.nz/economy/141180/eyes-wall-street-japan-inflation-china-foreign-direct-investment-inflows-slow-taiwan",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
+  },
+  "E-34ef4444": {
+   "id": "E-34ef4444",
+   "date": "2026-11-22",
+   "ticker": "",
+   "title": "Japanese Journalist Detained in Russia : A Love for Sakhalin That Became a Spying Allegation (theasian.asia)",
+   "url": "https://theasian.asia/archives/205632",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-24T04:16:28+09:00"
   }
  },
  "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-23T10:42:35+09:00",
+   "checked": "2026-11-24T04:15:26+09:00",
    "error": null,
    "seen": 12,
    "added": 0,
    "added_at": "2026-11-19T01:27:50+09:00"
   },
   "mlit": {
-   "checked": "2026-11-23T10:42:38+09:00",
+   "checked": "2026-11-24T04:15:30+09:00",
    "error": null,
    "seen": 15,
    "added": 0,
    "added_at": "2026-11-18T01:54:51+09:00"
   },
   "jhf": {
-   "checked": "2026-11-23T10:42:39+09:00",
+   "checked": "2026-11-24T04:15:31+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-23T10:42:39+09:00",
+   "checked": "2026-11-24T04:15:32+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-17T02:01:12+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-23T10:43:31+09:00",
-   "error": "429: server busy or error",
-   "seen": 12,
-   "added": 1,
-   "added_at": "2026-11-22T10:18:05+09:00"
+   "checked": "2026-11-24T04:16:28+09:00",
+   "error": null,
+   "seen": 7,
+   "added": 7,
+   "added_at": "2026-11-24T04:16:28+09:00"
   }
  }
 }
