@@ -1,7 +1,7 @@
 {
  "closeout": {
-  "p4_hash": "9af49bac093869be67fbd27bc8cfe995cc843b3a5ce61f85381e4a45b3c789ef",
-  "p5_hash": "9af49bac093869be67fbd27bc8cfe995cc843b3a5ce61f85381e4a45b3c789ef",
+  "p4_hash": "84d7ba96c707c750aeb661af173b501f4480bf83d2eefd2bd89761b43b29e7bc",
+  "p5_hash": "84d7ba96c707c750aeb661af173b501f4480bf83d2eefd2bd89761b43b29e7bc",
   "p5_date": "2026-11-24"
  },
  "delegation_history": [
@@ -83,38 +83,75 @@
      ]
     }
    }
+  },
+  {
+   "run_id": "R-20261124-141831",
+   "date": "2026-11-24",
+   "mode": "scheduled",
+   "subagents": {
+    "baseline": {
+     "delegations": 2,
+     "step_limit_stops": 2,
+     "loop_stops": 0,
+     "steps": 16,
+     "tool_calls": 16,
+     "repeated_work": [
+      "run P9",
+      "run P6"
+     ],
+     "attempts": [
+      {
+       "steps": 8,
+       "stopped": "step limit",
+       "work_done": [
+        "run P6",
+        "run P9"
+       ],
+       "final_report": false
+      },
+      {
+       "steps": 8,
+       "stopped": "step limit",
+       "work_done": [
+        "run P6"
+       ],
+       "final_report": false
+      }
+     ]
+    }
+   }
   }
  ],
  "review_snapshot": {
-  "date": "2026-11-20T11:23+09:00",
-  "run_id": "R-20261120-111809",
+  "date": "2026-11-24T14:23+09:00",
+  "run_id": "R-20261124-141831",
   "values": {
-   "average_valuated_price": 177.935,
-   "target_pe": 10.3012,
-   "target_ev_ebitda": 11.0641,
-   "stock_price_jpy": 206.0
+   "average_valuated_price": 180.752,
+   "target_pe": 11.4804,
+   "target_ev_ebitda": 10.9488,
+   "stock_price_jpy": 205.0
   },
   "peers": {
    "1419": {
     "name": "タマホーム",
-    "price": 2346.0,
+    "price": 2290.0,
     "eps_forecast": 137.99,
-    "pe_forward": 17.0012,
-    "ev_ebitda": 9.973
+    "pe_forward": 16.5954,
+    "ev_ebitda": 9.71159
    },
    "1873": {
     "name": "日本ハウスホールディングス",
-    "price": 325.0,
+    "price": 323.0,
     "eps_forecast": 90.25,
-    "pe_forward": 3.60111,
-    "ev_ebitda": 4.52745
+    "pe_forward": 3.57895,
+    "ev_ebitda": 4.50691
    },
    "8999": {
     "name": "グランディハウス",
-    "price": 542.0,
-    "eps_forecast": 37.88,
-    "pe_forward": 14.4931,
-    "ev_ebitda": 18.692
+    "price": 537.0,
+    "eps_forecast": 37.64,
+    "pe_forward": 14.2667,
+    "ev_ebitda": 18.628
    }
   }
  },

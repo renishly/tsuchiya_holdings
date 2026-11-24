@@ -2091,3 +2091,53 @@ Model calls: 0; tokens in/out: 0/0; models: (none)
 
 ### Next planned
 steady
+
+## R-20261124-141831 — scheduled
+
+- Start / end (JST): 2026-11-24T14:18:31+09:00 / 2026-11-24T14:23:57+09:00
+- Iterations: 25; web requests by domain: {"www.tsuchiya.co.jp": 5, "irbank.net": 4, "www.tamahome.jp": 2, "www.nihonhouse-hd.co.jp": 3, "www.grandy.co.jp": 2, "api.edinet-fsa.go.jp": 2, "www.tsuchiyahome.jp": 2, "www.boj.or.jp": 1, "www.mlit.go.jp": 2, "www.simulation.jhf.go.jp": 1, "api.gdeltproject.org": 1}
+
+### Plan
+Routine work by code; the model reviews only when an event needs judgement.
+Next phase: steady; remaining: []; daily due: ['filings'].
+Review events: Target P/E 10.3012 -> 11.4804 (+11.4%) since the review of 2026-11-20T11:23+09:00
+Subagent baseline: code: steady -> {"peer_inputs": {}, "metrics": {"csv": "Baseline Metrics", "saved": true, "added": 6, "changed": 9, "conflicts": 0, "total": 2223}, "filings": {"new": []}, "marketing": {"filings": {"values": 83, "gaps": ["土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31", "土屋ホールディングス FY ending 2017-10-31: or
+Subagent baseline: code: run P9 -> {"phase": "P9", "status": "complete"}
+Subagent baseline: Target P/E moved from 10.3012 to 11.4804 (+11.4%) since last review, but all three peer forward P/Es decreased slightly  -> step limit; (stopped: reached step limit)
+Subagent baseline: Please run only P6 (baseline valuation) and report: 1) the three peer forward P/Es used, 2) the weight assigned to each  -> step limit; (stopped: reached step limit)
+Review: **Review**
+
+- **Target P/E +11.4% (10.3012 → 11.4804)** since 2026-11-20 review, while all three peer forward P/Es fell: タマホーム 17.0012→16.5954 (−2.4%), 日本ハウスHD 3.60111→3.57895 (−0.6%), グランディハウス 14.4931→14.2667 (−1.6%). Direction is counter-intuitive; peer moves would normally pull target P/E down.
+- **Average Valuated Price +1.6% (177.935 → 180.752)**; stock price −0.5% (206→205); Target EV/EBITDA −1.0% (11.0641→10.9488).
+- **Unresolved**: two delegated P6 re-runs hit step limits and could not report the peer weights, methodology or any weight-change that produced the higher target P/E. The cause remains unidentified.
+- **Student should check**: whether P6 weight logic changed (e.g., market-cap vs equal weight), whether a data refresh altered the peer multiples used inside P6, and whether the +11.4% move is a calculation artefact. No new EDINET filings; marketing/alternative data unchang
+Delegations: baseline x2 (16 steps, 16 tool calls; early stops: 2 step limit, 0 loop; repeated work: run P9, run P6)
+Model calls: 20; tokens in/out: 101396/5687; models: nvidia/nemotron-3-ultra-550b-a55b:free
+
+### Phases worked
+- P9: complete
+- P6: complete
+- P4: complete
+- P5: complete
+
+### Rows added / changed
+- Securities Reports: 728 rows total; 0 written this run
+- Integrated Reports: 5 rows total; 0 written this run
+- Baseline Metrics: 2223 rows total; 15 written this run
+- Alternative Data: 5317 rows total; 129 written this run
+
+### Validation
+{"bs_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "gross_profit_identity": {"passed": 9, "failed": 0, "not_checked": 6}, "segment_sum": {"passed": 9, "failed": 0, "not_checked": 6}, "cash_rollforward": {"passed": 4, "failed": 0, "not_checked": 11}, "eps_plausibility": {"passed": 9, "failed": 0, "not_checked": 6}, "unit_scale": {"passed": 63, "failed": 0, "not_checked": 0}, "cross_document": {"passed": 129, "failed": 0, "not_checked": 0}, "cross_source": {"passed": 3, "failed": 0, "not_checked": 0}, "reextract": {"sampled": 0, "matched": 0, "mismatched": 0}}
+
+### Pending approvals
+- AR-20261122-01: model_params — Use the new M1 coefficients and method weights in the daily valuation
+
+### Refusals and injection attempts
+- none
+
+### Notes
+- Price from a third-party source (market data (Yahoo Finance via yfinance, third-party; Addenda A16, A28))
+- Price from a third-party source (market data (Yahoo Finance via yfinance, third-party; Addenda A16, A28))
+
+### Next planned
+steady
