@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-25T03:56:21+09:00",
+      "last_success": "2026-11-25T13:13:28+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-25T03:56:31+09:00",
+      "last_success": "2026-11-25T13:13:46+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-25T03:53:49+09:00",
+      "last_success": "2026-11-25T13:11:58+09:00",
       "fail_streak": 0
     }
   },
@@ -101,10 +101,10 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-11-24",
+    "filings": "2026-11-25",
     "price_store": "2026-11-25",
     "rf_store": "2026-10-22",
-    "marketing": "2026-11-24"
+    "marketing": "2026-11-25"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-11-24",
+      "date": "2026-11-25",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -4066,7 +4066,7 @@
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-11-24T14:20:03+09:00",
+          "checked": "2026-11-25T13:11:53+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4076,14 +4076,14 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-11-24T14:20:05+09:00",
+          "checked": "2026-11-25T13:11:54+09:00",
           "ok": true,
           "detail": "42 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-11-24T14:20:08+09:00",
+          "checked": "2026-11-25T13:11:57+09:00",
           "ok": true,
-          "detail": "57 events (3 completion/roof-raising)"
+          "detail": "58 events (3 completion/roof-raising)"
         },
         "tama_shops": {
           "checked": "2026-11-20T11:19:54+09:00",
@@ -4283,6 +4283,16 @@
           }
         },
         "tsu_events": {
+          "/event/13281": {
+            "type": "イベント",
+            "title": "【矢巾町】矢巾モデル 暖かさの理由体験会",
+            "pref": "岩手県"
+          },
+          "/event/13343": {
+            "type": "見学会",
+            "title": "【盛岡市厨川】見学会・相談会｜無料宿泊体験",
+            "pref": "岩手県"
+          },
           "/event/13621": {
             "type": "イベント",
             "title": "【青森県青森市】本当の高性能体感会 -冬-",
@@ -4322,6 +4332,11 @@
             "type": "イベント",
             "title": "【長野県松本市】オーナー様感謝祭「TOTO松本ショールーム」にて開催！",
             "pref": "長野県"
+          },
+          "/event/13531": {
+            "type": "相談会・セミナー",
+            "title": "【函館市桔梗町】函館モデルハウス「未来基準の住まい体験会 ―断熱材の厚み・新仕様を模型で体感―」",
+            "pref": "北海道"
           },
           "/event/13524": {
             "type": "イベント",
@@ -4508,16 +4523,6 @@
             "title": "【東京・オーナー様向け】補助金を活用した太陽光・蓄電池相談会",
             "pref": "東京都"
           },
-          "/event/13343": {
-            "type": "見学会",
-            "title": "【盛岡市厨川】見学会・相談会｜無料宿泊体験",
-            "pref": "岩手県"
-          },
-          "/event/13281": {
-            "type": "イベント",
-            "title": "【矢巾町】矢巾モデル 暖かさの理由体験会",
-            "pref": "岩手県"
-          },
           "/event/13266": {
             "type": "見学会",
             "title": "北上市しらゆりⅡ 分譲住宅「選べる 住宅あったか体験会」開催！",
@@ -4619,8 +4624,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 205.0,
-      "quote_time": "2026-11-20T15:30:00+09:00"
+      "price": 202.0,
+      "quote_time": "2026-11-24T15:30:00+09:00"
     }
   },
   "history": [
@@ -5289,6 +5294,12 @@
       "ended": "2026-11-25T03:56:32+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261125-131021",
+      "ended": "2026-11-25T13:13:46+09:00",
+      "iterations": 23,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5429,7 +5440,7 @@
       }
     },
     "skill_tree": "767746ea7e8bbe31",
-    "skill_tree_view": "8e47453b636fac72",
+    "skill_tree_view": "aaff3caffa4c6e1d",
     "forecast": {
       "week": "2026-W48",
       "value": 177.424,
@@ -5448,26 +5459,26 @@
       "Run": {},
       "Filings and IR": {},
       "Market price": {
-        "last_new_data": "2026-11-21T11:14:55+09:00",
-        "fp": "26ad7349cf6e"
+        "last_new_data": "2026-11-25T13:14:27+09:00",
+        "fp": "c02b0ac79bd6"
       },
       "Peers": {
-        "last_new_data": "2026-11-25T03:57:13+09:00"
+        "last_new_data": "2026-11-25T13:14:27+09:00"
       },
       "Valuation": {
-        "last_new_data": "2026-11-25T03:57:13+09:00"
+        "last_new_data": "2026-11-25T13:14:27+09:00"
       },
       "Research (M1, backtest)": {
         "last_new_data": "2026-11-22T08:36:18+09:00",
         "fp": "15d1b3469f89"
       },
       "Debate evidence": {
-        "last_new_data": "2026-11-25T03:57:13+09:00",
-        "fp": "0d839cd31774"
+        "last_new_data": "2026-11-25T13:14:27+09:00",
+        "fp": "11634cc1be16"
       },
       "Marketing data": {
-        "last_new_data": "2026-11-24T14:24:38+09:00",
-        "fp": "d8727d5b576d"
+        "last_new_data": "2026-11-25T13:14:27+09:00",
+        "fp": "f2c4e24bed28"
       },
       "Dashboard": {}
     },
@@ -5482,7 +5493,7 @@
       "since": "2026-10-22T21:58:31+09:00",
       "last_ok": "2026-10-22T09:00:54+09:00",
       "noted": "2026-11-13T12:26:29+09:00",
-      "last_seen": "2026-11-25T03:54:21+09:00",
+      "last_seen": "2026-11-25T13:12:30+09:00",
       "code": 503,
       "evidence": "maintenance page, Retry-After 3600",
       "url": "https://www.grandy.co.jp/ir/library"
