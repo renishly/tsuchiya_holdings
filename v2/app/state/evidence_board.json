@@ -1524,44 +1524,205 @@
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-25T13:12:31+09:00"
+  },
+  "E-720496db": {
+   "id": "E-720496db",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "11 月の主要建設資材の需給動向は全ての調査対象資材において均衡 ～主要建設資材需給・価格動向調査（令 和 8 年 11 月 1～5 日現在）の結果～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00388.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-26T02:59:28+09:00"
+  },
+  "E-24ce7641": {
+   "id": "E-24ce7641",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "「不動産情報ライブラリ」コンテンツ追加・機能改修・データ更新を実施！ ～雨水出水（内水）浸水想定区域データの追加等を実施しました～",
+   "url": "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00092.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-26T02:59:28+09:00"
+  },
+  "E-96e94e36": {
+   "id": "E-96e94e36",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "「次世代住宅プロジェクト2026（第２回）」の決定 ～IoT 等の先導的技術を住宅に活用するモデル的な取組を行う事業を採択～",
+   "url": "https://www.mlit.go.jp/report/press/house04_hh_001377.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-26T02:59:28+09:00"
+  },
+  "E-babf6113": {
+   "id": "E-babf6113",
+   "date": "2026-11-25",
+   "ticker": "3291",
+   "title": "飯田グループホールディングス株式会社: 臨時報告書",
+   "url": "https://disclosure2.edinet-fsa.go.jp/WZEK0040.aspx?S100ZJSJ",
+   "source": "EDINET (universe companies)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-26T02:59:29+09:00"
+  },
+  "E-5eb272f5": {
+   "id": "E-5eb272f5",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "Japan services inflation jumps 4 . 2 % - Shafaqna English | International Shia News & Fatwas (en.shafaqna.com)",
+   "url": "https://en.shafaqna.com/494730/japan-services-inflation-jumps-4-2/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-f0129622": {
+   "id": "E-f0129622",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "Japan Services Producer Prices Jump 4 . 2 %, but Freight Costs Drive Much of the Surge (actionforex.com)",
+   "url": "https://www.actionforex.com/live-comments/661994-japan-services-producer-prices-jump-4-2-but-freight-costs-drive-much-of-the-surge/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-414eacda": {
+   "id": "E-414eacda",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "Bank of Japan likely to lift rate to 2 % by mid - 2027 , ex - board member says (businesstimes.com.sg)",
+   "url": "https://www.businesstimes.com.sg/companies-markets/banking-finance/bank-japan-likely-lift-rate-2-mid-2027-ex-board-member-says",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-2ab9e9d5": {
+   "id": "E-2ab9e9d5",
+   "date": "2026-11-25",
+   "ticker": "",
+   "title": "Japan key services inflation gauge hits 36 - year high (thestar.com.my)",
+   "url": "https://www.thestar.com.my/business/business-news/2026/11/25/japan039s-key-services-inflation-gauge-hits-36-year-high",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-de445410": {
+   "id": "E-de445410",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Yankees an unlikely match for NPB starting pitcher Hiromi Itoh (pinstripealley.com)",
+   "url": "https://www.pinstripealley.com/yankees-roster/215329/yankees-free-agent-target-hiromi-itoh-rumors-npb-starting-pitcher-rotation-kaima-taira",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-ed2d3f4b": {
+   "id": "E-ed2d3f4b",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Tibetan representative raises concerns over China cultural assimilation policy during Japan visit (shanghaisun.com)",
+   "url": "http://www.shanghaisun.com/news/279451957/tibetan-representative-raises-concerns-over-china-cultural-assimilation-policy-during-japan-visit",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-e3e9c639": {
+   "id": "E-e3e9c639",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Japan Vacant Homes on the Rise | News On Japan (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151513.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-4acf858f": {
+   "id": "E-4acf858f",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Japan Braces for More Snow Before Nationwide Weekend Rain (newsonjapan.com)",
+   "url": "https://newsonjapan.com/article/151507.php",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-7abce1b6": {
+   "id": "E-7abce1b6",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Nature May Cushion Impact of Catching Juvenile Fish in Tropical Fisheries (miragenews.com)",
+   "url": "https://www.miragenews.com/nature-may-cushion-impact-of-catching-juvenile-1782495/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-3da6189d": {
+   "id": "E-3da6189d",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "Fifteen sled dogs left to die alone : How two brothers defied the impossible Antarctic winter (english.pravda.ru)",
+   "url": "https://english.pravda.ru/news/animal/174084-antarctic-dog-survival-mystery/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-e0466e4a": {
+   "id": "E-e0466e4a",
+   "date": "2026-11-24",
+   "ticker": "",
+   "title": "82 - year - old man arrested for assault after hitting wife head with vacuum cleaner (japantoday.com)",
+   "url": "https://japantoday.com/category/crime/82-year-old-man-arrested-for-assault-after-hitting-wife%E2%80%99s-head-with-vacuum-cleaner",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-26T02:59:43+09:00"
   }
  },
  "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-25T13:12:31+09:00",
+   "checked": "2026-11-26T02:59:23+09:00",
    "error": null,
    "seen": 12,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-25T13:12:31+09:00"
   },
   "mlit": {
-   "checked": "2026-11-25T13:12:35+09:00",
+   "checked": "2026-11-26T02:59:28+09:00",
    "error": null,
-   "seen": 15,
-   "added": 0,
-   "added_at": "2026-11-18T01:54:51+09:00"
+   "seen": 18,
+   "added": 3,
+   "added_at": "2026-11-26T02:59:28+09:00"
   },
   "jhf": {
-   "checked": "2026-11-25T13:12:35+09:00",
+   "checked": "2026-11-26T02:59:28+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-25T13:12:35+09:00",
+   "checked": "2026-11-26T02:59:29+09:00",
    "error": null,
-   "seen": 3,
-   "added": 0,
-   "added_at": "2026-11-25T03:54:27+09:00"
+   "seen": 1,
+   "added": 1,
+   "added_at": "2026-11-26T02:59:29+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-25T13:13:28+09:00",
-   "error": "429: server busy or error",
-   "seen": 7,
-   "added": 7,
-   "added_at": "2026-11-24T04:16:28+09:00"
+   "checked": "2026-11-26T02:59:43+09:00",
+   "error": null,
+   "seen": 11,
+   "added": 11,
+   "added_at": "2026-11-26T02:59:43+09:00"
   }
  }
 }
