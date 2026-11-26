@@ -1685,41 +1685,51 @@
    "topic": "politics and macro",
    "context_only": true,
    "first_seen": "2026-11-26T02:59:43+09:00"
+  },
+  "E-0857add6": {
+   "id": "E-0857add6",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "【挨拶】田村審議委員「わが国の経済・物価情勢と金融政策」（山梨）",
+   "url": "https://www.boj.or.jp/about/press/koen_2026/ko261126a.htm",
+   "source": "Bank of Japan (news feed)",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-26T12:34:40+09:00"
   }
  },
  "last_check": "2026-11-20T11:22:33+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-26T02:59:23+09:00",
+   "checked": "2026-11-26T12:34:40+09:00",
    "error": null,
-   "seen": 12,
-   "added": 0,
-   "added_at": "2026-11-25T13:12:31+09:00"
+   "seen": 13,
+   "added": 1,
+   "added_at": "2026-11-26T12:34:40+09:00"
   },
   "mlit": {
-   "checked": "2026-11-26T02:59:28+09:00",
+   "checked": "2026-11-26T12:34:43+09:00",
    "error": null,
    "seen": 18,
-   "added": 3,
+   "added": 0,
    "added_at": "2026-11-26T02:59:28+09:00"
   },
   "jhf": {
-   "checked": "2026-11-26T02:59:28+09:00",
+   "checked": "2026-11-26T12:34:44+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-26T02:59:29+09:00",
+   "checked": "2026-11-26T12:34:44+09:00",
    "error": null,
    "seen": 1,
-   "added": 1,
+   "added": 0,
    "added_at": "2026-11-26T02:59:29+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-26T02:59:43+09:00",
-   "error": null,
+   "checked": "2026-11-26T12:35:37+09:00",
+   "error": "429: server busy or error",
    "seen": 11,
    "added": 11,
    "added_at": "2026-11-26T02:59:43+09:00"
