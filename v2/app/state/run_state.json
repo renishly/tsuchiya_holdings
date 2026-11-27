@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-27T02:47:47+09:00",
+      "last_success": "2026-11-27T12:42:01+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-27T02:48:02+09:00",
+      "last_success": "2026-11-27T12:42:12+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-27T02:43:44+09:00",
+      "last_success": "2026-11-27T12:39:31+09:00",
       "fail_streak": 0
     }
   },
@@ -101,10 +101,10 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-11-26",
+    "filings": "2026-11-27",
     "price_store": "2026-11-27",
     "rf_store": "2026-10-22",
-    "marketing": "2026-11-26"
+    "marketing": "2026-11-27"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-11-26",
+      "date": "2026-11-27",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -4053,20 +4053,19 @@
     },
     "debate_signal": {
       "value": 0.0,
-      "date": "2026-11-20",
+      "date": "2026-11-27",
       "mode": "live",
-      "expires": "2026-12-20",
+      "expires": "2026-12-27",
       "items": [
-        "E-d75adaee",
-        "E-f50fbbc5",
-        "E-ae1d8092"
+        "E-0857add6",
+        "E-03137115"
       ],
       "note": ""
     },
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-11-26T12:34:03+09:00",
+          "checked": "2026-11-27T12:39:00+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4076,39 +4075,39 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-11-26T12:34:05+09:00",
+          "checked": "2026-11-27T12:39:02+09:00",
           "ok": true,
           "detail": "42 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-11-26T12:34:08+09:00",
+          "checked": "2026-11-27T12:39:04+09:00",
           "ok": true,
-          "detail": "60 events (4 completion/roof-raising)"
+          "detail": "59 events (4 completion/roof-raising)"
         },
         "tama_shops": {
-          "checked": "2026-11-20T11:19:54+09:00",
+          "checked": "2026-11-27T12:39:23+09:00",
           "ok": true,
           "detail": "30 shops in 7 prefectures"
         },
         "tama_events": {
-          "checked": "2026-11-20T11:19:57+09:00",
+          "checked": "2026-11-27T12:39:26+09:00",
           "ok": true,
-          "detail": "1 promotional notices in 30 days"
+          "detail": "2 promotional notices in 30 days"
         },
         "nh_modelhouses": {
-          "checked": "2026-11-20T11:19:58+09:00",
+          "checked": "2026-11-27T12:39:27+09:00",
           "ok": true,
           "detail": "3 opening notice(s); model houses per prefecture are on separate pages, not counted"
         },
         "nh_events": {
-          "checked": "2026-11-20T11:20:01+09:00",
+          "checked": "2026-11-27T12:39:30+09:00",
           "ok": true,
-          "detail": "307 events"
+          "detail": "236 events"
         },
         "grandy": {
-          "checked": "2026-11-20T11:20:32+09:00",
-          "ok": false,
-          "detail": "503: server busy or error"
+          "checked": "2026-11-27T12:39:31+09:00",
+          "ok": true,
+          "detail": "reachable (no parser yet)"
         }
       },
       "snapshots": {
@@ -4283,6 +4282,31 @@
           }
         },
         "tsu_events": {
+          "/event/13439": {
+            "type": "イベント",
+            "title": "東京・銀座から始める 先輩移住者の本音と暮らしの体験談・個別相談会",
+            "pref": "東京都"
+          },
+          "/event/13367": {
+            "type": "イベント",
+            "title": "東京・銀座から始める土地・住まい・移住者向けローン 個別相談会",
+            "pref": "東京都"
+          },
+          "/event/13240": {
+            "type": "イベント",
+            "title": "東京・銀座から始める「北海道移住・二拠点生活」個別相談会",
+            "pref": "東京都"
+          },
+          "/event/13495": {
+            "type": "見学会",
+            "title": "【北見市】桂町平屋MODEL にてグランドオープンイベントを開催！",
+            "pref": "北海道"
+          },
+          "/event/13628": {
+            "type": "イベント",
+            "title": "【苫小牧市】土屋グループクリスマス感謝祭",
+            "pref": "北海道"
+          },
           "/event/13262": {
             "type": "イベント",
             "title": "【北上モデルハウス】TSUCHIYA Cafe Vol.48",
@@ -4318,10 +4342,10 @@
             "title": "【岩見沢市】住まいの未来発見フェア",
             "pref": "北海道"
           },
-          "/event/13510": {
-            "type": "イベント",
-            "title": "【長野市】敷地を活かす自由設計会",
-            "pref": "長野県"
+          "/event/13451": {
+            "type": "相談会・セミナー",
+            "title": "【室蘭市】共働き家族の間取り相談会",
+            "pref": "北海道"
           },
           "/event/13602": {
             "type": "イベント",
@@ -4336,11 +4360,6 @@
           "/event/13504": {
             "type": "見学会",
             "title": "注文住宅じゃなくても、理想は叶う。新築分譲住宅 見学会",
-            "pref": "群馬県"
-          },
-          "/event/13496": {
-            "type": "見学会",
-            "title": "【高崎市】住まいの価値体験会",
             "pref": "群馬県"
           },
           "/event/13634": {
@@ -4363,11 +4382,6 @@
             "title": "【宇都宮市】無料 宿泊体験棟（分譲住宅）のご案内",
             "pref": "栃木県"
           },
-          "/event/13380": {
-            "type": "見学会",
-            "title": "【苫小牧市のぞみ町】オーナー様邸見学会開催",
-            "pref": "北海道"
-          },
           "/event/13127": {
             "type": "イベント",
             "title": "【1日5組限定】「軽井沢に、自分たちだけの一邸を。」軽井沢 別荘・セカンドハウス 建築個別相談会",
@@ -4388,11 +4402,6 @@
             "title": "【札幌市】AND LABO. Work Shop 歯固め・ストラップ作り",
             "pref": "北海道"
           },
-          "/event/13369": {
-            "type": "イベント",
-            "title": "【釧路市】LiznasFit鳥取オープンハウスイベント",
-            "pref": "北海道"
-          },
           "/event/13134": {
             "type": "見学会",
             "title": "【秋田市桜】平屋 お客様邸完成見学会を開催！",
@@ -4402,11 +4411,6 @@
             "type": "見学会",
             "title": "【帯広市】2棟同時オープンハウス 開催！",
             "pref": "北海道"
-          },
-          "/event/13141": {
-            "type": "見学会",
-            "title": "【宇都宮市駒生町】駒生町モデル GRAND OPEN！",
-            "pref": "栃木県"
           },
           "/event/13149": {
             "type": "見学会",
@@ -4448,20 +4452,10 @@
             "title": "【北海道エリア】来場キャンペーン「NORD PRIME」ツアー",
             "pref": "北海道"
           },
-          "/event/12734": {
-            "type": "イベント",
-            "title": "【苫小牧市】苫小牧モデルハウス来場キャンペーン",
-            "pref": "北海道"
-          },
           "/event/12393": {
             "type": "宿泊体験",
             "title": "【北上市しらゆり】無料 宿泊体験棟（分譲住宅）のご案内",
             "pref": "岩手県"
-          },
-          "/event/12470": {
-            "type": "見学会",
-            "title": "【帯広市】2棟同時オープンハウス 開催！",
-            "pref": "北海道"
           },
           "/event/12093": {
             "type": "宿泊体験",
@@ -4585,15 +4579,15 @@
           }
         }
       },
-      "last_peers": "2026-11-20",
+      "last_peers": "2026-11-27",
       "digest_last": {
         "mh": 42,
-        "ev": 54,
-        "comp": 3,
+        "ev": 59,
+        "comp": 4,
         "tama_hk": 6,
         "tama_th": 24,
         "nh_new": 3,
-        "date": "2026-11-20"
+        "date": "2026-11-27"
       }
     },
     "trends": {
@@ -4634,8 +4628,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 207.0,
-      "quote_time": "2026-11-25T15:30:00+09:00"
+      "price": 209.0,
+      "quote_time": "2026-11-26T15:30:00+09:00"
     }
   },
   "history": [
@@ -5328,6 +5322,12 @@
       "ended": "2026-11-27T02:48:02+09:00",
       "iterations": 23,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261127-123805",
+      "ended": "2026-11-27T12:42:12+09:00",
+      "iterations": 36,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5336,7 +5336,7 @@
     "factor_monitor_removed": true,
     "summary_report": "reports/summary_2026-11-14.html",
     "old_debate_monitors_removed": true,
-    "md_case": "2026-11-20T11:22:33+09:00",
+    "md_case": "2026-11-27T12:41:34+09:00",
     "skills": {
       "guardrails": {
         "hash": "f87a90679fdc386f",
@@ -5468,7 +5468,7 @@
       }
     },
     "skill_tree": "767746ea7e8bbe31",
-    "skill_tree_view": "cc99d220131a9ce1",
+    "skill_tree_view": "5512e6856b49a25e",
     "forecast": {
       "week": "2026-W48",
       "value": 177.424,
@@ -5487,26 +5487,26 @@
       "Run": {},
       "Filings and IR": {},
       "Market price": {
-        "last_new_data": "2026-11-26T12:36:30+09:00",
-        "fp": "e50d9cc9cb93"
+        "last_new_data": "2026-11-27T12:42:53+09:00",
+        "fp": "04f2b84ea087"
       },
       "Peers": {
-        "last_new_data": "2026-11-27T02:48:46+09:00"
+        "last_new_data": "2026-11-27T12:42:53+09:00"
       },
       "Valuation": {
-        "last_new_data": "2026-11-27T02:48:46+09:00"
+        "last_new_data": "2026-11-27T12:42:53+09:00"
       },
       "Research (M1, backtest)": {
         "last_new_data": "2026-11-22T08:36:18+09:00",
         "fp": "15d1b3469f89"
       },
       "Debate evidence": {
-        "last_new_data": "2026-11-27T02:48:46+09:00",
-        "fp": "6f3755b63108"
+        "last_new_data": "2026-11-27T12:42:53+09:00",
+        "fp": "5d21d78945df"
       },
       "Marketing data": {
-        "last_new_data": "2026-11-26T12:36:30+09:00",
-        "fp": "fdc01e37943d"
+        "last_new_data": "2026-11-27T12:42:53+09:00",
+        "fp": "c4e2de5d1714"
       },
       "Dashboard": {}
     },
@@ -5516,17 +5516,7 @@
     "last_summary": "2026-11-14T23:11:20+09:00",
     "latest_file": "reports/summary_2026-11-14.html"
   },
-  "known_outages": {
-    "www.grandy.co.jp": {
-      "since": "2026-10-22T21:58:31+09:00",
-      "last_ok": "2026-10-22T09:00:54+09:00",
-      "noted": "2026-11-13T12:26:29+09:00",
-      "last_seen": "2026-11-27T02:44:16+09:00",
-      "code": 503,
-      "evidence": "maintenance page, Retry-After 3600",
-      "url": "https://www.grandy.co.jp/ir/library"
-    }
-  },
+  "known_outages": {},
   "outage_history": [
     {
       "host": "irbank.net",
@@ -5538,6 +5528,17 @@
       "evidence": "refused on every request",
       "url": "https://irbank.net/1873",
       "ended": "2026-11-24T14:19:15+09:00"
+    },
+    {
+      "host": "www.grandy.co.jp",
+      "since": "2026-10-22T21:58:31+09:00",
+      "last_ok": "2026-10-22T09:00:54+09:00",
+      "noted": "2026-11-13T12:26:29+09:00",
+      "last_seen": "2026-11-27T02:44:16+09:00",
+      "code": 503,
+      "evidence": "maintenance page, Retry-After 3600",
+      "url": "https://www.grandy.co.jp/ir/library",
+      "ended": "2026-11-27T12:38:56+09:00"
     }
   ]
 }

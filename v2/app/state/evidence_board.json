@@ -1523,7 +1523,17 @@
    "url": "https://www.boj.or.jp/statistics/dl/loan/yaku/yaku2609.pdf",
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
-   "first_seen": "2026-11-25T13:12:31+09:00"
+   "first_seen": "2026-11-25T13:12:31+09:00",
+   "link": {
+    "resolved": true,
+    "type": "pdf",
+    "pages": 2,
+    "chars": 5027,
+    "sha256": "53da275c60739cf8a462bc24e567f8c0df3c545cd8055253aaeb4fa751cf08d9",
+    "checked": "2026-11-27T12:41:34+09:00",
+    "injection_flagged": false
+   },
+   "excerpt_long": "本件の対外公表は11月25日 8時50分\n時系列統計データ検索サイトへの掲載は翌営業日以降\nNot to be released until 8:50 a.m. JST on November 25, 2026.\nThe data will be uploaded on the \"BOJ Time-Series Data Search\"\non or after the next business day.\n2026年11月25日\nBank of Japan 日本銀行金融機構局\nFinancial System and Bank Examination Department\n貸出約定平均金利の推移(2026年9月)\nAverage Contract Interest Rates on Loans and Discounts (September 2026)\n1.新規\nNew Loans and Discounts （％）\n2026/4 5 6 7 8 9\n＜短 期＞ Short-term loans and discounts\n国 内 銀 行\n1.474 1.245 1.452 1.388 1.427 1.846\nDomestically licensed banks\n都 市 銀 行\n1.530 1.297 1.558 1.377 1.438 1.996\nCity banks\n地 方 銀 行\n1.487 1.242 1.449 1.481 1.479 1.791\nRegional banks\n第二地方銀行\n1.703 1.425 1.487 1.744 1.695 1.921\nRegional banks Ⅱ\n信 用 金 庫\n2.261 2.270 2.241 2.293 2.369 2.315\nShinkin banks\n＜長 期＞ Long-term loans\n国 内 銀 行\n1.790 2.066 1.944 1.895 1.999 2.228\nDomestically licensed banks\n都 市 銀 行\n1.962 2.546 2.165 2.014 "
   },
   "E-720496db": {
    "id": "E-720496db",
@@ -1694,7 +1704,17 @@
    "url": "https://www.boj.or.jp/about/press/koen_2026/ko261126a.htm",
    "source": "Bank of Japan (news feed)",
    "topic": "housing policy and finance",
-   "first_seen": "2026-11-26T12:34:40+09:00"
+   "first_seen": "2026-11-26T12:34:40+09:00",
+   "link": {
+    "resolved": true,
+    "type": "html",
+    "pages": 1,
+    "chars": 3096,
+    "sha256": "0bbc9543394d02ca938e43163b134305c309015b961a71b63fe53cc858079373",
+    "checked": "2026-11-27T12:41:31+09:00",
+    "injection_flagged": false
+   },
+   "excerpt_long": "【挨拶】田村審議委員「わが国の経済・物価情勢と金融政策」（山梨） : 日本銀行 Bank of Japan\nこのページの本文へ移動\n日本語\nEnglish\nホーム\n日本銀行について\n日本銀行について\n日本銀行の概要\n日本銀行の概要\n沿革\n日本銀行百年史\n歴代総裁\n所在地（本店案内図）・入館案内\n本店・支店・国内事務所\n海外事務所\nアーカイブ\n日本銀行の組織\n日本銀行の組織\n日本銀行組織規程\n政策委員会\n総裁・副総裁・理事の担当\n本店・支店・事務所の組織\nコンプライアンス\n関係法令等\n会計・決算\n業務の運営\n業務の運営\n日本銀行の行動原則\n中期経営計画\n業務概況書\n財務省の政策評価結果（日本銀行に関する部分）\n法令に基づく情報提供資料（閲覧資料一覧）\n日本銀行が法令に基づき扱う手続のオンライン化状況\n災害対策・業務継続体制\nダイバーシティへの取組み\n講演・記者会見・談話\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文・レポート・講演等\n日本銀行に関連する論文等の一覧\n日本銀行に関連する講演・挨拶等\n日本銀行に関連する談話\nその他公表資料\n見学・イベント等\n日本銀行の紹介\n各種窓口・手続き\n各種窓口・手続き\n損傷したお金の引換え窓口\n外為法に関する手続き\n各種取引に関する金融機関向け窓口\n国庫金・国債の窓口\n出資証券に関する手続き\n情報公開の窓口・手続き／公文書管理\n個人情報保護の窓口・手続き\n本店見学\n採用・人事交流等\n採用・人事交流等\n新規採用\nキャリア採用\nアルムナイネットワーク\n調達関連情報\n気候変動\nリンク集\n金融政策\n金融政策\n金融政策の概要\n金融政策の概要\n2％の「物価安定の目標」\n金融政策の多角的レビュー\n金融政策決定会合の運営\n金融政策決定会合の運営\n金融政策決定会合における主な意見\n金融政策決定会合議事要旨\n金融政策決定会合議事録\nその他\n金融政策に関する決定事項等\n金融政策手段\n金融政策手段\nオペレーション等の一覧\nオペレーション等に関する基本要領\nオペレーション等の対象先公募・選定\nオペレーション等の受託者公募・選定\n経済・物価情勢"
   },
   "E-3bbc7f72": {
    "id": "E-3bbc7f72",
@@ -1715,40 +1735,81 @@
    "source": "EDINET (universe companies)",
    "topic": "company and peers",
    "first_seen": "2026-11-27T02:44:23+09:00"
+  },
+  "E-6c3b4223": {
+   "id": "E-6c3b4223",
+   "date": "2026-11-27",
+   "ticker": "1840",
+   "title": "Marketing digest 2026-11-27: 土屋ホーム events listed: 54 → 59  (+5); 土屋ホーム completion tours and roof-raisings listed: 3 → 4  (+1)",
+   "url": "digest:E-6c3b4223",
+   "source": "Marketing digest (code)",
+   "topic": "company and peers",
+   "first_seen": "2026-11-27T12:39:31+09:00",
+   "excerpt": "Marketing digest 2026-11-27 (written by code from the agent's weekly marketing data; previous digest 2026-11-20).\n土屋ホーム events listed: 54 → 59  (+5)\n土屋ホーム completion tours and roof-raisings listed: 3 → 4  (+1)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "excerpt_long": "Marketing digest 2026-11-27 (written by code from the agent's weekly marketing data; previous digest 2026-11-20).\n土屋ホーム events listed: 54 → 59 (+5)\n土屋ホーム completion tours and roof-raisings listed: 3 → 4 (+1)\nSources: tsuchiyahome.jp/modelhouse/, tsuchiyahome.jp/event/, tamahome.jp/modelhouse/, nihonhouse-hd.co.jp/modelhouse/.",
+   "link": {
+    "resolved": true,
+    "type": "txt",
+    "pages": 1,
+    "chars": 329,
+    "sha256": "3ea4e1e4ac99f1b2d121271a8cfe6dbd8103066be5d4c997aaa3f7cc2ae7fd9a",
+    "checked": "2026-11-27T12:39:31+09:00",
+    "written_by": "code"
+   }
+  },
+  "E-89327f3d": {
+   "id": "E-89327f3d",
+   "date": "2026-11-12",
+   "ticker": "8999",
+   "title": "2026.11.12 2027年3月期 第２四半期決算短信",
+   "url": "https://www.grandy.co.jp/assets/images/ir/news/20261112-202703-2Q.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "2026-11-27T12:39:31+09:00"
+  },
+  "E-adf7e5b1": {
+   "id": "E-adf7e5b1",
+   "date": "2026-08-10",
+   "ticker": "8999",
+   "title": "2026.8.10 2027年3月期 第１四半期決算短信",
+   "url": "https://www.grandy.co.jp/assets/images/ir/news/20260810-202703-1Q.pdf",
+   "source": "company IR page",
+   "topic": "company and peers",
+   "first_seen": "2026-11-27T12:39:31+09:00"
   }
  },
- "last_check": "2026-11-20T11:22:33+09:00",
+ "last_check": "2026-11-27T12:41:34+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-27T02:44:17+09:00",
+   "checked": "2026-11-27T12:39:32+09:00",
    "error": null,
    "seen": 13,
    "added": 0,
    "added_at": "2026-11-26T12:34:40+09:00"
   },
   "mlit": {
-   "checked": "2026-11-27T02:44:21+09:00",
+   "checked": "2026-11-27T12:39:35+09:00",
    "error": null,
    "seen": 18,
    "added": 0,
    "added_at": "2026-11-26T02:59:28+09:00"
   },
   "jhf": {
-   "checked": "2026-11-27T02:44:21+09:00",
+   "checked": "2026-11-27T12:39:36+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-27T02:44:23+09:00",
+   "checked": "2026-11-27T12:39:36+09:00",
    "error": null,
    "seen": 2,
-   "added": 2,
+   "added": 0,
    "added_at": "2026-11-27T02:44:23+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-27T02:45:18+09:00",
+   "checked": "2026-11-27T12:40:29+09:00",
    "error": "429: server busy or error",
    "seen": 11,
    "added": 11,
