@@ -40,16 +40,6 @@
    "topic": "company and peers",
    "first_seen": "backfill"
   },
-  "E-c5043a07": {
-   "id": "E-c5043a07",
-   "date": "2026-07-30",
-   "ticker": "1873",
-   "title": "2026年07月30日 固定資産の譲渡に伴う特別利益及び固定資産の除却に伴う特別損失の計上並びに業績予想の修正に関するお知らせ",
-   "url": "https://www.nihonhouse-hd.co.jp/pdf/ir/20260730.pdf",
-   "source": "company IR page",
-   "topic": "company and peers",
-   "first_seen": "backfill"
-  },
   "E-55de579b": {
    "id": "E-55de579b",
    "date": "2026-10-30",
@@ -1776,40 +1766,50 @@
    "source": "company IR page",
    "topic": "company and peers",
    "first_seen": "2026-11-27T12:39:31+09:00"
+  },
+  "E-6a7ee5a0": {
+   "id": "E-6a7ee5a0",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "「紙兎ロペ」とコラボした動画を配信します！ ～住宅の耐震化、エレベーターの安全対策、火災安全改修～",
+   "url": "https://www.mlit.go.jp/report/press/house06_hh_000255.html",
+   "source": "MLIT press releases",
+   "topic": "housing policy and finance",
+   "first_seen": "2026-11-28T02:28:18+09:00"
   }
  },
  "last_check": "2026-11-27T12:41:34+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-27T12:39:32+09:00",
+   "checked": "2026-11-28T02:28:14+09:00",
    "error": null,
    "seen": 13,
    "added": 0,
    "added_at": "2026-11-26T12:34:40+09:00"
   },
   "mlit": {
-   "checked": "2026-11-27T12:39:35+09:00",
+   "checked": "2026-11-28T02:28:18+09:00",
    "error": null,
-   "seen": 18,
-   "added": 0,
-   "added_at": "2026-11-26T02:59:28+09:00"
+   "seen": 19,
+   "added": 1,
+   "added_at": "2026-11-28T02:28:18+09:00"
   },
   "jhf": {
-   "checked": "2026-11-27T12:39:36+09:00",
+   "checked": "2026-11-28T02:28:20+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-27T12:39:36+09:00",
+   "checked": "2026-11-28T02:28:25+09:00",
    "error": null,
-   "seen": 2,
+   "seen": 0,
    "added": 0,
    "added_at": "2026-11-27T02:44:23+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-27T12:40:29+09:00",
+   "checked": "2026-11-28T02:29:16+09:00",
    "error": "429: server busy or error",
    "seen": 11,
    "added": 11,
