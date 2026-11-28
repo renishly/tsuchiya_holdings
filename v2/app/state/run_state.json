@@ -28,13 +28,13 @@
     "P4": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-28T02:29:16+09:00",
+      "last_success": "2026-11-28T12:19:46+09:00",
       "fail_streak": 0
     },
     "P5": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-28T02:29:36+09:00",
+      "last_success": "2026-11-28T12:19:58+09:00",
       "fail_streak": 0
     },
     "P6": {
@@ -58,7 +58,7 @@
     "P9": {
       "status": "complete",
       "cursor": null,
-      "last_success": "2026-11-28T02:28:13+09:00",
+      "last_success": "2026-11-28T12:18:49+09:00",
       "fail_streak": 0
     }
   },
@@ -101,10 +101,10 @@
     "listings": "2026-10-09",
     "legal": "2026-10-09",
     "news_searched": "2026-10-09",
-    "filings": "2026-11-27",
+    "filings": "2026-11-28",
     "price_store": "2026-11-28",
     "rf_store": "2026-10-22",
-    "marketing": "2026-11-27"
+    "marketing": "2026-11-28"
   },
   "robots": {
     "www.tsuchiya.co.jp": {
@@ -128,7 +128,7 @@
       "txt": "User-agent: *\r\nAllow: /wp-admin/admin-ajax.php\r\nDisallow: /wp-admin/\r\n\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.xml\r\nSitemap: https://tsuchiyafudosan.jp/sitemap.rss\r\n\r\n"
     },
     "www.tsuchiyahome.jp": {
-      "date": "2026-11-27",
+      "date": "2026-11-28",
       "txt": "User-agent: *\nSitemap: https://www.tsuchiyahome.jp/sitemap.xml\n"
     },
     "www.hometopia.jp": {
@@ -4065,7 +4065,7 @@
     "marketing": {
       "sources": {
         "filings": {
-          "checked": "2026-11-27T12:39:00+09:00",
+          "checked": "2026-11-28T12:18:45+09:00",
           "ok": true,
           "detail": "83 values; 土屋ホールディングス: 広告宣伝費 not disclosed in FY ending 2025-10-31; 土屋ホールディングス FY ending 2017-10-31: order table not found; 日本ハウスホールディングス FY ending 2024-04-30: order table not found",
           "gaps": [
@@ -4075,14 +4075,14 @@
           ]
         },
         "tsuchiya_modelhouses": {
-          "checked": "2026-11-27T12:39:02+09:00",
+          "checked": "2026-11-28T12:18:46+09:00",
           "ok": true,
           "detail": "42 model houses"
         },
         "tsuchiya_events": {
-          "checked": "2026-11-27T12:39:04+09:00",
+          "checked": "2026-11-28T12:18:49+09:00",
           "ok": true,
-          "detail": "59 events (4 completion/roof-raising)"
+          "detail": "65 events (4 completion/roof-raising)"
         },
         "tama_shops": {
           "checked": "2026-11-27T12:39:23+09:00",
@@ -4282,6 +4282,36 @@
           }
         },
         "tsu_events": {
+          "/event/13932": {
+            "type": "見学会",
+            "title": "暮らしやすい間取りを見つけるモデルハウス見学会",
+            "pref": "unknown"
+          },
+          "/event/13930": {
+            "type": "相談会・セミナー",
+            "title": "家づくりの予算・資金計画相談会",
+            "pref": "unknown"
+          },
+          "/event/13929": {
+            "type": "相談会・セミナー",
+            "title": "土地探しから始める家づくり相談会",
+            "pref": "unknown"
+          },
+          "/event/13928": {
+            "type": "見学会",
+            "title": "自分たちに合う住まいを見つけるモデルハウス見学会",
+            "pref": "unknown"
+          },
+          "/event/13931": {
+            "type": "見学会",
+            "title": "住まいの性能と心地好さを体感するモデルハウス見学会",
+            "pref": "unknown"
+          },
+          "/event/13590": {
+            "type": "イベント",
+            "title": "【郡山市】本当の高性能体感会 -冬-",
+            "pref": "福島県"
+          },
           "/event/13439": {
             "type": "イベント",
             "title": "東京・銀座から始める 先輩移住者の本音と暮らしの体験談・個別相談会",
@@ -4628,8 +4658,8 @@
   "current_run": null,
   "last_price": {
     "1840": {
-      "price": 209.0,
-      "quote_time": "2026-11-26T15:30:00+09:00"
+      "price": 210.0,
+      "quote_time": "2026-11-27T15:30:00+09:00"
     }
   },
   "history": [
@@ -5334,6 +5364,12 @@
       "ended": "2026-11-28T02:29:36+09:00",
       "iterations": 22,
       "attention": 0
+    },
+    {
+      "run_id": "R-20261128-121745",
+      "ended": "2026-11-28T12:19:58+09:00",
+      "iterations": 23,
+      "attention": 0
     }
   ],
   "dashboard_sent": {
@@ -5474,7 +5510,7 @@
       }
     },
     "skill_tree": "767746ea7e8bbe31",
-    "skill_tree_view": "e265f891c035fe28",
+    "skill_tree_view": "788def4dfffea759",
     "forecast": {
       "week": "2026-W48",
       "value": 177.424,
@@ -5493,14 +5529,14 @@
       "Run": {},
       "Filings and IR": {},
       "Market price": {
-        "last_new_data": "2026-11-27T12:42:53+09:00",
-        "fp": "04f2b84ea087"
+        "last_new_data": "2026-11-28T12:20:37+09:00",
+        "fp": "ea1e3b59b97c"
       },
       "Peers": {
-        "last_new_data": "2026-11-28T02:30:16+09:00"
+        "last_new_data": "2026-11-28T12:20:37+09:00"
       },
       "Valuation": {
-        "last_new_data": "2026-11-28T02:30:16+09:00"
+        "last_new_data": "2026-11-28T12:20:37+09:00"
       },
       "Research (M1, backtest)": {
         "last_new_data": "2026-11-22T08:36:18+09:00",
@@ -5511,8 +5547,8 @@
         "fp": "e03be529703e"
       },
       "Marketing data": {
-        "last_new_data": "2026-11-27T12:42:53+09:00",
-        "fp": "c4e2de5d1714"
+        "last_new_data": "2026-11-28T12:20:37+09:00",
+        "fp": "771a9bcc1543"
       },
       "Dashboard": {}
     },
