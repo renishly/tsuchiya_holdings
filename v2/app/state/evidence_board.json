@@ -1776,44 +1776,242 @@
    "source": "MLIT press releases",
    "topic": "housing policy and finance",
    "first_seen": "2026-11-28T02:28:18+09:00"
+  },
+  "E-7b3f124a": {
+   "id": "E-7b3f124a",
+   "date": "2026-11-28",
+   "ticker": "",
+   "title": "Japan , China Experts Engage in Direct Dialogue in Shanghai (nippon.com)",
+   "url": "https://www.nippon.com/en/articles/-/58146",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-608a64f4": {
+   "id": "E-608a64f4",
+   "date": "2026-11-28",
+   "ticker": "",
+   "title": "A week on , Japan remains focused on Shenzhen airport dispute , overlooking the bigger picture (globaltimes.cn)",
+   "url": "https://www.globaltimes.cn/page/202611/1375221.shtml",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-5214b283": {
+   "id": "E-5214b283",
+   "date": "2026-11-28",
+   "ticker": "",
+   "title": "Everything gone : Singaporean tourist Osaka hotel room burns down while he at dinner (asiaone.com)",
+   "url": "https://www.asiaone.com:443/singapore/singaporean-tourists-osaka-hotel-room-burns-down-fire",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-dd5b1378": {
+   "id": "E-dd5b1378",
+   "date": "2026-11-28",
+   "ticker": "",
+   "title": "Hiromi Itoh reaches deal with Cubs ( source ) (mlb.com)",
+   "url": "https://www.mlb.com/news/hiromi-itoh-deal-cubs",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-65dd2333": {
+   "id": "E-65dd2333",
+   "date": "2026-11-28",
+   "ticker": "",
+   "title": "Chicago Cubs to sign Japanese RHP Hiromi Itoh : source (chicagotribune.com)",
+   "url": "https://www.chicagotribune.com/2026/11/27/chicago-cubs-japanese-pitcher-hiromi-itoh/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-ebc513ed": {
+   "id": "E-ebc513ed",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Japanese art collective teamLab Daisuke Sakai reveals what designing for screens taught him about designing spaces (livemint.com)",
+   "url": "https://www.livemint.com/mint-lounge/business-of-life/japan-art-museum-teamlab-daisuke-sakai-interview-web-design-spatial-design-11795723323114.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-26a83f97": {
+   "id": "E-26a83f97",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Japan to Launch Secondary Capital System in Spring 2028 (nippon.com)",
+   "url": "https://www.nippon.com/en/articles/-/58082",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-55770809": {
+   "id": "E-55770809",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Bank of Japan calls on policy makers to create anchor of trust amid cybersecurity risks (thenews.com.pk)",
+   "url": "https://www.thenews.com.pk/latest/1425338-bank-of-japan-calls-on-policy-makers-to-create-anchor-of-trust-amid-cybersecurity-risks",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-681660a5": {
+   "id": "E-681660a5",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Shares find footing after bruising month , dollar set for third monthly gain (ksevradio.com)",
+   "url": "https://ksevradio.com/shares-find-footing-after-bruising-month-dollar-set-for-third-monthly-gain/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-f38d84c7": {
+   "id": "E-f38d84c7",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Japanese Market Notably Higher (rttnews.com)",
+   "url": "https://www.rttnews.com/3718393/japanese-market-notably-higher.aspx",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-6a0aec20": {
+   "id": "E-6a0aec20",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Core inflation in Tokyo hits 16 - month high , bolsters case for BOJ hike (aol.com)",
+   "url": "https://www.aol.com/articles/core-inflation-japans-capital-accelerates-234240000.html",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-69dcb90d": {
+   "id": "E-69dcb90d",
+   "date": "2026-11-27",
+   "ticker": "",
+   "title": "Tokyo core inflation hits 16 - month high of 2 . 9 %, firming the case for a December BoJ hike (investinglive.com)",
+   "url": "https://investinglive.com/central-banks/tokyo-core-inflation-hits-16-month-high-of-2-9-firming-the-case-for-a-december-boj-hike/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-f0baeff6": {
+   "id": "E-f0baeff6",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "Wife of Japan journalist held in Russia says family trapped in grief (japantoday.com)",
+   "url": "https://japantoday.com/category/national/wife-of-japan-journalist-held-in-russia-says-her-family-is-trapped-in-grief",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-6432969f": {
+   "id": "E-6432969f",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "Japan hypersonic missiles - lock and loaded against Russia (investmentwatchblog.com)",
+   "url": "https://www.investmentwatchblog.com/japans-hypersonic-missiles-lock-and-loaded-against-russia/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-2bdcb4d0": {
+   "id": "E-2bdcb4d0",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "Japan is packing chipmaking labs into trucks mobileFab set to travel the country , drumming up interest in hardware careers (techradar.com)",
+   "url": "https://www.techradar.com/pro/japan-is-packing-chipmaking-labs-into-trucks-mobilefab-set-to-travel-the-country-drumming-up-interest-in-hardware-careers",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-900cd3b3": {
+   "id": "E-900cd3b3",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "The economy of Japan has hit the buffers - Investment Watch Blog (investmentwatchblog.com)",
+   "url": "https://www.investmentwatchblog.com/the-economy-of-japan-has-hit-the-buffers/",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-29cb4b33": {
+   "id": "E-29cb4b33",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "Hotel101 - Niseko sold out ahead of opening (philstar.com)",
+   "url": "https://www.philstar.com/business/2026/11/27/2572841/hotel101-niseko-sold-out-ahead-opening",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
+  },
+  "E-1f218907": {
+   "id": "E-1f218907",
+   "date": "2026-11-26",
+   "ticker": "",
+   "title": "NZD dips in subdued currency markets (interest.co.nz)",
+   "url": "https://www.interest.co.nz/currencies/141245/risk-appetite-improved-european-stocks-rallied-tech-rebound-us-markets-were",
+   "source": "GDELT news (context only)",
+   "topic": "politics and macro",
+   "context_only": true,
+   "first_seen": "2026-11-29T01:11:47+09:00"
   }
  },
  "last_check": "2026-11-27T12:41:34+09:00",
  "sources": {
   "boj": {
-   "checked": "2026-11-28T12:18:51+09:00",
+   "checked": "2026-11-29T01:10:46+09:00",
    "error": null,
    "seen": 13,
    "added": 0,
    "added_at": "2026-11-26T12:34:40+09:00"
   },
   "mlit": {
-   "checked": "2026-11-28T12:18:54+09:00",
+   "checked": "2026-11-29T01:10:51+09:00",
    "error": null,
    "seen": 19,
    "added": 0,
    "added_at": "2026-11-28T02:28:18+09:00"
   },
   "jhf": {
-   "checked": "2026-11-28T12:18:54+09:00",
+   "checked": "2026-11-29T01:10:51+09:00",
    "error": null,
    "seen": 1,
    "added": 0,
    "added_at": "2026-11-03T02:04:40+09:00"
   },
   "edinet": {
-   "checked": "2026-11-28T12:18:54+09:00",
+   "checked": "2026-11-29T01:10:52+09:00",
    "error": null,
    "seen": 0,
    "added": 0,
    "added_at": "2026-11-27T02:44:23+09:00"
   },
   "gdelt": {
-   "checked": "2026-11-28T12:19:46+09:00",
-   "error": "429: server busy or error",
-   "seen": 11,
-   "added": 11,
-   "added_at": "2026-11-26T02:59:43+09:00"
+   "checked": "2026-11-29T01:11:47+09:00",
+   "error": null,
+   "seen": 18,
+   "added": 18,
+   "added_at": "2026-11-29T01:11:47+09:00"
   }
  }
 }
